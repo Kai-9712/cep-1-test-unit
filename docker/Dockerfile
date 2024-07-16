@@ -25,7 +25,11 @@ RUN apk update && apk add --no-cache \
   tzdata \
   postgresql-dev \
   postgresql-client \
+<<<<<<< HEAD
   nodejs-current \
+=======
+  nodejs=20.15.1-r0 \
+>>>>>>> 64a9a46b2 (fix: Docker compose  build of unable to select packages (#9783))
   yarn \
   git \
   && mkdir -p /var/app \
