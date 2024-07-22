@@ -131,7 +131,6 @@ import ChatListHeader from './ChatListHeader.vue';
 import ConversationAdvancedFilter from './widgets/conversation/ConversationAdvancedFilter.vue';
 import ChatTypeTabs from './widgets/ChatTypeTabs.vue';
 import ConversationItem from './ConversationItem.vue';
-import timeMixin from '../mixins/time';
 import keyboardEventListenerMixins from 'shared/mixins/keyboardEventListenerMixins';
 import conversationMixin from '../mixins/conversations';
 import wootConstants from 'dashboard/constants/globals';
@@ -173,7 +172,6 @@ export default {
     CustomSnoozeModal,
   },
   mixins: [
-    timeMixin,
     conversationMixin,
     keyboardEventListenerMixins,
     alertMixin,
