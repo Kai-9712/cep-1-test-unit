@@ -115,3 +115,56 @@ export default {
     </div>
   </div>
 </template>
+<<<<<<< HEAD
+=======
+
+<script>
+import UserAvatarWithName from 'dashboard/components/widgets/UserAvatarWithName.vue';
+import InboxName from 'dashboard/components/widgets/InboxName.vue';
+import messageFormatterMixin from 'shared/mixins/messageFormatterMixin';
+import { messageStamp } from 'shared/helpers/timeHelper';
+
+export default {
+  components: {
+    UserAvatarWithName,
+    InboxName,
+  },
+  mixins: [messageFormatterMixin],
+  props: {
+    campaign: {
+      type: Object,
+      required: true,
+    },
+    isOngoingType: {
+      type: Boolean,
+      default: true,
+    },
+  },
+
+  computed: {
+    campaignStatus() {
+      if (this.isOngoingType) {
+        return this.campaign.enabled
+          ? this.$t('CAMPAIGN.LIST.STATUS.ENABLED')
+          : this.$t('CAMPAIGN.LIST.STATUS.DISABLED');
+      }
+
+      return this.campaign.campaign_status === 'completed'
+        ? this.$t('CAMPAIGN.LIST.STATUS.COMPLETED')
+        : this.$t('CAMPAIGN.LIST.STATUS.ACTIVE');
+    },
+    colorScheme() {
+      if (this.isOngoingType) {
+        return this.campaign.enabled ? 'success' : 'secondary';
+      }
+      return this.campaign.campaign_status === 'completed'
+        ? 'secondary'
+        : 'success';
+    },
+  },
+  methods: {
+    messageStamp,
+  },
+};
+</script>
+>>>>>>> 79381b08c (feat: Move timeMixin to a helper (#9799))

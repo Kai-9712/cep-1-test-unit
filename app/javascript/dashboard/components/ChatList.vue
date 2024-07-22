@@ -138,6 +138,10 @@ import ChatListHeader from './ChatListHeader.vue';
 import ConversationAdvancedFilter from './widgets/conversation/ConversationAdvancedFilter.vue';
 import ChatTypeTabs from './widgets/ChatTypeTabs.vue';
 import ConversationItem from './ConversationItem.vue';
+<<<<<<< HEAD
+=======
+import keyboardEventListenerMixins from 'shared/mixins/keyboardEventListenerMixins';
+>>>>>>> 79381b08c (feat: Move timeMixin to a helper (#9799))
 import conversationMixin from '../mixins/conversations';
 import wootConstants from 'dashboard/constants/globals';
 import advancedFilterTypes from './widgets/conversation/advancedFilterItems';
@@ -175,7 +179,17 @@ export default {
     VirtualList,
     CustomSnoozeModal,
   },
+<<<<<<< HEAD
   mixins: [conversationMixin, filterMixin],
+=======
+  mixins: [
+    conversationMixin,
+    keyboardEventListenerMixins,
+    alertMixin,
+    filterMixin,
+    uiSettingsMixin,
+  ],
+>>>>>>> 79381b08c (feat: Move timeMixin to a helper (#9799))
   provide() {
     return {
       // Actions to be performed on virtual list item and context menu.

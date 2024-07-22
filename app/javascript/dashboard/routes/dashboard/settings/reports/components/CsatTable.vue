@@ -4,12 +4,20 @@ import UserAvatarWithName from 'dashboard/components/widgets/UserAvatarWithName.
 import { CSAT_RATINGS } from 'shared/constants/messages';
 import { mapGetters } from 'vuex';
 import { messageStamp, dynamicTime } from 'shared/helpers/timeHelper';
+<<<<<<< HEAD
+=======
+import rtlMixin from 'shared/mixins/rtlMixin';
+>>>>>>> 79381b08c (feat: Move timeMixin to a helper (#9799))
 
 export default {
   components: {
     VeTable,
     VePagination,
   },
+<<<<<<< HEAD
+=======
+  mixins: [rtlMixin],
+>>>>>>> 79381b08c (feat: Move timeMixin to a helper (#9799))
   props: {
     pageIndex: {
       type: Number,

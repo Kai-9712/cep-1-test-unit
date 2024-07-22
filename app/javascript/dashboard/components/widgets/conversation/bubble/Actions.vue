@@ -1,6 +1,10 @@
 <script>
 import { MESSAGE_TYPE, MESSAGE_STATUS } from 'shared/constants/messages';
 import inboxMixin from 'shared/mixins/inboxMixin';
+<<<<<<< HEAD
+=======
+import { mapGetters } from 'vuex';
+>>>>>>> 79381b08c (feat: Move timeMixin to a helper (#9799))
 import { messageTimestamp } from 'shared/helpers/timeHelper';
 
 export default {

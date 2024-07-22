@@ -24,7 +24,12 @@ export default {
     PriorityMark,
     SLACardLabel,
   },
+<<<<<<< HEAD
   mixins: [inboxMixin, conversationMixin],
+=======
+
+  mixins: [inboxMixin, conversationMixin, alertMixin],
+>>>>>>> 79381b08c (feat: Move timeMixin to a helper (#9799))
   props: {
     activeLabel: {
       type: String,

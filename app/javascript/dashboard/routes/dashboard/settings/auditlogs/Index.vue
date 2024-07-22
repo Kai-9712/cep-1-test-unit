@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <script setup>
 import { useAlert } from 'dashboard/composables';
 import { messageTimestamp } from 'shared/helpers/timeHelper';
@@ -82,6 +83,33 @@ watch(routerPage, (newPage, oldPage) => {
       </p>
       <div v-else class="min-w-full overflow-x-auto">
         <table class="divide-y divide-slate-75 dark:divide-slate-700">
+=======
+<template>
+  <div class="flex flex-col justify-between flex-1 p-4 overflow-auto">
+    <!-- List Audit Logs -->
+    <div>
+      <div>
+        <p
+          v-if="!uiFlags.fetchingList && !records.length"
+          class="flex flex-col items-center justify-center h-full"
+        >
+          {{ $t('AUDIT_LOGS.LIST.404') }}
+        </p>
+        <woot-loading-state
+          v-if="uiFlags.fetchingList"
+          :message="$t('AUDIT_LOGS.LOADING')"
+        />
+
+        <table
+          v-if="!uiFlags.fetchingList && records.length"
+          class="w-full woot-table"
+        >
+          <colgroup>
+            <col class="w-3/5" />
+            <col />
+            <col />
+          </colgroup>
+>>>>>>> 79381b08c (feat: Move timeMixin to a helper (#9799))
           <thead>
             <th
               v-for="thHeader in $t('AUDIT_LOGS.LIST.TABLE_HEADER')"
@@ -95,10 +123,17 @@ watch(routerPage, (newPage, oldPage) => {
             class="divide-y divide-slate-50 dark:divide-slate-800 text-slate-700 dark:text-slate-300"
           >
             <tr v-for="auditLogItem in records" :key="auditLogItem.id">
+<<<<<<< HEAD
               <td class="py-4 pr-4 break-all whitespace-nowrap">
                 {{ generateLogText(auditLogItem) }}
               </td>
               <td class="py-4 pr-4 break-all whitespace-nowrap">
+=======
+              <td class="break-all whitespace-nowrap">
+                {{ generateLogText(auditLogItem) }}
+              </td>
+              <td class="break-all whitespace-nowrap">
+>>>>>>> 79381b08c (feat: Move timeMixin to a helper (#9799))
                 {{
                   messageTimestamp(
                     auditLogItem.created_at,
@@ -123,3 +158,79 @@ watch(routerPage, (newPage, oldPage) => {
     </div>
   </div>
 </template>
+<<<<<<< HEAD
+=======
+<script>
+import { mapGetters } from 'vuex';
+import TableFooter from 'dashboard/components/widgets/TableFooter.vue';
+import { messageTimestamp } from 'shared/helpers/timeHelper';
+import alertMixin from 'shared/mixins/alertMixin';
+import {
+  generateTranslationPayload,
+  generateLogActionKey,
+} from 'dashboard/helper/auditlogHelper';
+
+export default {
+  components: {
+    TableFooter,
+  },
+  mixins: [alertMixin],
+  beforeRouteEnter(to, from, next) {
+    // Fetch Audit Logs on page load without manual refresh
+    next(vm => {
+      vm.fetchAuditLogs();
+    });
+  },
+  data() {
+    return {
+      loading: {},
+      auditLogsAPI: {
+        message: '',
+      },
+    };
+  },
+  computed: {
+    ...mapGetters({
+      records: 'auditlogs/getAuditLogs',
+      uiFlags: 'auditlogs/getUIFlags',
+      meta: 'auditlogs/getMeta',
+      agentList: 'agents/getAgents',
+    }),
+  },
+  mounted() {
+    // Fetch API Call
+    this.$store.dispatch('agents/get');
+  },
+  methods: {
+    messageTimestamp,
+    fetchAuditLogs() {
+      const page = this.$route.query.page ?? 1;
+      this.$store.dispatch('auditlogs/fetch', { page }).catch(error => {
+        const errorMessage =
+          error?.message || this.$t('AUDIT_LOGS.API.ERROR_MESSAGE');
+        this.showAlert(errorMessage);
+      });
+    },
+    generateLogText(auditLogItem) {
+      const translationPayload = generateTranslationPayload(
+        auditLogItem,
+        this.agentList
+      );
+      const translationKey = generateLogActionKey(auditLogItem);
+
+      return this.$t(translationKey, translationPayload);
+    },
+    onPageChange(page) {
+      window.history.pushState({}, null, `${this.$route.path}?page=${page}`);
+      try {
+        this.$store.dispatch('auditlogs/fetch', { page });
+      } catch (error) {
+        const errorMessage =
+          error?.message || this.$t('AUDIT_LOGS.API.ERROR_MESSAGE');
+        this.showAlert(errorMessage);
+      }
+    },
+  },
+};
+</script>
+>>>>>>> 79381b08c (feat: Move timeMixin to a helper (#9799))
