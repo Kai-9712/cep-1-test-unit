@@ -1,3 +1,96 @@
+<<<<<<< HEAD
+=======
+<template>
+  <div
+    class="border border-slate-25 dark:border-slate-800/60 bg-white dark:bg-slate-900 h-full p-6 w-full max-w-full md:w-3/4 md:max-w-[75%] flex-shrink-0 flex-grow-0"
+  >
+    <div v-if="!hasLoginStarted" class="pt-[30%] h-full">
+      <a href="#" @click="startLogin()">
+        <img
+          class="h-10 w-auto"
+          src="~dashboard/assets/images/channels/facebook_login.png"
+          alt="Facebook-logo"
+        />
+      </a>
+      <p class="py-6">
+        {{
+          useInstallationName(
+            $t('INBOX_MGMT.ADD.FB.HELP'),
+            globalConfig.installationName
+          )
+        }}
+      </p>
+    </div>
+    <div v-else>
+      <div v-if="hasError" class="max-w-lg mx-auto text-center">
+        <h5>{{ errorStateMessage }}</h5>
+        <p
+          v-if="errorStateDescription"
+          v-dompurify-html="errorStateDescription"
+        />
+      </div>
+      <loading-state v-else-if="showLoader" :message="emptyStateMessage" />
+      <form
+        v-else
+        class="mx-0 flex flex-wrap"
+        @submit.prevent="createChannel()"
+      >
+        <div class="w-full">
+          <page-header
+            :header-title="$t('INBOX_MGMT.ADD.DETAILS.TITLE')"
+            :header-content="
+              useInstallationName(
+                $t('INBOX_MGMT.ADD.DETAILS.DESC'),
+                globalConfig.installationName
+              )
+            "
+          />
+        </div>
+        <div class="w-3/5">
+          <div class="w-full">
+            <div class="input-wrap" :class="{ error: $v.selectedPage.$error }">
+              {{ $t('INBOX_MGMT.ADD.FB.CHOOSE_PAGE') }}
+              <multiselect
+                v-model.trim="selectedPage"
+                :close-on-select="true"
+                :allow-empty="true"
+                :options="getSelectablePages"
+                track-by="id"
+                label="name"
+                :select-label="$t('FORMS.MULTISELECT.ENTER_TO_SELECT')"
+                :deselect-label="$t('FORMS.MULTISELECT.ENTER_TO_REMOVE')"
+                :placeholder="$t('INBOX_MGMT.ADD.FB.PICK_A_VALUE')"
+                selected-label
+                @select="setPageName"
+              />
+              <span v-if="$v.selectedPage.$error" class="message">
+                {{ $t('INBOX_MGMT.ADD.FB.CHOOSE_PLACEHOLDER') }}
+              </span>
+            </div>
+          </div>
+          <div class="w-full">
+            <label :class="{ error: $v.pageName.$error }">
+              {{ $t('INBOX_MGMT.ADD.FB.INBOX_NAME') }}
+              <input
+                v-model.trim="pageName"
+                type="text"
+                :placeholder="$t('INBOX_MGMT.ADD.FB.PICK_NAME')"
+                @input="$v.pageName.$touch"
+              />
+              <span v-if="$v.pageName.$error" class="message">
+                {{ $t('INBOX_MGMT.ADD.FB.ADD_NAME') }}
+              </span>
+            </label>
+          </div>
+          <div class="w-full text-right">
+            <input type="submit" value="Create Inbox" class="button" />
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</template>
+>>>>>>> cb0642564 (feat: add promise based loader for FB script (#9780))
 <script>
 /* eslint-env browser */
 /* global FB */
@@ -15,11 +108,16 @@ import globalConfigMixin from 'shared/mixins/globalConfigMixin';
 import { loadScript } from 'dashboard/helper/DOMHelpers';
 import * as Sentry from '@sentry/browser';
 
+import { loadScript } from 'dashboard/helper/DOMHelpers';
+import alertMixin from 'shared/mixins/alertMixin';
+import * as Sentry from '@sentry/browser';
+
 export default {
   components: {
     LoadingState,
     PageHeader,
   },
+<<<<<<< HEAD
   mixins: [globalConfigMixin],
   setup() {
     const { accountId } = useAccount();
@@ -28,6 +126,9 @@ export default {
       v$: useVuelidate(),
     };
   },
+=======
+  mixins: [globalConfigMixin, accountMixin, alertMixin],
+>>>>>>> cb0642564 (feat: add promise based loader for FB script (#9780))
   data() {
     return {
       isCreating: false,
@@ -85,11 +186,19 @@ export default {
       } catch (error) {
         if (error.name === 'ScriptLoaderError') {
           // if the error was related to script loading, we show a toast
+<<<<<<< HEAD
           useAlert(this.$t('INBOX_MGMT.DETAILS.ERROR_FB_LOADING'));
         } else {
           // if the error was anything else, we capture it and show a toast
           Sentry.captureException(error);
           useAlert(this.$t('INBOX_MGMT.DETAILS.ERROR_FB_AUTH'));
+=======
+          this.showAlert(this.$t('INBOX_MGMT.DETAILS.ERROR_FB_LOADING'));
+        } else {
+          // if the error was anything else, we capture it and show a toast
+          Sentry.captureException(error);
+          this.showAlert(this.$t('INBOX_MGMT.DETAILS.ERROR_FB_AUTH'));
+>>>>>>> cb0642564 (feat: add promise based loader for FB script (#9780))
         }
       }
     },
@@ -204,6 +313,7 @@ export default {
   },
 };
 </script>
+<<<<<<< HEAD
 
 <template>
   <div
@@ -298,3 +408,5 @@ export default {
     </div>
   </div>
 </template>
+=======
+>>>>>>> cb0642564 (feat: add promise based loader for FB script (#9780))

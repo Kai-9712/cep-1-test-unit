@@ -1,9 +1,22 @@
+<<<<<<< HEAD
 <script>
 /* global FB */
 import InboxReconnectionRequired from '../components/InboxReconnectionRequired';
 import { useAlert } from 'dashboard/composables';
 
 import { loadScript } from 'dashboard/helper/DOMHelpers';
+=======
+<template>
+  <inbox-reconnection-required class="mx-8 mt-5" @reauthorize="startLogin" />
+</template>
+
+<script>
+/* global FB */
+import InboxReconnectionRequired from '../components/InboxReconnectionRequired';
+
+import { loadScript } from 'dashboard/helper/DOMHelpers';
+import alertMixin from 'shared/mixins/alertMixin';
+>>>>>>> cb0642564 (feat: add promise based loader for FB script (#9780))
 import * as Sentry from '@sentry/browser';
 
 export default {
@@ -53,11 +66,19 @@ export default {
       } catch (error) {
         if (error.name === 'ScriptLoaderError') {
           // if the error was related to script loading, we show a toast
+<<<<<<< HEAD
           useAlert(this.$t('INBOX_MGMT.DETAILS.ERROR_FB_LOADING'));
         } else {
           // if the error was anything else, we capture it and show a toast
           Sentry.captureException(error);
           useAlert(this.$t('INBOX_MGMT.DETAILS.ERROR_FB_AUTH'));
+=======
+          this.showAlert(this.$t('INBOX_MGMT.DETAILS.ERROR_FB_LOADING'));
+        } else {
+          // if the error was anything else, we capture it and show a toast
+          Sentry.captureException(error);
+          this.showAlert(this.$t('INBOX_MGMT.DETAILS.ERROR_FB_AUTH'));
+>>>>>>> cb0642564 (feat: add promise based loader for FB script (#9780))
         }
       }
     },
