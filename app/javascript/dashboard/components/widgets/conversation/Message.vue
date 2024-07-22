@@ -13,6 +13,10 @@ import ContextMenu from 'dashboard/modules/conversations/components/MessageConte
 import InstagramStory from './bubble/InstagramStory.vue';
 import InstagramStoryReply from './bubble/InstagramStoryReply.vue';
 import Spinner from 'shared/components/Spinner.vue';
+<<<<<<< HEAD
+=======
+import alertMixin from 'shared/mixins/alertMixin';
+>>>>>>> 81d7c51a8 (feat: Replace `contentTypeMixin` within the component (#9802))
 import { CONTENT_TYPES } from 'shared/constants/contentType';
 import { MESSAGE_TYPE, MESSAGE_STATUS } from 'shared/constants/messages';
 import { generateBotMessageContent } from './helpers/botMessageContentHelper';
@@ -39,7 +43,11 @@ export default {
     InstagramStoryReply,
     Spinner,
   },
+<<<<<<< HEAD
   mixins: [messageFormatterMixin],
+=======
+  mixins: [alertMixin, messageFormatterMixin],
+>>>>>>> 81d7c51a8 (feat: Replace `contentTypeMixin` within the component (#9802))
   props: {
     data: {
       type: Object,
