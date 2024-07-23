@@ -28,11 +28,12 @@
 <script>
 import { mapGetters } from 'vuex';
 import { useAlert } from 'dashboard/composables';
+import { useUISettings } from 'dashboard/composables/useUISettings';
 import { getUnixTime } from 'date-fns';
 import ChatList from '../../../components/ChatList.vue';
 import ConversationBox from '../../../components/widgets/conversation/ConversationBox.vue';
 import PopOverSearch from './search/PopOverSearch.vue';
-import uiSettingsMixin from 'dashboard/mixins/uiSettings';
+import CustomSnoozeModal from 'dashboard/components/CustomSnoozeModal.vue';
 import wootConstants from 'dashboard/constants/globals';
 import { BUS_EVENTS } from 'shared/constants/busEvents';
 import wootConstants from 'dashboard/constants/globals';
@@ -43,7 +44,6 @@ export default {
     ConversationBox,
     PopOverSearch,
   },
-  mixins: [uiSettingsMixin],
   props: {
     inboxId: {
       type: [String, Number],
@@ -69,6 +69,14 @@ export default {
       type: [String, Number],
       default: 0,
     },
+  },
+  setup() {
+    const { uiSettings, updateUISettings } = useUISettings();
+
+    return {
+      uiSettings,
+      updateUISettings,
+    };
   },
   data() {
     return {
