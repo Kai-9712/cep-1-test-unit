@@ -125,6 +125,7 @@
 
 <script>
 import { mapGetters } from 'vuex';
+import { useAlert } from 'dashboard/composables';
 import VirtualList from 'vue-virtual-scroll-list';
 
 import ChatListHeader from './ChatListHeader.vue';
@@ -139,7 +140,6 @@ import filterQueryGenerator from '../helper/filterQueryGenerator.js';
 import AddCustomViews from 'dashboard/routes/dashboard/customviews/AddCustomViews.vue';
 import DeleteCustomViews from 'dashboard/routes/dashboard/customviews/DeleteCustomViews.vue';
 import ConversationBulkActions from './widgets/conversation/conversationBulkActions/Index.vue';
-import alertMixin from 'shared/mixins/alertMixin';
 import filterMixin from 'shared/mixins/filterMixin';
 import uiSettingsMixin from 'dashboard/mixins/uiSettings';
 import languages from 'dashboard/components/widgets/conversation/advancedFilterItems/languages';
@@ -174,7 +174,6 @@ export default {
   mixins: [
     conversationMixin,
     keyboardEventListenerMixins,
-    alertMixin,
     filterMixin,
     uiSettingsMixin,
   ],
@@ -831,7 +830,7 @@ export default {
         });
         this.$store.dispatch('bulkActions/clearSelectedConversationIds');
         if (conversationId) {
-          this.showAlert(
+          useAlert(
             this.$t(
               'CONVERSATION.CARD_CONTEXT_MENU.API.AGENT_ASSIGNMENT.SUCCESFUL',
               {
@@ -841,10 +840,10 @@ export default {
             )
           );
         } else {
-          this.showAlert(this.$t('BULK_ACTION.ASSIGN_SUCCESFUL'));
+          useAlert(this.$t('BULK_ACTION.ASSIGN_SUCCESFUL'));
         }
       } catch (err) {
-        this.showAlert(this.$t('BULK_ACTION.ASSIGN_FAILED'));
+        useAlert(this.$t('BULK_ACTION.ASSIGN_FAILED'));
       }
     },
     async assignPriority(priority, conversationId = null) {
@@ -859,7 +858,7 @@ export default {
             newValue: priority,
             from: 'Context menu',
           });
-          this.showAlert(
+          useAlert(
             this.$t('CONVERSATION.PRIORITY.CHANGE_PRIORITY.SUCCESSFUL', {
               priority,
               conversationId,
@@ -902,7 +901,7 @@ export default {
           conversationId,
           teamId: team.id,
         });
-        this.showAlert(
+        useAlert(
           this.$t(
             'CONVERSATION.CARD_CONTEXT_MENU.API.TEAM_ASSIGNMENT.SUCCESFUL',
             {
@@ -912,7 +911,7 @@ export default {
           )
         );
       } catch (error) {
-        this.showAlert(
+        useAlert(
           this.$t('CONVERSATION.CARD_CONTEXT_MENU.API.TEAM_ASSIGNMENT.FAILED')
         );
       }
@@ -929,7 +928,7 @@ export default {
         });
         this.$store.dispatch('bulkActions/clearSelectedConversationIds');
         if (conversationId) {
-          this.showAlert(
+          useAlert(
             this.$t(
               'CONVERSATION.CARD_CONTEXT_MENU.API.LABEL_ASSIGNMENT.SUCCESFUL',
               {
@@ -939,10 +938,10 @@ export default {
             )
           );
         } else {
-          this.showAlert(this.$t('BULK_ACTION.LABELS.ASSIGN_SUCCESFUL'));
+          useAlert(this.$t('BULK_ACTION.LABELS.ASSIGN_SUCCESFUL'));
         }
       } catch (err) {
-        this.showAlert(this.$t('BULK_ACTION.LABELS.ASSIGN_FAILED'));
+        useAlert(this.$t('BULK_ACTION.LABELS.ASSIGN_FAILED'));
       }
     },
     async onAssignTeamsForBulk(team) {
@@ -955,9 +954,9 @@ export default {
           },
         });
         this.$store.dispatch('bulkActions/clearSelectedConversationIds');
-        this.showAlert(this.$t('BULK_ACTION.TEAMS.ASSIGN_SUCCESFUL'));
+        useAlert(this.$t('BULK_ACTION.TEAMS.ASSIGN_SUCCESFUL'));
       } catch (err) {
-        this.showAlert(this.$t('BULK_ACTION.TEAMS.ASSIGN_FAILED'));
+        useAlert(this.$t('BULK_ACTION.TEAMS.ASSIGN_FAILED'));
       }
     },
     async onUpdateConversations(status, snoozedUntil) {
@@ -971,9 +970,9 @@ export default {
           snoozed_until: snoozedUntil,
         });
         this.$store.dispatch('bulkActions/clearSelectedConversationIds');
-        this.showAlert(this.$t('BULK_ACTION.UPDATE.UPDATE_SUCCESFUL'));
+        useAlert(this.$t('BULK_ACTION.UPDATE.UPDATE_SUCCESFUL'));
       } catch (err) {
-        this.showAlert(this.$t('BULK_ACTION.UPDATE.UPDATE_FAILED'));
+        useAlert(this.$t('BULK_ACTION.UPDATE.UPDATE_FAILED'));
       }
     },
     toggleConversationStatus(conversationId, status, snoozedUntil) {
@@ -984,7 +983,7 @@ export default {
           snoozedUntil,
         })
         .then(() => {
-          this.showAlert(this.$t('CONVERSATION.CHANGE_STATUS'));
+          useAlert(this.$t('CONVERSATION.CHANGE_STATUS'));
           this.isLoading = false;
         });
     },
