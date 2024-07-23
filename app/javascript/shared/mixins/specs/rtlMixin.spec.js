@@ -1,8 +1,26 @@
 import uiSettingsMixin from 'dashboard/mixins/uiSettings';
 import { shallowMount } from '@vue/test-utils';
 import rtlMixin from 'shared/mixins/rtlMixin';
+import { useUISettings } from 'dashboard/composables/useUISettings';
+
+vi.mock('dashboard/composables/useUISettings');
 
 describe('rtlMixin', () => {
+<<<<<<< HEAD
+=======
+  const createComponent = rtl_view => {
+    useUISettings.mockReturnValue({
+      uiSettings: { rtl_view },
+      updateUISettings: vi.fn(),
+    });
+
+    return shallowMount({
+      render() {},
+      mixins: [rtlMixin],
+    });
+  };
+
+>>>>>>> fb99ba7b4 (feat: Rewrite `uiSettings` mixin to a composable (#9819))
   it('returns is direction right-to-left view', () => {
     const Component = {
       render() {},
