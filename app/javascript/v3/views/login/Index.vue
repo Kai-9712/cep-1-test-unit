@@ -107,6 +107,7 @@
 </template>
 
 <script>
+import { useAlert } from 'dashboard/composables';
 import { required, email } from 'vuelidate/lib/validators';
 import globalConfigMixin from 'shared/mixins/globalConfigMixin';
 import SubmitButton from '../../components/Button/SubmitButton.vue';
@@ -120,7 +121,6 @@ const ERROR_MESSAGES = {
   'no-account-found': 'LOGIN.OAUTH.NO_ACCOUNT_FOUND',
   'business-account-only': 'LOGIN.OAUTH.BUSINESS_ACCOUNTS_ONLY',
 };
-import alertMixin from 'shared/mixins/alertMixin';
 
 export default {
   components: {
@@ -129,7 +129,7 @@ export default {
     Spinner,
     SubmitButton,
   },
-  mixins: [globalConfigMixin, alertMixin],
+  mixins: [globalConfigMixin],
   props: {
     ssoAuthToken: { type: String, default: '' },
     ssoAccountId: { type: String, default: '' },
@@ -180,7 +180,7 @@ export default {
     }
     if (this.authError) {
       const message = ERROR_MESSAGES[this.authError] ?? 'LOGIN.API.UNAUTH';
-      this.showAlert(this.$t(message));
+      useAlert(this.$t(message));
       // wait for idle state
       this.requestIdleCallbackPolyfill(() => {
         // Remove the error query param from the url
@@ -207,7 +207,7 @@ export default {
       // Reset loading, current selected agent
       this.loginApi.showLoading = false;
       this.loginApi.message = message;
-      this.showAlert(this.loginApi.message);
+      useAlert(this.loginApi.message);
     },
     submitLogin() {
       if (this.$v.credentials.email.$invalid && !this.email) {

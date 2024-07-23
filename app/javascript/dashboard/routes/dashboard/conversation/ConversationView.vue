@@ -1,5 +1,5 @@
 <template>
-  <section class="conversation-page bg-white dark:bg-slate-900">
+  <section class="bg-white conversation-page dark:bg-slate-900">
     <chat-list
       :show-conversation-list="showConversationList"
       :conversation-inbox="inboxId"
@@ -27,10 +27,13 @@
 
 <script>
 import { mapGetters } from 'vuex';
+import { useAlert } from 'dashboard/composables';
+import { getUnixTime } from 'date-fns';
 import ChatList from '../../../components/ChatList.vue';
 import ConversationBox from '../../../components/widgets/conversation/ConversationBox.vue';
 import PopOverSearch from './search/PopOverSearch.vue';
 import uiSettingsMixin from 'dashboard/mixins/uiSettings';
+import wootConstants from 'dashboard/constants/globals';
 import { BUS_EVENTS } from 'shared/constants/busEvents';
 import wootConstants from 'dashboard/constants/globals';
 
@@ -185,6 +188,43 @@ export default {
     },
     closeSearch() {
       this.showSearchModal = false;
+    },
+    onCmdSnoozeConversation(snoozeType) {
+      if (snoozeType === wootConstants.SNOOZE_OPTIONS.UNTIL_CUSTOM_TIME) {
+        this.showCustomSnoozeModal = true;
+      } else {
+        this.toggleStatus(
+          wootConstants.STATUS_TYPE.SNOOZED,
+          findSnoozeTime(snoozeType) || null
+        );
+      }
+    },
+    chooseSnoozeTime(customSnoozeTime) {
+      this.showCustomSnoozeModal = false;
+      if (customSnoozeTime) {
+        this.toggleStatus(
+          wootConstants.STATUS_TYPE.SNOOZED,
+          getUnixTime(customSnoozeTime)
+        );
+      }
+    },
+    toggleStatus(status, snoozedUntil) {
+      this.$store
+        .dispatch('toggleStatus', {
+          conversationId: this.currentChat?.id || this.contextMenuChatId,
+          status,
+          snoozedUntil,
+        })
+        .then(() => {
+          this.$store.dispatch('setContextMenuChatId', null);
+          useAlert(this.$t('CONVERSATION.CHANGE_STATUS'));
+        });
+    },
+    hideCustomSnoozeModal() {
+      // if we select custom snooze and the custom snooze modal is open
+      // Then if the custom snooze modal is closed then set the context menu chat id to null
+      this.$store.dispatch('setContextMenuChatId', null);
+      this.showCustomSnoozeModal = false;
     },
   },
 };
