@@ -272,7 +272,6 @@ export default {
 import { mapGetters } from 'vuex';
 import { useAlert } from 'dashboard/composables';
 import configMixin from 'shared/mixins/configMixin';
-import uiSettingsMixin from 'dashboard/mixins/uiSettings';
 import TableHeaderCell from 'dashboard/components/widgets/TableHeaderCell.vue';
 import CheckBox from 'v3/components/Form/CheckBox.vue';
 import {
@@ -290,7 +289,7 @@ export default {
     FormSwitch,
     CheckBox,
   },
-  mixins: [configMixin, uiSettingsMixin],
+  mixins: [configMixin],
   data() {
     return {
       selectedEmailFlags: [],
@@ -305,7 +304,6 @@ export default {
       accountId: 'getCurrentAccountId',
       emailFlags: 'userNotificationSettings/getSelectedEmailFlags',
       pushFlags: 'userNotificationSettings/getSelectedPushFlags',
-      uiSettings: 'getUISettings',
       isFeatureEnabledonAccount: 'accounts/isFeatureEnabledonAccount',
     }),
     hasPushAPISupport() {
@@ -379,31 +377,6 @@ export default {
       } catch (error) {
         useAlert(this.$t('PROFILE_SETTINGS.FORM.API.UPDATE_ERROR'));
       }
-    },
-
-    handleAudioInput(e) {
-      this.enableAudioAlerts = e.target.value;
-      this.updateUISettings({
-        enable_audio_alerts: this.enableAudioAlerts,
-      });
-      useAlert(this.$t('PROFILE_SETTINGS.FORM.API.UPDATE_SUCCESS'));
-    },
-    handleAudioAlertConditions(e) {
-      let condition = e.target.value;
-      if (condition === 'tab_is_inactive') {
-        this.updateUISettings({
-          always_play_audio_alert: !e.target.checked,
-        });
-      } else if (condition === 'conversations_are_read') {
-        this.updateUISettings({
-          alert_if_unread_assigned_conversation_exist: e.target.checked,
-        });
-      }
-      useAlert(this.$t('PROFILE_SETTINGS.FORM.API.UPDATE_SUCCESS'));
-    },
-    handleAudioToneChange(value) {
-      this.updateUISettings({ notification_tone: value });
-      useAlert(this.$t('PROFILE_SETTINGS.FORM.API.UPDATE_SUCCESS'));
     },
     handleInput(type, id) {
       if (type === 'email') {

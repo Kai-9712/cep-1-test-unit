@@ -36,14 +36,18 @@ import { mapGetters } from 'vuex';
 =======
 import { useAlert } from 'dashboard/composables';
 import { useUISettings } from 'dashboard/composables/useUISettings';
+<<<<<<< HEAD
 =======
 import { useAlert } from 'dashboard/composables';
 >>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
+=======
+>>>>>>> fb99ba7b4 (feat: Rewrite `uiSettings` mixin to a composable (#9819))
 import { getUnixTime } from 'date-fns';
 >>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
 import ChatList from '../../../components/ChatList.vue';
 import ConversationBox from '../../../components/widgets/conversation/ConversationBox.vue';
 import PopOverSearch from './search/PopOverSearch.vue';
+<<<<<<< HEAD
 <<<<<<< HEAD
 import uiSettingsMixin from 'dashboard/mixins/uiSettings';
 <<<<<<< HEAD
@@ -60,6 +64,9 @@ import PopOverSearch from './search/PopOverSearch.vue';
 >>>>>>> 646cfb97e (fix: Snooze conversation not working in Inbox view (#9875))
 =======
 >>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
+=======
+import CustomSnoozeModal from 'dashboard/components/CustomSnoozeModal.vue';
+>>>>>>> fb99ba7b4 (feat: Rewrite `uiSettings` mixin to a composable (#9819))
 import wootConstants from 'dashboard/constants/globals';
 >>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
 import { BUS_EVENTS } from 'shared/constants/busEvents';
@@ -80,9 +87,12 @@ export default {
 >>>>>>> 646cfb97e (fix: Snooze conversation not working in Inbox view (#9875))
   },
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   mixins: [uiSettingsMixin],
 >>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
+=======
+>>>>>>> fb99ba7b4 (feat: Rewrite `uiSettings` mixin to a composable (#9819))
   props: {
     inboxId: {
       type: [String, Number],

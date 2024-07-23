@@ -17,6 +17,9 @@ export default {
     AudioAlertCondition,
   },
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> fb99ba7b4 (feat: Rewrite `uiSettings` mixin to a composable (#9819))
   mixins: [configMixin],
   setup() {
     const { uiSettings, updateUISettings } = useUISettings();
@@ -26,9 +29,12 @@ export default {
       updateUISettings,
     };
   },
+<<<<<<< HEAD
 =======
   mixins: [configMixin, uiSettingsMixin],
 >>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
+=======
+>>>>>>> fb99ba7b4 (feat: Rewrite `uiSettings` mixin to a composable (#9819))
   data() {
     return {
       audioAlert: '',
@@ -38,6 +44,14 @@ export default {
       audioAlertConditions: [],
     };
   },
+<<<<<<< HEAD
+=======
+  computed: {
+    ...mapGetters({
+      accountId: 'getCurrentAccountId',
+    }),
+  },
+>>>>>>> fb99ba7b4 (feat: Rewrite `uiSettings` mixin to a composable (#9819))
   watch: {
     uiSettings(value) {
       this.notificationUISettings(value);

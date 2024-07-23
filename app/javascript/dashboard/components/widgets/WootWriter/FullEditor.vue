@@ -11,9 +11,13 @@ import {
 import { checkFileSizeLimit } from 'shared/helpers/FileHelper';
 import { useAlert } from 'dashboard/composables';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { useUISettings } from 'dashboard/composables/useUISettings';
 =======
 >>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
+=======
+import { useUISettings } from 'dashboard/composables/useUISettings';
+>>>>>>> fb99ba7b4 (feat: Rewrite `uiSettings` mixin to a composable (#9819))
 import keyboardEventListenerMixins from 'shared/mixins/keyboardEventListenerMixins';
 
 const MAXIMUM_FILE_UPLOAD_SIZE = 4; // in MB
@@ -40,10 +44,14 @@ const createState = (
 
 export default {
 <<<<<<< HEAD
+<<<<<<< HEAD
   mixins: [keyboardEventListenerMixins],
 =======
   mixins: [keyboardEventListenerMixins, uiSettingsMixin],
 >>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
+=======
+  mixins: [keyboardEventListenerMixins],
+>>>>>>> fb99ba7b4 (feat: Rewrite `uiSettings` mixin to a composable (#9819))
   props: {
     value: { type: String, default: '' },
     editorId: { type: String, default: '' },

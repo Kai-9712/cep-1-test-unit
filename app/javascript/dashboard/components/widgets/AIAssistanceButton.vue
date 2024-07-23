@@ -3,14 +3,22 @@ import { ref } from 'vue';
 import { mapGetters } from 'vuex';
 import { useAdmin } from 'dashboard/composables/useAdmin';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { useUISettings } from 'dashboard/composables/useUISettings';
 import { useKeyboardEvents } from 'dashboard/composables/useKeyboardEvents';
 =======
 >>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
+=======
+import { useUISettings } from 'dashboard/composables/useUISettings';
+>>>>>>> fb99ba7b4 (feat: Rewrite `uiSettings` mixin to a composable (#9819))
 import AICTAModal from './AICTAModal.vue';
 import AIAssistanceModal from './AIAssistanceModal.vue';
 import aiMixin from 'dashboard/mixins/aiMixin';
 import { CMD_AI_ASSIST } from 'dashboard/routes/dashboard/commands/commandBarBusEvents';
+<<<<<<< HEAD
+=======
+import keyboardEventListenerMixins from 'shared/mixins/keyboardEventListenerMixins';
+>>>>>>> fb99ba7b4 (feat: Rewrite `uiSettings` mixin to a composable (#9819))
 import AIAssistanceCTAButton from './AIAssistanceCTAButton.vue';
 
 export default {
@@ -19,6 +27,7 @@ export default {
     AICTAModal,
     AIAssistanceCTAButton,
   },
+<<<<<<< HEAD
 <<<<<<< HEAD
   mixins: [aiMixin],
   setup(props, { emit }) {
@@ -54,9 +63,16 @@ export default {
       initializeMessage,
 =======
   mixins: [aiMixin, keyboardEventListenerMixins, uiSettingsMixin],
+=======
+  mixins: [aiMixin, keyboardEventListenerMixins],
+>>>>>>> fb99ba7b4 (feat: Rewrite `uiSettings` mixin to a composable (#9819))
   setup() {
+    const { uiSettings, updateUISettings } = useUISettings();
     const { isAdmin } = useAdmin();
+
     return {
+      uiSettings,
+      updateUISettings,
       isAdmin,
 >>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
     };

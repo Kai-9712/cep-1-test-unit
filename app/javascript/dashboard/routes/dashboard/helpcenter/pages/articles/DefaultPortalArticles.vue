@@ -1,3 +1,14 @@
+<<<<<<< HEAD
+=======
+<template>
+  <div
+    class="flex items-center justify-center w-full text-slate-600 dark:text-slate-200"
+  >
+    Loading...
+  </div>
+</template>
+
+>>>>>>> fb99ba7b4 (feat: Rewrite `uiSettings` mixin to a composable (#9819))
 <script>
 import { mapGetters } from 'vuex';
 import { useUISettings } from 'dashboard/composables/useUISettings';

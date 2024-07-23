@@ -53,7 +53,11 @@ import { useUISettings } from 'dashboard/composables/useUISettings';
 <script>
 import { mapGetters } from 'vuex';
 import { useAlert } from 'dashboard/composables';
+<<<<<<< HEAD
 >>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
+=======
+import { useUISettings } from 'dashboard/composables/useUISettings';
+>>>>>>> fb99ba7b4 (feat: Rewrite `uiSettings` mixin to a composable (#9819))
 import wootConstants from 'dashboard/constants/globals';
 
 import InboxCard from './components/InboxCard.vue';
@@ -61,10 +65,13 @@ import InboxListHeader from './components/InboxListHeader.vue';
 import { INBOX_EVENTS } from 'dashboard/helper/AnalyticsHelper/events';
 import IntersectionObserver from 'dashboard/components/IntersectionObserver.vue';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import CmdBarConversationSnooze from 'dashboard/routes/dashboard/commands/CmdBarConversationSnooze.vue';
 =======
 import uiSettingsMixin from 'dashboard/mixins/uiSettings';
 >>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
+=======
+>>>>>>> fb99ba7b4 (feat: Rewrite `uiSettings` mixin to a composable (#9819))
 
 export default {
   components: {
@@ -81,9 +88,12 @@ export default {
     };
   },
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   mixins: [uiSettingsMixin],
 >>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
+=======
+>>>>>>> fb99ba7b4 (feat: Rewrite `uiSettings` mixin to a composable (#9819))
   data() {
     return {
       infiniteLoaderOptions: {

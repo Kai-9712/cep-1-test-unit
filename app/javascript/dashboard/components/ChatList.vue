@@ -130,6 +130,9 @@
 import { ref } from 'vue';
 import { mapGetters } from 'vuex';
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> fb99ba7b4 (feat: Rewrite `uiSettings` mixin to a composable (#9819))
 import { useUISettings } from 'dashboard/composables/useUISettings';
 import { useAlert } from 'dashboard/composables';
 import { useKeyboardEvents } from 'dashboard/composables/useKeyboardEvents';
@@ -184,6 +187,7 @@ export default {
     CustomSnoozeModal,
   },
 <<<<<<< HEAD
+<<<<<<< HEAD
   mixins: [conversationMixin, filterMixin],
 =======
   mixins: [
@@ -193,6 +197,9 @@ export default {
     uiSettingsMixin,
   ],
 >>>>>>> 79381b08c (feat: Move timeMixin to a helper (#9799))
+=======
+  mixins: [conversationMixin, keyboardEventListenerMixins, filterMixin],
+>>>>>>> fb99ba7b4 (feat: Rewrite `uiSettings` mixin to a composable (#9819))
   provide() {
     return {
       // Actions to be performed on virtual list item and context menu.
@@ -240,6 +247,7 @@ export default {
   setup() {
     const { uiSettings } = useUISettings();
 
+<<<<<<< HEAD
     const conversationListRef = ref(null);
 
     const getKeyboardListenerParams = () => {
@@ -297,6 +305,10 @@ export default {
     return {
       uiSettings,
       conversationListRef,
+=======
+    return {
+      uiSettings,
+>>>>>>> fb99ba7b4 (feat: Rewrite `uiSettings` mixin to a composable (#9819))
     };
   },
   data() {

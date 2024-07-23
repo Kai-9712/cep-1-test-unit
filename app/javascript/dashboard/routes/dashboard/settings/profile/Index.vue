@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <script>
 <<<<<<< HEAD
 =======
@@ -7,6 +8,91 @@ import uiSettingsMixin, {
 } from 'dashboard/mixins/uiSettings';
 import { useAlert } from 'dashboard/composables';
 >>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
+=======
+<template>
+  <div class="grid py-16 px-5 font-inter mx-auto gap-16 sm:max-w-[720px]">
+    <div class="flex flex-col gap-6">
+      <h2 class="text-2xl font-medium text-ash-900">
+        {{ $t('PROFILE_SETTINGS.TITLE') }}
+      </h2>
+      <user-profile-picture
+        :src="avatarUrl"
+        :name="name"
+        size="72px"
+        @change="updateProfilePicture"
+        @delete="deleteProfilePicture"
+      />
+      <user-basic-details
+        :name="name"
+        :display-name="displayName"
+        :email="email"
+        :email-enabled="!globalConfig.disableUserProfileUpdate"
+        @update-user="updateProfile"
+      />
+    </div>
+
+    <form-section
+      :title="$t('PROFILE_SETTINGS.FORM.MESSAGE_SIGNATURE_SECTION.TITLE')"
+      :description="$t('PROFILE_SETTINGS.FORM.MESSAGE_SIGNATURE_SECTION.NOTE')"
+    >
+      <message-signature
+        :message-signature="messageSignature"
+        @update-signature="updateSignature"
+      />
+    </form-section>
+    <form-section
+      :title="$t('PROFILE_SETTINGS.FORM.SEND_MESSAGE.TITLE')"
+      :description="$t('PROFILE_SETTINGS.FORM.SEND_MESSAGE.NOTE')"
+    >
+      <div
+        class="flex flex-col justify-between w-full gap-5 sm:gap-4 sm:flex-row"
+      >
+        <button
+          v-for="hotKey in hotKeys"
+          :key="hotKey.key"
+          class="px-0 reset-base"
+        >
+          <hot-key-card
+            :key="hotKey.title"
+            :title="hotKey.title"
+            :description="hotKey.description"
+            :light-image="hotKey.lightImage"
+            :dark-image="hotKey.darkImage"
+            :active="isEditorHotKeyEnabled(hotKey.key)"
+            @click="toggleHotKey(hotKey.key)"
+          />
+        </button>
+      </div>
+    </form-section>
+    <form-section :title="$t('PROFILE_SETTINGS.FORM.PASSWORD_SECTION.TITLE')">
+      <change-password v-if="!globalConfig.disableUserProfileUpdate" />
+    </form-section>
+    <form-section
+      :title="$t('PROFILE_SETTINGS.FORM.AUDIO_NOTIFICATIONS_SECTION.TITLE')"
+      :description="
+        $t('PROFILE_SETTINGS.FORM.AUDIO_NOTIFICATIONS_SECTION.NOTE')
+      "
+    >
+      <audio-notifications />
+    </form-section>
+    <form-section :title="$t('PROFILE_SETTINGS.FORM.NOTIFICATIONS.TITLE')">
+      <notification-preferences />
+    </form-section>
+    <form-section
+      :title="$t('PROFILE_SETTINGS.FORM.ACCESS_TOKEN.TITLE')"
+      :description="
+        useInstallationName(
+          $t('PROFILE_SETTINGS.FORM.ACCESS_TOKEN.NOTE'),
+          globalConfig.installationName
+        )
+      "
+    >
+      <access-token :value="currentUser.access_token" @on-copy="onCopyToken" />
+    </form-section>
+  </div>
+</template>
+<script>
+>>>>>>> fb99ba7b4 (feat: Rewrite `uiSettings` mixin to a composable (#9819))
 import { mapGetters } from 'vuex';
 import { useAlert } from 'dashboard/composables';
 import { useUISettings } from 'dashboard/composables/useUISettings';
@@ -36,6 +122,9 @@ export default {
     AccessToken,
   },
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> fb99ba7b4 (feat: Rewrite `uiSettings` mixin to a composable (#9819))
   mixins: [globalConfigMixin],
   setup() {
     const { uiSettings, updateUISettings, isEditorHotKeyEnabled } =
@@ -47,9 +136,12 @@ export default {
       isEditorHotKeyEnabled,
     };
   },
+<<<<<<< HEAD
 =======
   mixins: [globalConfigMixin, uiSettingsMixin],
 >>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
+=======
+>>>>>>> fb99ba7b4 (feat: Rewrite `uiSettings` mixin to a composable (#9819))
   data() {
     return {
       avatarFile: '',

@@ -198,10 +198,14 @@ import LocaleItemTable from './PortalListItemTable.vue';
 
 <script>
 import { useAlert } from 'dashboard/composables';
+import { useUISettings } from 'dashboard/composables/useUISettings';
 import thumbnail from 'dashboard/components/widgets/Thumbnail.vue';
 import LocaleItemTable from './PortalListItemTable.vue';
+<<<<<<< HEAD
 import uiSettingsMixin from 'dashboard/mixins/uiSettings';
 >>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
+=======
+>>>>>>> fb99ba7b4 (feat: Rewrite `uiSettings` mixin to a composable (#9819))
 import { PORTALS_EVENTS } from '../../../../helper/AnalyticsHelper/events';
 
 export default {
@@ -210,9 +214,12 @@ export default {
     LocaleItemTable,
   },
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   mixins: [uiSettingsMixin],
 >>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
+=======
+>>>>>>> fb99ba7b4 (feat: Rewrite `uiSettings` mixin to a composable (#9819))
   props: {
     portal: {
       type: Object,

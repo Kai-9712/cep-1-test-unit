@@ -246,7 +246,11 @@ import { useUISettings } from 'dashboard/composables/useUISettings';
 <script>
 import { mapGetters } from 'vuex';
 import { useAlert } from 'dashboard/composables';
+<<<<<<< HEAD
 >>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
+=======
+import { useUISettings } from 'dashboard/composables/useUISettings';
+>>>>>>> fb99ba7b4 (feat: Rewrite `uiSettings` mixin to a composable (#9819))
 import Thumbnail from 'dashboard/components/widgets/Thumbnail.vue';
 import WootMessageEditor from 'dashboard/components/widgets/WootWriter/Editor.vue';
 import ReplyEmailHead from 'dashboard/components/widgets/conversation/ReplyEmailHead.vue';
@@ -282,10 +286,14 @@ export default {
     MessageSignatureMissingAlert,
   },
 <<<<<<< HEAD
+<<<<<<< HEAD
   mixins: [inboxMixin, fileUploadMixin],
 =======
   mixins: [uiSettingsMixin, inboxMixin, fileUploadMixin],
 >>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
+=======
+  mixins: [inboxMixin, fileUploadMixin],
+>>>>>>> fb99ba7b4 (feat: Rewrite `uiSettings` mixin to a composable (#9819))
   props: {
     contact: {
       type: Object,
@@ -302,6 +310,15 @@ export default {
     const v$ = useVuelidate();
 
     return { fetchSignatureFlagFromUISettings, setSignatureFlagForInbox, v$ };
+  },
+  setup() {
+    const { fetchSignatureFlagFromUISettings, setSignatureFlagForInbox } =
+      useUISettings();
+
+    return {
+      fetchSignatureFlagFromUISettings,
+      setSignatureFlagForInbox,
+    };
   },
   data() {
     return {

@@ -73,10 +73,14 @@ export default {
   name: 'WootMessageEditor',
   components: { TagAgents, CannedResponse, VariableList },
 <<<<<<< HEAD
+<<<<<<< HEAD
   mixins: [keyboardEventListenerMixins],
 =======
   mixins: [keyboardEventListenerMixins, uiSettingsMixin],
 >>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
+=======
+  mixins: [keyboardEventListenerMixins],
+>>>>>>> fb99ba7b4 (feat: Rewrite `uiSettings` mixin to a composable (#9819))
   props: {
     value: { type: String, default: '' },
     editorId: { type: String, default: '' },

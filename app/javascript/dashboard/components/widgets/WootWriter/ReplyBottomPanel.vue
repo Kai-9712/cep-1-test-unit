@@ -1,9 +1,16 @@
 <script>
+<<<<<<< HEAD
 import { ref, watchEffect, computed } from 'vue';
 import { useUISettings } from 'dashboard/composables/useUISettings';
 import { useKeyboardEvents } from 'dashboard/composables/useKeyboardEvents';
 import FileUpload from 'vue-upload-component';
 import * as ActiveStorage from 'activestorage';
+=======
+import { useUISettings } from 'dashboard/composables/useUISettings';
+import FileUpload from 'vue-upload-component';
+import * as ActiveStorage from 'activestorage';
+import keyboardEventListenerMixins from 'shared/mixins/keyboardEventListenerMixins';
+>>>>>>> fb99ba7b4 (feat: Rewrite `uiSettings` mixin to a composable (#9819))
 import inboxMixin from 'shared/mixins/inboxMixin';
 import { FEATURE_FLAGS } from 'dashboard/featureFlags';
 import {
@@ -19,7 +26,11 @@ import { mapGetters } from 'vuex';
 export default {
   name: 'ReplyBottomPanel',
   components: { FileUpload, VideoCallButton, AIAssistanceButton },
+<<<<<<< HEAD
   mixins: [inboxMixin],
+=======
+  mixins: [keyboardEventListenerMixins, inboxMixin],
+>>>>>>> fb99ba7b4 (feat: Rewrite `uiSettings` mixin to a composable (#9819))
   props: {
     mode: {
       type: String,
@@ -116,6 +127,7 @@ export default {
   setup() {
     const { setSignatureFlagForInbox, fetchSignatureFlagFromUISettings } =
       useUISettings();
+<<<<<<< HEAD
     const uploadRef = ref(null);
     // TODO: This is really hacky, we need to replace the file picker component with
     // a custom one, where the logic and the component markup is isolated.
@@ -140,11 +152,16 @@ export default {
     watchEffect(() => {
       useKeyboardEvents(keyboardEvents, uploadTriggerButton);
     });
+=======
+>>>>>>> fb99ba7b4 (feat: Rewrite `uiSettings` mixin to a composable (#9819))
 
     return {
       setSignatureFlagForInbox,
       fetchSignatureFlagFromUISettings,
+<<<<<<< HEAD
       uploadRef,
+=======
+>>>>>>> fb99ba7b4 (feat: Rewrite `uiSettings` mixin to a composable (#9819))
     };
   },
   computed: {

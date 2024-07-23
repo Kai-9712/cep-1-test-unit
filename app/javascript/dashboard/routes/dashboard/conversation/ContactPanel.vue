@@ -1,9 +1,13 @@
 <script>
 import { mapGetters } from 'vuex';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { useUISettings } from 'dashboard/composables/useUISettings';
 =======
 >>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
+=======
+import { useUISettings } from 'dashboard/composables/useUISettings';
+>>>>>>> fb99ba7b4 (feat: Rewrite `uiSettings` mixin to a composable (#9819))
 import AccordionItem from 'dashboard/components/Accordion/AccordionItem.vue';
 import ContactConversations from './ContactConversations.vue';
 import ConversationAction from './ConversationAction.vue';
@@ -27,9 +31,12 @@ export default {
     MacrosList,
   },
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   mixins: [uiSettingsMixin],
 >>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
+=======
+>>>>>>> fb99ba7b4 (feat: Rewrite `uiSettings` mixin to a composable (#9819))
   props: {
     conversationId: {
       type: [Number, String],
