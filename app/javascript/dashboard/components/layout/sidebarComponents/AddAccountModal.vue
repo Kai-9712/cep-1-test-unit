@@ -40,7 +40,11 @@ export default {
         const account_id = await this.$store.dispatch('accounts/create', {
           account_name: this.accountName,
         });
+<<<<<<< HEAD
         this.$emit('closeAccountCreateModal');
+=======
+        this.$emit('close-account-create-modal');
+>>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
         useAlert(this.$t('CREATE_ACCOUNT.API.SUCCESS_MESSAGE'));
         window.location = `/app/accounts/${account_id}/dashboard`;
       } catch (error) {

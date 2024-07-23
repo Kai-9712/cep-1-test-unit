@@ -72,7 +72,11 @@ const createState = (
 export default {
   name: 'WootMessageEditor',
   components: { TagAgents, CannedResponse, VariableList },
+<<<<<<< HEAD
   mixins: [keyboardEventListenerMixins],
+=======
+  mixins: [keyboardEventListenerMixins, uiSettingsMixin],
+>>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
   props: {
     value: { type: String, default: '' },
     editorId: { type: String, default: '' },

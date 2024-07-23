@@ -1,4 +1,12 @@
 <script>
+<<<<<<< HEAD
+=======
+import globalConfigMixin from 'shared/mixins/globalConfigMixin';
+import uiSettingsMixin, {
+  isEditorHotKeyEnabled,
+} from 'dashboard/mixins/uiSettings';
+import { useAlert } from 'dashboard/composables';
+>>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
 import { mapGetters } from 'vuex';
 import { useAlert } from 'dashboard/composables';
 import { useUISettings } from 'dashboard/composables/useUISettings';
@@ -27,6 +35,7 @@ export default {
     AudioNotifications,
     AccessToken,
   },
+<<<<<<< HEAD
   mixins: [globalConfigMixin],
   setup() {
     const { uiSettings, updateUISettings, isEditorHotKeyEnabled } =
@@ -38,6 +47,9 @@ export default {
       isEditorHotKeyEnabled,
     };
   },
+=======
+  mixins: [globalConfigMixin, uiSettingsMixin],
+>>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
   data() {
     return {
       avatarFile: '',

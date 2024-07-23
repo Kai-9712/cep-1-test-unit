@@ -1,9 +1,14 @@
 <!-- Deprecated in favour of separate files for SMS and Whatsapp and also to implement new providers for each platform in the future-->
 <script>
 import { mapGetters } from 'vuex';
+<<<<<<< HEAD
 import { useVuelidate } from '@vuelidate/core';
 import { useAlert } from 'dashboard/composables';
 import { required } from '@vuelidate/validators';
+=======
+import { useAlert } from 'dashboard/composables';
+import { required } from 'vuelidate/lib/validators';
+>>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
 import router from '../../../../index';
 import { isPhoneE164OrEmpty } from 'shared/helpers/Validators';
 

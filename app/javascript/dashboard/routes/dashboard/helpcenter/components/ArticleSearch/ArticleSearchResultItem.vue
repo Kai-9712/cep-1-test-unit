@@ -86,3 +86,56 @@ export default {
     </div>
   </button>
 </template>
+<<<<<<< HEAD
+=======
+
+<script>
+import { useAlert } from 'dashboard/composables';
+import { copyTextToClipboard } from 'shared/helpers/clipboard';
+
+export default {
+  name: 'ArticleSearchResultItem',
+  props: {
+    id: {
+      type: Number,
+      default: 0,
+    },
+    title: {
+      type: String,
+      default: 'Untitled',
+    },
+    body: {
+      type: String,
+      default: '',
+    },
+    url: {
+      type: String,
+      default: '',
+    },
+    category: {
+      type: String,
+      default: '',
+    },
+    locale: {
+      type: String,
+      default: '',
+    },
+  },
+  methods: {
+    handleInsert(e) {
+      e.stopPropagation();
+      this.$emit('insert', this.id);
+    },
+    handlePreview(e) {
+      e.stopPropagation();
+      this.$emit('preview', this.id);
+    },
+    async handleCopy(e) {
+      e.stopPropagation();
+      await copyTextToClipboard(this.url);
+      useAlert(this.$t('CONTACT_PANEL.COPY_SUCCESSFUL'));
+    },
+  },
+};
+</script>
+>>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))

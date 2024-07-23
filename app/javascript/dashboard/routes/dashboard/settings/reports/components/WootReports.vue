@@ -1,3 +1,31 @@
+<<<<<<< HEAD
+=======
+<template>
+  <div class="flex-1 p-4 overflow-auto">
+    <woot-button
+      color-scheme="success"
+      class-names="button--fixed-top"
+      icon="arrow-download"
+      @click="downloadReports"
+    >
+      {{ downloadButtonLabel }}
+    </woot-button>
+    <report-filters
+      v-if="filterItemsList"
+      :type="type"
+      :filter-items-list="filterItemsList"
+      :group-by-filter-items-list="groupByfilterItemsList"
+      :selected-group-by-filter="selectedGroupByFilter"
+      @date-range-change="onDateRangeChange"
+      @filter-change="onFilterChange"
+      @group-by-filter-change="onGroupByFilterChange"
+      @business-hours-toggle="onBusinessHoursToggle"
+    />
+    <report-container v-if="filterItemsList.length" :group-by="groupBy" />
+  </div>
+</template>
+
+>>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
 <script>
 import { useAlert } from 'dashboard/composables';
 import ReportFilters from './ReportFilters.vue';

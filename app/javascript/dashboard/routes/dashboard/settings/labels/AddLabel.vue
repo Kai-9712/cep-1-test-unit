@@ -60,18 +60,24 @@ import { useAlert } from 'dashboard/composables';
 </template>
 
 <script>
-import alertMixin from 'shared/mixins/alertMixin';
 import { mapGetters } from 'vuex';
+<<<<<<< HEAD
 >>>>>>> 10ee773aa (feat: Rewrite `labels/validationMixin mixin` to a helper (#9818))
+=======
+import { useAlert } from 'dashboard/composables';
+>>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
 import validations, { getLabelTitleErrorMessage } from './validations';
 import { getRandomColor } from 'dashboard/helper/labelColor';
 import { useVuelidate } from '@vuelidate/core';
 
 export default {
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   mixins: [alertMixin],
 >>>>>>> 10ee773aa (feat: Rewrite `labels/validationMixin mixin` to a helper (#9818))
+=======
+>>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
   props: {
     prefillTitle: {
       type: String,

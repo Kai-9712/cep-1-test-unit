@@ -1,3 +1,31 @@
+<<<<<<< HEAD
+=======
+<template>
+  <div class="flex flex-1 overflow-auto">
+    <div
+      class="flex-1 flex-shrink-0 px-6 overflow-y-auto"
+      :class="{ 'flex-grow-1': showArticleSettings }"
+    >
+      <edit-article-header
+        :back-button-label="$t('HELP_CENTER.HEADER.TITLES.ALL_ARTICLES')"
+        draft-state="saved"
+        :is-sidebar-open="showArticleSettings"
+        @back="onClickGoBack"
+        @open="openArticleSettings"
+        @close="closeArticleSettings"
+        @save-article="createNewArticle"
+      />
+      <article-editor :article="newArticle" @save-article="createNewArticle" />
+    </div>
+    <article-settings
+      v-if="showArticleSettings"
+      :article="article"
+      @save-article="saveArticle"
+    />
+  </div>
+</template>
+
+>>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
 <script>
 import { mapGetters } from 'vuex';
 import { useAlert } from 'dashboard/composables';

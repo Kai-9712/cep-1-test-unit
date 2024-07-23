@@ -45,6 +45,39 @@ export default {
   </div>
 </template>
 
+<<<<<<< HEAD
+=======
+<script>
+import 'highlight.js/styles/default.css';
+import { copyTextToClipboard } from 'shared/helpers/clipboard';
+import { useAlert } from 'dashboard/composables';
+
+export default {
+  props: {
+    value: {
+      type: String,
+      default: '',
+    },
+  },
+  data() {
+    return {
+      masked: true,
+    };
+  },
+  methods: {
+    async onCopy(e) {
+      e.preventDefault();
+      await copyTextToClipboard(this.value);
+      useAlert(this.$t('COMPONENTS.CODE.COPY_SUCCESSFUL'));
+    },
+    toggleMasked() {
+      this.masked = !this.masked;
+    },
+  },
+};
+</script>
+
+>>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
 <style lang="scss" scoped>
 .text--container {
   position: relative;

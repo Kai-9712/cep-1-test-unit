@@ -3,13 +3,17 @@ import { useVuelidate } from '@vuelidate/core';
 import { required, minValue, maxValue } from '@vuelidate/validators';
 import { mapGetters } from 'vuex';
 import { useAlert } from 'dashboard/composables';
+<<<<<<< HEAD
 import { useUISettings } from 'dashboard/composables/useUISettings';
+=======
+>>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
 import configMixin from 'shared/mixins/configMixin';
 import { FEATURE_FLAGS } from '../../../../featureFlags';
 import semver from 'semver';
 import { getLanguageDirection } from 'dashboard/components/widgets/conversation/advancedFilterItems/languages';
 
 export default {
+<<<<<<< HEAD
   mixins: [configMixin],
   setup() {
     const { updateUISettings } = useUISettings();
@@ -17,6 +21,9 @@ export default {
 
     return { updateUISettings, v$ };
   },
+=======
+  mixins: [accountMixin, configMixin, uiSettingsMixin],
+>>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
   data() {
     return {
       id: '',
@@ -127,8 +134,13 @@ export default {
     },
 
     async updateAccount() {
+<<<<<<< HEAD
       this.v$.$touch();
       if (this.v$.$invalid) {
+=======
+      this.$v.$touch();
+      if (this.$v.$invalid) {
+>>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
         useAlert(this.$t('GENERAL_SETTINGS.FORM.ERROR'));
         return;
       }

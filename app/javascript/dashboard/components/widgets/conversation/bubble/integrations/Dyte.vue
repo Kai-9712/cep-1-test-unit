@@ -72,7 +72,53 @@ export default {
     </div>
   </div>
 </template>
+<<<<<<< HEAD
 
+=======
+<script>
+import DyteAPI from 'dashboard/api/integrations/dyte';
+import { buildDyteURL } from 'shared/helpers/IntegrationHelper';
+import { useAlert } from 'dashboard/composables';
+
+export default {
+  props: {
+    messageId: {
+      type: Number,
+      required: true,
+    },
+    meetingData: {
+      type: Object,
+      default: () => ({}),
+    },
+  },
+  data() {
+    return { isLoading: false, dyteAuthToken: '', isSDKMounted: false };
+  },
+  computed: {
+    meetingLink() {
+      return buildDyteURL(this.meetingData.room_name, this.dyteAuthToken);
+    },
+  },
+  methods: {
+    async joinTheCall() {
+      this.isLoading = true;
+      try {
+        const { data: { authResponse: { authToken } = {} } = {} } =
+          await DyteAPI.addParticipantToMeeting(this.messageId);
+        this.dyteAuthToken = authToken;
+      } catch (err) {
+        useAlert(this.$t('INTEGRATION_SETTINGS.DYTE.JOIN_ERROR'));
+      } finally {
+        this.isLoading = false;
+      }
+    },
+    leaveTheRoom() {
+      this.dyteAuthToken = '';
+    },
+  },
+};
+</script>
+>>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
 <style lang="scss">
 .join-call-button {
   margin: var(--space-small) 0;

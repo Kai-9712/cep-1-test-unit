@@ -129,9 +129,13 @@
 <script>
 import { ref } from 'vue';
 import { mapGetters } from 'vuex';
+<<<<<<< HEAD
 import { useUISettings } from 'dashboard/composables/useUISettings';
 import { useAlert } from 'dashboard/composables';
 import { useKeyboardEvents } from 'dashboard/composables/useKeyboardEvents';
+=======
+import { useAlert } from 'dashboard/composables';
+>>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
 import VirtualList from 'vue-virtual-scroll-list';
 
 import ChatListHeader from './ChatListHeader.vue';
@@ -185,7 +189,6 @@ export default {
   mixins: [
     conversationMixin,
     keyboardEventListenerMixins,
-    alertMixin,
     filterMixin,
     uiSettingsMixin,
   ],

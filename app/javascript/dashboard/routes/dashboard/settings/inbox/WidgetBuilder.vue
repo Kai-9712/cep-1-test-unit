@@ -3,8 +3,12 @@ import { mapGetters } from 'vuex';
 import { useAlert } from 'dashboard/composables';
 import Widget from 'dashboard/modules/widget-preview/components/Widget.vue';
 import InputRadioGroup from './components/InputRadioGroup.vue';
+<<<<<<< HEAD
 import { useVuelidate } from '@vuelidate/core';
 import { required } from '@vuelidate/validators';
+=======
+import { required } from 'vuelidate/lib/validators';
+>>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
 import { LOCAL_STORAGE_KEYS } from 'dashboard/constants/localStorage';
 import { LocalStorage } from 'shared/helpers/localStorage';
 

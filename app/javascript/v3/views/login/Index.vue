@@ -110,9 +110,14 @@
 =======
 >>>>>>> b4b308336 (feat: Eslint rules (#9839))
 <script>
+<<<<<<< HEAD
 import { useVuelidate } from '@vuelidate/core';
 import { required, email } from '@vuelidate/validators';
 import { useAlert } from 'dashboard/composables';
+=======
+import { useAlert } from 'dashboard/composables';
+import { required, email } from 'vuelidate/lib/validators';
+>>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
 import globalConfigMixin from 'shared/mixins/globalConfigMixin';
 import SubmitButton from '../../components/Button/SubmitButton.vue';
 import { mapGetters } from 'vuex';

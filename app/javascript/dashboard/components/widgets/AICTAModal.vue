@@ -4,6 +4,7 @@ import { required } from '@vuelidate/validators';
 import { useAlert } from 'dashboard/composables';
 import { useUISettings } from 'dashboard/composables/useUISettings';
 import aiMixin from 'dashboard/mixins/aiMixin';
+<<<<<<< HEAD
 import { OPEN_AI_EVENTS } from 'dashboard/helper/AnalyticsHelper/events';
 
 export default {
@@ -14,6 +15,14 @@ export default {
 
     return { updateUISettings, v$ };
   },
+=======
+import { useAlert } from 'dashboard/composables';
+import uiSettingsMixin from 'dashboard/mixins/uiSettings';
+import { OPEN_AI_EVENTS } from 'dashboard/helper/AnalyticsHelper/events';
+
+export default {
+  mixins: [aiMixin, uiSettingsMixin],
+>>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
   data() {
     return {
       value: '',

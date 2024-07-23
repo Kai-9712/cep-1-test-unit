@@ -1,16 +1,24 @@
 <script>
 import { mapGetters } from 'vuex';
+<<<<<<< HEAD
 import { useVuelidate } from '@vuelidate/core';
 import { useAlert } from 'dashboard/composables';
 import { required } from '@vuelidate/validators';
+=======
+import { useAlert } from 'dashboard/composables';
+import { required } from 'vuelidate/lib/validators';
+>>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
 import router from '../../../../index';
 
 import { isPhoneE164OrEmpty } from 'shared/helpers/Validators';
 
 export default {
+<<<<<<< HEAD
   setup() {
     return { v$: useVuelidate() };
   },
+=======
+>>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
   data() {
     return {
       inboxName: '',

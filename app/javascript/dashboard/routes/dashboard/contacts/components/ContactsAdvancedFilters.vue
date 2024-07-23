@@ -1,5 +1,9 @@
 <script>
 import { useAlert } from 'dashboard/composables';
+<<<<<<< HEAD
+=======
+import { required } from 'vuelidate/lib/validators';
+>>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
 import FilterInputBox from '../../../../components/widgets/FilterInput/Index.vue';
 import countries from 'shared/constants/countries.js';
 import { mapGetters } from 'vuex';

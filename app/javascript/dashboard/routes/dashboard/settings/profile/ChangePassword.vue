@@ -1,6 +1,10 @@
 <script>
+<<<<<<< HEAD
 import { useVuelidate } from '@vuelidate/core';
 import { required, minLength } from '@vuelidate/validators';
+=======
+import { required, minLength } from 'vuelidate/lib/validators';
+>>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
 import { useAlert } from 'dashboard/composables';
 import { parseAPIErrorResponse } from 'dashboard/store/utils/api';
 import FormButton from 'v3/components/Form/Button.vue';
@@ -9,9 +13,12 @@ export default {
   components: {
     FormButton,
   },
+<<<<<<< HEAD
   setup() {
     return { v$: useVuelidate() };
   },
+=======
+>>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
   data() {
     return {
       currentPassword: '',
@@ -55,8 +62,13 @@ export default {
   },
   methods: {
     async changePassword() {
+<<<<<<< HEAD
       this.v$.$touch();
       if (this.v$.$invalid) {
+=======
+      this.$v.$touch();
+      if (this.$v.$invalid) {
+>>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
         useAlert(this.$t('PROFILE_SETTINGS.FORM.ERROR'));
         return;
       }

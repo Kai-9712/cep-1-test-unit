@@ -1,8 +1,13 @@
 <script>
 import { mapGetters } from 'vuex';
 import { useAdmin } from 'dashboard/composables/useAdmin';
+<<<<<<< HEAD
 import { useAccount } from 'dashboard/composables/useAccount';
 import Banner from 'dashboard/components/ui/Banner.vue';
+=======
+import Banner from 'dashboard/components/ui/Banner.vue';
+import accountMixin from 'dashboard/mixins/account';
+>>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
 
 const EMPTY_SUBSCRIPTION_INFO = {
   status: null,
@@ -11,6 +16,7 @@ const EMPTY_SUBSCRIPTION_INFO = {
 
 export default {
   components: { Banner },
+<<<<<<< HEAD
   setup() {
     const { isAdmin } = useAdmin();
 
@@ -18,6 +24,12 @@ export default {
 
     return {
       accountId,
+=======
+  mixins: [accountMixin],
+  setup() {
+    const { isAdmin } = useAdmin();
+    return {
+>>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
       isAdmin,
     };
   },

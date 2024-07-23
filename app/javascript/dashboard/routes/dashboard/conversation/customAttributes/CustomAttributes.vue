@@ -221,3 +221,170 @@ const wrapperClass = computed(() => {
     </div>
   </div>
 </template>
+<<<<<<< HEAD
+=======
+
+<script>
+import CustomAttribute from 'dashboard/components/CustomAttribute.vue';
+import { useAlert } from 'dashboard/composables';
+import attributeMixin from 'dashboard/mixins/attributeMixin';
+import uiSettingsMixin from 'dashboard/mixins/uiSettings';
+import { copyTextToClipboard } from 'shared/helpers/clipboard';
+
+export default {
+  components: {
+    CustomAttribute,
+  },
+  mixins: [attributeMixin, uiSettingsMixin],
+  props: {
+    attributeType: {
+      type: String,
+      default: 'conversation_attribute',
+    },
+    attributeClass: {
+      type: String,
+      default: '',
+    },
+    contactId: { type: Number, default: null },
+    attributeFrom: {
+      type: String,
+      required: true,
+    },
+    emptyStateMessage: {
+      type: String,
+      default: '',
+    },
+  },
+  data() {
+    return {
+      showAllAttributes: false,
+    };
+  },
+  computed: {
+    toggleButtonText() {
+      return !this.showAllAttributes
+        ? this.$t('CUSTOM_ATTRIBUTES.SHOW_MORE')
+        : this.$t('CUSTOM_ATTRIBUTES.SHOW_LESS');
+    },
+    filteredAttributes() {
+      return this.attributes.map(attribute => {
+        // Check if the attribute key exists in customAttributes
+        const hasValue = Object.hasOwnProperty.call(
+          this.customAttributes,
+          attribute.attribute_key
+        );
+
+        const isCheckbox = attribute.attribute_display_type === 'checkbox';
+        const defaultValue = isCheckbox ? false : '';
+
+        return {
+          ...attribute,
+          // Set value from customAttributes if it exists, otherwise use default value
+          value: hasValue
+            ? this.customAttributes[attribute.attribute_key]
+            : defaultValue,
+        };
+      });
+    },
+    displayedAttributes() {
+      // Show only the first 5 attributes or all depending on showAllAttributes
+      if (this.showAllAttributes || this.filteredAttributes.length <= 5) {
+        return this.filteredAttributes;
+      }
+      return this.filteredAttributes.slice(0, 5);
+    },
+    showMoreUISettingsKey() {
+      return `show_all_attributes_${this.attributeFrom}`;
+    },
+  },
+  mounted() {
+    this.initializeSettings();
+  },
+  methods: {
+    initializeSettings() {
+      this.showAllAttributes =
+        this.uiSettings[this.showMoreUISettingsKey] || false;
+    },
+    onClickToggle() {
+      this.showAllAttributes = !this.showAllAttributes;
+      this.updateUISettings({
+        [this.showMoreUISettingsKey]: this.showAllAttributes,
+      });
+    },
+    async onUpdate(key, value) {
+      const updatedAttributes = { ...this.customAttributes, [key]: value };
+      try {
+        if (this.attributeType === 'conversation_attribute') {
+          await this.$store.dispatch('updateCustomAttributes', {
+            conversationId: this.conversationId,
+            customAttributes: updatedAttributes,
+          });
+        } else {
+          this.$store.dispatch('contacts/update', {
+            id: this.contactId,
+            custom_attributes: updatedAttributes,
+          });
+        }
+        useAlert(this.$t('CUSTOM_ATTRIBUTES.FORM.UPDATE.SUCCESS'));
+      } catch (error) {
+        const errorMessage =
+          error?.response?.message ||
+          this.$t('CUSTOM_ATTRIBUTES.FORM.UPDATE.ERROR');
+        useAlert(errorMessage);
+      }
+    },
+    async onDelete(key) {
+      try {
+        const { [key]: remove, ...updatedAttributes } = this.customAttributes;
+        if (this.attributeType === 'conversation_attribute') {
+          await this.$store.dispatch('updateCustomAttributes', {
+            conversationId: this.conversationId,
+            customAttributes: updatedAttributes,
+          });
+        } else {
+          this.$store.dispatch('contacts/deleteCustomAttributes', {
+            id: this.contactId,
+            customAttributes: [key],
+          });
+        }
+
+        useAlert(this.$t('CUSTOM_ATTRIBUTES.FORM.DELETE.SUCCESS'));
+      } catch (error) {
+        const errorMessage =
+          error?.response?.message ||
+          this.$t('CUSTOM_ATTRIBUTES.FORM.DELETE.ERROR');
+        useAlert(errorMessage);
+      }
+    },
+    async onCopy(attributeValue) {
+      await copyTextToClipboard(attributeValue);
+      useAlert(this.$t('CUSTOM_ATTRIBUTES.COPY_SUCCESSFUL'));
+    },
+  },
+};
+</script>
+
+<style scoped lang="scss">
+.custom-attributes--panel {
+  .conversation--attribute {
+    @apply border-slate-50 dark:border-slate-700/50 border-b border-solid;
+  }
+
+  &.odd {
+    .conversation--attribute {
+      &:nth-child(2n + 1) {
+        @apply bg-slate-25 dark:bg-slate-800/50;
+      }
+    }
+  }
+
+  &.even {
+    .conversation--attribute {
+      &:nth-child(2n) {
+        @apply bg-slate-25 dark:bg-slate-800/50;
+      }
+    }
+  }
+}
+</style>
+>>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))

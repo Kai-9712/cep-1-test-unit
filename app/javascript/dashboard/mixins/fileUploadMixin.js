@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 import { mapGetters } from 'vuex';
+=======
+>>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
 import { useAlert } from 'dashboard/composables';
 import {
   MAXIMUM_FILE_UPLOAD_SIZE,

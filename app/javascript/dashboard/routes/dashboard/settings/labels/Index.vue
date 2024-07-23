@@ -72,6 +72,7 @@ onBeforeMount(() => {
 </script>
 
 <template>
+<<<<<<< HEAD
   <SettingsLayout
     :is-loading="uiFlags.isFetching"
     :loading-message="$t('LABEL_MGMT.LOADING')"
@@ -111,6 +112,22 @@ onBeforeMount(() => {
         </thead>
         <tbody
           class="divide-y divide-slate-25 dark:divide-slate-800 flex-1 text-slate-700 dark:text-slate-100"
+=======
+  <div class="flex-1 overflow-auto">
+    <woot-button
+      color-scheme="success"
+      class-names="button--fixed-top"
+      icon="add-circle"
+      @click="openAddPopup"
+    >
+      {{ $t('LABEL_MGMT.HEADER_BTN_TXT') }}
+    </woot-button>
+    <div class="flex flex-row gap-4 p-8">
+      <div class="w-full xl:w-3/5">
+        <p
+          v-if="!uiFlags.isFetching && !records.length"
+          class="flex flex-col items-center justify-center h-full"
+>>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
         >
           <tr v-for="(label, index) in records" :key="label.title">
             <td class="py-4 ltr:pr-4 rtl:pl-4">
@@ -159,6 +176,13 @@ onBeforeMount(() => {
       </table>
     </template>
 
+<<<<<<< HEAD
+=======
+      <div class="hidden w-1/3 xl:block">
+        <span v-dompurify-html="$t('LABEL_MGMT.SIDEBAR_TXT')" />
+      </div>
+    </div>
+>>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
     <woot-modal :show.sync="showAddPopup" :on-close="hideAddPopup">
       <AddLabel @close="hideAddPopup" />
     </woot-modal>
@@ -179,3 +203,109 @@ onBeforeMount(() => {
     />
   </SettingsLayout>
 </template>
+<<<<<<< HEAD
+=======
+<script>
+import { mapGetters } from 'vuex';
+import { useAlert } from 'dashboard/composables';
+
+import AddLabel from './AddLabel.vue';
+import EditLabel from './EditLabel.vue';
+
+export default {
+  components: {
+    AddLabel,
+    EditLabel,
+  },
+  data() {
+    return {
+      loading: {},
+      showAddPopup: false,
+      showEditPopup: false,
+      showDeleteConfirmationPopup: false,
+      selectedResponse: {},
+    };
+  },
+  computed: {
+    ...mapGetters({
+      records: 'labels/getLabels',
+      uiFlags: 'labels/getUIFlags',
+    }),
+    // Delete Modal
+    deleteConfirmText() {
+      return this.$t('LABEL_MGMT.DELETE.CONFIRM.YES');
+    },
+    deleteRejectText() {
+      return this.$t('LABEL_MGMT.DELETE.CONFIRM.NO');
+    },
+    deleteMessage() {
+      return ` ${this.selectedResponse.title}?`;
+    },
+  },
+  mounted() {
+    this.$store.dispatch('labels/get');
+  },
+  methods: {
+    openAddPopup() {
+      this.showAddPopup = true;
+    },
+    hideAddPopup() {
+      this.showAddPopup = false;
+    },
+
+    openEditPopup(response) {
+      this.showEditPopup = true;
+      this.selectedResponse = response;
+    },
+    hideEditPopup() {
+      this.showEditPopup = false;
+    },
+
+    openDeletePopup(response) {
+      this.showDeleteConfirmationPopup = true;
+      this.selectedResponse = response;
+    },
+    closeDeletePopup() {
+      this.showDeleteConfirmationPopup = false;
+    },
+
+    confirmDeletion() {
+      this.loading[this.selectedResponse.id] = true;
+      this.closeDeletePopup();
+      this.deleteLabel(this.selectedResponse.id);
+    },
+    deleteLabel(id) {
+      this.$store
+        .dispatch('labels/delete', id)
+        .then(() => {
+          useAlert(this.$t('LABEL_MGMT.DELETE.API.SUCCESS_MESSAGE'));
+        })
+        .catch(() => {
+          useAlert(this.$t('LABEL_MGMT.DELETE.API.ERROR_MESSAGE'));
+        })
+        .finally(() => {
+          this.loading[this.selectedResponse.id] = false;
+        });
+    },
+  },
+};
+</script>
+
+<style scoped lang="scss">
+@import '~dashboard/assets/scss/variables';
+
+.label-color--container {
+  @apply flex items-center;
+}
+
+.label-color--display {
+  @apply rounded h-4 w-4 mr-1 rtl:mr-0 rtl:ml-1 border border-solid border-slate-50 dark:border-slate-700;
+}
+
+.label-title {
+  span {
+    @apply w-60 inline-block;
+  }
+}
+</style>
+>>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))

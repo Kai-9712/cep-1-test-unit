@@ -1,8 +1,14 @@
 <script>
+<<<<<<< HEAD
 import { useVuelidate } from '@vuelidate/core';
 import { mapGetters } from 'vuex';
 import { useAlert } from 'dashboard/composables';
 import { required, minLength, email } from '@vuelidate/validators';
+=======
+import { mapGetters } from 'vuex';
+import { useAlert } from 'dashboard/composables';
+import { required, minLength, email } from 'vuelidate/lib/validators';
+>>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
 import globalConfigMixin from 'shared/mixins/globalConfigMixin';
 import FormInput from '../../../../components/Form/Input.vue';
 import { resetPassword } from '../../../../api/auth';
@@ -11,9 +17,12 @@ import SubmitButton from '../../../../components/Button/SubmitButton.vue';
 export default {
   components: { FormInput, SubmitButton },
   mixins: [globalConfigMixin],
+<<<<<<< HEAD
   setup() {
     return { v$: useVuelidate() };
   },
+=======
+>>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
   data() {
     return {
       credentials: { email: '' },

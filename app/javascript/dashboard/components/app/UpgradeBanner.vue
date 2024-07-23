@@ -1,17 +1,25 @@
 <script>
 import Banner from 'dashboard/components/ui/Banner.vue';
 import { mapGetters } from 'vuex';
+<<<<<<< HEAD
 import { useAccount } from 'dashboard/composables/useAccount';
+=======
+import accountMixin from 'dashboard/mixins/account';
+>>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
 import { differenceInDays } from 'date-fns';
 
 export default {
   components: { Banner },
+<<<<<<< HEAD
   setup() {
     const { accountId } = useAccount();
     return {
       accountId,
     };
   },
+=======
+  mixins: [accountMixin],
+>>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
   data() {
     return { conversationMeta: {} };
   },

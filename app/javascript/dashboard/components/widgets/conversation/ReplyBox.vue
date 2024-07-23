@@ -1,7 +1,10 @@
 <script>
 import { mapGetters } from 'vuex';
 import { useAlert } from 'dashboard/composables';
+<<<<<<< HEAD
 import { useUISettings } from 'dashboard/composables/useUISettings';
+=======
+>>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
 import keyboardEventListenerMixins from 'shared/mixins/keyboardEventListenerMixins';
 
 import CannedResponse from './CannedResponse.vue';
@@ -63,6 +66,10 @@ export default {
   },
   mixins: [
     inboxMixin,
+<<<<<<< HEAD
+=======
+    uiSettingsMixin,
+>>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
     messageFormatterMixin,
     fileUploadMixin,
     keyboardEventListenerMixins,

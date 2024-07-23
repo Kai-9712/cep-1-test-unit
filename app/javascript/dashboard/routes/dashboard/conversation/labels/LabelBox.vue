@@ -125,6 +125,80 @@ export default {
   </div>
 </template>
 
+<<<<<<< HEAD
+=======
+<script>
+import { mapGetters } from 'vuex';
+import { useAdmin } from 'dashboard/composables/useAdmin';
+import Spinner from 'shared/components/Spinner.vue';
+import LabelDropdown from 'shared/components/ui/label/LabelDropdown.vue';
+import AddLabel from 'shared/components/ui/dropdown/AddLabel.vue';
+import keyboardEventListenerMixins from 'shared/mixins/keyboardEventListenerMixins';
+import conversationLabelMixin from 'dashboard/mixins/conversation/labelMixin';
+
+export default {
+  components: {
+    Spinner,
+    LabelDropdown,
+    AddLabel,
+  },
+
+  mixins: [conversationLabelMixin, keyboardEventListenerMixins],
+  props: {
+    conversationId: {
+      type: Number,
+      required: true,
+    },
+  },
+  setup() {
+    const { isAdmin } = useAdmin();
+    return {
+      isAdmin,
+    };
+  },
+  data() {
+    return {
+      selectedLabels: [],
+      showSearchDropdownLabel: false,
+    };
+  },
+
+  computed: {
+    ...mapGetters({
+      conversationUiFlags: 'conversationLabels/getUIFlags',
+      labelUiFlags: 'conversationLabels/getUIFlags',
+    }),
+  },
+  methods: {
+    toggleLabels() {
+      this.showSearchDropdownLabel = !this.showSearchDropdownLabel;
+    },
+    closeDropdownLabel() {
+      this.showSearchDropdownLabel = false;
+    },
+    getKeyboardEvents() {
+      return {
+        KeyL: {
+          action: e => {
+            e.preventDefault();
+            this.toggleLabels();
+          },
+        },
+        Escape: {
+          action: () => {
+            if (this.showSearchDropdownLabel) {
+              this.toggleLabels();
+            }
+          },
+          allowOnFocusedInput: true,
+        },
+      };
+    },
+  },
+};
+</script>
+
+>>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
 <style lang="scss" scoped>
 .sidebar-labels-wrap {
   margin-bottom: 0;

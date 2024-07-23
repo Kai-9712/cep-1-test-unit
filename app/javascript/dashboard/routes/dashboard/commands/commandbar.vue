@@ -8,6 +8,11 @@ import inboxHotKeysMixin from './inboxHotKeys';
 import goToCommandHotKeys from './goToCommandHotKeys';
 import appearanceHotKeys from './appearanceHotKeys';
 import agentMixin from 'dashboard/mixins/agentMixin';
+<<<<<<< HEAD
+=======
+import conversationLabelMixin from 'dashboard/mixins/conversation/labelMixin';
+import conversationTeamMixin from 'dashboard/mixins/conversation/teamMixin';
+>>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
 import { GENERAL_EVENTS } from '../../../helper/AnalyticsHelper/events';
 
 export default {

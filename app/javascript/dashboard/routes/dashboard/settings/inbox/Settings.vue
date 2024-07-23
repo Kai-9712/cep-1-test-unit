@@ -3,7 +3,10 @@ import { mapGetters } from 'vuex';
 import { shouldBeUrl } from 'shared/helpers/Validators';
 import configMixin from 'shared/mixins/configMixin';
 import { useAlert } from 'dashboard/composables';
+<<<<<<< HEAD
 import { useVuelidate } from '@vuelidate/core';
+=======
+>>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
 import SettingIntroBanner from 'dashboard/components/widgets/SettingIntroBanner.vue';
 import SettingsSection from '../../../../components/SettingsSection.vue';
 import inboxMixin from 'shared/mixins/inboxMixin';
@@ -35,9 +38,12 @@ export default {
     MicrosoftReauthorize,
   },
   mixins: [configMixin, inboxMixin],
+<<<<<<< HEAD
   setup() {
     return { v$: useVuelidate() };
   },
+=======
+>>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
   data() {
     return {
       avatarFile: null,

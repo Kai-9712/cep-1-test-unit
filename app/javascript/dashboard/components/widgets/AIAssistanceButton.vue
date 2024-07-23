@@ -2,8 +2,11 @@
 import { ref } from 'vue';
 import { mapGetters } from 'vuex';
 import { useAdmin } from 'dashboard/composables/useAdmin';
+<<<<<<< HEAD
 import { useUISettings } from 'dashboard/composables/useUISettings';
 import { useKeyboardEvents } from 'dashboard/composables/useKeyboardEvents';
+=======
+>>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
 import AICTAModal from './AICTAModal.vue';
 import AIAssistanceModal from './AIAssistanceModal.vue';
 import aiMixin from 'dashboard/mixins/aiMixin';
@@ -16,6 +19,7 @@ export default {
     AICTAModal,
     AIAssistanceCTAButton,
   },
+<<<<<<< HEAD
   mixins: [aiMixin],
   setup(props, { emit }) {
     const { uiSettings, updateUISettings } = useUISettings();
@@ -48,6 +52,13 @@ export default {
       aiAssistanceButtonRef,
       initialMessage,
       initializeMessage,
+=======
+  mixins: [aiMixin, keyboardEventListenerMixins, uiSettingsMixin],
+  setup() {
+    const { isAdmin } = useAdmin();
+    return {
+      isAdmin,
+>>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
     };
   },
   data: () => ({

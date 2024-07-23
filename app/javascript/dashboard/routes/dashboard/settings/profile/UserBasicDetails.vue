@@ -1,8 +1,12 @@
 <script>
 import { useAlert } from 'dashboard/composables';
 import FormButton from 'v3/components/Form/Button.vue';
+<<<<<<< HEAD
 import { useVuelidate } from '@vuelidate/core';
 import { required, minLength, email } from '@vuelidate/validators';
+=======
+import { required, minLength, email } from 'vuelidate/lib/validators';
+>>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
 export default {
   components: {
     FormButton,
@@ -74,8 +78,13 @@ export default {
   },
   methods: {
     async updateUser() {
+<<<<<<< HEAD
       this.v$.$touch();
       if (this.v$.$invalid) {
+=======
+      this.$v.$touch();
+      if (this.$v.$invalid) {
+>>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
         useAlert(this.$t('PROFILE_SETTINGS.FORM.ERROR'));
         return;
       }

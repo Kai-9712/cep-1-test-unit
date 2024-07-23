@@ -1,6 +1,10 @@
 <script>
+<<<<<<< HEAD
 import { useVuelidate } from '@vuelidate/core';
 import { required, minLength } from '@vuelidate/validators';
+=======
+import { required, minLength } from 'vuelidate/lib/validators';
+>>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
 import { useAlert } from 'dashboard/composables';
 import { CONTACTS_EVENTS } from '../../../helper/AnalyticsHelper/events';
 

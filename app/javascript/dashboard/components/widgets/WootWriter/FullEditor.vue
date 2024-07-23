@@ -10,7 +10,10 @@ import {
 } from '@chatwoot/prosemirror-schema';
 import { checkFileSizeLimit } from 'shared/helpers/FileHelper';
 import { useAlert } from 'dashboard/composables';
+<<<<<<< HEAD
 import { useUISettings } from 'dashboard/composables/useUISettings';
+=======
+>>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
 import keyboardEventListenerMixins from 'shared/mixins/keyboardEventListenerMixins';
 
 const MAXIMUM_FILE_UPLOAD_SIZE = 4; // in MB
@@ -36,7 +39,11 @@ const createState = (
 };
 
 export default {
+<<<<<<< HEAD
   mixins: [keyboardEventListenerMixins],
+=======
+  mixins: [keyboardEventListenerMixins, uiSettingsMixin],
+>>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
   props: {
     value: { type: String, default: '' },
     editorId: { type: String, default: '' },

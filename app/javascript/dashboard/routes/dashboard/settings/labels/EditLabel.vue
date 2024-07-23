@@ -58,12 +58,15 @@ export default {
 
 <script>
 import { mapGetters } from 'vuex';
-import alertMixin from 'shared/mixins/alertMixin';
+import { useAlert } from 'dashboard/composables';
 import validations, { getLabelTitleErrorMessage } from './validations';
 
 export default {
+<<<<<<< HEAD
   mixins: [alertMixin],
 >>>>>>> 10ee773aa (feat: Rewrite `labels/validationMixin mixin` to a helper (#9818))
+=======
+>>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
   props: {
     selectedResponse: {
       type: Object,

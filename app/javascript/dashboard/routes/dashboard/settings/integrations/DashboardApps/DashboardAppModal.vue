@@ -1,6 +1,10 @@
 <script>
+<<<<<<< HEAD
 import { useVuelidate } from '@vuelidate/core';
 import { required, url } from '@vuelidate/validators';
+=======
+import { required, url } from 'vuelidate/lib/validators';
+>>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
 import { useAlert } from 'dashboard/composables';
 
 export default {

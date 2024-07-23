@@ -156,3 +156,84 @@ export default {
     </div>
   </woot-modal>
 </template>
+<<<<<<< HEAD
+=======
+
+<script>
+import { required, minLength, email } from 'vuelidate/lib/validators';
+import { useAlert } from 'dashboard/composables';
+export default {
+  props: {
+    show: {
+      type: Boolean,
+      default: false,
+    },
+    currentChat: {
+      type: Object,
+      default: () => ({}),
+    },
+  },
+  data() {
+    return {
+      email: '',
+      selectedType: '',
+      isSubmitting: false,
+    };
+  },
+  validations: {
+    email: {
+      required,
+      email,
+      minLength: minLength(4),
+    },
+  },
+  computed: {
+    sentToOtherEmailAddress() {
+      return this.selectedType === 'other_email_address';
+    },
+    isFormValid() {
+      if (this.selectedType) {
+        if (this.sentToOtherEmailAddress) {
+          return !!this.email && !this.$v.email.$error;
+        }
+        return true;
+      }
+      return false;
+    },
+    selectedEmailAddress() {
+      const { meta } = this.currentChat;
+      switch (this.selectedType) {
+        case 'contact':
+          return meta.sender.email;
+        case 'assignee':
+          return meta.assignee.email;
+        case 'other_email_address':
+          return this.email;
+        default:
+          return '';
+      }
+    },
+  },
+  methods: {
+    onCancel() {
+      this.$emit('cancel');
+    },
+    async onSubmit() {
+      this.isSubmitting = false;
+      try {
+        await this.$store.dispatch('sendEmailTranscript', {
+          email: this.selectedEmailAddress,
+          conversationId: this.currentChat.id,
+        });
+        useAlert(this.$t('EMAIL_TRANSCRIPT.SEND_EMAIL_SUCCESS'));
+        this.onCancel();
+      } catch (error) {
+        useAlert(this.$t('EMAIL_TRANSCRIPT.SEND_EMAIL_ERROR'));
+      } finally {
+        this.isSubmitting = false;
+      }
+    },
+  },
+};
+</script>
+>>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))

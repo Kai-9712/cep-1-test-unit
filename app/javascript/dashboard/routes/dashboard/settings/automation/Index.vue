@@ -133,10 +133,13 @@ import { messageStamp } from 'shared/helpers/timeHelper';
 import AddAutomationRule from './AddAutomationRule.vue';
 import EditAutomationRule from './EditAutomationRule.vue';
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 import alertMixin from 'shared/mixins/alertMixin';
 import { messageStamp } from 'shared/helpers/timeHelper';
 >>>>>>> 79381b08c (feat: Move timeMixin to a helper (#9799))
+=======
+>>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
 
 export default {
   components: {
@@ -144,9 +147,12 @@ export default {
     EditAutomationRule,
   },
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   mixins: [alertMixin],
 >>>>>>> 79381b08c (feat: Move timeMixin to a helper (#9799))
+=======
+>>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
   data() {
     return {
       loading: {},

@@ -200,3 +200,79 @@ export default {
     </form>
   </div>
 </template>
+<<<<<<< HEAD
+=======
+
+<script>
+import { mapGetters } from 'vuex';
+import { useAlert } from 'dashboard/composables';
+import router from '../../../../index';
+import PageHeader from '../../SettingsSubPageHeader.vue';
+import GreetingsEditor from 'shared/components/GreetingsEditor.vue';
+
+export default {
+  components: {
+    PageHeader,
+    GreetingsEditor,
+  },
+  data() {
+    return {
+      inboxName: '',
+      channelWebsiteUrl: '',
+      channelWidgetColor: '#009CE0',
+      channelWelcomeTitle: '',
+      channelWelcomeTagline: '',
+      greetingEnabled: false,
+      greetingMessage: '',
+    };
+  },
+  computed: {
+    ...mapGetters({
+      uiFlags: 'inboxes/getUIFlags',
+    }),
+    textAreaChannels() {
+      if (
+        this.isATwilioChannel ||
+        this.isATwitterInbox ||
+        this.isAFacebookInbox
+      )
+        return true;
+      return false;
+    },
+  },
+  methods: {
+    async createChannel() {
+      try {
+        const website = await this.$store.dispatch(
+          'inboxes/createWebsiteChannel',
+          {
+            name: this.inboxName,
+            greeting_enabled: this.greetingEnabled,
+            greeting_message: this.greetingMessage,
+            channel: {
+              type: 'web_widget',
+              website_url: this.channelWebsiteUrl,
+              widget_color: this.channelWidgetColor,
+              welcome_title: this.channelWelcomeTitle,
+              welcome_tagline: this.channelWelcomeTagline,
+            },
+          }
+        );
+        router.replace({
+          name: 'settings_inboxes_add_agents',
+          params: {
+            page: 'new',
+            inbox_id: website.id,
+          },
+        });
+      } catch (error) {
+        useAlert(
+          error.message ||
+            this.$t('INBOX_MGMT.ADD.WEBSITE_CHANNEL.API.ERROR_MESSAGE')
+        );
+      }
+    },
+  },
+};
+</script>
+>>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))

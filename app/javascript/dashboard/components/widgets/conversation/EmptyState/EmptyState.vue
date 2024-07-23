@@ -1,7 +1,11 @@
 <script>
 import { mapGetters } from 'vuex';
 import { useAdmin } from 'dashboard/composables/useAdmin';
+<<<<<<< HEAD
 import { useAccount } from 'dashboard/composables/useAccount';
+=======
+import accountMixin from 'dashboard/mixins/account';
+>>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
 import OnboardingView from '../OnboardingView.vue';
 import EmptyStateMessage from './EmptyStateMessage.vue';
 
@@ -10,6 +14,10 @@ export default {
     OnboardingView,
     EmptyStateMessage,
   },
+<<<<<<< HEAD
+=======
+  mixins: [accountMixin],
+>>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
   props: {
     isOnExpandedLayout: {
       type: Boolean,
@@ -18,12 +26,17 @@ export default {
   },
   setup() {
     const { isAdmin } = useAdmin();
+<<<<<<< HEAD
 
     const { accountScopedUrl } = useAccount();
 
     return {
       isAdmin,
       accountScopedUrl,
+=======
+    return {
+      isAdmin,
+>>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
     };
   },
   computed: {

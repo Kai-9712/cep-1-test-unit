@@ -15,7 +15,11 @@ export default {
     MultiselectDropdown,
     ConversationLabels,
   },
+<<<<<<< HEAD
   mixins: [agentMixin],
+=======
+  mixins: [agentMixin, teamMixin],
+>>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
   props: {
     conversationId: {
       type: [Number, String],

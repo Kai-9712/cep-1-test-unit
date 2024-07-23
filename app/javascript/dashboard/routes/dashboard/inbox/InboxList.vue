@@ -1,14 +1,70 @@
+<<<<<<< HEAD
 <script>
 import { mapGetters } from 'vuex';
 import { useAlert } from 'dashboard/composables';
 import { useUISettings } from 'dashboard/composables/useUISettings';
+=======
+<template>
+  <section class="flex w-full h-full bg-white dark:bg-slate-900">
+    <div
+      class="flex flex-col h-full w-full md:min-w-[360px] md:max-w-[360px] ltr:border-r border-slate-50 dark:border-slate-800/50"
+      :class="!currentNotificationId ? 'flex' : 'hidden md:flex'"
+    >
+      <inbox-list-header
+        :is-context-menu-open="isInboxContextMenuOpen"
+        @filter="onFilterChange"
+        @redirect="redirectToInbox"
+      />
+      <div
+        ref="notificationList"
+        class="flex flex-col w-full h-[calc(100%-56px)] overflow-x-hidden overflow-y-auto"
+      >
+        <inbox-card
+          v-for="notificationItem in notifications"
+          :key="notificationItem.id"
+          :active="currentNotificationId === notificationItem.id"
+          :notification-item="notificationItem"
+          @mark-notification-as-read="markNotificationAsRead"
+          @mark-notification-as-unread="markNotificationAsUnRead"
+          @delete-notification="deleteNotification"
+          @context-menu-open="isInboxContextMenuOpen = true"
+          @context-menu-close="isInboxContextMenuOpen = false"
+        />
+        <div v-if="uiFlags.isFetching" class="text-center">
+          <span class="mt-4 mb-4 spinner" />
+        </div>
+        <p
+          v-if="showEmptyState"
+          class="p-4 text-sm font-medium text-center text-slate-400 dark:text-slate-400"
+        >
+          {{ $t('INBOX.LIST.NO_NOTIFICATIONS') }}
+        </p>
+        <intersection-observer
+          v-if="!showEndOfList && !uiFlags.isFetching"
+          :options="infiniteLoaderOptions"
+          @observed="loadMoreNotifications"
+        />
+      </div>
+    </div>
+    <router-view />
+  </section>
+</template>
+
+<script>
+import { mapGetters } from 'vuex';
+import { useAlert } from 'dashboard/composables';
+>>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
 import wootConstants from 'dashboard/constants/globals';
 
 import InboxCard from './components/InboxCard.vue';
 import InboxListHeader from './components/InboxListHeader.vue';
 import { INBOX_EVENTS } from 'dashboard/helper/AnalyticsHelper/events';
 import IntersectionObserver from 'dashboard/components/IntersectionObserver.vue';
+<<<<<<< HEAD
 import CmdBarConversationSnooze from 'dashboard/routes/dashboard/commands/CmdBarConversationSnooze.vue';
+=======
+import uiSettingsMixin from 'dashboard/mixins/uiSettings';
+>>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
 
 export default {
   components: {
@@ -24,6 +80,10 @@ export default {
       uiSettings,
     };
   },
+<<<<<<< HEAD
+=======
+  mixins: [uiSettingsMixin],
+>>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
   data() {
     return {
       infiniteLoaderOptions: {

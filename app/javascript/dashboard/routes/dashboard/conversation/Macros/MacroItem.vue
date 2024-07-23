@@ -1,3 +1,40 @@
+<<<<<<< HEAD
+=======
+<template>
+  <div class="macro button secondary clear">
+    <span class="overflow-hidden whitespace-nowrap text-ellipsis">{{
+      macro.name
+    }}</span>
+    <div class="flex items-center gap-1 macros-actions">
+      <woot-button
+        v-tooltip.left-start="$t('MACROS.EXECUTE.PREVIEW')"
+        size="tiny"
+        variant="smooth"
+        color-scheme="secondary"
+        icon="info"
+        @click="toggleMacroPreview(macro)"
+      />
+      <woot-button
+        v-tooltip.left-start="$t('MACROS.EXECUTE.BUTTON_TOOLTIP')"
+        size="tiny"
+        variant="smooth"
+        color-scheme="secondary"
+        icon="play-circle"
+        :is-loading="isExecuting"
+        @click="executeMacro(macro)"
+      />
+    </div>
+    <transition name="menu-slide">
+      <macro-preview
+        v-if="showPreview"
+        v-on-clickaway="closeMacroPreview"
+        :macro="macro"
+      />
+    </transition>
+  </div>
+</template>
+
+>>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
 <script>
 import { useAlert } from 'dashboard/composables';
 import MacroPreview from './MacroPreview.vue';

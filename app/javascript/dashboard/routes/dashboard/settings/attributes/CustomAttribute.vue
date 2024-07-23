@@ -212,6 +212,115 @@ export default {
   </div>
 </template>
 
+<<<<<<< HEAD
+=======
+<script>
+import { mapGetters } from 'vuex';
+import { useAlert } from 'dashboard/composables';
+import EditAttribute from './EditAttribute.vue';
+
+export default {
+  components: {
+    EditAttribute,
+  },
+  data() {
+    return {
+      selectedTabIndex: 0,
+      showEditPopup: false,
+      showDeletePopup: false,
+      selectedAttribute: {},
+    };
+  },
+  computed: {
+    ...mapGetters({
+      uiFlags: 'attributes/getUIFlags',
+    }),
+    attributes() {
+      const attributeModel = this.selectedTabIndex
+        ? 'contact_attribute'
+        : 'conversation_attribute';
+
+      return this.$store.getters['attributes/getAttributesByModel'](
+        attributeModel
+      );
+    },
+    tabs() {
+      return [
+        {
+          key: 0,
+          name: this.$t('ATTRIBUTES_MGMT.TABS.CONVERSATION'),
+        },
+        {
+          key: 1,
+          name: this.$t('ATTRIBUTES_MGMT.TABS.CONTACT'),
+        },
+      ];
+    },
+    deleteConfirmText() {
+      return `${this.$t('ATTRIBUTES_MGMT.DELETE.CONFIRM.YES')} ${
+        this.selectedAttribute.attribute_display_name
+      }`;
+    },
+    deleteRejectText() {
+      return this.$t('ATTRIBUTES_MGMT.DELETE.CONFIRM.NO');
+    },
+    confirmDeleteTitle() {
+      return this.$t('ATTRIBUTES_MGMT.DELETE.CONFIRM.TITLE', {
+        attributeName: this.selectedAttribute.attribute_display_name,
+      });
+    },
+    confirmPlaceHolderText() {
+      return `${this.$t('ATTRIBUTES_MGMT.DELETE.CONFIRM.PLACE_HOLDER', {
+        attributeName: this.selectedAttribute.attribute_display_name,
+      })}`;
+    },
+  },
+  mounted() {
+    this.fetchAttributes(this.selectedTabIndex);
+  },
+  methods: {
+    onClickTabChange(index) {
+      this.selectedTabIndex = index;
+      this.fetchAttributes(index);
+    },
+    fetchAttributes(index) {
+      this.$store.dispatch('attributes/get', index);
+    },
+    async deleteAttributes({ id }) {
+      try {
+        await this.$store.dispatch('attributes/delete', id);
+        useAlert(this.$t('ATTRIBUTES_MGMT.DELETE.API.SUCCESS_MESSAGE'));
+      } catch (error) {
+        const errorMessage =
+          error?.response?.message ||
+          this.$t('ATTRIBUTES_MGMT.DELETE.API.ERROR_MESSAGE');
+        useAlert(errorMessage);
+      }
+    },
+    openEditPopup(response) {
+      this.showEditPopup = true;
+      this.selectedAttribute = response;
+    },
+    hideEditPopup() {
+      this.showEditPopup = false;
+    },
+    confirmDeletion() {
+      this.deleteAttributes(this.selectedAttribute);
+      this.closeDelete();
+    },
+    openDelete(value) {
+      this.showDeletePopup = true;
+      this.selectedAttribute = value;
+    },
+    closeDelete() {
+      this.showDeletePopup = false;
+      this.selectedAttribute = {};
+    },
+  },
+};
+</script>
+
+>>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
 <style lang="scss" scoped>
 .attribute-key {
   font-family: monospace;

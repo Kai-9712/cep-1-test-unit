@@ -42,7 +42,36 @@ export default {
     </div>
   </div>
 </template>
+<<<<<<< HEAD
 
+=======
+<script>
+import { useAlert } from 'dashboard/composables';
+import twitterClient from '../../../../../api/channel/twitterClient';
+
+export default {
+  data() {
+    return { isRequestingAuthorization: false };
+  },
+  methods: {
+    async requestAuthorization() {
+      try {
+        this.isRequestingAuthorization = true;
+        const response = await twitterClient.generateAuthorization();
+        const {
+          data: { url },
+        } = response;
+        window.location.href = url;
+      } catch (error) {
+        useAlert(this.$t('INBOX_MGMT.ADD.TWITTER.ERROR_MESSAGE'));
+      } finally {
+        this.isRequestingAuthorization = false;
+      }
+    },
+  },
+};
+</script>
+>>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
 <style scoped lang="scss">
 .login-init {
   @apply pt-[30%] text-center;

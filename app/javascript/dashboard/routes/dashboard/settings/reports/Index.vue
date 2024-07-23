@@ -1,4 +1,28 @@
+<<<<<<< HEAD
 <script>
+=======
+<template>
+  <div class="flex-1 p-4 overflow-auto">
+    <woot-button
+      color-scheme="success"
+      class-names="button--fixed-top"
+      icon="arrow-download"
+      @click="downloadAgentReports"
+    >
+      {{ $t('REPORT.DOWNLOAD_AGENT_REPORTS') }}
+    </woot-button>
+    <report-filter-selector
+      :show-agents-filter="false"
+      :show-group-by-filter="true"
+      @filter-change="onFilterChange"
+    />
+    <report-container :group-by="groupBy" />
+  </div>
+</template>
+
+<script>
+import { mapGetters } from 'vuex';
+>>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
 import { useAlert } from 'dashboard/composables';
 import fromUnixTime from 'date-fns/fromUnixTime';
 import format from 'date-fns/format';

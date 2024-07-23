@@ -1,7 +1,11 @@
 <script>
 import { mapGetters } from 'vuex';
+<<<<<<< HEAD
 import { useVuelidate } from '@vuelidate/core';
 import { minValue } from '@vuelidate/validators';
+=======
+import { minValue } from 'vuelidate/lib/validators';
+>>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
 import { useAlert } from 'dashboard/composables';
 import configMixin from 'shared/mixins/configMixin';
 import SettingsSection from '../../../../../components/SettingsSection.vue';

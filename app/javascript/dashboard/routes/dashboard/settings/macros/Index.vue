@@ -1,18 +1,26 @@
 <script>
 import { mapGetters } from 'vuex';
 import { useAlert } from 'dashboard/composables';
+<<<<<<< HEAD
 import { useAccount } from 'dashboard/composables/useAccount';
+=======
+import accountMixin from 'dashboard/mixins/account.js';
+>>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
 import MacrosTableRow from './MacrosTableRow.vue';
 export default {
   components: {
     MacrosTableRow,
   },
+<<<<<<< HEAD
   setup() {
     const { accountScopedUrl } = useAccount();
     return {
       accountScopedUrl,
     };
   },
+=======
+  mixins: [accountMixin],
+>>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
   data() {
     return {
       showDeleteConfirmationPopup: false,

@@ -1,7 +1,11 @@
 <script>
 import { mapGetters } from 'vuex';
+<<<<<<< HEAD
 import { useVuelidate } from '@vuelidate/core';
 import { required } from '@vuelidate/validators';
+=======
+import { required } from 'vuelidate/lib/validators';
+>>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
 import { useAlert } from 'dashboard/composables';
 import WootMessageEditor from 'dashboard/components/widgets/WootWriter/Editor.vue';
 import campaignMixin from 'shared/mixins/campaignMixin';
@@ -14,10 +18,15 @@ export default {
     WootDateTimePicker,
     WootMessageEditor,
   },
+<<<<<<< HEAD
   mixins: [campaignMixin],
   setup() {
     return { v$: useVuelidate() };
   },
+=======
+
+  mixins: [campaignMixin],
+>>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
   data() {
     return {
       title: '',

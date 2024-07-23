@@ -1,4 +1,26 @@
+<<<<<<< HEAD
 <script>
+=======
+<template>
+  <div class="flex-1 p-4 overflow-auto">
+    <report-filter-selector
+      :show-agents-filter="false"
+      :show-group-by-filter="true"
+      :show-business-hours-switch="false"
+      @filter-change="onFilterChange"
+    />
+
+    <bot-metrics :filters="requestPayload" />
+    <report-container
+      :group-by="groupBy"
+      :report-keys="reportKeys"
+      :account-summary-key="'getBotSummary'"
+    />
+  </div>
+</template>
+<script>
+import { mapGetters } from 'vuex';
+>>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
 import { useAlert } from 'dashboard/composables';
 import BotMetrics from './components/BotMetrics.vue';
 import ReportFilterSelector from './components/FilterSelector.vue';

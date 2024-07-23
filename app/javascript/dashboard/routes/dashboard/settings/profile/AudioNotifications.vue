@@ -1,4 +1,8 @@
 <script>
+<<<<<<< HEAD
+=======
+import { mapGetters } from 'vuex';
+>>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
 import { useAlert } from 'dashboard/composables';
 import configMixin from 'shared/mixins/configMixin';
 import { useUISettings } from 'dashboard/composables/useUISettings';
@@ -12,6 +16,7 @@ export default {
     AudioAlertTone,
     AudioAlertCondition,
   },
+<<<<<<< HEAD
   mixins: [configMixin],
   setup() {
     const { uiSettings, updateUISettings } = useUISettings();
@@ -21,6 +26,9 @@ export default {
       updateUISettings,
     };
   },
+=======
+  mixins: [configMixin, uiSettingsMixin],
+>>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
   data() {
     return {
       audioAlert: '',

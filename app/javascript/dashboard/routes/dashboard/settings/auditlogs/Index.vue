@@ -162,9 +162,9 @@ watch(routerPage, (newPage, oldPage) => {
 =======
 <script>
 import { mapGetters } from 'vuex';
-import TableFooter from 'dashboard/components/widgets/TableFooter.vue';
+import { useAlert } from 'dashboard/composables';
 import { messageTimestamp } from 'shared/helpers/timeHelper';
-import alertMixin from 'shared/mixins/alertMixin';
+import TableFooter from 'dashboard/components/widgets/TableFooter.vue';
 import {
   generateTranslationPayload,
   generateLogActionKey,
@@ -174,7 +174,6 @@ export default {
   components: {
     TableFooter,
   },
-  mixins: [alertMixin],
   beforeRouteEnter(to, from, next) {
     // Fetch Audit Logs on page load without manual refresh
     next(vm => {
@@ -208,7 +207,7 @@ export default {
       this.$store.dispatch('auditlogs/fetch', { page }).catch(error => {
         const errorMessage =
           error?.message || this.$t('AUDIT_LOGS.API.ERROR_MESSAGE');
-        this.showAlert(errorMessage);
+        useAlert(errorMessage);
       });
     },
     generateLogText(auditLogItem) {
@@ -227,7 +226,7 @@ export default {
       } catch (error) {
         const errorMessage =
           error?.message || this.$t('AUDIT_LOGS.API.ERROR_MESSAGE');
-        this.showAlert(errorMessage);
+        useAlert(errorMessage);
       }
     },
   },

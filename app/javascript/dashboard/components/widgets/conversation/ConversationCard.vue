@@ -25,11 +25,15 @@ export default {
     SLACardLabel,
   },
 <<<<<<< HEAD
+<<<<<<< HEAD
   mixins: [inboxMixin, conversationMixin],
 =======
 
   mixins: [inboxMixin, conversationMixin, alertMixin],
 >>>>>>> 79381b08c (feat: Move timeMixin to a helper (#9799))
+=======
+  mixins: [inboxMixin, conversationMixin],
+>>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
   props: {
     activeLabel: {
       type: String,

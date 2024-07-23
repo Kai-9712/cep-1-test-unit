@@ -173,8 +173,14 @@ import { useAdmin } from 'dashboard/composables/useAdmin';
   </div>
 </template>
 <script>
+import { mapGetters } from 'vuex';
+import { useAlert } from 'dashboard/composables';
 import { dynamicTime } from 'shared/helpers/timeHelper';
+<<<<<<< HEAD
 >>>>>>> 79381b08c (feat: Move timeMixin to a helper (#9799))
+=======
+import { useAdmin } from 'dashboard/composables/useAdmin';
+>>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
 import ContactInfoRow from './ContactInfoRow.vue';
 import Thumbnail from 'dashboard/components/widgets/Thumbnail.vue';
 import SocialIcons from './SocialIcons.vue';
@@ -199,9 +205,12 @@ export default {
     ContactMergeModal,
   },
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   mixins: [alertMixin, adminMixin],
 >>>>>>> 79381b08c (feat: Move timeMixin to a helper (#9799))
+=======
+>>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
   props: {
     contact: {
       type: Object,
@@ -309,7 +318,11 @@ export default {
     async deleteContact({ id }) {
       try {
         await this.$store.dispatch('contacts/delete', id);
+<<<<<<< HEAD
         this.$emit('panelClose');
+=======
+        this.$emit('panel-close');
+>>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
         useAlert(this.$t('DELETE_CONTACT.API.SUCCESS_MESSAGE'));
 
         if (isAConversationRoute(this.$route.name)) {

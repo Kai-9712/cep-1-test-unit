@@ -13,10 +13,14 @@ import { loadScript } from 'dashboard/helper/DOMHelpers';
 <script>
 /* global FB */
 import InboxReconnectionRequired from '../components/InboxReconnectionRequired';
+import { useAlert } from 'dashboard/composables';
 
 import { loadScript } from 'dashboard/helper/DOMHelpers';
+<<<<<<< HEAD
 import alertMixin from 'shared/mixins/alertMixin';
 >>>>>>> cb0642564 (feat: add promise based loader for FB script (#9780))
+=======
+>>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
 import * as Sentry from '@sentry/browser';
 
 export default {
@@ -67,6 +71,7 @@ export default {
         if (error.name === 'ScriptLoaderError') {
           // if the error was related to script loading, we show a toast
 <<<<<<< HEAD
+<<<<<<< HEAD
           useAlert(this.$t('INBOX_MGMT.DETAILS.ERROR_FB_LOADING'));
         } else {
           // if the error was anything else, we capture it and show a toast
@@ -79,6 +84,13 @@ export default {
           Sentry.captureException(error);
           this.showAlert(this.$t('INBOX_MGMT.DETAILS.ERROR_FB_AUTH'));
 >>>>>>> cb0642564 (feat: add promise based loader for FB script (#9780))
+=======
+          useAlert(this.$t('INBOX_MGMT.DETAILS.ERROR_FB_LOADING'));
+        } else {
+          // if the error was anything else, we capture it and show a toast
+          Sentry.captureException(error);
+          useAlert(this.$t('INBOX_MGMT.DETAILS.ERROR_FB_AUTH'));
+>>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
         }
       }
     },

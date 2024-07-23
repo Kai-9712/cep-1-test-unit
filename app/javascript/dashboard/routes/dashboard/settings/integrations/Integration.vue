@@ -132,3 +132,68 @@ export default {
     />
   </div>
 </template>
+<<<<<<< HEAD
+=======
+<script>
+import { mapGetters } from 'vuex';
+import { frontendURL } from '../../../../helper/URLHelper';
+import { useAlert } from 'dashboard/composables';
+import globalConfigMixin from 'shared/mixins/globalConfigMixin';
+
+export default {
+  mixins: [globalConfigMixin],
+  props: {
+    integrationId: {
+      type: [String, Number],
+      required: true,
+    },
+    integrationLogo: { type: String, default: '' },
+    integrationName: { type: String, default: '' },
+    integrationDescription: { type: String, default: '' },
+    integrationEnabled: { type: Boolean, default: false },
+    integrationAction: { type: String, default: '' },
+    actionButtonText: { type: String, default: '' },
+    deleteConfirmationText: { type: Object, default: () => ({}) },
+  },
+  data() {
+    return {
+      showDeleteConfirmationPopup: false,
+    };
+  },
+  computed: {
+    ...mapGetters({
+      currentUser: 'getCurrentUser',
+      accountId: 'getCurrentAccountId',
+      globalConfig: 'globalConfig/get',
+    }),
+  },
+  methods: {
+    frontendURL,
+    openDeletePopup() {
+      this.showDeleteConfirmationPopup = true;
+    },
+    closeDeletePopup() {
+      this.showDeleteConfirmationPopup = false;
+    },
+    confirmDeletion() {
+      this.closeDeletePopup();
+      this.deleteIntegration(this.deleteIntegration);
+      this.$router.push({ name: 'settings_integrations' });
+    },
+    async deleteIntegration() {
+      try {
+        await this.$store.dispatch(
+          'integrations/deleteIntegration',
+          this.integrationId
+        );
+        useAlert(this.$t('INTEGRATION_SETTINGS.DELETE.API.SUCCESS_MESSAGE'));
+      } catch (error) {
+        useAlert(
+          this.$t('INTEGRATION_SETTINGS.WEBHOOK.DELETE.API.ERROR_MESSAGE')
+        );
+      }
+    },
+  },
+};
+</script>
+>>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))

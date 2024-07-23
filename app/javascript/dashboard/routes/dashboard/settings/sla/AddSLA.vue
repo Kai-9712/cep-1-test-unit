@@ -17,9 +17,12 @@ import { useAlert } from 'dashboard/composables';
 </template>
 
 <script>
-import alertMixin from 'shared/mixins/alertMixin';
 import { mapGetters } from 'vuex';
+<<<<<<< HEAD
 >>>>>>> 84c380c8c (feat: Replace SLA `validationMixin` within the component (#9804))
+=======
+import { useAlert } from 'dashboard/composables';
+>>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
 import SlaForm from './SlaForm.vue';
 
 export default {
@@ -27,8 +30,11 @@ export default {
     SlaForm,
   },
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   mixins: [alertMixin],
+=======
+>>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
   computed: {
     ...mapGetters({
       uiFlags: 'sla/getUIFlags',

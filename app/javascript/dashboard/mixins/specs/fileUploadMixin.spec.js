@@ -59,7 +59,10 @@ describe('FileUploadMixin', () => {
     it('shows an alert if the file size exceeds the maximum limit', () => {
       const fakeFile = { size: 999999999 };
 <<<<<<< HEAD
+<<<<<<< HEAD
       vm.showAlert = jest.fn();
+=======
+>>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
 =======
 >>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
       vm.onDirectFileUpload(fakeFile);
@@ -76,7 +79,10 @@ describe('FileUploadMixin', () => {
     it('shows an alert if the file size exceeds the maximum limit', () => {
       const fakeFile = { size: 999999999 };
 <<<<<<< HEAD
+<<<<<<< HEAD
       vm.showAlert = jest.fn();
+=======
+>>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
 =======
 >>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
       vm.onIndirectFileUpload(fakeFile);

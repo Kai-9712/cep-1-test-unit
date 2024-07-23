@@ -35,8 +35,11 @@
 import { ref } from 'vue';
 import { mapGetters } from 'vuex';
 import { getSidebarItems } from './config/default-sidebar';
+<<<<<<< HEAD
 import { useKeyboardEvents } from 'dashboard/composables/useKeyboardEvents';
 import { useRoute, useRouter } from 'dashboard/composables/route';
+=======
+>>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
 
 import PrimarySidebar from './sidebarComponents/Primary.vue';
 import SecondarySidebar from './sidebarComponents/Secondary.vue';
@@ -48,6 +51,10 @@ export default {
     PrimarySidebar,
     SecondarySidebar,
   },
+<<<<<<< HEAD
+=======
+  mixins: [keyboardEventListenerMixins],
+>>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
   props: {
     showSecondarySidebar: {
       type: Boolean,

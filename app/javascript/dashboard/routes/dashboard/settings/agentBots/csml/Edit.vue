@@ -1,3 +1,16 @@
+<<<<<<< HEAD
+=======
+<template>
+  <csml-bot-editor
+    v-if="agentBot.id"
+    :agent-bot="agentBot"
+    @submit="updateBot"
+  />
+  <div v-else class="flex flex-col h-auto overflow-auto no-padding">
+    <spinner />
+  </div>
+</template>
+>>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
 <script>
 import { useAlert } from 'dashboard/composables';
 import Spinner from 'shared/components/Spinner.vue';
