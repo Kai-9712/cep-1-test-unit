@@ -21,11 +21,15 @@ export default {
           <div class="flex h-[6.25rem] w-[6.25rem]">
             <img
               :src="`/dashboard/images/integrations/${integration.id}.png`"
+<<<<<<< HEAD:app/javascript/dashboard/routes/dashboard/settings/integrations/SingleIntegrationHooks.vue
               class="max-w-full rounded-md border border-slate-50 dark:border-slate-700/50 shadow-sm block dark:hidden bg-white dark:bg-slate-900"
             />
             <img
               :src="`/dashboard/images/integrations/${integration.id}-dark.png`"
               class="max-w-full rounded-md border border-slate-50 dark:border-slate-700/50 shadow-sm hidden dark:block bg-white dark:bg-slate-900"
+=======
+              class="max-w-full p-6"
+>>>>>>> 39d20b197 (chore: Update the integration icons, logic for enabled/active attributes for the integration (#9828)):app/javascript/dashboard/routes/dashboard/settings/integrationapps/SingleIntegrationHooks.vue
             />
           </div>
           <div class="flex flex-col justify-center m-0 mx-4 flex-1">

@@ -58,6 +58,17 @@ export default {
           },
         },
         {
+<<<<<<< HEAD
+=======
+          path: 'dashboard_apps',
+          component: DashboardApps,
+          name: 'settings_integrations_dashboard_apps',
+          meta: {
+            permissions: ['administrator'],
+          },
+        },
+        {
+>>>>>>> 39d20b197 (chore: Update the integration icons, logic for enabled/active attributes for the integration (#9828))
           path: 'slack',
           name: 'settings_integrations_slack',
           component: Slack,

@@ -66,7 +66,11 @@ export default {
     <div class="flex items-center justify-start flex-1 m-0 mx-4">
       <img
         :src="`/dashboard/images/integrations/${integrationId}.png`"
+<<<<<<< HEAD
         class="w-16 h-16 p-2 mr-4"
+=======
+        class="p-2 h-16 w-16 mr-4"
+>>>>>>> 39d20b197 (chore: Update the integration icons, logic for enabled/active attributes for the integration (#9828))
       />
       <div>
         <h3 class="mb-1 text-xl font-medium text-slate-800 dark:text-slate-100">

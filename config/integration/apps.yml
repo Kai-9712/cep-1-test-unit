@@ -8,6 +8,7 @@
 # settings_json_schema: the json schema used to validate the settings hash (https://json-schema.org/)
 # settings_form_schema: the formulate schema used in frontend to render settings form (https://vueformulate.com/)
 ########################################################
+<<<<<<< HEAD
 captain:
   id: captain
   logo: captain.png
@@ -60,6 +61,9 @@ captain:
     },
   ]
   visible_properties: []
+=======
+
+>>>>>>> 39d20b197 (chore: Update the integration icons, logic for enabled/active attributes for the integration (#9828))
 webhooks:
   id: webhook
   logo: webhooks.png
@@ -67,12 +71,15 @@ webhooks:
   action: /webhook
   hook_type: account
   allow_multiple_hooks: true
+<<<<<<< HEAD
 dashboard_apps:
   id: dashboard_apps
   logo: dashboard_apps.png
   i18n_key: dashboard_apps
   hook_type: account
   allow_multiple_hooks: true
+=======
+>>>>>>> 39d20b197 (chore: Update the integration icons, logic for enabled/active attributes for the integration (#9828))
 openai:
   id: openai
   logo: openai.png

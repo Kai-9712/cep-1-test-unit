@@ -988,7 +988,11 @@ RUBY VERSION
 
 BUNDLED WITH
 <<<<<<< HEAD
+<<<<<<< HEAD
    2.4.6
+=======
+   2.5.16
+>>>>>>> 39d20b197 (chore: Update the integration icons, logic for enabled/active attributes for the integration (#9828))
 =======
    2.5.16
 >>>>>>> 39d20b197 (chore: Update the integration icons, logic for enabled/active attributes for the integration (#9828))

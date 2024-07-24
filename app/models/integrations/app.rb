@@ -39,9 +39,13 @@ class Integrations::App
     when 'slack'
       ENV['SLACK_CLIENT_SECRET'].present?
     when 'linear'
+<<<<<<< HEAD
       account.feature_enabled?('linear_integration')
     when 'captain'
       account.feature_enabled?('captain_integration') && ENV['CAPTAIN_API_URL'].present?
+=======
+      Current.account.feature_enabled?('linear_integration')
+>>>>>>> 39d20b197 (chore: Update the integration icons, logic for enabled/active attributes for the integration (#9828))
     else
       true
     end
@@ -51,8 +55,11 @@ class Integrations::App
     case params[:id]
     when 'webhook'
       account.webhooks.exists?
+<<<<<<< HEAD
     when 'dashboard_apps'
       account.dashboard_apps.exists?
+=======
+>>>>>>> 39d20b197 (chore: Update the integration icons, logic for enabled/active attributes for the integration (#9828))
     else
       account.hooks.exists?(app_id: id)
     end

@@ -5,6 +5,13 @@ RSpec.describe Integrations::App do
   let(:app) { apps.find(id: app_name) }
   let(:account) { create(:account) }
 
+<<<<<<< HEAD
+=======
+  before do
+    allow(Current).to receive(:account).and_return(account)
+  end
+
+>>>>>>> 39d20b197 (chore: Update the integration icons, logic for enabled/active attributes for the integration (#9828))
   describe '#name' do
     let(:app_name) { 'slack' }
 
@@ -24,10 +31,13 @@ RSpec.describe Integrations::App do
   describe '#action' do
     let(:app_name) { 'slack' }
 
+<<<<<<< HEAD
     before do
       allow(Current).to receive(:account).and_return(account)
     end
 
+=======
+>>>>>>> 39d20b197 (chore: Update the integration icons, logic for enabled/active attributes for the integration (#9828))
     context 'when the app is slack' do
       it 'returns the action URL with client_id and redirect_uri' do
         with_modified_env SLACK_CLIENT_ID: 'dummy_client_id' do
@@ -46,7 +56,11 @@ RSpec.describe Integrations::App do
     context 'when the app is slack' do
       it 'returns true if SLACK_CLIENT_SECRET is present' do
         with_modified_env SLACK_CLIENT_SECRET: 'random_secret' do
+<<<<<<< HEAD
           expect(app.active?(account)).to be true
+=======
+          expect(app.active?).to be true
+>>>>>>> 39d20b197 (chore: Update the integration icons, logic for enabled/active attributes for the integration (#9828))
         end
       end
     end
@@ -55,14 +69,22 @@ RSpec.describe Integrations::App do
       let(:app_name) { 'linear' }
 
       it 'returns true if the linear integration feature is disabled' do
+<<<<<<< HEAD
         expect(app.active?(account)).to be false
+=======
+        expect(app.active?).to be false
+>>>>>>> 39d20b197 (chore: Update the integration icons, logic for enabled/active attributes for the integration (#9828))
       end
 
       it 'returns false if the linear integration feature is enabled' do
         account.enable_features('linear_integration')
         account.save!
 
+<<<<<<< HEAD
         expect(app.active?(account)).to be true
+=======
+        expect(app.active?).to be true
+>>>>>>> 39d20b197 (chore: Update the integration icons, logic for enabled/active attributes for the integration (#9828))
       end
     end
 
@@ -70,7 +92,11 @@ RSpec.describe Integrations::App do
       let(:app_name) { 'webhook' }
 
       it 'returns true' do
+<<<<<<< HEAD
         expect(app.active?(account)).to be true
+=======
+        expect(app.active?).to be true
+>>>>>>> 39d20b197 (chore: Update the integration icons, logic for enabled/active attributes for the integration (#9828))
       end
     end
   end
