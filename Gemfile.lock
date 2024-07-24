@@ -710,6 +710,7 @@ GEM
     selectize-rails (0.12.6)
     semantic_range (3.0.0)
 <<<<<<< HEAD
+<<<<<<< HEAD
     sentry-rails (5.18.0)
       railties (>= 5.0)
       sentry-ruby (~> 5.18.0)
@@ -718,6 +719,16 @@ GEM
       concurrent-ruby (~> 1.0, >= 1.0.2)
     sentry-sidekiq (5.18.0)
       sentry-ruby (~> 5.18.0)
+=======
+    sentry-rails (5.18.2)
+      railties (>= 5.0)
+      sentry-ruby (~> 5.18.2)
+    sentry-ruby (5.18.2)
+      bigdecimal
+      concurrent-ruby (~> 1.0, >= 1.0.2)
+    sentry-sidekiq (5.18.2)
+      sentry-ruby (~> 5.18.2)
+>>>>>>> e9d47d31c (chore: [Snyk] Fix for 1 vulnerabilities (#9832))
 =======
     sentry-rails (5.18.2)
       railties (>= 5.0)
@@ -950,9 +961,15 @@ DEPENDENCIES
   scss_lint
   seed_dump
 <<<<<<< HEAD
+<<<<<<< HEAD
   sentry-rails (>= 5.18.0)
   sentry-ruby
   sentry-sidekiq (>= 5.18.0)
+=======
+  sentry-rails (>= 5.18.2)
+  sentry-ruby
+  sentry-sidekiq (>= 5.18.2)
+>>>>>>> e9d47d31c (chore: [Snyk] Fix for 1 vulnerabilities (#9832))
 =======
   sentry-rails (>= 5.18.2)
   sentry-ruby
