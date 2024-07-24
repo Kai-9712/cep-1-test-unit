@@ -966,4 +966,8 @@ RUBY VERSION
    ruby 3.2.2p185
 
 BUNDLED WITH
+<<<<<<< HEAD
    2.4.6
+=======
+   2.5.16
+>>>>>>> 39d20b197 (chore: Update the integration icons, logic for enabled/active attributes for the integration (#9828))
