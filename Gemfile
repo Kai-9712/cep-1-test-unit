@@ -111,9 +111,15 @@ gem 'elastic-apm', require: false
 gem 'newrelic_rpm', require: false
 gem 'newrelic-sidekiq-metrics', '>= 1.6.2', require: false
 gem 'scout_apm', require: false
+<<<<<<< HEAD
 gem 'sentry-rails', '>= 5.18.0', require: false
 gem 'sentry-ruby', require: false
 gem 'sentry-sidekiq', '>= 5.18.0', require: false
+=======
+gem 'sentry-rails', '>= 5.18.2', require: false
+gem 'sentry-ruby', require: false
+gem 'sentry-sidekiq', '>= 5.18.2', require: false
+>>>>>>> e9d47d31c (chore: [Snyk] Fix for 1 vulnerabilities (#9832))
 
 ##-- background job processing --##
 gem 'sidekiq', '>= 7.3.0'
