@@ -1,7 +1,10 @@
 <script setup>
 import CustomBrandPolicyWrapper from 'dashboard/components/CustomBrandPolicyWrapper.vue';
 import { getHelpUrlForFeature } from '../../../../helper/featureHelper';
+<<<<<<< HEAD
 import BackButton from '../../../../components/widgets/BackButton.vue';
+=======
+>>>>>>> 8b1d98af5 (feat: Update the design for integration page (#9825))
 const props = defineProps({
   title: {
     type: String,
@@ -23,10 +26,13 @@ const props = defineProps({
     type: String,
     default: '',
   },
+<<<<<<< HEAD
   backButtonLabel: {
     type: String,
     default: '',
   },
+=======
+>>>>>>> 8b1d98af5 (feat: Update the design for integration page (#9825))
 });
 
 const helpURL = getHelpUrlForFeature(props.featureName);
@@ -38,12 +44,16 @@ const openInNewTab = url => {
 </script>
 
 <template>
+<<<<<<< HEAD
   <div class="flex flex-col items-start w-full gap-2 pt-4">
     <BackButton
       v-if="backButtonLabel"
       compact
       :button-label="backButtonLabel"
     />
+=======
+  <div class="flex flex-col items-start w-full gap-3 pt-4">
+>>>>>>> 8b1d98af5 (feat: Update the design for integration page (#9825))
     <div class="flex items-center justify-between w-full gap-4">
       <div class="flex items-center gap-3">
         <div
@@ -74,7 +84,11 @@ const openInNewTab = url => {
     </div>
     <div class="flex flex-col gap-3 text-slate-600 dark:text-slate-300 w-full">
       <p
+<<<<<<< HEAD
         class="mb-0 text-base font-normal line-clamp-5 sm:line-clamp-none max-w-3xl tracking-[-0.1px]"
+=======
+        class="mb-0 text-base font-normal line-clamp-5 sm:line-clamp-none max-w-3xl"
+>>>>>>> 8b1d98af5 (feat: Update the design for integration page (#9825))
       >
         <slot name="description">{{ description }}</slot>
       </p>
@@ -84,7 +98,11 @@ const openInNewTab = url => {
           :href="helpURL"
           target="_blank"
           rel="noopener noreferrer"
+<<<<<<< HEAD
           class="sm:inline-flex hidden gap-1 w-fit items-center text-woot-500 dark:text-woot-500 text-sm font-medium hover:underline"
+=======
+          class="sm:inline-flex hidden tracking-[-0.6%] gap-1 w-fit items-center text-woot-500 dark:text-woot-500 text-sm font-medium tracking=[-0.6%] hover:underline"
+>>>>>>> 8b1d98af5 (feat: Update the design for integration page (#9825))
         >
           {{ linkText }}
           <fluent-icon
@@ -96,16 +114,24 @@ const openInNewTab = url => {
         </a>
       </CustomBrandPolicyWrapper>
     </div>
+<<<<<<< HEAD
     <div
       class="flex items-start justify-start w-full gap-3 sm:hidden flex-wrap"
     >
+=======
+    <div class="flex items-start justify-start w-full gap-3 sm:hidden">
+>>>>>>> 8b1d98af5 (feat: Update the design for integration page (#9825))
       <slot name="actions" />
       <CustomBrandPolicyWrapper :show-on-custom-branded-instance="false">
         <woot-button
           v-if="helpURL && linkText"
           color-scheme="secondary"
           icon="arrow-outwards"
+<<<<<<< HEAD
           class="flex-row-reverse rounded-md min-w-0 !bg-slate-50 !text-slate-900 dark:!text-white dark:!bg-slate-800"
+=======
+          class="flex-row-reverse rounded-xl min-w-0 !bg-slate-50 !text-slate-900 dark:!text-white dark:!bg-slate-800"
+>>>>>>> 8b1d98af5 (feat: Update the design for integration page (#9825))
           @click="openInNewTab(helpURL)"
         >
           {{ linkText }}

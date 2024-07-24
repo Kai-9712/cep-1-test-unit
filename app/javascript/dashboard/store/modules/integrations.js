@@ -23,6 +23,15 @@ const state = {
 export const getters = {
   getAppIntegrations($state) {
     return $state.records;
+<<<<<<< HEAD
+=======
+  },
+  getIntegration: $state => integrationId => {
+    const [integration] = $state.records.filter(
+      record => record.id === integrationId
+    );
+    return integration || {};
+>>>>>>> 8b1d98af5 (feat: Update the design for integration page (#9825))
   },
   getIntegration:
     $state =>

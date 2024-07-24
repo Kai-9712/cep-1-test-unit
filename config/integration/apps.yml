@@ -72,14 +72,20 @@ webhooks:
   hook_type: account
   allow_multiple_hooks: true
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 8b1d98af5 (feat: Update the design for integration page (#9825))
 dashboard_apps:
   id: dashboard_apps
   logo: dashboard_apps.png
   i18n_key: dashboard_apps
   hook_type: account
   allow_multiple_hooks: true
+<<<<<<< HEAD
 =======
 >>>>>>> 39d20b197 (chore: Update the integration icons, logic for enabled/active attributes for the integration (#9828))
+=======
+>>>>>>> 8b1d98af5 (feat: Update the design for integration page (#9825))
 openai:
   id: openai
   logo: openai.png

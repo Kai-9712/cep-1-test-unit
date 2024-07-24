@@ -33,6 +33,7 @@ onMounted(() => {
       />
     </template>
     <template #body>
+<<<<<<< HEAD
       <div class="flex-grow flex-shrink overflow-auto">
         <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
           <IntegrationItem
@@ -40,11 +41,20 @@ onMounted(() => {
             :id="item.id"
             :key="item.id"
 <<<<<<< HEAD
+=======
+      <div class="flex-grow flex-shrink overflow-auto font-inter">
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+          <integration-item
+            v-for="item in integrationList"
+            :id="item.id"
+            :key="item.id"
+>>>>>>> 8b1d98af5 (feat: Update the design for integration page (#9825))
             :logo="item.logo"
             :name="item.name"
             :description="item.description"
             :enabled="item.enabled"
           />
+<<<<<<< HEAD
 =======
             class="bg-white dark:bg-slate-800 border border-solid border-slate-75 dark:border-slate-700/50 rounded-sm mb-4 p-4"
           >
@@ -73,6 +83,8 @@ onMounted(() => {
             />
           </div>
 >>>>>>> 39d20b197 (chore: Update the integration icons, logic for enabled/active attributes for the integration (#9828))
+=======
+>>>>>>> 8b1d98af5 (feat: Update the design for integration page (#9825))
         </div>
       </div>
     </template>

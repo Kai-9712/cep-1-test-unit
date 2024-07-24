@@ -22,6 +22,7 @@ export default {
             permissions: ['administrator'],
           },
         },
+<<<<<<< HEAD
         {
           path: 'dashboard_apps',
           component: DashboardApps,
@@ -32,6 +33,11 @@ export default {
         },
       ],
     },
+=======
+      ],
+    },
+
+>>>>>>> 8b1d98af5 (feat: Update the design for integration page (#9825))
     {
       path: frontendURL('accounts/:accountId/settings/integrations'),
       component: SettingsContent,

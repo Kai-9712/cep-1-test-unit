@@ -11281,15 +11281,21 @@ eslint-plugin-storybook@^0.6.14:
     ts-dedent "^2.2.0"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 eslint-plugin-vue@^9.17.0:
   version "9.17.0"
   resolved "https://registry.npmjs.org/eslint-plugin-vue/-/eslint-plugin-vue-9.17.0.tgz"
   integrity sha512-r7Bp79pxQk9I5XDP0k2dpUC7Ots3OSWgvGZNu3BxmKK6Zg7NgVtcOB6OCna5Kb9oQwJPl5hq183WD0SY5tZtIQ==
 =======
+=======
+>>>>>>> 8b1d98af5 (feat: Update the design for integration page (#9825))
 eslint-plugin-vue@^9.27.0:
   version "9.27.0"
   resolved "https://registry.yarnpkg.com/eslint-plugin-vue/-/eslint-plugin-vue-9.27.0.tgz#c22dae704a03d9ecefa81364ff89f60ce0481f94"
   integrity sha512-5Dw3yxEyuBSXTzT5/Ge1X5kIkRTQ3nvBn/VwPwInNiZBSJOO/timWMUaflONnFBzU6NhB68lxnCda7ULV5N7LA==
+<<<<<<< HEAD
+>>>>>>> 8b1d98af5 (feat: Update the design for integration page (#9825))
+=======
 >>>>>>> 8b1d98af5 (feat: Update the design for integration page (#9825))
   dependencies:
     "@eslint-community/eslint-utils" "^4.4.0"
@@ -17669,6 +17675,7 @@ postcss-selector-parser@^6.0.10, postcss-selector-parser@^6.0.11, postcss-select
     util-deprecate "^1.0.2"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 postcss-selector-parser@^6.0.2:
   version "6.0.5"
   resolved "https://registry.npmjs.org/postcss-selector-parser/-/postcss-selector-parser-6.0.5.tgz"
@@ -17682,10 +17689,15 @@ postcss-selector-parser@6.0.10:
   resolved "https://registry.npmjs.org/postcss-selector-parser/-/postcss-selector-parser-6.0.10.tgz"
   integrity sha512-IQ7TZdoaqbT+LCpShg46jnZVlhWD2w6iQYAcYXfHARZ7X1t/UGhhceQDs5X0cGqKvYlHNOuv7Oa1xmb0oQuA3w==
 =======
+=======
+>>>>>>> 8b1d98af5 (feat: Update the design for integration page (#9825))
 postcss-selector-parser@^6.0.15:
   version "6.1.1"
   resolved "https://registry.yarnpkg.com/postcss-selector-parser/-/postcss-selector-parser-6.1.1.tgz#5be94b277b8955904476a2400260002ce6c56e38"
   integrity sha512-b4dlw/9V8A71rLIDsSwVmak9z2DuBUB7CA1/wSdelNEzqsjoSPeADTWNO09lpH49Diy3/JIZ2bSPB1dI3LJCHg==
+<<<<<<< HEAD
+>>>>>>> 8b1d98af5 (feat: Update the design for integration page (#9825))
+=======
 >>>>>>> 8b1d98af5 (feat: Update the design for integration page (#9825))
   dependencies:
     cssesc "^3.0.0"
@@ -19410,6 +19422,7 @@ semver@^7.3.2:
     lru-cache "^6.0.0"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 semver@^7.3.4:
   version "7.5.2"
   resolved "https://registry.npmjs.org/semver/-/semver-7.5.2.tgz"
@@ -19421,12 +19434,16 @@ semver@^7.3.6:
 =======
 semver@^7.3.6, semver@^7.5.3:
 >>>>>>> 8b1d98af5 (feat: Update the design for integration page (#9825))
+=======
+semver@^7.3.6, semver@^7.5.3:
+>>>>>>> 8b1d98af5 (feat: Update the design for integration page (#9825))
   version "7.5.4"
   resolved "https://registry.npmjs.org/semver/-/semver-7.5.4.tgz"
   integrity sha512-1bCSESV6Pv+i21Hvpxp3Dx+pSD8lIPt8uVjRrxAUt/nbswYc+tK6Y2btiULjd4+fnq15PX+nqQDC7Oft7WkwcA==
   dependencies:
     lru-cache "^6.0.0"
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 semver@^7.3.7:
   version "7.5.2"
@@ -19466,10 +19483,15 @@ semver@7.5.3:
   dependencies:
     lru-cache "^6.0.0"
 =======
+=======
+>>>>>>> 8b1d98af5 (feat: Update the design for integration page (#9825))
 semver@^7.6.0:
   version "7.6.3"
   resolved "https://registry.yarnpkg.com/semver/-/semver-7.6.3.tgz#980f7b5550bc175fb4dc09403085627f9eb33143"
   integrity sha512-oVekP1cKtI+CTDvHWYFUcMtsK/00wmAEfyqKfNdARm8u1wNVhSgaX7A8d4UuIlUI5e84iEwOhs7ZPYRmzU9U6A==
+<<<<<<< HEAD
+>>>>>>> 8b1d98af5 (feat: Update the design for integration page (#9825))
+=======
 >>>>>>> 8b1d98af5 (feat: Update the design for integration page (#9825))
 
 send@0.18.0:
@@ -21662,15 +21684,21 @@ vue-easytable@2.5.5:
     vue-template-compiler "^2.6.11"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 vue-eslint-parser@^9.3.1:
   version "9.3.1"
   resolved "https://registry.npmjs.org/vue-eslint-parser/-/vue-eslint-parser-9.3.1.tgz"
   integrity sha512-Clr85iD2XFZ3lJ52/ppmUDG/spxQu6+MAeHXjjyI4I1NUYZ9xmenQp4N0oaHJhrA8OOxltCVxMRfANGa70vU0g==
 =======
+=======
+>>>>>>> 8b1d98af5 (feat: Update the design for integration page (#9825))
 vue-eslint-parser@^9.4.3:
   version "9.4.3"
   resolved "https://registry.yarnpkg.com/vue-eslint-parser/-/vue-eslint-parser-9.4.3.tgz#9b04b22c71401f1e8bca9be7c3e3416a4bde76a8"
   integrity sha512-2rYRLWlIpaiN8xbPiDyXZXRgLGOtWxERV7ND5fFAv5qo1D2N9Fu9MNajBNc6o13lZ+24DAWCkQCvj4klgmcITg==
+<<<<<<< HEAD
+>>>>>>> 8b1d98af5 (feat: Update the design for integration page (#9825))
+=======
 >>>>>>> 8b1d98af5 (feat: Update the design for integration page (#9825))
   dependencies:
     debug "^4.3.4"

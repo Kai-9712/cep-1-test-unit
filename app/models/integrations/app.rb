@@ -56,10 +56,15 @@ class Integrations::App
     when 'webhook'
       account.webhooks.exists?
 <<<<<<< HEAD
+<<<<<<< HEAD
     when 'dashboard_apps'
       account.dashboard_apps.exists?
 =======
 >>>>>>> 39d20b197 (chore: Update the integration icons, logic for enabled/active attributes for the integration (#9828))
+=======
+    when 'dashboard_apps'
+      account.dashboard_apps.exists?
+>>>>>>> 8b1d98af5 (feat: Update the design for integration page (#9825))
     else
       account.hooks.exists?(app_id: id)
     end

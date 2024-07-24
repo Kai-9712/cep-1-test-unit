@@ -138,10 +138,13 @@
     "eslint-plugin-prettier": "5.0.0",
     "eslint-plugin-storybook": "^0.6.14",
 <<<<<<< HEAD
+<<<<<<< HEAD
     "eslint-plugin-vue": "^9.17.0",
     "expect-more-jest": "^2.4.2",
     "fake-indexeddb": "^4.0.1",
 =======
+=======
+>>>>>>> 8b1d98af5 (feat: Update the design for integration page (#9825))
     "eslint-plugin-vue": "^9.27.0",
     "fake-indexeddb": "^6.0.0",
 >>>>>>> 8b1d98af5 (feat: Update the design for integration page (#9825))
