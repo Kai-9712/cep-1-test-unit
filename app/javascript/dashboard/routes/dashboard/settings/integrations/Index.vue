@@ -34,6 +34,7 @@ onMounted(() => {
     </template>
     <template #body>
 <<<<<<< HEAD
+<<<<<<< HEAD
       <div class="flex-grow flex-shrink overflow-auto">
         <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
           <IntegrationItem
@@ -43,6 +44,9 @@ onMounted(() => {
 <<<<<<< HEAD
 =======
       <div class="flex-grow flex-shrink overflow-auto font-inter">
+=======
+      <div class="flex-grow flex-shrink overflow-auto">
+>>>>>>> 6694db093 (feat: Update the design for dashboard_apps (#9840))
         <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
           <integration-item
             v-for="item in integrationList"

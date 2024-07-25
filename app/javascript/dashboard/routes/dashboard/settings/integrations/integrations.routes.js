@@ -23,6 +23,9 @@ export default {
           },
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 6694db093 (feat: Update the design for dashboard_apps (#9840))
         {
           path: 'dashboard_apps',
           component: DashboardApps,
@@ -31,6 +34,7 @@ export default {
             permissions: ['administrator'],
           },
         },
+<<<<<<< HEAD
       ],
     },
 =======
@@ -38,6 +42,10 @@ export default {
     },
 
 >>>>>>> 8b1d98af5 (feat: Update the design for integration page (#9825))
+=======
+      ],
+    },
+>>>>>>> 6694db093 (feat: Update the design for dashboard_apps (#9840))
     {
       path: frontendURL('accounts/:accountId/settings/integrations'),
       component: SettingsContent,
@@ -65,6 +73,7 @@ export default {
         },
         {
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
           path: 'dashboard_apps',
           component: DashboardApps,
@@ -75,6 +84,8 @@ export default {
         },
         {
 >>>>>>> 39d20b197 (chore: Update the integration icons, logic for enabled/active attributes for the integration (#9828))
+=======
+>>>>>>> 6694db093 (feat: Update the design for dashboard_apps (#9840))
           path: 'slack',
           name: 'settings_integrations_slack',
           component: Slack,

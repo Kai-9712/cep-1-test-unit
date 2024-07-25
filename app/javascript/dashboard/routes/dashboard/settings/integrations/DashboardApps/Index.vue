@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <template>
   <div class="flex-1 p-4 overflow-auto">
@@ -84,6 +85,8 @@
   </div>
 </template>
 >>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
+=======
+>>>>>>> 6694db093 (feat: Update the design for dashboard_apps (#9840))
 <script>
 import { mapGetters } from 'vuex';
 import { useAlert } from 'dashboard/composables';
@@ -162,7 +165,11 @@ export default {
 </script>
 
 <template>
+<<<<<<< HEAD
   <div class="flex flex-col flex-1 gap-8 overflow-auto">
+=======
+  <div class="flex-1 overflow-auto flex gap-8 flex-col">
+>>>>>>> 6694db093 (feat: Update the design for dashboard_apps (#9840))
     <BaseSettingsHeader
       :title="$t('INTEGRATION_SETTINGS.DASHBOARD_APPS.TITLE')"
       :description="$t('INTEGRATION_SETTINGS.DASHBOARD_APPS.DESCRIPTION')"
@@ -172,7 +179,11 @@ export default {
     >
       <template #actions>
         <woot-button
+<<<<<<< HEAD
           class="rounded-md button nice"
+=======
+          class="button nice rounded-md"
+>>>>>>> 6694db093 (feat: Update the design for dashboard_apps (#9840))
           icon="add-circle"
           @click="openCreatePopup"
         >
@@ -180,7 +191,11 @@ export default {
         </woot-button>
       </template>
     </BaseSettingsHeader>
+<<<<<<< HEAD
     <div class="w-full overflow-x-auto text-slate-700 dark:text-slate-200">
+=======
+    <div class="w-full text-slate-700 dark:text-slate-200 overflow-x-auto">
+>>>>>>> 6694db093 (feat: Update the design for dashboard_apps (#9840))
       <p
         v-if="!uiFlags.isFetching && !records.length"
         class="flex flex-col items-center justify-center h-full"
@@ -201,13 +216,21 @@ export default {
               'INTEGRATION_SETTINGS.DASHBOARD_APPS.LIST.TABLE_HEADER'
             )"
             :key="thHeader"
+<<<<<<< HEAD
             class="py-4 pr-4 font-semibold text-left text-slate-700 dark:text-slate-300"
+=======
+            class="py-4 pr-4 text-left font-semibold text-slate-700 dark:text-slate-300"
+>>>>>>> 6694db093 (feat: Update the design for dashboard_apps (#9840))
           >
             {{ thHeader }}
           </th>
         </thead>
         <tbody class="divide-y divide-slate-50 dark:divide-slate-800">
+<<<<<<< HEAD
           <DashboardAppsRow
+=======
+          <dashboard-apps-row
+>>>>>>> 6694db093 (feat: Update the design for dashboard_apps (#9840))
             v-for="(dashboardAppItem, index) in records"
             :key="dashboardAppItem.id"
             :index="index"
@@ -219,7 +242,11 @@ export default {
       </table>
     </div>
 
+<<<<<<< HEAD
     <DashboardAppModal
+=======
+    <dashboard-app-modal
+>>>>>>> 6694db093 (feat: Update the design for dashboard_apps (#9840))
       v-if="showDashboardAppPopup"
       :show="showDashboardAppPopup"
       :mode="mode"
