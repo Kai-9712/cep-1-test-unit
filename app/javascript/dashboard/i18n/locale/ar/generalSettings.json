@@ -96,8 +96,13 @@
   "NETWORK": {
     "NOTIFICATION": {
       "OFFLINE": "غير متصل",
+<<<<<<< HEAD
       "RECONNECTING": "جاري إعادة الاتصال...",
       "RECONNECT_SUCCESS": "تمت إعادة الاتصال"
+=======
+      "RECONNECTING": "Reconnecting...",
+      "RECONNECT_SUCCESS": "Reconnected"
+>>>>>>> 027a540bb (chore: Update translations from Crowdin (#9835))
     },
     "BUTTON": {
       "REFRESH": "تحديث"
@@ -118,8 +123,13 @@
       "REMOVE_LABEL": "إزالة التسمية من المحادثة",
       "SETTINGS": "الإعدادات",
       "AI_ASSIST": "مساعدة AI",
+<<<<<<< HEAD
       "APPEARANCE": "المظهر",
       "SNOOZE_NOTIFICATION": "تأجيل الإشعارات"
+=======
+      "APPEARANCE": "مظهر",
+      "SNOOZE_NOTIFICATION": "تأجيل التنبيهات"
+>>>>>>> 027a540bb (chore: Update translations from Crowdin (#9835))
     },
     "COMMANDS": {
       "GO_TO_CONVERSATION_DASHBOARD": "الذهاب إلى لوحة المحادثة",

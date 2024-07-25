@@ -59,10 +59,17 @@
         "TEXT": "آخر نشاط: الأحدث أولا"
       },
       "created_at_desc": {
+<<<<<<< HEAD
         "TEXT": "وقت الإنشاء: الأحدث أولاً"
       },
       "created_at_asc": {
         "TEXT": "وقت الإنشاء: الأقدم أولاً"
+=======
+        "TEXT": "تم إنشاؤها في: الأحدث أولاً"
+      },
+      "created_at_asc": {
+        "TEXT": "تم إنشاؤها في: أقدم أولاً"
+>>>>>>> 027a540bb (chore: Update translations from Crowdin (#9835))
       },
       "priority_desc": {
         "TEXT": "الأولوية: الأعلى أولا"
@@ -74,7 +81,11 @@
         "TEXT": "الرد المعلق: الأطول أولا"
       },
       "waiting_since_desc": {
+<<<<<<< HEAD
         "TEXT": "الرد المعلق: الأقصر أولاً"
+=======
+        "TEXT": "الرد المعلق: أقصر أولاً"
+>>>>>>> 027a540bb (chore: Update translations from Crowdin (#9835))
       }
     },
     "ATTACHMENTS": {

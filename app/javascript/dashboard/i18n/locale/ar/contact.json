@@ -72,7 +72,11 @@
       "SUBMIT": "استيراد",
       "CANCEL": "إلغاء"
     },
+<<<<<<< HEAD
     "SUCCESS_MESSAGE": "سيتم إعلامك عبر البريد الإلكتروني عند استكمال الاستيراد.",
+=======
+    "SUCCESS_MESSAGE": "سيتم إعلامك عبر البريد الإلكتروني عند اكتمال الاستيراد.",
+>>>>>>> 027a540bb (chore: Update translations from Crowdin (#9835))
     "ERROR_MESSAGE": "حدث خطأ، الرجاء المحاولة مرة أخرى"
   },
   "EXPORT_CONTACTS": {

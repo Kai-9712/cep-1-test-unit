@@ -138,8 +138,13 @@ ar:
       timezone: منطقة زمنية
     sla_csv:
       conversation_id: معرف المحادثة
+<<<<<<< HEAD
       sla_policy_breached: سياسة مستوى الخدمة
       assignee: المكلَّف
+=======
+      sla_policy_breached: SLA Policy
+      assignee: Assignee
+>>>>>>> 027a540bb (chore: Update translations from Crowdin (#9835))
       team: الفريق
       inbox: صندوق الوارد
       labels: الوسوم
@@ -266,6 +271,7 @@ ar:
       description: "دمج ترجمة جوجل لمساعدة الوكلاء على ترجمة رسائل العملاء بسهولة. هذا الدمج يكشف تلقائياً اللغة ويحولها إلى اللغة المفضلة لدى الوكيل أو المدير."
     openai:
       name: "OpenAI"
+<<<<<<< HEAD
       description: "الاستفادة من قوة نماذج اللغات الكبيرة من OpenAI مع ميزات مثل اقتراحات الرد، التلخيص، إعادة صياغة الرسائل، التحقق الإملائي، تصنيف البطاقات."
     linear:
       name: "Linear"
@@ -309,6 +315,12 @@ ar:
       name: "قائد"
       description: "الكابتن هو مساعد AI أصلي تم بناؤه لمنتجك وتم تدريبه على قاعدة معارف شركتك. يستجيب كإنسان ويحل استفسارات العميل بشكل فعال. قم بتكوينه بسهولة إلى صناديق الوارد الخاصة بك."
 >>>>>>> a196e2358 (chore: Update translations (#9845))
+=======
+      description: "Integrate powerful AI features into Chatwoot by leveraging the GPT models from OpenAI."
+    linear:
+      name: "Linear"
+      description: "Create Linear issues from conversations, or link existing ones for seamless tracking."
+>>>>>>> 027a540bb (chore: Update translations from Crowdin (#9835))
   public_portal:
     search:
       search_placeholder: البحث عن مقالة حسب العنوان أو الجسم...

@@ -1,6 +1,7 @@
 {
   "FILTER": {
     "TITLE": "تصفية المحادثات",
+<<<<<<< HEAD
     "SUBTITLE": "أضف عوامل التصفية أدناه واضغط على 'تطبيق التصفيات' لتجنب الفوضى في المحادثات.",
     "EDIT_CUSTOM_FILTER": "تعديل المجلد",
     "CUSTOM_VIEWS_SUBTITLE": "أضف أو أزل تصفيات وقم بتحديث المجلد الخاص بك.",
@@ -10,6 +11,17 @@
     "UPDATE_BUTTON_LABEL": "تحديث المجلد",
     "CANCEL_BUTTON_LABEL": "إلغاء",
     "CLEAR_BUTTON_LABEL": "مسح التصفيات",
+=======
+    "SUBTITLE": "أضف عوامل التصفية أدناه واضغط على 'تطبيق الفلترة' لتجنب الفوضى في المحادثات.",
+    "EDIT_CUSTOM_FILTER": "تحرير المجلد",
+    "CUSTOM_VIEWS_SUBTITLE": "أضف أو أزل الفلاتر وقم بتحديث المجلد الخاص بك.",
+    "ADD_NEW_FILTER": "إضافة فلتر",
+    "FILTER_DELETE_ERROR": "عذرًا، يبدو أننا لا نستطيع حفظ أي شيء! يرجى إضافة فلتر واحد على الأقل لحفظه.",
+    "SUBMIT_BUTTON_LABEL": "تطبيق عامل التصفية",
+    "UPDATE_BUTTON_LABEL": "تحديث المجلد",
+    "CANCEL_BUTTON_LABEL": "إلغاء",
+    "CLEAR_BUTTON_LABEL": "مسح الفلاتر",
+>>>>>>> 027a540bb (chore: Update translations from Crowdin (#9835))
     "FOLDER_LABEL": "اسم المجلد",
     "FOLDER_QUERY_LABEL": "استعلام المجلد",
     "EMPTY_VALUE_ERROR": "القيمة مطلوبة.",
@@ -36,7 +48,11 @@
     },
     "ATTRIBUTES": {
       "STATUS": "الحالة",
+<<<<<<< HEAD
       "ASSIGNEE_NAME": "اسم المكلَّف",
+=======
+      "ASSIGNEE_NAME": "اسم المستلم",
+>>>>>>> 027a540bb (chore: Update translations from Crowdin (#9835))
       "INBOX_NAME": "اسم صندوق الوارد",
       "TEAM_NAME": "اسم الفريق",
       "CONVERSATION_IDENTIFIER": "معرف المحادثة",
@@ -55,15 +71,26 @@
       "LAST_ACTIVITY": "آخر نشاط"
     },
     "GROUPS": {
+<<<<<<< HEAD
       "STANDARD_FILTERS": "التصفيات القياسية",
       "ADDITIONAL_FILTERS": "التصفيات الإضافية",
+=======
+      "STANDARD_FILTERS": "الفلاتر القياسية",
+      "ADDITIONAL_FILTERS": "الفلاتر الإضافية",
+>>>>>>> 027a540bb (chore: Update translations from Crowdin (#9835))
       "CUSTOM_ATTRIBUTES": "الخصائص المخصصة"
     },
     "CUSTOM_VIEWS": {
       "ADD": {
+<<<<<<< HEAD
         "TITLE": "هل تريد حفظ هذه التصفية؟",
         "LABEL": "تسمية هذه التصفية",
         "PLACEHOLDER": "قم بتسمية التصفية لتتمكن من الرجوع إليه لاحقًا.",
+=======
+        "TITLE": "هل تريد حفظ هذا الفلتر؟",
+        "LABEL": "تسمية هذا الفلتر",
+        "PLACEHOLDER": "قم بتسمية الفلتر لتتمكن من الرجوع إليه لاحقًا.",
+>>>>>>> 027a540bb (chore: Update translations from Crowdin (#9835))
         "ERROR_MESSAGE": "الاسم مطلوب.",
         "SAVE_BUTTON": "حفظ التصفية",
         "CANCEL_BUTTON": "إلغاء",
@@ -84,7 +111,11 @@
         "MODAL": {
           "CONFIRM": {
             "TITLE": "تأكيد الحذف",
+<<<<<<< HEAD
             "MESSAGE": "هل أنت متأكد من حذف التصفية ",
+=======
+            "MESSAGE": "هل أنت متأكد من حذف الفلتر ",
+>>>>>>> 027a540bb (chore: Update translations from Crowdin (#9835))
             "YES": "نعم، احذف",
             "NO": "لا، احتفظ به"
           }

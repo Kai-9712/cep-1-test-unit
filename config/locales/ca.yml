@@ -192,7 +192,11 @@ ca:
       description: "Dashboard Apps allow you to create and embed applications that display user information, orders, or payment history, providing more context to your customer support agents."
     dyte:
       name: "Dyte"
+<<<<<<< HEAD
       description: "Dyte is a product that integrates audio and video functionalities into your application. With this integration, your agents can start video/voice calls with your customers directly from Chatwoot."
+=======
+      description: "Dyte és una eina que us ajuda a afegir àudio i vídeo en directe a la vostra aplicació amb només unes poques línies de codi. Aquesta integració us permet donar una opció als vostres agents per fer una trucada de vídeo o de veu amb els vostres clients sense sortir de Chatwoot."
+>>>>>>> 027a540bb (chore: Update translations from Crowdin (#9835))
       meeting_name: "%{agent_name} ha iniciat una reunió"
     slack:
       name: "Slack"
@@ -202,6 +206,7 @@ ca:
       description: "Webhook events provide real-time updates about activities in your Chatwoot account. You can subscribe to your preferred events, and Chatwoot will send you HTTP callbacks with the updates."
     dialogflow:
       name: "Dialogflow"
+<<<<<<< HEAD
       description: "Build chatbots with Dialogflow and easily integrate them into your inbox. These bots can handle initial queries before transferring them to a customer service agent."
     google_translate:
       name: "Google Translate"
@@ -215,6 +220,21 @@ ca:
     captain:
       name: "Captain"
       description: "Captain is a native AI assistant built for your product and trained on your company's knowledge base. It responds like a human and resolves customer queries effectively. Configure it to your inboxes easily."
+=======
+      description: "Crea chatbots amb Dialogflow i connecta'ls ràpidament a la vostra safata d'entrada. Deixa que els robots gestionen les consultes abans de lliurar-les a un agent d'atenció al client."
+    fullcontact:
+      name: "Fullcontact"
+      description: "La integració de FullContact ajuda a enriquir els perfils dels visitants. Identifica els usuaris tan bon punt comparteixin la seva adreça de correu electrònic i ofereix-los un servei d'atenció al client personalitzat. Connecta FullContact al teu compte compartint la clau de l'API de FullContact."
+    google_translate:
+      name: "Google Translate"
+      description: "Facilita que els agents tradueixin missatges afegint una integració de Google Translate. Google Translate ajuda a identificar l'idioma automàticament i convertir-lo a l'idioma escollit per l'agent/administrador del compte."
+    openai:
+      name: "OpenAI"
+      description: "Integra potents funcions d'IA a Chatwoot aprofitant els models GPT d'OpenAI."
+    linear:
+      name: "Linear"
+      description: "Crea issues en Linear a partir de converses o enllaça els existents per fer un seguiment perfecte."
+>>>>>>> 027a540bb (chore: Update translations from Crowdin (#9835))
   public_portal:
     search:
       search_placeholder: Cerca l'article per títol o cos...

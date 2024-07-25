@@ -187,6 +187,7 @@ tl:
     online:
       delete: "%{contact_name} is Online, please try again later"
   integration_apps:
+<<<<<<< HEAD
     dashboard_apps:
       name: "Dashboard Apps"
       description: "Dashboard Apps allow you to create and embed applications that display user information, orders, or payment history, providing more context to your customer support agents."
@@ -215,6 +216,33 @@ tl:
     captain:
       name: "Captain"
       description: "Captain is a native AI assistant built for your product and trained on your company's knowledge base. It responds like a human and resolves customer queries effectively. Configure it to your inboxes easily."
+=======
+    dyte:
+      name: "Dyte"
+      description: "Dyte is tool that helps you to add live audio & video to your application with just a few lines of code. This integration allows you to give an option to your agents to have a video or voice call with your customers from without leaving Chatwoot."
+      meeting_name: "%{agent_name} has started a meeting"
+    slack:
+      name: "Slack"
+      description: "Slack is a chat tool that brings all your communication together in one place. By integrating Slack, you can get notified of all the new conversations in your account right inside your Slack."
+    webhooks:
+      name: "Webhooks"
+      description: "Webhook events provide you the realtime information about what's happening in your account. You can make use of the webhooks to communicate the events to your favourite apps like Slack or Github. Click on Configure to set up your webhooks."
+    dialogflow:
+      name: "Dialogflow"
+      description: "Build chatbots using Dialogflow and connect them to your inbox quickly. Let the bots handle the queries before handing them off to a customer service agent."
+    fullcontact:
+      name: "Fullcontact"
+      description: "FullContact integration helps to enrich visitor profiles. Identify the users as soon as they share their email address and offer them tailored customer service. Connect your FullContact to your account by sharing the FullContact API Key."
+    google_translate:
+      name: "Google Translate"
+      description: "Make it easier for agents to translate messages by adding a Google Translate Integration. Google translate helps to identify the language automatically and convert it to the language chosen by the agent/account admin."
+    openai:
+      name: "OpenAI"
+      description: "Integrate powerful AI features into Chatwoot by leveraging the GPT models from OpenAI."
+    linear:
+      name: "Linear"
+      description: "Create Linear issues from conversations, or link existing ones for seamless tracking."
+>>>>>>> 027a540bb (chore: Update translations from Crowdin (#9835))
   public_portal:
     search:
       search_placeholder: Search for article by title or body...

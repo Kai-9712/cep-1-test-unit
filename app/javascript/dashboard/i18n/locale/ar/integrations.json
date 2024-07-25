@@ -236,6 +236,7 @@
     },
     "LINEAR": {
       "ADD_OR_LINK_BUTTON": "Create/Link Linear Issue",
+<<<<<<< HEAD
       "LOADING": "جلب مشاكل من Linear...",
       "LOADING_ERROR": "حدث خطأ أثناء جلب المشكلات من Linear، الرجاء المحاولة مرة أخرى",
       "CREATE": "إنشاء",
@@ -269,10 +270,34 @@
           "TITLE": {
             "LABEL": "العنوان",
             "PLACEHOLDER": "أدخل العنوان",
+=======
+      "LOADING": "Fetching linear issues...",
+      "LOADING_ERROR": "There was an error fetching the linear issues, please try again",
+      "CREATE": "إنشاء",
+      "LINK": {
+        "SEARCH": "Search issues",
+        "SELECT": "Select issue",
+        "TITLE": "الرابط",
+        "EMPTY_LIST": "No linear issues found",
+        "LOADING": "جار التحميل",
+        "ERROR": "There was an error fetching the linear issues, please try again",
+        "LINK_SUCCESS": "Issue linked successfully",
+        "LINK_ERROR": "There was an error linking the issue, please try again",
+        "LINK_TITLE": "Conversation (#%{conversationId}) with %{name}"
+      },
+      "ADD_OR_LINK": {
+        "TITLE": "Create/link linear issue",
+        "DESCRIPTION": "Create Linear issues from conversations, or link existing ones for seamless tracking.",
+        "FORM": {
+          "TITLE": {
+            "LABEL": "العنوان",
+            "PLACEHOLDER": "Enter title",
+>>>>>>> 027a540bb (chore: Update translations from Crowdin (#9835))
             "REQUIRED_ERROR": "العنوان مطلوب"
           },
           "DESCRIPTION": {
             "LABEL": "الوصف",
+<<<<<<< HEAD
             "PLACEHOLDER": "أدخل الوصف"
           },
           "TEAM": {
@@ -286,10 +311,19 @@
           "ASSIGNEE": {
             "LABEL": "المكلَّف",
 =======
+=======
+            "PLACEHOLDER": "Enter description"
+          },
+          "TEAM": {
+            "LABEL": "الفريق",
+            "PLACEHOLDER": "اختيار فريق",
+            "SEARCH": "Search team",
+>>>>>>> 027a540bb (chore: Update translations from Crowdin (#9835))
             "REQUIRED_ERROR": "Team is required"
           },
           "ASSIGNEE": {
             "LABEL": "Assignee",
+<<<<<<< HEAD
 >>>>>>> 066f0b990 (chore: Update translations (#9841))
 =======
             "REQUIRED_ERROR": "الفريق مطلوب"
@@ -299,10 +333,15 @@
 >>>>>>> a196e2358 (chore: Update translations (#9845))
             "PLACEHOLDER": "اختر المحال إليه",
             "SEARCH": "البحث عن المحال إليه"
+=======
+            "PLACEHOLDER": "Select assignee",
+            "SEARCH": "Search assignee"
+>>>>>>> 027a540bb (chore: Update translations from Crowdin (#9835))
           },
           "PRIORITY": {
             "LABEL": "الأولوية",
             "PLACEHOLDER": "تحديد الأولوية",
+<<<<<<< HEAD
             "SEARCH": "أولوية البحث"
           },
           "LABEL": {
@@ -327,18 +366,44 @@
 >>>>>>> a196e2358 (chore: Update translations (#9845))
             "PLACEHOLDER": "حدد المشروع",
             "SEARCH": "البحث عن المشروع"
+=======
+            "SEARCH": "Search priority"
+          },
+          "LABEL": {
+            "LABEL": "الوسم",
+            "PLACEHOLDER": "Select label",
+            "SEARCH": "Search label"
+          },
+          "STATUS": {
+            "LABEL": "الحالة",
+            "PLACEHOLDER": "Select status",
+            "SEARCH": "Search status"
+          },
+          "PROJECT": {
+            "LABEL": "Project",
+            "PLACEHOLDER": "Select project",
+            "SEARCH": "Search project"
+>>>>>>> 027a540bb (chore: Update translations from Crowdin (#9835))
           }
         },
         "CREATE": "إنشاء",
         "CANCEL": "إلغاء",
+<<<<<<< HEAD
         "CREATE_SUCCESS": "تم إنشاء المشكلة بنجاح",
         "CREATE_ERROR": "حدث خطأ أثناء إنشاء المشكلة، يرجى المحاولة مرة أخرى",
         "LOADING_TEAM_ERROR": "حدث خطأ أثناء جلب الفرق, الرجاء المحاولة مرة أخرى",
         "LOADING_TEAM_ENTITIES_ERROR": "حدث خطأ أثناء جلب كيانات الفريق، يرجى المحاولة مرة أخرى"
+=======
+        "CREATE_SUCCESS": "Issue created successfully",
+        "CREATE_ERROR": "There was an error creating the issue, please try again",
+        "LOADING_TEAM_ERROR": "There was an error fetching the teams, please try again",
+        "LOADING_TEAM_ENTITIES_ERROR": "There was an error fetching the team entities, please try again"
+>>>>>>> 027a540bb (chore: Update translations from Crowdin (#9835))
       },
       "ISSUE": {
         "STATUS": "الحالة",
         "PRIORITY": "الأولوية",
+<<<<<<< HEAD
         "ASSIGNEE": "المكلَّف",
         "LABELS": "الوسوم",
         "CREATED_AT": "تم إنشاؤها في %{createdAt}"
@@ -347,6 +412,16 @@
         "TITLE": "إلغاء الربط",
         "SUCCESS": "تم إلغاء ربط المشكلة بنجاح",
         "ERROR": "حدث خطأ أثناء إلغاء ربط المشكلة، الرجاء المحاولة مرة أخرى"
+=======
+        "ASSIGNEE": "Assignee",
+        "LABELS": "الوسوم",
+        "CREATED_AT": "Created at %{createdAt}"
+      },
+      "UNLINK": {
+        "TITLE": "Unlink",
+        "SUCCESS": "Issue unlinked successfully",
+        "ERROR": "There was an error unlinking the issue, please try again"
+>>>>>>> 027a540bb (chore: Update translations from Crowdin (#9835))
       }
     }
   }
