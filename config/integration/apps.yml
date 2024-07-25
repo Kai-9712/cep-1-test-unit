@@ -9,6 +9,9 @@
 # settings_form_schema: the formulate schema used in frontend to render settings form (https://vueformulate.com/)
 ########################################################
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 0331815cc (feat: Integration with Captain (alpha) (#9834))
 captain:
   id: captain
   logo: captain.png
@@ -61,9 +64,12 @@ captain:
     },
   ]
   visible_properties: []
+<<<<<<< HEAD
 =======
 
 >>>>>>> 39d20b197 (chore: Update the integration icons, logic for enabled/active attributes for the integration (#9828))
+=======
+>>>>>>> 0331815cc (feat: Integration with Captain (alpha) (#9834))
 webhooks:
   id: webhook
   logo: webhooks.png

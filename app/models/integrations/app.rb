@@ -40,12 +40,18 @@ class Integrations::App
       ENV['SLACK_CLIENT_SECRET'].present?
     when 'linear'
 <<<<<<< HEAD
+<<<<<<< HEAD
       account.feature_enabled?('linear_integration')
     when 'captain'
       account.feature_enabled?('captain_integration') && ENV['CAPTAIN_API_URL'].present?
 =======
       Current.account.feature_enabled?('linear_integration')
 >>>>>>> 39d20b197 (chore: Update the integration icons, logic for enabled/active attributes for the integration (#9828))
+=======
+      account.feature_enabled?('linear_integration')
+    when 'captain'
+      account.feature_enabled?('captain_integration') && ENV['CAPTAIN_API_URL'].present?
+>>>>>>> 0331815cc (feat: Integration with Captain (alpha) (#9834))
     else
       true
     end

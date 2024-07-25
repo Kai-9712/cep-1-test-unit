@@ -6,12 +6,15 @@ RSpec.describe Integrations::App do
   let(:account) { create(:account) }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   before do
     allow(Current).to receive(:account).and_return(account)
   end
 
 >>>>>>> 39d20b197 (chore: Update the integration icons, logic for enabled/active attributes for the integration (#9828))
+=======
+>>>>>>> 0331815cc (feat: Integration with Captain (alpha) (#9834))
   describe '#name' do
     let(:app_name) { 'slack' }
 
@@ -32,12 +35,18 @@ RSpec.describe Integrations::App do
     let(:app_name) { 'slack' }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 0331815cc (feat: Integration with Captain (alpha) (#9834))
     before do
       allow(Current).to receive(:account).and_return(account)
     end
 
+<<<<<<< HEAD
 =======
 >>>>>>> 39d20b197 (chore: Update the integration icons, logic for enabled/active attributes for the integration (#9828))
+=======
+>>>>>>> 0331815cc (feat: Integration with Captain (alpha) (#9834))
     context 'when the app is slack' do
       it 'returns the action URL with client_id and redirect_uri' do
         with_modified_env SLACK_CLIENT_ID: 'dummy_client_id' do
@@ -57,10 +66,14 @@ RSpec.describe Integrations::App do
       it 'returns true if SLACK_CLIENT_SECRET is present' do
         with_modified_env SLACK_CLIENT_SECRET: 'random_secret' do
 <<<<<<< HEAD
+<<<<<<< HEAD
           expect(app.active?(account)).to be true
 =======
           expect(app.active?).to be true
 >>>>>>> 39d20b197 (chore: Update the integration icons, logic for enabled/active attributes for the integration (#9828))
+=======
+          expect(app.active?(account)).to be true
+>>>>>>> 0331815cc (feat: Integration with Captain (alpha) (#9834))
         end
       end
     end
@@ -70,10 +83,14 @@ RSpec.describe Integrations::App do
 
       it 'returns true if the linear integration feature is disabled' do
 <<<<<<< HEAD
+<<<<<<< HEAD
         expect(app.active?(account)).to be false
 =======
         expect(app.active?).to be false
 >>>>>>> 39d20b197 (chore: Update the integration icons, logic for enabled/active attributes for the integration (#9828))
+=======
+        expect(app.active?(account)).to be false
+>>>>>>> 0331815cc (feat: Integration with Captain (alpha) (#9834))
       end
 
       it 'returns false if the linear integration feature is enabled' do
@@ -81,10 +98,14 @@ RSpec.describe Integrations::App do
         account.save!
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         expect(app.active?(account)).to be true
 =======
         expect(app.active?).to be true
 >>>>>>> 39d20b197 (chore: Update the integration icons, logic for enabled/active attributes for the integration (#9828))
+=======
+        expect(app.active?(account)).to be true
+>>>>>>> 0331815cc (feat: Integration with Captain (alpha) (#9834))
       end
     end
 
@@ -93,10 +114,14 @@ RSpec.describe Integrations::App do
 
       it 'returns true' do
 <<<<<<< HEAD
+<<<<<<< HEAD
         expect(app.active?(account)).to be true
 =======
         expect(app.active?).to be true
 >>>>>>> 39d20b197 (chore: Update the integration icons, logic for enabled/active attributes for the integration (#9828))
+=======
+        expect(app.active?(account)).to be true
+>>>>>>> 0331815cc (feat: Integration with Captain (alpha) (#9834))
       end
     end
   end
