@@ -105,7 +105,11 @@
       },
       "SEARCH": {
         "NO_RESULTS": {
+<<<<<<< HEAD
           "AGENT": "لم يتم العثور على وكلاء",
+=======
+          "AGENT": "لم يتم العثور على موظفين",
+>>>>>>> 066f0b990 (chore: Update translations (#9841))
           "TEAM": "لم يتم العثور على فريق"
         },
         "PLACEHOLDER": {
