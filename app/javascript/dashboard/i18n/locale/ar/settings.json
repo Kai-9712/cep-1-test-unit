@@ -279,10 +279,14 @@
     "BETA": "تجريبي",
     "REPORTS_OVERVIEW": "نظرة عامة",
 <<<<<<< HEAD
+<<<<<<< HEAD
     "REAUTHORIZE": "انتهت صلاحية اتصال صندوق الوارد الخاص بك، يرجى إعادة الاتصال\n لمواصلة تلقي وإرسال الرسائل",
 =======
     "REAUTHORIZE": "Your inbox connection has expired, please reconnect\n to continue receiving and sending messages",
 >>>>>>> 027a540bb (chore: Update translations from Crowdin (#9835))
+=======
+    "REAUTHORIZE": "انتهت صلاحية اتصال صندوق الوارد الخاص بك، يرجى إعادة الاتصال\n لمواصلة تلقي وإرسال الرسائل",
+>>>>>>> 066f0b990 (chore: Update translations (#9841))
     "HELP_CENTER": {
       "TITLE": "مركز المساعدة",
       "ALL_ARTICLES": "جميع المقالات",

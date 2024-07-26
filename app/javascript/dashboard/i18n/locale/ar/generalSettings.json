@@ -97,12 +97,17 @@
     "NOTIFICATION": {
       "OFFLINE": "غير متصل",
 <<<<<<< HEAD
+<<<<<<< HEAD
       "RECONNECTING": "جاري إعادة الاتصال...",
       "RECONNECT_SUCCESS": "تمت إعادة الاتصال"
 =======
       "RECONNECTING": "Reconnecting...",
       "RECONNECT_SUCCESS": "Reconnected"
 >>>>>>> 027a540bb (chore: Update translations from Crowdin (#9835))
+=======
+      "RECONNECTING": "جاري إعادة الاتصال...",
+      "RECONNECT_SUCCESS": "تمت إعادة الاتصال"
+>>>>>>> 066f0b990 (chore: Update translations (#9841))
     },
     "BUTTON": {
       "REFRESH": "تحديث"

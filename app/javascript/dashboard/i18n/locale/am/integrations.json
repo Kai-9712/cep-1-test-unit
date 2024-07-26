@@ -3,6 +3,7 @@
     "HEADER": "Integrations",
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     "DESCRIPTION": "Chatwoot integrates with multiple tools and services to improve your team's efficiency. Explore the list below to configure your favorite apps.",
     "LEARN_MORE": "Learn more about integrations",
 =======
@@ -10,6 +11,11 @@
     "LOADING": "Fetching integrations",
 =======
 >>>>>>> 027a540bb (chore: Update translations from Crowdin (#9835))
+=======
+    "DESCRIPTION": "Chatwoot integrates with multiple tools and services to improve your team's efficiency. Explore the list below to configure your favorite apps.",
+    "LEARN_MORE": "Learn more about integrations",
+    "LOADING": "Fetching integrations",
+>>>>>>> 066f0b990 (chore: Update translations (#9841))
     "WEBHOOK": {
       "SUBSCRIBED_EVENTS": "Subscribed Events",
       "FORM": {
