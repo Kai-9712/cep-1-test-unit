@@ -2,6 +2,7 @@
   "INTEGRATION_SETTINGS": {
     "HEADER": "خيارات الربط",
 <<<<<<< HEAD
+<<<<<<< HEAD
     "DESCRIPTION": "Chatwoot تتكامل مع أدوات وخدمات متعددة لتحسين كفاءة فريقك. استكشف القائمة أدناه لتكوين تطبيقاتك المفضلة.",
     "LEARN_MORE": "معرفة المزيد عن التكاملات",
     "LOADING": "جاري جلب التكاملات",
@@ -10,6 +11,11 @@
     "LEARN_MORE": "Learn more about integrations",
     "LOADING": "Fetching integrations",
 >>>>>>> 066f0b990 (chore: Update translations (#9841))
+=======
+    "DESCRIPTION": "Chatwoot تتكامل مع أدوات وخدمات متعددة لتحسين كفاءة فريقك. استكشف القائمة أدناه لتكوين تطبيقاتك المفضلة.",
+    "LEARN_MORE": "معرفة المزيد عن التكاملات",
+    "LOADING": "جاري جلب التكاملات",
+>>>>>>> a196e2358 (chore: Update translations (#9845))
     "WEBHOOK": {
       "SUBSCRIBED_EVENTS": "الأحداث المشتركة",
       "FORM": {
@@ -179,10 +185,14 @@
       "SIDEBAR_TXT": "<p><b>Dashboard Apps</b></p><p>Dashboard Apps allow organizations to embed an application inside the Chatwoot dashboard to provide the context for customer support agents. This feature allows you to create an application independently and embed that inside the dashboard to provide user information, their orders, or their previous payment history.</p><p>When you embed your application using the dashboard in Chatwoot, your application will get the context of the conversation and contact as a window event. Implement a listener for the message event on your page to receive the context.</p><p>To add a new dashboard app, click on the button 'Add a new dashboard app'.</p>",
       "DESCRIPTION": "تسمح تطبيقات لوحة التحكم للمنظمات بتضمين تطبيق داخل لوحة التحكم لتوفير السياق لوكلاء دعم العملاء. هذه الميزة تسمح لك بإنشاء تطبيق بشكل مستقل وإدراج لتوفير معلومات المستخدم أو طلباتهم أو سجل الدفع السابق.",
 <<<<<<< HEAD
+<<<<<<< HEAD
       "LEARN_MORE": "معرفة المزيد حول تطبيقات لوحة التحكم",
 =======
       "LEARN_MORE": "Learn more about Dashboard Apps",
 >>>>>>> 066f0b990 (chore: Update translations (#9841))
+=======
+      "LEARN_MORE": "معرفة المزيد حول تطبيقات لوحة التحكم",
+>>>>>>> a196e2358 (chore: Update translations (#9845))
       "LIST": {
         "404": "لا توجد تطبيقات لوحة التحكم التي تم تكوينها على هذا الحساب حتى الآن",
         "LOADING": "جلب تطبيقات لوحة التحكم...",
@@ -236,6 +246,7 @@
         "EMPTY_LIST": "لم يتم العثور على مشاكل في Linear",
         "LOADING": "جار التحميل",
 <<<<<<< HEAD
+<<<<<<< HEAD
         "ERROR": "حدث خطأ أثناء جلب المشكلات من Linear، الرجاء المحاولة مرة أخرى",
         "LINK_SUCCESS": "تم ربط المشكلة بنجاح",
         "LINK_ERROR": "حدث خطأ أثناء ربط المشكلة، الرجاء المحاولة مرة أخرى",
@@ -244,6 +255,11 @@
         "LINK_SUCCESS": "Issue linked successfully",
         "LINK_ERROR": "There was an error linking the issue, please try again",
 >>>>>>> 066f0b990 (chore: Update translations (#9841))
+=======
+        "ERROR": "حدث خطأ أثناء جلب المشكلات من Linear، الرجاء المحاولة مرة أخرى",
+        "LINK_SUCCESS": "تم ربط المشكلة بنجاح",
+        "LINK_ERROR": "حدث خطأ أثناء ربط المشكلة، الرجاء المحاولة مرة أخرى",
+>>>>>>> a196e2358 (chore: Update translations (#9845))
         "LINK_TITLE": "محادثة (#%{conversationId}) مع %{name}"
       },
       "ADD_OR_LINK": {
@@ -264,6 +280,7 @@
             "PLACEHOLDER": "اختر فريق",
             "SEARCH": "البحث عن فريق",
 <<<<<<< HEAD
+<<<<<<< HEAD
             "REQUIRED_ERROR": "الفريق مطلوب"
           },
           "ASSIGNEE": {
@@ -274,6 +291,12 @@
           "ASSIGNEE": {
             "LABEL": "Assignee",
 >>>>>>> 066f0b990 (chore: Update translations (#9841))
+=======
+            "REQUIRED_ERROR": "الفريق مطلوب"
+          },
+          "ASSIGNEE": {
+            "LABEL": "المكلَّف",
+>>>>>>> a196e2358 (chore: Update translations (#9845))
             "PLACEHOLDER": "اختر المحال إليه",
             "SEARCH": "البحث عن المحال إليه"
           },
@@ -294,10 +317,14 @@
           },
           "PROJECT": {
 <<<<<<< HEAD
+<<<<<<< HEAD
             "LABEL": "المشروع",
 =======
             "LABEL": "Project",
 >>>>>>> 066f0b990 (chore: Update translations (#9841))
+=======
+            "LABEL": "المشروع",
+>>>>>>> a196e2358 (chore: Update translations (#9845))
             "PLACEHOLDER": "حدد المشروع",
             "SEARCH": "البحث عن المشروع"
           }
