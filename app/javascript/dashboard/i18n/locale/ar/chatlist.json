@@ -60,6 +60,7 @@
       },
       "created_at_desc": {
 <<<<<<< HEAD
+<<<<<<< HEAD
         "TEXT": "وقت الإنشاء: الأحدث أولاً"
       },
       "created_at_asc": {
@@ -70,6 +71,12 @@
       "created_at_asc": {
         "TEXT": "تم إنشاؤها في: أقدم أولاً"
 >>>>>>> 027a540bb (chore: Update translations from Crowdin (#9835))
+=======
+        "TEXT": "وقت الإنشاء: الأحدث أولاً"
+      },
+      "created_at_asc": {
+        "TEXT": "وقت الإنشاء: الأقدم أولاً"
+>>>>>>> a196e2358 (chore: Update translations (#9845))
       },
       "priority_desc": {
         "TEXT": "الأولوية: الأعلى أولا"
@@ -82,10 +89,14 @@
       },
       "waiting_since_desc": {
 <<<<<<< HEAD
+<<<<<<< HEAD
         "TEXT": "الرد المعلق: الأقصر أولاً"
 =======
         "TEXT": "الرد المعلق: أقصر أولاً"
 >>>>>>> 027a540bb (chore: Update translations from Crowdin (#9835))
+=======
+        "TEXT": "الرد المعلق: الأقصر أولاً"
+>>>>>>> a196e2358 (chore: Update translations (#9845))
       }
     },
     "ATTACHMENTS": {

@@ -40,10 +40,14 @@
     "UNKNOWN_FILE_TYPE": "ملف غير معروف",
     "SAVE_CONTACT": "حفظ",
 <<<<<<< HEAD
+<<<<<<< HEAD
     "UPLOADING_ATTACHMENTS": "جاري رفع المرفقات...",
 =======
     "UPLOADING_ATTACHMENTS": "جاري تحميل المرفقات...",
 >>>>>>> 027a540bb (chore: Update translations from Crowdin (#9835))
+=======
+    "UPLOADING_ATTACHMENTS": "جاري رفع المرفقات...",
+>>>>>>> a196e2358 (chore: Update translations (#9845))
     "REPLIED_TO_STORY": "رد على قصتك",
     "UNSUPPORTED_MESSAGE": "هذه الرسالة غير مدعومة.",
     "UNSUPPORTED_MESSAGE_FACEBOOK": "هذه الرسالة غير مدعومة، يمكنك مشاهدة هذه الرسالة على تطبيق فيسبوك (Messenger).",
@@ -67,6 +71,7 @@
       "DETAILS": "التفاصيل",
       "SNOOZED_UNTIL": "غفوة حتى",
 <<<<<<< HEAD
+<<<<<<< HEAD
       "SNOOZED_UNTIL_TOMORROW": "تأجيل حتى الغد",
       "SNOOZED_UNTIL_NEXT_WEEK": "تأجيل حتى الأسبوع القادم",
       "SNOOZED_UNTIL_NEXT_REPLY": "تأجيل حتى الرد التالي",
@@ -75,6 +80,11 @@
       "SNOOZED_UNTIL_NEXT_WEEK": "غفوة حتى الأسبوع القادم",
       "SNOOZED_UNTIL_NEXT_REPLY": "غفوة حتى الرد التالي",
 >>>>>>> 027a540bb (chore: Update translations from Crowdin (#9835))
+=======
+      "SNOOZED_UNTIL_TOMORROW": "تأجيل حتى الغد",
+      "SNOOZED_UNTIL_NEXT_WEEK": "تأجيل حتى الأسبوع القادم",
+      "SNOOZED_UNTIL_NEXT_REPLY": "تأجيل حتى الرد التالي",
+>>>>>>> a196e2358 (chore: Update translations (#9845))
       "SLA_STATUS": {
         "FRT": "FRT {status}",
         "NRT": "NRT {status}",
@@ -102,10 +112,14 @@
       "TITLE": "الأولوية",
       "OPTIONS": {
 <<<<<<< HEAD
+<<<<<<< HEAD
         "NONE": "لا يوجد",
 =======
         "NONE": "لا شيء",
 >>>>>>> 027a540bb (chore: Update translations from Crowdin (#9835))
+=======
+        "NONE": "لا يوجد",
+>>>>>>> a196e2358 (chore: Update translations (#9845))
         "URGENT": "عاجل",
         "HIGH": "عالية",
         "MEDIUM": "متوسطة",
@@ -113,10 +127,14 @@
       },
       "CHANGE_PRIORITY": {
 <<<<<<< HEAD
+<<<<<<< HEAD
         "SELECT_PLACEHOLDER": "لا يوجد",
 =======
         "SELECT_PLACEHOLDER": "لا شيء",
 >>>>>>> 027a540bb (chore: Update translations from Crowdin (#9835))
+=======
+        "SELECT_PLACEHOLDER": "لا يوجد",
+>>>>>>> a196e2358 (chore: Update translations (#9845))
         "INPUT_PLACEHOLDER": "تحديد الأولوية",
         "NO_RESULTS": "لم يتم العثور على النتائج",
         "SUCCESSFUL": "تغيير أولوية معرف المحادثة %{conversationId} إلى %{priority}",

@@ -129,12 +129,17 @@
       "SETTINGS": "الإعدادات",
       "AI_ASSIST": "مساعدة AI",
 <<<<<<< HEAD
+<<<<<<< HEAD
       "APPEARANCE": "المظهر",
       "SNOOZE_NOTIFICATION": "تأجيل الإشعارات"
 =======
       "APPEARANCE": "مظهر",
       "SNOOZE_NOTIFICATION": "تأجيل التنبيهات"
 >>>>>>> 027a540bb (chore: Update translations from Crowdin (#9835))
+=======
+      "APPEARANCE": "المظهر",
+      "SNOOZE_NOTIFICATION": "تأجيل الإشعارات"
+>>>>>>> a196e2358 (chore: Update translations (#9845))
     },
     "COMMANDS": {
       "GO_TO_CONVERSATION_DASHBOARD": "الذهاب إلى لوحة المحادثة",

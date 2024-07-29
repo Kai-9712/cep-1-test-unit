@@ -69,10 +69,14 @@
         "PLACEHOLDER": "الرجاء إدخال رقم الهاتف الخاص بك",
         "REQUIRED_ERROR": "رقم الهاتف مطلوب",
 <<<<<<< HEAD
+<<<<<<< HEAD
         "DIAL_CODE_VALID_ERROR": "الرجاء اختيار رمز الدولة",
 =======
         "DIAL_CODE_VALID_ERROR": "الرجاء اختيار رمز البلد",
 >>>>>>> 027a540bb (chore: Update translations from Crowdin (#9835))
+=======
+        "DIAL_CODE_VALID_ERROR": "الرجاء اختيار رمز الدولة",
+>>>>>>> a196e2358 (chore: Update translations (#9845))
         "VALID_ERROR": "يرجى إدخال رقم هاتف صحيح",
         "DROPDOWN_EMPTY": "لم يتم العثور على النتائج"
       },
@@ -110,10 +114,14 @@
   "INTEGRATIONS": {
     "DYTE": {
 <<<<<<< HEAD
+<<<<<<< HEAD
       "CLICK_HERE_TO_JOIN": "انقر هنا للانضمام",
 =======
       "CLICK_HERE_TO_JOIN": "Click here to join",
 >>>>>>> 027a540bb (chore: Update translations from Crowdin (#9835))
+=======
+      "CLICK_HERE_TO_JOIN": "انقر هنا للانضمام",
+>>>>>>> a196e2358 (chore: Update translations (#9845))
       "LEAVE_THE_ROOM": "ترك المكالمة"
     }
   },
@@ -121,10 +129,14 @@
     "POPULAR_ARTICLES": "المقالات الشائعة",
     "VIEW_ALL_ARTICLES": "عرض جميع المقالات",
 <<<<<<< HEAD
+<<<<<<< HEAD
     "IFRAME_LOAD_ERROR": "حدث خطأ أثناء جلب المقال، الرجاء تحديث الصفحة والمحاولة مرة أخرى."
 =======
     "IFRAME_LOAD_ERROR": "حدث خطأ أثناء تحميل المقال، الرجاء تحديث الصفحة والمحاولة مرة أخرى."
 >>>>>>> 027a540bb (chore: Update translations from Crowdin (#9835))
+=======
+    "IFRAME_LOAD_ERROR": "حدث خطأ أثناء جلب المقال، الرجاء تحديث الصفحة والمحاولة مرة أخرى."
+>>>>>>> a196e2358 (chore: Update translations (#9845))
   },
   "ATTACHMENTS": {
     "image": {
