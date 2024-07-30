@@ -1,3 +1,30 @@
+<<<<<<< HEAD
+=======
+<!-- eslint-disable vue/no-mutating-props -->
+<template>
+  <modal :show.sync="show" :on-close="closeModal">
+    <woot-modal-header :header-title="title" :header-content="message" />
+    <form @submit.prevent="onConfirm">
+      <woot-input
+        v-model="value"
+        type="text"
+        :class="{ error: v$.value.$error }"
+        :placeholder="confirmPlaceHolderText"
+        @blur="v$.value.$touch"
+      />
+      <div class="button-wrapper">
+        <woot-button color-scheme="alert" :is-disabled="v$.value.$invalid">
+          {{ confirmText }}
+        </woot-button>
+        <woot-button class="clear" @click.prevent="closeModal">
+          {{ rejectText }}
+        </woot-button>
+      </div>
+    </form>
+  </modal>
+</template>
+
+>>>>>>> ce8e1ec93 (chore: Migrate all instances of old vuelidate to new v2 syntax [CW-3274] (#9623))
 <script>
 import { useVuelidate } from '@vuelidate/core';
 import { required } from '@vuelidate/validators';

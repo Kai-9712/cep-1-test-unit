@@ -4,7 +4,7 @@
   <div class="flex items-center w-full gap-3">
     <woot-input
       v-model="thresholdTime"
-      :class="{ error: $v.thresholdTime.$error }"
+      :class="{ error: v$.thresholdTime.$error }"
       class="flex-grow"
       :styles="{
         borderRadius: '12px',
@@ -78,12 +78,17 @@ export default {
     thresholdTimeErrorMessage() {
       let errorMessage = '';
 <<<<<<< HEAD
+<<<<<<< HEAD
       if (this.v$.thresholdTime.$error) {
         if (!this.v$.thresholdTime.numeric || !this.v$.thresholdTime.minValue) {
 =======
       if (this.$v.thresholdTime.$error) {
         if (!this.$v.thresholdTime.numeric || !this.$v.thresholdTime.minValue) {
 >>>>>>> 84c380c8c (feat: Replace SLA `validationMixin` within the component (#9804))
+=======
+      if (this.v$.thresholdTime.$error) {
+        if (!this.v$.thresholdTime.numeric || !this.v$.thresholdTime.minValue) {
+>>>>>>> ce8e1ec93 (chore: Migrate all instances of old vuelidate to new v2 syntax [CW-3274] (#9623))
           errorMessage = this.$t(
             'SLA.FORM.THRESHOLD_TIME.INVALID_FORMAT_ERROR'
           );

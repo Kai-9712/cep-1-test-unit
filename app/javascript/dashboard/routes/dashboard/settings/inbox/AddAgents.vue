@@ -13,7 +13,7 @@
       </div>
       <div class="w-3/5">
         <div class="w-full">
-          <label :class="{ error: $v.selectedAgents.$error }">
+          <label :class="{ error: v$.selectedAgents.$error }">
             {{ $t('INBOX_MGMT.ADD.AGENTS.TITLE') }}
             <multiselect
               v-model="selectedAgents"
@@ -28,9 +28,9 @@
               :select-label="$t('FORMS.MULTISELECT.ENTER_TO_SELECT')"
               :deselect-label="$t('FORMS.MULTISELECT.ENTER_TO_REMOVE')"
               :placeholder="$t('INBOX_MGMT.ADD.AGENTS.PICK_AGENTS')"
-              @select="$v.selectedAgents.$touch"
+              @select="v$.selectedAgents.$touch"
             />
-            <span v-if="$v.selectedAgents.$error" class="message">
+            <span v-if="v$.selectedAgents.$error" class="message">
               {{ $t('INBOX_MGMT.ADD.AGENTS.VALIDATION_ERROR') }}
             </span>
           </label>
@@ -56,18 +56,25 @@ import InboxMembersAPI from '../../../../api/inboxMembers';
 import router from '../../../index';
 import PageHeader from '../SettingsSubPageHeader.vue';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { useVuelidate } from '@vuelidate/core';
 =======
 >>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
+=======
+import { useVuelidate } from '@vuelidate/core';
+>>>>>>> ce8e1ec93 (chore: Migrate all instances of old vuelidate to new v2 syntax [CW-3274] (#9623))
 
 export default {
   components: {
     PageHeader,
   },
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 >>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
+=======
+>>>>>>> ce8e1ec93 (chore: Migrate all instances of old vuelidate to new v2 syntax [CW-3274] (#9623))
   validations: {
     selectedAgents: {
       isEmpty() {

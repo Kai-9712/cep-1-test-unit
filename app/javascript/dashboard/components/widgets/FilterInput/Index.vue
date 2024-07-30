@@ -1,3 +1,150 @@
+<<<<<<< HEAD
+=======
+<!-- eslint-disable vue/no-mutating-props -->
+<template>
+  <div>
+    <div
+      class="rounded-md p-2 border border-solid"
+      :class="getInputErrorClass(errorMessage)"
+    >
+      <div class="flex">
+        <select
+          v-if="groupedFilters"
+          v-model="attributeKey"
+          class="bg-white max-w-[30%] dark:bg-slate-900 mb-0 mr-1 text-slate-800 dark:text-slate-100 border-slate-75 dark:border-slate-600"
+          @change="resetFilter()"
+        >
+          <optgroup
+            v-for="(group, i) in filterGroups"
+            :key="i"
+            :label="group.name"
+          >
+            <option
+              v-for="attribute in group.attributes"
+              :key="attribute.key"
+              :value="attribute.key"
+            >
+              {{ attribute.name }}
+            </option>
+          </optgroup>
+        </select>
+        <select
+          v-else
+          v-model="attributeKey"
+          class="bg-white max-w-[30%] dark:bg-slate-900 mb-0 mr-1 text-slate-800 dark:text-slate-100 border-slate-75 dark:border-slate-600"
+          @change="resetFilter()"
+        >
+          <option
+            v-for="attribute in filterAttributes"
+            :key="attribute.key"
+            :value="attribute.key"
+            :disabled="attribute.disabled"
+          >
+            {{ attribute.name }}
+          </option>
+        </select>
+
+        <select
+          v-model="filterOperator"
+          class="bg-white dark:bg-slate-900 max-w-[20%] mb-0 mr-1 text-slate-800 dark:text-slate-100 border-slate-75 dark:border-slate-600"
+        >
+          <option
+            v-for="(operator, o) in operators"
+            :key="o"
+            :value="operator.value"
+          >
+            {{ $t(`FILTER.OPERATOR_LABELS.${operator.value}`) }}
+          </option>
+        </select>
+
+        <div v-if="showUserInput" class="filter__answer--wrap mr-1 flex-grow">
+          <div
+            v-if="inputType === 'multi_select'"
+            class="multiselect-wrap--small"
+          >
+            <multiselect
+              v-model="values"
+              track-by="id"
+              label="name"
+              :placeholder="'Select'"
+              :multiple="true"
+              selected-label
+              :select-label="$t('FORMS.MULTISELECT.ENTER_TO_SELECT')"
+              deselect-label=""
+              :max-height="160"
+              :options="dropdownValues"
+              :allow-empty="false"
+            />
+          </div>
+          <div
+            v-else-if="inputType === 'search_select'"
+            class="multiselect-wrap--small"
+          >
+            <multiselect
+              v-model="values"
+              track-by="id"
+              label="name"
+              :placeholder="'Select'"
+              selected-label
+              :select-label="$t('FORMS.MULTISELECT.ENTER_TO_SELECT')"
+              deselect-label=""
+              :max-height="160"
+              :options="dropdownValues"
+              :allow-empty="false"
+              :option-height="104"
+            />
+          </div>
+          <div v-else-if="inputType === 'date'" class="multiselect-wrap--small">
+            <input
+              v-model="values"
+              type="date"
+              :editable="false"
+              class="mb-0 datepicker"
+            />
+          </div>
+          <input
+            v-else
+            v-model="values"
+            type="text"
+            class="mb-0"
+            placeholder="Enter value"
+          />
+        </div>
+        <woot-button
+          icon="dismiss"
+          variant="clear"
+          color-scheme="secondary"
+          @click="removeFilter"
+        />
+      </div>
+      <p v-if="errorMessage" class="filter-error">
+        {{ errorMessage }}
+      </p>
+    </div>
+
+    <div
+      v-if="showQueryOperator"
+      class="flex items-center justify-center relative my-2.5 mx-0"
+    >
+      <hr
+        class="w-full absolute border-b border-solid border-slate-75 dark:border-slate-800"
+      />
+      <select
+        v-model="query_operator"
+        class="bg-white dark:bg-slate-900 mb-0 w-auto relative text-slate-800 dark:text-slate-100 border-slate-75 dark:border-slate-600"
+      >
+        <option value="and">
+          {{ $t('FILTER.QUERY_DROPDOWN_LABELS.AND') }}
+        </option>
+        <option value="or">
+          {{ $t('FILTER.QUERY_DROPDOWN_LABELS.OR') }}
+        </option>
+      </select>
+    </div>
+  </div>
+</template>
+
+>>>>>>> ce8e1ec93 (chore: Migrate all instances of old vuelidate to new v2 syntax [CW-3274] (#9623))
 <script>
 export default {
   props: {

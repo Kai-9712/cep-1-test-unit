@@ -16,7 +16,7 @@
       </div>
 
       <div class="w-full">
-        <div v-if="$v.selectedAgents.$error">
+        <div v-if="v$.selectedAgents.$error">
           <p class="error-message">
             {{ $t('TEAMS_SETTINGS.ADD.AGENT_VALIDATION_ERROR') }}
           </p>

@@ -1,3 +1,69 @@
+<<<<<<< HEAD
+=======
+<template>
+  <div class="macros__nodes">
+    <div class="macro__node">
+      <div>
+        <woot-label
+          :title="$t('MACROS.EDITOR.START_FLOW')"
+          color-scheme="primary"
+        />
+      </div>
+    </div>
+    <draggable
+      :list="actionData"
+      animation="200"
+      ghost-class="ghost"
+      tag="div"
+      class="macros__nodes-draggable"
+      handle=".macros__node-drag-handle"
+    >
+      <div v-for="(action, i) in actionData" :key="i" class="macro__node">
+        <macro-node
+          v-model="actionData[i]"
+          class="macros__node-action"
+          type="add"
+          :index="i"
+          :error-key="errors[`action_${i}`]"
+          :file-name="
+            fileName(
+              actionData[i].action_params[0],
+              actionData[i].action_name,
+              files
+            )
+          "
+          :single-node="actionData.length === 1"
+          @resetAction="$emit('resetAction', i)"
+          @deleteNode="$emit('deleteNode', i)"
+        />
+      </div>
+    </draggable>
+    <div class="macro__node">
+      <div>
+        <woot-button
+          :title="$t('MACROS.EDITOR.ADD_BTN_TOOLTIP')"
+          class="macros__action-button"
+          color-scheme="success"
+          variant="smooth"
+          icon="add-circle"
+          @click="$emit('addNewNode')"
+        >
+          {{ $t('MACROS.EDITOR.ADD_BTN_TOOLTIP') }}
+        </woot-button>
+      </div>
+    </div>
+    <div class="macro__node">
+      <div>
+        <woot-label
+          :title="$t('MACROS.EDITOR.END_FLOW')"
+          color-scheme="primary"
+        />
+      </div>
+    </div>
+  </div>
+</template>
+
+>>>>>>> ce8e1ec93 (chore: Migrate all instances of old vuelidate to new v2 syntax [CW-3274] (#9623))
 <script>
 import Draggable from 'vuedraggable';
 import MacroNode from './MacroNode.vue';

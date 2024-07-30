@@ -94,3 +94,52 @@ export default {
     </div>
   </div>
 </template>
+<<<<<<< HEAD
+=======
+
+<script>
+import { useVuelidate } from '@vuelidate/core';
+import { required } from '@vuelidate/validators';
+import CsmlMonacoEditor from './CSMLMonacoEditor.vue';
+
+export default {
+  components: { CsmlMonacoEditor },
+  props: {
+    agentBot: {
+      type: Object,
+      default: () => {},
+    },
+  },
+  setup() {
+    return { v$: useVuelidate() };
+  },
+  validations: {
+    bot: {
+      name: { required },
+      csmlContent: { required },
+    },
+  },
+  data() {
+    return {
+      bot: {
+        name: this.agentBot.name || '',
+        description: this.agentBot.description || '',
+        csmlContent: this.agentBot.bot_config.csml_content || '',
+      },
+    };
+  },
+  methods: {
+    onSubmit() {
+      this.v$.$touch();
+      if (this.v$.$invalid) {
+        return;
+      }
+      this.$emit('submit', {
+        id: this.agentBot.id || '',
+        ...this.bot,
+      });
+    },
+  },
+};
+</script>
+>>>>>>> ce8e1ec93 (chore: Migrate all instances of old vuelidate to new v2 syntax [CW-3274] (#9623))

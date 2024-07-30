@@ -32,11 +32,11 @@ export default {
         <woot-input
           v-model="value"
           type="text"
-          :class="{ error: $v.value.$error }"
+          :class="{ error: v$.value.$error }"
           :placeholder="
             $t('INTEGRATION_SETTINGS.OPEN_AI.CTA_MODAL.KEY_PLACEHOLDER')
           "
-          @blur="$v.value.$touch"
+          @blur="v$.value.$touch"
         />
       </div>
       <div class="flex flex-row justify-between w-full gap-2 px-0 py-2">
@@ -47,7 +47,7 @@ export default {
           <woot-button variant="clear" @click.prevent="onDismiss">
             {{ $t('INTEGRATION_SETTINGS.OPEN_AI.CTA_MODAL.BUTTONS.DISMISS') }}
           </woot-button>
-          <woot-button :is-disabled="$v.value.$invalid">
+          <woot-button :is-disabled="v$.value.$invalid">
             {{ $t('INTEGRATION_SETTINGS.OPEN_AI.CTA_MODAL.BUTTONS.FINISH') }}
           </woot-button>
         </div>
@@ -57,7 +57,8 @@ export default {
 </template>
 
 <script>
-import { required } from 'vuelidate/lib/validators';
+import { useVuelidate } from '@vuelidate/core';
+import { required } from '@vuelidate/validators';
 import { mapGetters } from 'vuex';
 >>>>>>> fb99ba7b4 (feat: Rewrite `uiSettings` mixin to a composable (#9819))
 import { useAlert } from 'dashboard/composables';
@@ -73,10 +74,9 @@ export default {
   mixins: [aiMixin],
   setup() {
     const { updateUISettings } = useUISettings();
+    const v$ = useVuelidate();
 
-    return {
-      updateUISettings,
-    };
+    return { updateUISettings, v$ };
   },
 >>>>>>> fb99ba7b4 (feat: Rewrite `uiSettings` mixin to a composable (#9819))
   data() {

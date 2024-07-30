@@ -183,7 +183,8 @@ export default {
 <<<<<<< HEAD
 =======
 <script>
-import { required } from 'vuelidate/lib/validators';
+import { useVuelidate } from '@vuelidate/core';
+import { required } from '@vuelidate/validators';
 
 import MergeContactSummary from 'dashboard/modules/contact/components/MergeContactSummary.vue';
 import ContactDropdownItem from './ContactDropdownItem.vue';
@@ -207,6 +208,9 @@ export default {
       type: Array,
       default: () => [],
     },
+  },
+  setup() {
+    return { v$: useVuelidate() };
   },
   validations: {
     primaryContact: {
@@ -232,8 +236,8 @@ export default {
       this.$emit('search', query);
     },
     onSubmit() {
-      this.$v.$touch();
-      if (this.$v.$invalid) {
+      this.v$.$touch();
+      if (this.v$.$invalid) {
         return;
       }
       this.$emit('submit', this.parentContact.id);

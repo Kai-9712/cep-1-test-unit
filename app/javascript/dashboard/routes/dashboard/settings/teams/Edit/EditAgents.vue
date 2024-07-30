@@ -18,7 +18,7 @@ import { mapGetters } from 'vuex';
       </div>
 
       <div class="w-full">
-        <div v-if="$v.selectedAgents.$error">
+        <div v-if="v$.selectedAgents.$error">
           <p class="error-message">
             {{ $t('TEAMS_SETTINGS.ADD.AGENT_VALIDATION_ERROR') }}
           </p>
@@ -41,15 +41,20 @@ import { mapGetters } from 'vuex';
 
 <script>
 import { mapGetters } from 'vuex';
+import router from '../../../../index';
 import { useAlert } from 'dashboard/composables';
+import { useVuelidate } from '@vuelidate/core';
 
 import Spinner from 'shared/components/Spinner.vue';
+<<<<<<< HEAD
 >>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
 import router from '../../../../index';
 import { useAlert } from 'dashboard/composables';
 import { useVuelidate } from '@vuelidate/core';
 
 import Spinner from 'shared/components/Spinner.vue';
+=======
+>>>>>>> ce8e1ec93 (chore: Migrate all instances of old vuelidate to new v2 syntax [CW-3274] (#9623))
 import PageHeader from '../../SettingsSubPageHeader.vue';
 import AgentSelector from '../AgentSelector.vue';
 

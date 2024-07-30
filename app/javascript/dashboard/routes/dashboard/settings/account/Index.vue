@@ -15,19 +15,19 @@
           <p>{{ $t('GENERAL_SETTINGS.FORM.GENERAL_SECTION.NOTE') }}</p>
         </div>
         <div class="p-4 flex-grow-0 flex-shrink-0 flex-[50%]">
-          <label :class="{ error: $v.name.$error }">
+          <label :class="{ error: v$.name.$error }">
             {{ $t('GENERAL_SETTINGS.FORM.NAME.LABEL') }}
             <input
               v-model="name"
               type="text"
               :placeholder="$t('GENERAL_SETTINGS.FORM.NAME.PLACEHOLDER')"
-              @blur="$v.name.$touch"
+              @blur="v$.name.$touch"
             />
-            <span v-if="$v.name.$error" class="message">
+            <span v-if="v$.name.$error" class="message">
               {{ $t('GENERAL_SETTINGS.FORM.NAME.ERROR') }}
             </span>
           </label>
-          <label :class="{ error: $v.locale.$error }">
+          <label :class="{ error: v$.locale.$error }">
             {{ $t('GENERAL_SETTINGS.FORM.LANGUAGE.LABEL') }}
             <select v-model="locale">
               <option
@@ -38,7 +38,7 @@
                 {{ lang.name }}
               </option>
             </select>
-            <span v-if="$v.locale.$error" class="message">
+            <span v-if="v$.locale.$error" class="message">
               {{ $t('GENERAL_SETTINGS.FORM.LANGUAGE.ERROR') }}
             </span>
           </label>
@@ -70,7 +70,7 @@
           </label>
           <label
             v-if="showAutoResolutionConfig"
-            :class="{ error: $v.autoResolveDuration.$error }"
+            :class="{ error: v$.autoResolveDuration.$error }"
           >
             {{ $t('GENERAL_SETTINGS.FORM.AUTO_RESOLVE_DURATION.LABEL') }}
             <input
@@ -79,9 +79,9 @@
               :placeholder="
                 $t('GENERAL_SETTINGS.FORM.AUTO_RESOLVE_DURATION.PLACEHOLDER')
               "
-              @blur="$v.autoResolveDuration.$touch"
+              @blur="v$.autoResolveDuration.$touch"
             />
-            <span v-if="$v.autoResolveDuration.$error" class="message">
+            <span v-if="v$.autoResolveDuration.$error" class="message">
               {{ $t('GENERAL_SETTINGS.FORM.AUTO_RESOLVE_DURATION.ERROR') }}
             </span>
           </label>
@@ -166,10 +166,9 @@ export default {
   mixins: [accountMixin, configMixin],
   setup() {
     const { updateUISettings } = useUISettings();
+    const v$ = useVuelidate();
 
-    return {
-      updateUISettings,
-    };
+    return { updateUISettings, v$ };
   },
 >>>>>>> fb99ba7b4 (feat: Rewrite `uiSettings` mixin to a composable (#9819))
   data() {
@@ -283,12 +282,17 @@ export default {
 
     async updateAccount() {
 <<<<<<< HEAD
+<<<<<<< HEAD
       this.v$.$touch();
       if (this.v$.$invalid) {
 =======
       this.$v.$touch();
       if (this.$v.$invalid) {
 >>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
+=======
+      this.v$.$touch();
+      if (this.v$.$invalid) {
+>>>>>>> ce8e1ec93 (chore: Migrate all instances of old vuelidate to new v2 syntax [CW-3274] (#9623))
         useAlert(this.$t('GENERAL_SETTINGS.FORM.ERROR'));
         return;
       }

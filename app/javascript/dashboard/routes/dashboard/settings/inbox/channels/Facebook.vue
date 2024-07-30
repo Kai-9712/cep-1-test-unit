@@ -51,7 +51,7 @@
         </div>
         <div class="w-3/5">
           <div class="w-full">
-            <div class="input-wrap" :class="{ error: $v.selectedPage.$error }">
+            <div class="input-wrap" :class="{ error: v$.selectedPage.$error }">
               {{ $t('INBOX_MGMT.ADD.FB.CHOOSE_PAGE') }}
               <multiselect
                 v-model.trim="selectedPage"
@@ -66,21 +66,21 @@
                 selected-label
                 @select="setPageName"
               />
-              <span v-if="$v.selectedPage.$error" class="message">
+              <span v-if="v$.selectedPage.$error" class="message">
                 {{ $t('INBOX_MGMT.ADD.FB.CHOOSE_PLACEHOLDER') }}
               </span>
             </div>
           </div>
           <div class="w-full">
-            <label :class="{ error: $v.pageName.$error }">
+            <label :class="{ error: v$.pageName.$error }">
               {{ $t('INBOX_MGMT.ADD.FB.INBOX_NAME') }}
               <input
                 v-model.trim="pageName"
                 type="text"
                 :placeholder="$t('INBOX_MGMT.ADD.FB.PICK_NAME')"
-                @input="$v.pageName.$touch"
+                @input="v$.pageName.$touch"
               />
-              <span v-if="$v.pageName.$error" class="message">
+              <span v-if="v$.pageName.$error" class="message">
                 {{ $t('INBOX_MGMT.ADD.FB.ADD_NAME') }}
               </span>
             </label>
@@ -98,6 +98,7 @@
 /* eslint-env browser */
 /* global FB */
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { useVuelidate } from '@vuelidate/core';
 import { useAlert } from 'dashboard/composables';
 import { useAccount } from 'dashboard/composables/useAccount';
@@ -106,6 +107,11 @@ import { required } from '@vuelidate/validators';
 import { useAlert } from 'dashboard/composables';
 import { required } from 'vuelidate/lib/validators';
 >>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
+=======
+import { useVuelidate } from '@vuelidate/core';
+import { useAlert } from 'dashboard/composables';
+import { required } from '@vuelidate/validators';
+>>>>>>> ce8e1ec93 (chore: Migrate all instances of old vuelidate to new v2 syntax [CW-3274] (#9623))
 import LoadingState from 'dashboard/components/widgets/LoadingState.vue';
 import { mapGetters } from 'vuex';
 import ChannelApi from '../../../../../api/channels';
@@ -139,7 +145,13 @@ export default {
 >>>>>>> cb0642564 (feat: add promise based loader for FB script (#9780))
 =======
   mixins: [globalConfigMixin, accountMixin],
+<<<<<<< HEAD
 >>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
+=======
+  setup() {
+    return { v$: useVuelidate() };
+  },
+>>>>>>> ce8e1ec93 (chore: Migrate all instances of old vuelidate to new v2 syntax [CW-3274] (#9623))
   data() {
     return {
       isCreating: false,

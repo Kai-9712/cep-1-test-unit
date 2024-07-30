@@ -17,7 +17,7 @@ import { PORTALS_EVENTS } from '../../../../helper/AnalyticsHelper/events';
     />
     <form class="w-full" @submit.prevent="onCreate">
       <div class="w-full">
-        <label :class="{ error: $v.selectedLocale.$error }">
+        <label :class="{ error: v$.selectedLocale.$error }">
           {{ $t('HELP_CENTER.PORTAL.ADD_LOCALE.LOCALE.LABEL') }}
           <select v-model="selectedLocale">
             <option
@@ -28,7 +28,7 @@ import { PORTALS_EVENTS } from '../../../../helper/AnalyticsHelper/events';
               {{ locale.name }}-{{ locale.code }}
             </option>
           </select>
-          <span v-if="$v.selectedLocale.$error" class="message">
+          <span v-if="v$.selectedLocale.$error" class="message">
             {{ $t('HELP_CENTER.PORTAL.ADD_LOCALE.LOCALE.ERROR') }}
           </span>
         </label>
@@ -49,12 +49,18 @@ import { PORTALS_EVENTS } from '../../../../helper/AnalyticsHelper/events';
 </template>
 
 <script>
+import Modal from 'dashboard/components/Modal.vue';
+import { useVuelidate } from '@vuelidate/core';
 import { useAlert } from 'dashboard/composables';
-import { required } from 'vuelidate/lib/validators';
+import { required } from '@vuelidate/validators';
 import allLocales from 'shared/constants/locales.js';
 import { PORTALS_EVENTS } from '../../../../helper/AnalyticsHelper/events';
+<<<<<<< HEAD
 import Modal from 'dashboard/components/Modal.vue';
 >>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
+=======
+
+>>>>>>> ce8e1ec93 (chore: Migrate all instances of old vuelidate to new v2 syntax [CW-3274] (#9623))
 export default {
   components: {
     Modal,

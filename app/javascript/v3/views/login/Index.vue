@@ -111,6 +111,7 @@
 >>>>>>> b4b308336 (feat: Eslint rules (#9839))
 <script>
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { useVuelidate } from '@vuelidate/core';
 import { required, email } from '@vuelidate/validators';
 import { useAlert } from 'dashboard/composables';
@@ -118,6 +119,11 @@ import { useAlert } from 'dashboard/composables';
 import { useAlert } from 'dashboard/composables';
 import { required, email } from 'vuelidate/lib/validators';
 >>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
+=======
+import { useVuelidate } from '@vuelidate/core';
+import { required, email } from '@vuelidate/validators';
+import { useAlert } from 'dashboard/composables';
+>>>>>>> ce8e1ec93 (chore: Migrate all instances of old vuelidate to new v2 syntax [CW-3274] (#9623))
 import globalConfigMixin from 'shared/mixins/globalConfigMixin';
 import SubmitButton from '../../components/Button/SubmitButton.vue';
 import { mapGetters } from 'vuex';
@@ -221,6 +227,14 @@ export default {
       useAlert(this.loginApi.message);
     },
     submitLogin() {
+<<<<<<< HEAD
+=======
+      if (this.v$.credentials.email.$invalid && !this.email) {
+        this.showAlertMessage(this.$t('LOGIN.EMAIL.ERROR'));
+        return;
+      }
+
+>>>>>>> ce8e1ec93 (chore: Migrate all instances of old vuelidate to new v2 syntax [CW-3274] (#9623))
       this.loginApi.hasErrored = false;
       this.loginApi.showLoading = true;
 

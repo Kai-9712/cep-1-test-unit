@@ -31,20 +31,20 @@ import { required, minLength } from '@vuelidate/validators';
           :label="$t('HELP_CENTER.CATEGORY.ADD.NAME.LABEL')"
           :placeholder="$t('HELP_CENTER.CATEGORY.ADD.NAME.PLACEHOLDER')"
           :help-text="$t('HELP_CENTER.CATEGORY.ADD.NAME.HELP_TEXT')"
-          :has-error="$v.name.$error"
+          :has-error="v$.name.$error"
           :error-message="$t('HELP_CENTER.CATEGORY.ADD.NAME.ERROR')"
           @name-change="onNameChange"
           @icon-change="onClickInsertEmoji"
         />
         <woot-input
           v-model.trim="slug"
-          :class="{ error: $v.slug.$error }"
+          :class="{ error: v$.slug.$error }"
           class="w-full"
           :error="slugError"
           :label="$t('HELP_CENTER.CATEGORY.ADD.SLUG.LABEL')"
           :placeholder="$t('HELP_CENTER.CATEGORY.ADD.SLUG.PLACEHOLDER')"
           :help-text="$t('HELP_CENTER.CATEGORY.ADD.SLUG.HELP_TEXT')"
-          @input="$v.slug.$touch"
+          @input="v$.slug.$touch"
         />
         <label>
           {{ $t('HELP_CENTER.CATEGORY.ADD.DESCRIPTION.LABEL') }}
@@ -73,9 +73,14 @@ import { required, minLength } from '@vuelidate/validators';
 </template>
 
 <script>
+import { useVuelidate } from '@vuelidate/core';
 import { useAlert } from 'dashboard/composables';
+<<<<<<< HEAD
 import { required, minLength } from 'vuelidate/lib/validators';
 >>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
+=======
+import { required, minLength } from '@vuelidate/validators';
+>>>>>>> ce8e1ec93 (chore: Migrate all instances of old vuelidate to new v2 syntax [CW-3274] (#9623))
 import { convertToCategorySlug } from 'dashboard/helper/commons.js';
 import { PORTALS_EVENTS } from '../../../../../helper/AnalyticsHelper/events';
 import CategoryNameIconInput from './NameEmojiInput.vue';

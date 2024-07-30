@@ -14,12 +14,12 @@ import { required, minLength } from '@vuelidate/validators';
     <form class="w-full" @submit.prevent="addCustomAttribute">
       <woot-input
         v-model.trim="attributeName"
-        :class="{ error: $v.attributeName.$error }"
+        :class="{ error: v$.attributeName.$error }"
         class="w-full"
         :error="attributeNameError"
         :label="$t('CUSTOM_ATTRIBUTES.FORM.NAME.LABEL')"
         :placeholder="$t('CUSTOM_ATTRIBUTES.FORM.NAME.PLACEHOLDER')"
-        @input="$v.attributeName.$touch"
+        @input="v$.attributeName.$touch"
       />
       <woot-input
         v-model.trim="attributeValue"
@@ -29,7 +29,7 @@ import { required, minLength } from '@vuelidate/validators';
       />
       <div class="flex items-center justify-end gap-2 px-0 py-2">
         <woot-button
-          :is-disabled="$v.attributeName.$invalid || isCreating"
+          :is-disabled="v$.attributeName.$invalid || isCreating"
           :is-loading="isCreating"
         >
           {{ $t('CUSTOM_ATTRIBUTES.FORM.CREATE') }}
@@ -44,8 +44,13 @@ import { required, minLength } from '@vuelidate/validators';
 
 <script>
 import Modal from 'dashboard/components/Modal.vue';
+<<<<<<< HEAD
 import { required, minLength } from 'vuelidate/lib/validators';
 >>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
+=======
+import { useVuelidate } from '@vuelidate/core';
+import { required, minLength } from '@vuelidate/validators';
+>>>>>>> ce8e1ec93 (chore: Migrate all instances of old vuelidate to new v2 syntax [CW-3274] (#9623))
 
 export default {
   components: {

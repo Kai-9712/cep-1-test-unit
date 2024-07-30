@@ -160,7 +160,8 @@ export default {
 =======
 
 <script>
-import { required, minLength, email } from 'vuelidate/lib/validators';
+import { useVuelidate } from '@vuelidate/core';
+import { required, minLength, email } from '@vuelidate/validators';
 import { useAlert } from 'dashboard/composables';
 export default {
   props: {
@@ -172,6 +173,9 @@ export default {
       type: Object,
       default: () => ({}),
     },
+  },
+  setup() {
+    return { v$: useVuelidate() };
   },
   data() {
     return {
@@ -194,7 +198,7 @@ export default {
     isFormValid() {
       if (this.selectedType) {
         if (this.sentToOtherEmailAddress) {
-          return !!this.email && !this.$v.email.$error;
+          return !!this.email && !this.v$.email.$error;
         }
         return true;
       }

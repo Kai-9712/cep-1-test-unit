@@ -22,7 +22,7 @@ import { useUISettings } from 'dashboard/composables/useUISettings';
           </label>
           <div
             class="multiselect-wrap--small"
-            :class="{ 'has-multi-select-error': $v.targetInbox.$error }"
+            :class="{ 'has-multi-select-error': v$.targetInbox.$error }"
           >
             <multiselect
               v-model="targetInbox"
@@ -56,8 +56,8 @@ import { useUISettings } from 'dashboard/composables/useUISettings';
               </template>
             </multiselect>
           </div>
-          <label :class="{ error: $v.targetInbox.$error }">
-            <span v-if="$v.targetInbox.$error" class="message">
+          <label :class="{ error: v$.targetInbox.$error }">
+            <span v-if="v$.targetInbox.$error" class="message">
               {{ $t('NEW_CONVERSATION.FORM.INBOX.ERROR') }}
             </span>
           </label>
@@ -85,15 +85,15 @@ import { useUISettings } from 'dashboard/composables/useUISettings';
       </div>
       <div v-if="isAnEmailInbox" class="w-full">
         <div class="w-full">
-          <label :class="{ error: $v.subject.$error }">
+          <label :class="{ error: v$.subject.$error }">
             {{ $t('NEW_CONVERSATION.FORM.SUBJECT.LABEL') }}
             <input
               v-model="subject"
               type="text"
               :placeholder="$t('NEW_CONVERSATION.FORM.SUBJECT.PLACEHOLDER')"
-              @input="$v.subject.$touch"
+              @input="v$.subject.$touch"
             />
-            <span v-if="$v.subject.$error" class="message">
+            <span v-if="v$.subject.$error" class="message">
               {{ $t('NEW_CONVERSATION.FORM.SUBJECT.ERROR') }}
             </span>
           </label>
@@ -121,13 +121,13 @@ import { useUISettings } from 'dashboard/composables/useUISettings';
               <woot-message-editor
                 v-model="message"
                 class="message-editor"
-                :class="{ editor_warning: $v.message.$error }"
+                :class="{ editor_warning: v$.message.$error }"
                 :enable-variables="true"
                 :signature="signatureToApply"
                 :allow-signature="true"
                 :placeholder="$t('NEW_CONVERSATION.FORM.MESSAGE.PLACEHOLDER')"
                 @toggle-canned-menu="toggleCannedMenu"
-                @blur="$v.message.$touch"
+                @blur="v$.message.$touch"
               >
                 <template #footer>
                   <message-signature-missing-alert
@@ -147,7 +147,7 @@ import { useUISettings } from 'dashboard/composables/useUISettings';
                   </div>
                 </template>
               </woot-message-editor>
-              <span v-if="$v.message.$error" class="editor-warning__message">
+              <span v-if="v$.message.$error" class="editor-warning__message">
                 {{ $t('NEW_CONVERSATION.FORM.MESSAGE.ERROR') }}
               </span>
             </div>
@@ -158,16 +158,16 @@ import { useUISettings } from 'dashboard/composables/useUISettings';
             @on-select-template="toggleWaTemplate"
             @on-send="onSendWhatsAppReply"
           />
-          <label v-else :class="{ error: $v.message.$error }">
+          <label v-else :class="{ error: v$.message.$error }">
             {{ $t('NEW_CONVERSATION.FORM.MESSAGE.LABEL') }}
             <textarea
               v-model="message"
               class="min-h-[5rem]"
               type="text"
               :placeholder="$t('NEW_CONVERSATION.FORM.MESSAGE.PLACEHOLDER')"
-              @input="$v.message.$touch"
+              @input="v$.message.$touch"
             />
-            <span v-if="$v.message.$error" class="message">
+            <span v-if="v$.message.$error" class="message">
               {{ $t('NEW_CONVERSATION.FORM.MESSAGE.ERROR') }}
             </span>
           </label>
@@ -314,11 +314,9 @@ export default {
   setup() {
     const { fetchSignatureFlagFromUISettings, setSignatureFlagForInbox } =
       useUISettings();
+    const v$ = useVuelidate();
 
-    return {
-      fetchSignatureFlagFromUISettings,
-      setSignatureFlagForInbox,
-    };
+    return { fetchSignatureFlagFromUISettings, setSignatureFlagForInbox, v$ };
   },
   data() {
     return {

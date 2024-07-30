@@ -5,7 +5,7 @@
     <form class="flex flex-wrap mx-0" @submit.prevent="onSubmit">
       <woot-input
         v-model="name"
-        :class="{ error: $v.name.$error }"
+        :class="{ error: v$.name.$error }"
         class="w-full"
         :styles="{
           borderRadius: '12px',
@@ -15,7 +15,7 @@
         :label="$t('SLA.FORM.NAME.LABEL')"
         :placeholder="$t('SLA.FORM.NAME.PLACEHOLDER')"
         :error="slaNameErrorMessage"
-        @input="$v.name.$touch"
+        @input="v$.name.$touch"
       />
       <woot-input
         v-model="description"
@@ -138,6 +138,7 @@ export default {
     slaNameErrorMessage() {
       let errorMessage = '';
 <<<<<<< HEAD
+<<<<<<< HEAD
       if (this.v$.name.$error) {
         if (!this.v$.name.required) {
           errorMessage = this.$t('SLA.FORM.NAME.REQUIRED_ERROR');
@@ -148,6 +149,12 @@ export default {
           errorMessage = this.$t('SLA.FORM.NAME.REQUIRED_ERROR');
         } else if (!this.$v.name.minLength) {
 >>>>>>> 84c380c8c (feat: Replace SLA `validationMixin` within the component (#9804))
+=======
+      if (this.v$.name.$error) {
+        if (!this.v$.name.required) {
+          errorMessage = this.$t('SLA.FORM.NAME.REQUIRED_ERROR');
+        } else if (!this.v$.name.minLength) {
+>>>>>>> ce8e1ec93 (chore: Migrate all instances of old vuelidate to new v2 syntax [CW-3274] (#9623))
           errorMessage = this.$t('SLA.FORM.NAME.MINIMUM_LENGTH_ERROR');
         }
       }

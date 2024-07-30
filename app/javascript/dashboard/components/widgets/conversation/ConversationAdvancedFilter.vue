@@ -1,9 +1,94 @@
+<<<<<<< HEAD
 <script>
 import { useAlert } from 'dashboard/composables';
 <<<<<<< HEAD
 =======
 import { required, requiredIf } from 'vuelidate/lib/validators';
 >>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
+=======
+<template>
+  <div>
+    <woot-modal-header :header-title="filterModalHeaderTitle">
+      <p class="text-slate-600 dark:text-slate-200">
+        {{ filterModalSubTitle }}
+      </p>
+    </woot-modal-header>
+    <div class="p-8">
+      <div v-if="isFolderView">
+        <label class="input-label" :class="{ error: !activeFolderNewName }">
+          {{ $t('FILTER.FOLDER_LABEL') }}
+          <input
+            v-model="activeFolderNewName"
+            type="text"
+            class="bg-white folder-input border-slate-75 dark:border-slate-600 dark:bg-slate-900 text-slate-900 dark:text-slate-100"
+          />
+          <span v-if="!activeFolderNewName" class="message">
+            {{ $t('FILTER.EMPTY_VALUE_ERROR') }}
+          </span>
+        </label>
+        <label class="mb-1">
+          {{ $t('FILTER.FOLDER_QUERY_LABEL') }}
+        </label>
+      </div>
+      <div
+        class="p-4 mb-4 border border-solid rounded-lg bg-slate-25 dark:bg-slate-900 border-slate-50 dark:border-slate-700/50"
+      >
+        <filter-input-box
+          v-for="(filter, i) in appliedFilters"
+          :key="i"
+          v-model="appliedFilters[i]"
+          :filter-groups="filterGroups"
+          :input-type="
+            getInputType(
+              appliedFilters[i].attribute_key,
+              appliedFilters[i].filter_operator
+            )
+          "
+          :operators="getOperators(appliedFilters[i].attribute_key)"
+          :dropdown-values="getDropdownValues(appliedFilters[i].attribute_key)"
+          :show-query-operator="i !== appliedFilters.length - 1"
+          :show-user-input="showUserInput(appliedFilters[i].filter_operator)"
+          :grouped-filters="true"
+          :error-message="validationErrors[`filter_${i}`]"
+          @resetFilter="resetFilter(i, appliedFilters[i])"
+          @removeFilter="removeFilter(i)"
+        />
+        <div class="mt-4">
+          <woot-button
+            icon="add"
+            color-scheme="success"
+            variant="smooth"
+            size="small"
+            @click="appendNewFilter"
+          >
+            {{ $t('FILTER.ADD_NEW_FILTER') }}
+          </woot-button>
+        </div>
+      </div>
+      <div class="w-full">
+        <div class="flex flex-row justify-end w-full gap-2 px-0 py-2">
+          <woot-button class="button clear" @click.prevent="onClose">
+            {{ $t('FILTER.CANCEL_BUTTON_LABEL') }}
+          </woot-button>
+          <woot-button
+            v-if="isFolderView"
+            :disabled="!activeFolderNewName"
+            @click="updateSavedCustomViews"
+          >
+            {{ $t('FILTER.UPDATE_BUTTON_LABEL') }}
+          </woot-button>
+          <woot-button v-else @click="submitFilterQuery">
+            {{ $t('FILTER.SUBMIT_BUTTON_LABEL') }}
+          </woot-button>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+import { useAlert } from 'dashboard/composables';
+>>>>>>> ce8e1ec93 (chore: Migrate all instances of old vuelidate to new v2 syntax [CW-3274] (#9623))
 import FilterInputBox from '../FilterInput/Index.vue';
 import languages from './advancedFilterItems/languages';
 import countries from 'shared/constants/countries.js';

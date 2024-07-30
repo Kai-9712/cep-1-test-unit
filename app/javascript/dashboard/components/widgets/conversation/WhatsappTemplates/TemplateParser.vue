@@ -147,6 +147,90 @@ export default {
   </div>
 </template>
 
+<<<<<<< HEAD
+=======
+<script>
+import { useVuelidate } from '@vuelidate/core';
+import { requiredIf } from '@vuelidate/validators';
+const allKeysRequired = value => {
+  const keys = Object.keys(value);
+  return keys.every(key => value[key]);
+};
+export default {
+  props: {
+    template: {
+      type: Object,
+      default: () => {},
+    },
+  },
+  setup() {
+    return { v$: useVuelidate() };
+  },
+  validations: {
+    processedParams: {
+      requiredIfKeysPresent: requiredIf('variables'),
+      allKeysRequired,
+    },
+  },
+  data() {
+    return {
+      processedParams: {},
+    };
+  },
+  computed: {
+    variables() {
+      const variables = this.templateString.match(/{{([^}]+)}}/g);
+      return variables;
+    },
+    templateString() {
+      return this.template.components.find(
+        component => component.type === 'BODY'
+      ).text;
+    },
+    processedString() {
+      return this.templateString.replace(/{{([^}]+)}}/g, (match, variable) => {
+        const variableKey = this.processVariable(variable);
+        return this.processedParams[variableKey] || `{{${variable}}}`;
+      });
+    },
+  },
+  mounted() {
+    this.generateVariables();
+  },
+  methods: {
+    sendMessage() {
+      this.v$.$touch();
+      if (this.v$.$invalid) return;
+      const payload = {
+        message: this.processedString,
+        templateParams: {
+          name: this.template.name,
+          category: this.template.category,
+          language: this.template.language,
+          namespace: this.template.namespace,
+          processed_params: this.processedParams,
+        },
+      };
+      this.$emit('sendMessage', payload);
+    },
+    processVariable(str) {
+      return str.replace(/{{|}}/g, '');
+    },
+    generateVariables() {
+      const matchedVariables = this.templateString.match(/{{([^}]+)}}/g);
+      if (!matchedVariables) return;
+
+      const variables = matchedVariables.map(i => this.processVariable(i));
+      this.processedParams = variables.reduce((acc, variable) => {
+        acc[variable] = '';
+        return acc;
+      }, {});
+    },
+  },
+};
+</script>
+
+>>>>>>> ce8e1ec93 (chore: Migrate all instances of old vuelidate to new v2 syntax [CW-3274] (#9623))
 <style scoped lang="scss">
 .template__variables-container {
   @apply p-2.5;

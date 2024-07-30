@@ -113,6 +113,38 @@ export default {
   </div>
 </template>
 
+<<<<<<< HEAD
+=======
+<script>
+export default {
+  inject: ['v$'],
+  props: {
+    macroName: {
+      type: String,
+      default: '',
+    },
+    macroVisibility: {
+      type: String,
+      default: 'global',
+    },
+  },
+  methods: {
+    isActive(key) {
+      return this.macroVisibility === key
+        ? 'bg-woot-25 dark:bg-slate-900 border-woot-200 dark:border-woot-700'
+        : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-600';
+    },
+    onUpdateName(value) {
+      this.$emit('update:name', value);
+    },
+    onUpdateVisibility(value) {
+      this.$emit('update:visibility', value);
+    },
+  },
+};
+</script>
+
+>>>>>>> ce8e1ec93 (chore: Migrate all instances of old vuelidate to new v2 syntax [CW-3274] (#9623))
 <style scoped lang="scss">
 ::v-deep input[type='text'] {
   @apply mb-0;

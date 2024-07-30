@@ -196,6 +196,103 @@ export default {
   </div>
 </template>
 
+<<<<<<< HEAD
+=======
+<script>
+import AutomationActionTeamMessageInput from './AutomationActionTeamMessageInput.vue';
+import AutomationActionFileInput from './AutomationFileInput.vue';
+import WootMessageEditor from 'dashboard/components/widgets/WootWriter/Editor.vue';
+export default {
+  components: {
+    AutomationActionTeamMessageInput,
+    AutomationActionFileInput,
+    WootMessageEditor,
+  },
+  props: {
+    value: {
+      type: Object,
+      default: () => null,
+    },
+    actionTypes: {
+      type: Array,
+      default: () => [],
+    },
+    dropdownValues: {
+      type: Array,
+      default: () => [],
+    },
+    errorMessage: {
+      type: String,
+      default: '',
+    },
+    showActionInput: {
+      type: Boolean,
+      default: true,
+    },
+    initialFileName: {
+      type: String,
+      default: '',
+    },
+    isMacro: {
+      type: Boolean,
+      default: false,
+    },
+  },
+  computed: {
+    action_name: {
+      get() {
+        if (!this.value) return null;
+        return this.value.action_name;
+      },
+      set(value) {
+        const payload = this.value || {};
+        this.$emit('input', { ...payload, action_name: value });
+      },
+    },
+    action_params: {
+      get() {
+        if (!this.value) return null;
+        return this.value.action_params;
+      },
+      set(value) {
+        const payload = this.value || {};
+        this.$emit('input', { ...payload, action_params: value });
+      },
+    },
+    inputType() {
+      return this.actionTypes.find(action => action.key === this.action_name)
+        .inputType;
+    },
+    actionInputStyles() {
+      return {
+        'has-error': this.errorMessage,
+        'is-a-macro': this.isMacro,
+      };
+    },
+    castMessageVmodel: {
+      get() {
+        if (Array.isArray(this.action_params)) {
+          return this.action_params[0];
+        }
+        return this.action_params;
+      },
+      set(value) {
+        this.action_params = value;
+      },
+    },
+  },
+  methods: {
+    removeAction() {
+      this.$emit('removeAction');
+    },
+    resetAction() {
+      this.$emit('resetAction');
+    },
+  },
+};
+</script>
+
+>>>>>>> ce8e1ec93 (chore: Migrate all instances of old vuelidate to new v2 syntax [CW-3274] (#9623))
 <style lang="scss" scoped>
 .filter {
   @apply bg-slate-50 dark:bg-slate-800 p-2 border border-solid border-slate-75 dark:border-slate-600 rounded-md mb-2;

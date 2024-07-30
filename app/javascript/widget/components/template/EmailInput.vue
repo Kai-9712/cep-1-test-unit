@@ -1,3 +1,37 @@
+<<<<<<< HEAD
+=======
+<template>
+  <div>
+    <form
+      v-if="!hasSubmitted"
+      class="email-input-group"
+      @submit.prevent="onSubmit"
+    >
+      <input
+        v-model.trim="email"
+        class="form-input"
+        :placeholder="$t('EMAIL_PLACEHOLDER')"
+        :class="inputHasError"
+        @input="v$.email.$touch"
+        @keydown.enter="onSubmit"
+      />
+      <button
+        class="button small"
+        :disabled="v$.email.$invalid"
+        :style="{
+          background: widgetColor,
+          borderColor: widgetColor,
+          color: textColor,
+        }"
+      >
+        <fluent-icon v-if="!isUpdating" icon="chevron-right" />
+        <spinner v-else class="mx-2" />
+      </button>
+    </form>
+  </div>
+</template>
+
+>>>>>>> ce8e1ec93 (chore: Migrate all instances of old vuelidate to new v2 syntax [CW-3274] (#9623))
 <script>
 import { mapGetters } from 'vuex';
 import { useVuelidate } from '@vuelidate/core';

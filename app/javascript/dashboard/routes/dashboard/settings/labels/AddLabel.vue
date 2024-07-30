@@ -12,23 +12,23 @@ import { useAlert } from 'dashboard/composables';
     <form class="flex flex-wrap mx-0" @submit.prevent="addLabel">
       <woot-input
         v-model.trim="title"
-        :class="{ error: $v.title.$error }"
+        :class="{ error: v$.title.$error }"
         class="w-full label-name--input"
         :label="$t('LABEL_MGMT.FORM.NAME.LABEL')"
         :placeholder="$t('LABEL_MGMT.FORM.NAME.PLACEHOLDER')"
         :error="labelTitleErrorMessage"
         data-testid="label-title"
-        @input="$v.title.$touch"
+        @input="v$.title.$touch"
       />
 
       <woot-input
         v-model.trim="description"
-        :class="{ error: $v.description.$error }"
+        :class="{ error: v$.description.$error }"
         class="w-full"
         :label="$t('LABEL_MGMT.FORM.DESCRIPTION.LABEL')"
         :placeholder="$t('LABEL_MGMT.FORM.DESCRIPTION.PLACEHOLDER')"
         data-testid="label-description"
-        @input="$v.description.$touch"
+        @input="v$.description.$touch"
       />
 
       <div class="w-full">
@@ -45,7 +45,7 @@ import { useAlert } from 'dashboard/composables';
       </div>
       <div class="flex items-center justify-end w-full gap-2 px-0 py-2">
         <woot-button
-          :is-disabled="$v.title.$invalid || uiFlags.isCreating"
+          :is-disabled="v$.title.$invalid || uiFlags.isCreating"
           :is-loading="uiFlags.isCreating"
           data-testid="label-submit"
         >
@@ -102,10 +102,14 @@ export default {
     }),
     labelTitleErrorMessage() {
 <<<<<<< HEAD
+<<<<<<< HEAD
       const errorMessage = getLabelTitleErrorMessage(this.v$);
 =======
       const errorMessage = getLabelTitleErrorMessage(this.$v);
 >>>>>>> 10ee773aa (feat: Rewrite `labels/validationMixin mixin` to a helper (#9818))
+=======
+      const errorMessage = getLabelTitleErrorMessage(this.v$);
+>>>>>>> ce8e1ec93 (chore: Migrate all instances of old vuelidate to new v2 syntax [CW-3274] (#9623))
       return this.$t(errorMessage);
     },
   },

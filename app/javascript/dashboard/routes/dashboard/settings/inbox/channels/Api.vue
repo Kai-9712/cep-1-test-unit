@@ -15,7 +15,7 @@ import { required } from '@vuelidate/validators';
     />
     <form class="flex flex-wrap mx-0" @submit.prevent="createChannel()">
       <div class="w-[65%] flex-shrink-0 flex-grow-0 max-w-[65%]">
-        <label :class="{ error: $v.channelName.$error }">
+        <label :class="{ error: v$.channelName.$error }">
           {{ $t('INBOX_MGMT.ADD.API_CHANNEL.CHANNEL_NAME.LABEL') }}
           <input
             v-model.trim="channelName"
@@ -23,16 +23,16 @@ import { required } from '@vuelidate/validators';
             :placeholder="
               $t('INBOX_MGMT.ADD.API_CHANNEL.CHANNEL_NAME.PLACEHOLDER')
             "
-            @blur="$v.channelName.$touch"
+            @blur="v$.channelName.$touch"
           />
-          <span v-if="$v.channelName.$error" class="message">{{
+          <span v-if="v$.channelName.$error" class="message">{{
             $t('INBOX_MGMT.ADD.API_CHANNEL.CHANNEL_NAME.ERROR')
           }}</span>
         </label>
       </div>
 
       <div class="w-[65%] flex-shrink-0 flex-grow-0 max-w-[65%]">
-        <label :class="{ error: $v.webhookUrl.$error }">
+        <label :class="{ error: v$.webhookUrl.$error }">
           {{ $t('INBOX_MGMT.ADD.API_CHANNEL.WEBHOOK_URL.LABEL') }}
           <input
             v-model.trim="webhookUrl"
@@ -40,7 +40,7 @@ import { required } from '@vuelidate/validators';
             :placeholder="
               $t('INBOX_MGMT.ADD.API_CHANNEL.WEBHOOK_URL.PLACEHOLDER')
             "
-            @blur="$v.webhookUrl.$touch"
+            @blur="v$.webhookUrl.$touch"
           />
         </label>
         <p class="help-text">
@@ -60,9 +60,14 @@ import { required } from '@vuelidate/validators';
 
 <script>
 import { mapGetters } from 'vuex';
+import { useVuelidate } from '@vuelidate/core';
 import { useAlert } from 'dashboard/composables';
+<<<<<<< HEAD
 import { required } from 'vuelidate/lib/validators';
 >>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
+=======
+import { required } from '@vuelidate/validators';
+>>>>>>> ce8e1ec93 (chore: Migrate all instances of old vuelidate to new v2 syntax [CW-3274] (#9623))
 import router from '../../../../index';
 import PageHeader from '../../SettingsSubPageHeader.vue';
 
@@ -74,11 +79,17 @@ export default {
     PageHeader,
   },
 <<<<<<< HEAD
+<<<<<<< HEAD
   setup() {
     return { v$: useVuelidate() };
   },
 =======
 >>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
+=======
+  setup() {
+    return { v$: useVuelidate() };
+  },
+>>>>>>> ce8e1ec93 (chore: Migrate all instances of old vuelidate to new v2 syntax [CW-3274] (#9623))
   data() {
     return {
       channelName: '',
