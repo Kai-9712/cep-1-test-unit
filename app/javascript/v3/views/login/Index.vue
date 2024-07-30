@@ -66,8 +66,8 @@
             required
             :label="$t('LOGIN.EMAIL.LABEL')"
             :placeholder="$t('LOGIN.EMAIL.PLACEHOLDER')"
-            :has-error="$v.credentials.email.$error"
-            @input="$v.credentials.email.$touch"
+            :has-error="v$.credentials.email.$error"
+            @input="v$.credentials.email.$touch"
           />
           <form-input
             v-model.trim="credentials.password"
@@ -78,8 +78,8 @@
             :tabindex="2"
             :label="$t('LOGIN.PASSWORD.LABEL')"
             :placeholder="$t('LOGIN.PASSWORD.PLACEHOLDER')"
-            :has-error="$v.credentials.password.$error"
-            @input="$v.credentials.password.$touch"
+            :has-error="v$.credentials.password.$error"
+            @input="v$.credentials.password.$touch"
           >
             <p v-if="!globalConfig.disableUserProfileUpdate">
               <router-link
@@ -107,8 +107,9 @@
 </template>
 
 <script>
+import { useVuelidate } from '@vuelidate/core';
+import { required, email } from '@vuelidate/validators';
 import { useAlert } from 'dashboard/composables';
-import { required, email } from 'vuelidate/lib/validators';
 import globalConfigMixin from 'shared/mixins/globalConfigMixin';
 import SubmitButton from '../../components/Button/SubmitButton.vue';
 import { mapGetters } from 'vuex';
@@ -137,6 +138,9 @@ export default {
     config: { type: String, default: '' },
     email: { type: String, default: '' },
     authError: { type: String, default: '' },
+  },
+  setup() {
+    return { v$: useVuelidate() };
   },
   data() {
     return {
@@ -210,7 +214,7 @@ export default {
       useAlert(this.loginApi.message);
     },
     submitLogin() {
-      if (this.$v.credentials.email.$invalid && !this.email) {
+      if (this.v$.credentials.email.$invalid && !this.email) {
         this.showAlertMessage(this.$t('LOGIN.EMAIL.ERROR'));
         return;
       }
