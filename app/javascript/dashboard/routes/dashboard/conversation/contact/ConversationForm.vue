@@ -303,6 +303,7 @@ export default {
       type: Function,
       default: () => {},
     },
+<<<<<<< HEAD
   },
   setup() {
     const { fetchSignatureFlagFromUISettings, setSignatureFlagForInbox } =
@@ -310,6 +311,8 @@ export default {
     const v$ = useVuelidate();
 
     return { fetchSignatureFlagFromUISettings, setSignatureFlagForInbox, v$ };
+=======
+>>>>>>> 68482db3a (fix: templates in whatsapp (#9862))
   },
   setup() {
     const { fetchSignatureFlagFromUISettings, setSignatureFlagForInbox } =
