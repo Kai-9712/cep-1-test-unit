@@ -630,10 +630,14 @@ GEM
     reverse_markdown (2.1.1)
       nokogiri
 <<<<<<< HEAD
+<<<<<<< HEAD
     rexml (3.3.4)
 =======
     rexml (3.3.2)
 >>>>>>> ae8619142 (chore: Update dependencies to fix security issues (#9801))
+=======
+    rexml (3.3.4)
+>>>>>>> 17a6df10a (chore: Security advisory fix for rexml (#9872))
       strscan
     rspec-core (3.13.0)
       rspec-support (~> 3.13.0)
