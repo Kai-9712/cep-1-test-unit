@@ -8,9 +8,13 @@ class Api::V1::Accounts::Integrations::CaptainController < Api::V1::Accounts::Ba
       "&email=#{URI.encode_www_form_component(@hook['settings']['account_email'])}" \
       "&account_id=#{URI.encode_www_form_component(@hook['settings']['account_id'])}"
 
+<<<<<<< HEAD
     installation_config = InstallationConfig.find_by(name: 'CAPTAIN_APP_URL')
 
     sso_url = "#{installation_config.value}/sso?#{params_string}"
+=======
+    sso_url = "#{ENV.fetch('CAPTAIN_APP_URL', '')}/sso?#{params_string}"
+>>>>>>> 829bb842f (feat: Generate SSO URL in Chatwoot, move Captain to primary tab (#9871))
     render json: { sso_url: sso_url }, status: :ok
   end
 

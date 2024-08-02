@@ -26,6 +26,7 @@ export const getters = {
 <<<<<<< HEAD
 =======
   },
+<<<<<<< HEAD
   getIntegration: $state => integrationId => {
     const [integration] = $state.records.filter(
       record => record.id === integrationId
@@ -33,6 +34,8 @@ export const getters = {
     return integration || {};
 >>>>>>> 8b1d98af5 (feat: Update the design for integration page (#9825))
   },
+=======
+>>>>>>> 829bb842f (feat: Generate SSO URL in Chatwoot, move Captain to primary tab (#9871))
   getIntegration:
     $state =>
     (integrationId, defaultValue = {}) => {

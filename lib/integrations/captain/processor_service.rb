@@ -32,11 +32,16 @@ class Integrations::Captain::ProcessorService < Integrations::BotProcessorServic
 
   def call_captain(message_content)
 <<<<<<< HEAD
+<<<<<<< HEAD
     url = "#{GlobalConfigService.load('CAPTAIN_API_URL',
                                       '')}/accounts/#{hook.settings['account_id']}/assistants/#{hook.settings['assistant_id']}/chat"
 =======
     url = "#{ENV.fetch('CAPTAIN_API_URL', nil)}/accounts/#{hook.settings['account_id']}/assistants/#{hook.settings['assistant_id']}/chat"
 >>>>>>> 0331815cc (feat: Integration with Captain (alpha) (#9834))
+=======
+    url = "#{GlobalConfigService.load('CAPTAIN_API_URL',
+                                      '')}/accounts/#{hook.settings['account_id']}/assistants/#{hook.settings['assistant_id']}/chat"
+>>>>>>> 829bb842f (feat: Generate SSO URL in Chatwoot, move Captain to primary tab (#9871))
 
     headers = {
       'X-USER-EMAIL' => hook.settings['account_email'],

@@ -5,14 +5,20 @@
     "LEARN_MORE": "Learn more about integrations",
     "LOADING": "Fetching integrations",
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 829bb842f (feat: Generate SSO URL in Chatwoot, move Captain to primary tab (#9871))
     "CAPTAIN": {
       "DISABLED": "Captain is not enabled on your account.",
       "CLICK_HERE_TO_CONFIGURE": "Click here to configure",
       "LOADING_CONSOLE": "Loading Captain Console...",
       "FAILED_TO_LOAD_CONSOLE": "Failed to load Captain Console. Please refresh and try again."
     },
+<<<<<<< HEAD
 =======
 >>>>>>> 8b1d98af5 (feat: Update the design for integration page (#9825))
+=======
+>>>>>>> 829bb842f (feat: Generate SSO URL in Chatwoot, move Captain to primary tab (#9871))
     "WEBHOOK": {
       "SUBSCRIBED_EVENTS": "Subscribed Events",
       "FORM": {
