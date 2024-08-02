@@ -38,10 +38,15 @@ RSpec.describe 'Captain Integrations API', type: :request do
 
       it 'returns sso url if hook is available' do
 <<<<<<< HEAD
+<<<<<<< HEAD
         InstallationConfig.where(name: 'CAPTAIN_APP_URL').first_or_create(value: 'https://app.chatwoot.com')
 
 =======
 >>>>>>> 829bb842f (feat: Generate SSO URL in Chatwoot, move Captain to primary tab (#9871))
+=======
+        InstallationConfig.where(name: 'CAPTAIN_APP_URL').first_or_create(value: 'https://app.chatwoot.com')
+
+>>>>>>> 8696a4c13 (chore: Use installation config URL for captain app URL (#9874))
         hook = create(:integrations_hook, account: account, app_id: 'captain', settings: {
                         access_token: SecureRandom.hex,
                         account_email: Faker::Internet.email,
@@ -51,10 +56,14 @@ RSpec.describe 'Captain Integrations API', type: :request do
                       })
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 8696a4c13 (chore: Use installation config URL for captain app URL (#9874))
         get sso_url_api_v1_account_integrations_captain_url(account_id: account.id),
             params: {},
             headers: admin.create_new_auth_token,
             as: :json
+<<<<<<< HEAD
 
         expect(response).to have_http_status(:success)
         data = response.parsed_body
@@ -70,17 +79,24 @@ RSpec.describe 'Captain Integrations API', type: :request do
               params: {},
               headers: admin.create_new_auth_token,
               as: :json
+=======
+>>>>>>> 8696a4c13 (chore: Use installation config URL for captain app URL (#9874))
 
-          expect(response).to have_http_status(:success)
-          data = response.parsed_body
-          params_string = "token=#{URI.encode_www_form_component(hook['settings']['access_token'])}" \
-                          "&email=#{URI.encode_www_form_component(hook['settings']['account_email'])}" \
-                          "&account_id=#{URI.encode_www_form_component(hook['settings']['account_id'])}"
+        expect(response).to have_http_status(:success)
+        data = response.parsed_body
+        params_string = "token=#{URI.encode_www_form_component(hook['settings']['access_token'])}" \
+                        "&email=#{URI.encode_www_form_component(hook['settings']['account_email'])}" \
+                        "&account_id=#{URI.encode_www_form_component(hook['settings']['account_id'])}"
 
+<<<<<<< HEAD
           sso_url = "https://app.example.com/sso?#{params_string}"
           expect(data['sso_url']).to eq(sso_url)
         end
 >>>>>>> 829bb842f (feat: Generate SSO URL in Chatwoot, move Captain to primary tab (#9871))
+=======
+        sso_url = "https://app.chatwoot.com/sso?#{params_string}"
+        expect(data['sso_url']).to eq(sso_url)
+>>>>>>> 8696a4c13 (chore: Use installation config URL for captain app URL (#9874))
       end
     end
   end
