@@ -228,6 +228,7 @@ export default {
     },
     submitLogin() {
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
       if (this.v$.credentials.email.$invalid && !this.email) {
         this.showAlertMessage(this.$t('LOGIN.EMAIL.ERROR'));
@@ -235,6 +236,8 @@ export default {
       }
 
 >>>>>>> ce8e1ec93 (chore: Migrate all instances of old vuelidate to new v2 syntax [CW-3274] (#9623))
+=======
+>>>>>>> 6166ccb01 (fix: Fix broken SSO login after vuelidate changes (#9877))
       this.loginApi.hasErrored = false;
       this.loginApi.showLoading = true;
 
