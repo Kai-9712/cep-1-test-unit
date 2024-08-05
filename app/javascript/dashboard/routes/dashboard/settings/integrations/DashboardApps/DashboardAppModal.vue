@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 <script>
 <<<<<<< HEAD
 import { useVuelidate } from '@vuelidate/core';
@@ -61,6 +62,8 @@ import { required, url } from 'vuelidate/lib/validators';
   </woot-modal>
 </template>
 
+=======
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
 <script>
 import { useVuelidate } from '@vuelidate/core';
 import { required, url } from '@vuelidate/validators';

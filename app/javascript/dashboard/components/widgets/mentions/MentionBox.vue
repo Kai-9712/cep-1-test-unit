@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <script setup>
 import { ref, watch, computed } from 'vue';
 import { useKeyboardNavigableList } from 'dashboard/composables/useKeyboardNavigableList';
@@ -68,15 +69,83 @@ const onListItemSelection = index => {
 
 const variableKey = (item = {}) => {
   return props.type === 'variable' ? `{{${item.label}}}` : `/${item.label}`;
+=======
+<script>
+import mentionSelectionKeyboardMixin from './mentionSelectionKeyboardMixin';
+export default {
+  mixins: [mentionSelectionKeyboardMixin],
+  props: {
+    items: {
+      type: Array,
+      default: () => {},
+    },
+    type: {
+      type: String,
+      default: 'canned',
+    },
+  },
+  data() {
+    return {
+      selectedIndex: 0,
+    };
+  },
+  watch: {
+    items(newItems) {
+      if (newItems.length < this.selectedIndex + 1) {
+        this.selectedIndex = 0;
+      }
+    },
+    selectedIndex() {
+      const container = this.$refs.mentionsListContainer;
+      const item = container.querySelector(
+        `#mention-item-${this.selectedIndex}`
+      );
+      if (item) {
+        const itemTop = item.offsetTop;
+        const itemBottom = itemTop + item.offsetHeight;
+        const containerTop = container.scrollTop;
+        const containerBottom = containerTop + container.offsetHeight;
+        if (itemTop < containerTop) {
+          container.scrollTop = itemTop;
+        } else if (itemBottom + 34 > containerBottom) {
+          container.scrollTop = itemBottom - container.offsetHeight + 34;
+        }
+      }
+    },
+  },
+  methods: {
+    adjustScroll() {},
+    onHover(index) {
+      this.selectedIndex = index;
+    },
+    onListItemSelection(index) {
+      this.selectedIndex = index;
+      this.onSelect();
+    },
+    onSelect() {
+      this.$emit('mentionSelect', this.items[this.selectedIndex]);
+    },
+    variableKey(item = {}) {
+      return this.type === 'variable' ? `{{${item.label}}}` : `/${item.label}`;
+    },
+  },
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
 };
 </script>
 
 <template>
   <div
+<<<<<<< HEAD
     ref="mentionsListContainerRef"
     class="bg-white dark:bg-slate-800 rounded-md overflow-auto absolute w-full z-20 pb-0 shadow-md left-0 bottom-full max-h-[9.75rem] border border-solid border-slate-100 dark:border-slate-700 mention--box"
   >
     <ul class="mb-0 vertical dropdown menu">
+=======
+    ref="mentionsListContainer"
+    class="bg-white dark:bg-slate-800 rounded-md overflow-auto absolute w-full z-20 pb-0 shadow-md left-0 bottom-full max-h-[9.75rem] border border-solid border-slate-100 dark:border-slate-700 mention--box"
+  >
+    <ul class="vertical dropdown menu">
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
       <woot-dropdown-item
         v-for="(item, index) in items"
         :id="`mention-item-${index}`"

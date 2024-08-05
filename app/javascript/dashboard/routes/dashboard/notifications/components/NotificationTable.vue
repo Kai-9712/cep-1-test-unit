@@ -1,5 +1,57 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+<script>
+import Thumbnail from 'dashboard/components/widgets/Thumbnail.vue';
+import Spinner from 'shared/components/Spinner.vue';
+import EmptyState from 'dashboard/components/widgets/EmptyState.vue';
+import { dynamicTime } from 'shared/helpers/timeHelper';
+import { mapGetters } from 'vuex';
+
+export default {
+  components: {
+    Thumbnail,
+    Spinner,
+    EmptyState,
+  },
+  props: {
+    notifications: {
+      type: Array,
+      default: () => [],
+    },
+    isLoading: {
+      type: Boolean,
+      default: false,
+    },
+    isUpdating: {
+      type: Boolean,
+      default: false,
+    },
+    onClickNotification: {
+      type: Function,
+      default: () => {},
+    },
+    onMarkAllDoneClick: {
+      type: Function,
+      default: () => {},
+    },
+  },
+  computed: {
+    ...mapGetters({
+      notificationMetadata: 'notifications/getMeta',
+    }),
+    showEmptyResult() {
+      return !this.isLoading && this.notifications.length === 0;
+    },
+  },
+  methods: {
+    dynamicTime,
+  },
+};
+</script>
+
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
 <template>
   <section
     class="flex-grow flex-shrink h-full px-4 py-8 overflow-hidden bg-white dark:bg-slate-900"
@@ -52,7 +104,7 @@
             </span>
           </td>
           <td class="thumbnail--column">
-            <thumbnail
+            <Thumbnail
               v-if="notificationItem.primary_actor.meta.assignee"
               :src="notificationItem.primary_actor.meta.assignee.thumbnail"
               size="36px"
@@ -75,17 +127,18 @@
         </tr>
       </tbody>
     </table>
-    <empty-state
+    <EmptyState
       v-if="showEmptyResult"
       :title="$t('NOTIFICATIONS_PAGE.LIST.404')"
     />
     <div v-if="isLoading" class="notifications--loader">
-      <spinner />
+      <Spinner />
       <span>{{ $t('NOTIFICATIONS_PAGE.LIST.LOADING_MESSAGE') }}</span>
     </div>
   </section>
 </template>
 
+<<<<<<< HEAD
 >>>>>>> 79381b08c (feat: Move timeMixin to a helper (#9799))
 <script>
 import Thumbnail from 'dashboard/components/widgets/Thumbnail.vue';
@@ -222,6 +275,8 @@ export default {
   </section>
 </template>
 
+=======
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
 <style lang="scss" scoped>
 @import '~dashboard/assets/scss/mixins';
 

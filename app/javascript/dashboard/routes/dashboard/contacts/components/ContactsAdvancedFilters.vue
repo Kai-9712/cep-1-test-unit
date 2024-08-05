@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 <script>
 import { useAlert } from 'dashboard/composables';
 <<<<<<< HEAD
@@ -96,6 +97,8 @@ import { required } from 'vuelidate/lib/validators';
   </div>
 </template>
 
+=======
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
 <script>
 import { useAlert } from 'dashboard/composables';
 >>>>>>> ce8e1ec93 (chore: Migrate all instances of old vuelidate to new v2 syntax [CW-3274] (#9623))

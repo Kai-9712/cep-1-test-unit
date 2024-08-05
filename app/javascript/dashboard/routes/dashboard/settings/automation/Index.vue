@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <template>
   <div class="flex-1 p-4 overflow-auto">
@@ -126,6 +127,8 @@
   </div>
 </template>
 >>>>>>> 79381b08c (feat: Move timeMixin to a helper (#9799))
+=======
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
 <script>
 import { mapGetters } from 'vuex';
 import { useAlert } from 'dashboard/composables';

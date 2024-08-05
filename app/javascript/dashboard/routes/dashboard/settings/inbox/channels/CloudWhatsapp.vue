@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 <script>
 import { mapGetters } from 'vuex';
 <<<<<<< HEAD
@@ -10,6 +11,81 @@ import { useAlert } from 'dashboard/composables';
 import { required } from 'vuelidate/lib/validators';
 >>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
 =======
+=======
+<script>
+import { mapGetters } from 'vuex';
+import { useVuelidate } from '@vuelidate/core';
+import { useAlert } from 'dashboard/composables';
+import { required } from '@vuelidate/validators';
+import router from '../../../../index';
+import { isPhoneE164OrEmpty, isNumber } from 'shared/helpers/Validators';
+
+export default {
+  setup() {
+    return { v$: useVuelidate() };
+  },
+  data() {
+    return {
+      inboxName: '',
+      phoneNumber: '',
+      apiKey: '',
+      phoneNumberId: '',
+      businessAccountId: '',
+    };
+  },
+  computed: {
+    ...mapGetters({ uiFlags: 'inboxes/getUIFlags' }),
+  },
+  validations: {
+    inboxName: { required },
+    phoneNumber: { required, isPhoneE164OrEmpty },
+    apiKey: { required },
+    phoneNumberId: { required, isNumber },
+    businessAccountId: { required, isNumber },
+  },
+  methods: {
+    async createChannel() {
+      this.v$.$touch();
+      if (this.v$.$invalid) {
+        return;
+      }
+
+      try {
+        const whatsappChannel = await this.$store.dispatch(
+          'inboxes/createChannel',
+          {
+            name: this.inboxName,
+            channel: {
+              type: 'whatsapp',
+              phone_number: this.phoneNumber,
+              provider: 'whatsapp_cloud',
+              provider_config: {
+                api_key: this.apiKey,
+                phone_number_id: this.phoneNumberId,
+                business_account_id: this.businessAccountId,
+              },
+            },
+          }
+        );
+
+        router.replace({
+          name: 'settings_inboxes_add_agents',
+          params: {
+            page: 'new',
+            inbox_id: whatsappChannel.id,
+          },
+        });
+      } catch (error) {
+        useAlert(
+          error.message || this.$t('INBOX_MGMT.ADD.WHATSAPP.API.ERROR_MESSAGE')
+        );
+      }
+    },
+  },
+};
+</script>
+
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
 <template>
   <form class="flex flex-wrap mx-0" @submit.prevent="createChannel()">
     <div class="w-[65%] flex-shrink-0 flex-grow-0 max-w-[65%]">
@@ -105,6 +181,7 @@ import { required } from 'vuelidate/lib/validators';
     </div>
   </form>
 </template>
+<<<<<<< HEAD
 
 <script>
 import { mapGetters } from 'vuex';
@@ -284,3 +361,5 @@ export default {
     </div>
   </form>
 </template>
+=======
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))

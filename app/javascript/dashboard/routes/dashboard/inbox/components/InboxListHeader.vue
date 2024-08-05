@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <template>
   <div
@@ -59,6 +60,8 @@
 </template>
 
 >>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
+=======
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
 <script>
 import { useAlert } from 'dashboard/composables';
 import { INBOX_EVENTS } from 'dashboard/helper/AnalyticsHelper/events';

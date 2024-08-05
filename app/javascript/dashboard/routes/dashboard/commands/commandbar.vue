@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+<!-- eslint-disable vue/attribute-hyphenation -->
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
 <script>
 import '@chatwoot/ninja-keys';
 import { useConversationLabels } from 'dashboard/composables/useConversationLabels';
@@ -114,12 +118,20 @@ export default {
 };
 </script>
 
+<<<<<<< HEAD
 <!-- eslint-disable vue/attribute-hyphenation -->
 <template>
   <ninja-keys
     ref="ninjakeys"
     noAutoLoadMdIcons
     hideBreadcrumbs
+=======
+<template>
+  <ninja-keys
+    ref="ninjakeys"
+    no-auto-load-md-icons
+    hide-breadcrumbs
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
     :placeholder="placeholder"
     @selected="onSelected"
     @closed="onClosed"

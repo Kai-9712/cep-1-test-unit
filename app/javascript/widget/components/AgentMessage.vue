@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <template>
   <div
@@ -89,6 +90,8 @@
 </template>
 
 >>>>>>> 79381b08c (feat: Move timeMixin to a helper (#9799))
+=======
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
 <script>
 import UserMessage from 'widget/components/UserMessage.vue';
 import AgentMessageBubble from 'widget/components/AgentMessageBubble.vue';

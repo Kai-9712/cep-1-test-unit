@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 <script>
 import { useVuelidate } from '@vuelidate/core';
 import { useAlert } from 'dashboard/composables';
@@ -74,6 +75,8 @@ import { required, minLength } from '@vuelidate/validators';
   </woot-modal>
 </template>
 
+=======
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
 <script>
 import { useVuelidate } from '@vuelidate/core';
 import { useAlert } from 'dashboard/composables';

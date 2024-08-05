@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <!-- eslint-disable vue/no-mutating-props -->
 <template>
@@ -25,6 +26,8 @@
 </template>
 
 >>>>>>> ce8e1ec93 (chore: Migrate all instances of old vuelidate to new v2 syntax [CW-3274] (#9623))
+=======
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
 <script>
 import { useVuelidate } from '@vuelidate/core';
 import { required } from '@vuelidate/validators';

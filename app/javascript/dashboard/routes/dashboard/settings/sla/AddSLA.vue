@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 <script>
 import { useAlert } from 'dashboard/composables';
 =======
@@ -21,6 +22,9 @@ import { mapGetters } from 'vuex';
 <<<<<<< HEAD
 >>>>>>> 84c380c8c (feat: Replace SLA `validationMixin` within the component (#9804))
 =======
+=======
+<script>
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
 import { useAlert } from 'dashboard/composables';
 >>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
 import SlaForm from './SlaForm.vue';
@@ -29,6 +33,7 @@ export default {
   components: {
     SlaForm,
   },
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
@@ -41,6 +46,8 @@ export default {
     }),
   },
 >>>>>>> 84c380c8c (feat: Replace SLA `validationMixin` within the component (#9804))
+=======
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
   methods: {
     onClose() {
       this.$emit('close');

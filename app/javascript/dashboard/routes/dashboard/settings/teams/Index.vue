@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <script setup>
 import { useAlert } from 'dashboard/composables';
 import { useAdmin } from 'dashboard/composables/useAdmin';
@@ -63,6 +64,79 @@ const confirmPlaceHolderText = computed(() =>
     teamName: selectedTeam.value.name,
   })
 );
+=======
+<script>
+import { mapGetters } from 'vuex';
+import { useAlert } from 'dashboard/composables';
+import { useAdmin } from 'dashboard/composables/useAdmin';
+import accountMixin from '../../../../mixins/account';
+
+export default {
+  components: {},
+  mixins: [accountMixin],
+  setup() {
+    const { isAdmin } = useAdmin();
+    return {
+      isAdmin,
+    };
+  },
+  data() {
+    return {
+      loading: {},
+      showSettings: false,
+      showDeletePopup: false,
+      selectedTeam: {},
+    };
+  },
+  computed: {
+    ...mapGetters({
+      teamsList: 'teams/getTeams',
+      globalConfig: 'globalConfig/get',
+    }),
+    deleteConfirmText() {
+      return `${this.$t('TEAMS_SETTINGS.DELETE.CONFIRM.YES')} ${
+        this.selectedTeam.name
+      }`;
+    },
+    deleteRejectText() {
+      return this.$t('TEAMS_SETTINGS.DELETE.CONFIRM.NO');
+    },
+    confirmDeleteTitle() {
+      return this.$t('TEAMS_SETTINGS.DELETE.CONFIRM.TITLE', {
+        teamName: this.selectedTeam.name,
+      });
+    },
+    confirmPlaceHolderText() {
+      return `${this.$t('TEAMS_SETTINGS.DELETE.CONFIRM.PLACE_HOLDER', {
+        teamName: this.selectedTeam.name,
+      })}`;
+    },
+  },
+  methods: {
+    async deleteTeam({ id }) {
+      try {
+        await this.$store.dispatch('teams/delete', id);
+        useAlert(this.$t('TEAMS_SETTINGS.DELETE.API.SUCCESS_MESSAGE'));
+      } catch (error) {
+        useAlert(this.$t('TEAMS_SETTINGS.DELETE.API.ERROR_MESSAGE'));
+      }
+    },
+
+    confirmDeletion() {
+      this.deleteTeam(this.selectedTeam);
+      this.closeDelete();
+    },
+    openDelete(team) {
+      this.showDeletePopup = true;
+      this.selectedTeam = team;
+    },
+    closeDelete() {
+      this.showDeletePopup = false;
+      this.selectedTeam = {};
+    },
+  },
+};
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
 </script>
 
 <template>
@@ -210,79 +284,16 @@ const confirmPlaceHolderText = computed(() =>
   </div>
 </template>
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <script>
 import { mapGetters } from 'vuex';
 import { useAlert } from 'dashboard/composables';
 import { useAdmin } from 'dashboard/composables/useAdmin';
 import accountMixin from '../../../../mixins/account';
+=======
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
 
-export default {
-  components: {},
-  mixins: [accountMixin],
-  setup() {
-    const { isAdmin } = useAdmin();
-    return {
-      isAdmin,
-    };
-  },
-  data() {
-    return {
-      loading: {},
-      showSettings: false,
-      showDeletePopup: false,
-      selectedTeam: {},
-    };
-  },
-  computed: {
-    ...mapGetters({
-      teamsList: 'teams/getTeams',
-      globalConfig: 'globalConfig/get',
-    }),
-    deleteConfirmText() {
-      return `${this.$t('TEAMS_SETTINGS.DELETE.CONFIRM.YES')} ${
-        this.selectedTeam.name
-      }`;
-    },
-    deleteRejectText() {
-      return this.$t('TEAMS_SETTINGS.DELETE.CONFIRM.NO');
-    },
-    confirmDeleteTitle() {
-      return this.$t('TEAMS_SETTINGS.DELETE.CONFIRM.TITLE', {
-        teamName: this.selectedTeam.name,
-      });
-    },
-    confirmPlaceHolderText() {
-      return `${this.$t('TEAMS_SETTINGS.DELETE.CONFIRM.PLACE_HOLDER', {
-        teamName: this.selectedTeam.name,
-      })}`;
-    },
-  },
-  methods: {
-    async deleteTeam({ id }) {
-      try {
-        await this.$store.dispatch('teams/delete', id);
-        useAlert(this.$t('TEAMS_SETTINGS.DELETE.API.SUCCESS_MESSAGE'));
-      } catch (error) {
-        useAlert(this.$t('TEAMS_SETTINGS.DELETE.API.ERROR_MESSAGE'));
-      }
-    },
-
-    confirmDeletion() {
-      this.deleteTeam(this.selectedTeam);
-      this.closeDelete();
-    },
-    openDelete(team) {
-      this.showDeletePopup = true;
-      this.selectedTeam = team;
-    },
-    closeDelete() {
-      this.showDeletePopup = false;
-      this.selectedTeam = {};
-    },
-  },
-};
-</script>
 <style lang="scss" scoped>
 .button-wrapper {
   min-width: unset;

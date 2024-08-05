@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 <template>
   <div
     class="flex flex-col flex-shrink-0 overflow-hidden border-r conversations-list-wrap rtl:border-r-0 rtl:border-l border-slate-50 dark:border-slate-800/50"
@@ -124,6 +125,8 @@
   </div>
 </template>
 
+=======
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
 =======
 >>>>>>> b4b308336 (feat: Eslint rules (#9839))
 <script>
@@ -1137,7 +1140,11 @@ export default {
       @assignTeam="onAssignTeamsForBulk"
     />
     <div
+<<<<<<< HEAD
       ref="conversationListRef"
+=======
+      ref="conversationList"
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
       class="flex-1 conversations-list"
       :class="{ 'overflow-hidden': isContextMenuOpen }"
     >

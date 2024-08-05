@@ -1105,10 +1105,17 @@ export default {
     />
     <ReplyTopPanel
       :mode="replyType"
+<<<<<<< HEAD
       :is-message-length-reaching-threshold="isMessageLengthReachingThreshold"
       :characters-remaining="charactersRemaining"
       :popout-reply-box="popoutReplyBox"
       @setReplyMode="setReplyMode"
+=======
+      :set-reply-mode="setReplyMode"
+      :is-message-length-reaching-threshold="isMessageLengthReachingThreshold"
+      :characters-remaining="charactersRemaining"
+      :popout-reply-box="popoutReplyBox"
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
       @click="$emit('click')"
     />
     <ArticleSearchPopover

@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 <template>
   <aside class="flex h-full">
     <primary-sidebar
@@ -29,6 +30,8 @@
   </aside>
 </template>
 
+=======
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
 =======
 >>>>>>> b4b308336 (feat: Eslint rules (#9839))
 <script>
@@ -219,6 +222,41 @@ export default {
         this.$store.dispatch('customViews/get', this.activeCustomView);
       }
     },
+<<<<<<< HEAD
+=======
+    toggleKeyShortcutModal() {
+      this.$emit('openKeyShortcutModal');
+    },
+    closeKeyShortcutModal() {
+      this.$emit('closeKeyShortcutModal');
+    },
+    getKeyboardEvents() {
+      return {
+        '$mod+Slash': this.toggleKeyShortcutModal,
+        '$mod+Escape': this.closeKeyShortcutModal,
+        'Alt+KeyC': {
+          action: () => this.navigateToRoute('home'),
+        },
+        'Alt+KeyV': {
+          action: () => this.navigateToRoute('contacts_dashboard'),
+        },
+        'Alt+KeyR': {
+          action: () => this.navigateToRoute('account_overview_reports'),
+        },
+        'Alt+KeyS': {
+          action: () => this.navigateToRoute('agent_list'),
+        },
+      };
+    },
+    navigateToRoute(routeName) {
+      if (!this.isCurrentRouteSameAsNavigation(routeName)) {
+        router.push({ name: routeName });
+      }
+    },
+    isCurrentRouteSameAsNavigation(routeName) {
+      return this.$route.name === routeName;
+    },
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
     toggleSupportChatWindow() {
       window.$chatwoot.toggle();
     },
@@ -236,7 +274,11 @@ export default {
 </script>
 
 <template>
+<<<<<<< HEAD
   <aside ref="sidebarRef" class="flex h-full">
+=======
+  <aside class="flex h-full">
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
     <PrimarySidebar
       :logo-source="globalConfig.logoThumbnail"
       :installation-name="globalConfig.installationName"

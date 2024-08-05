@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <script setup>
 import { ref, computed, watch, provide } from 'vue';
 import { useRoute, useRouter } from 'dashboard/composables/route';
@@ -138,6 +139,8 @@ const saveMacro = async macroData => {
 <<<<<<< HEAD
 =======
 
+=======
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
 <script>
 import MacroForm from './MacroForm.vue';
 import { MACRO_ACTION_TYPES } from './constants';
@@ -166,9 +169,6 @@ export default {
   computed: {
     ...mapGetters({
       uiFlags: 'macros/getUIFlags',
-      labels: 'labels/getLabels',
-      agents: 'agents/getAgents',
-      teams: 'teams/getTeams',
     }),
     macroId() {
       return this.$route.params.macroId;
@@ -266,4 +266,21 @@ export default {
   },
 };
 </script>
+<<<<<<< HEAD
 >>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
+=======
+
+<template>
+  <div class="flex flex-col flex-1 h-full overflow-auto">
+    <woot-loading-state
+      v-if="uiFlags.isFetchingItem"
+      :message="$t('MACROS.EDITOR.LOADING')"
+    />
+    <MacroForm
+      v-if="macro && !uiFlags.isFetchingItem"
+      :macro-data.sync="macro"
+      @submit="saveMacro"
+    />
+  </div>
+</template>
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))

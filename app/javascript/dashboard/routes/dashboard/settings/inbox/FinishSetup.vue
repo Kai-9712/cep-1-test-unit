@@ -110,6 +110,7 @@ export default {
             :script="currentInbox.provider_config.webhook_verify_token"
           />
         </div>
+<<<<<<< HEAD
         <div
           v-if="isWhatsAppFireMobileInbox"
           class="w-[50%] max-w-[50%] ml-[25%]"
@@ -130,6 +131,8 @@ export default {
             :script="currentInbox.provider_config.webhook_verify_token"
           />
         </div>
+=======
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
         <div class="w-[50%] max-w-[50%] ml-[25%]">
           <woot-code
             v-if="isALineInbox"
@@ -174,6 +177,7 @@ export default {
     </EmptyState>
   </div>
 </template>
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 <script>
@@ -259,5 +263,7 @@ export default {
   },
 };
 </script>
+=======
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
 =======
 >>>>>>> b4b308336 (feat: Eslint rules (#9839))

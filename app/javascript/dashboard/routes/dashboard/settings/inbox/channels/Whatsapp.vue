@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 <template>
   <div
     class="border border-slate-25 dark:border-slate-800/60 bg-white dark:bg-slate-900 h-full p-6 w-full max-w-full md:w-3/4 md:max-w-[75%] flex-shrink-0 flex-grow-0"
@@ -33,12 +34,17 @@
 
 =======
 >>>>>>> b4b308336 (feat: Eslint rules (#9839))
+=======
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
 <script>
 import PageHeader from '../../SettingsSubPageHeader.vue';
 import Twilio from './Twilio.vue';
 import ThreeSixtyDialogWhatsapp from './360DialogWhatsapp.vue';
 import CloudWhatsapp from './CloudWhatsapp.vue';
+<<<<<<< HEAD
 import FireMobileWhatsapp from './FireMobileWhatsapp.vue';
+=======
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
 
 export default {
   components: {
@@ -46,7 +52,10 @@ export default {
     Twilio,
     ThreeSixtyDialogWhatsapp,
     CloudWhatsapp,
+<<<<<<< HEAD
     FireMobileWhatsapp,
+=======
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
   },
   data() {
     return {

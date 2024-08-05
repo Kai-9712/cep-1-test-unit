@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 <script>
 import { mapGetters } from 'vuex';
 import { useAlert } from 'dashboard/composables';
@@ -243,6 +244,8 @@ import { useUISettings } from 'dashboard/composables/useUISettings';
   </form>
 </template>
 
+=======
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
 <script>
 import { mapGetters } from 'vuex';
 import { useAlert } from 'dashboard/composables';

@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 <script>
 import { mapGetters } from 'vuex';
 import { useAlert } from 'dashboard/composables';
@@ -172,6 +173,8 @@ import { useAdmin } from 'dashboard/composables/useAdmin';
     />
   </div>
 </template>
+=======
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
 <script>
 import { mapGetters } from 'vuex';
 import { useAlert } from 'dashboard/composables';
@@ -319,10 +322,14 @@ export default {
       try {
         await this.$store.dispatch('contacts/delete', id);
 <<<<<<< HEAD
+<<<<<<< HEAD
         this.$emit('panelClose');
 =======
         this.$emit('panel-close');
 >>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
+=======
+        this.$emit('panelClose');
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
         useAlert(this.$t('DELETE_CONTACT.API.SUCCESS_MESSAGE'));
 
         if (isAConversationRoute(this.$route.name)) {

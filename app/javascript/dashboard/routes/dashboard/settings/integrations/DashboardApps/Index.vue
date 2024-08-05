@@ -166,10 +166,14 @@ export default {
 
 <template>
 <<<<<<< HEAD
+<<<<<<< HEAD
   <div class="flex flex-col flex-1 gap-8 overflow-auto">
 =======
   <div class="flex-1 overflow-auto flex gap-8 flex-col">
 >>>>>>> 6694db093 (feat: Update the design for dashboard_apps (#9840))
+=======
+  <div class="flex flex-col flex-1 gap-8 overflow-auto">
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
     <BaseSettingsHeader
       :title="$t('INTEGRATION_SETTINGS.DASHBOARD_APPS.TITLE')"
       :description="$t('INTEGRATION_SETTINGS.DASHBOARD_APPS.DESCRIPTION')"
@@ -180,10 +184,14 @@ export default {
       <template #actions>
         <woot-button
 <<<<<<< HEAD
+<<<<<<< HEAD
           class="rounded-md button nice"
 =======
           class="button nice rounded-md"
 >>>>>>> 6694db093 (feat: Update the design for dashboard_apps (#9840))
+=======
+          class="rounded-md button nice"
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
           icon="add-circle"
           @click="openCreatePopup"
         >
@@ -192,10 +200,14 @@ export default {
       </template>
     </BaseSettingsHeader>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <div class="w-full overflow-x-auto text-slate-700 dark:text-slate-200">
 =======
     <div class="w-full text-slate-700 dark:text-slate-200 overflow-x-auto">
 >>>>>>> 6694db093 (feat: Update the design for dashboard_apps (#9840))
+=======
+    <div class="w-full overflow-x-auto text-slate-700 dark:text-slate-200">
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
       <p
         v-if="!uiFlags.isFetching && !records.length"
         class="flex flex-col items-center justify-center h-full"
@@ -217,20 +229,28 @@ export default {
             )"
             :key="thHeader"
 <<<<<<< HEAD
+<<<<<<< HEAD
             class="py-4 pr-4 font-semibold text-left text-slate-700 dark:text-slate-300"
 =======
             class="py-4 pr-4 text-left font-semibold text-slate-700 dark:text-slate-300"
 >>>>>>> 6694db093 (feat: Update the design for dashboard_apps (#9840))
+=======
+            class="py-4 pr-4 font-semibold text-left text-slate-700 dark:text-slate-300"
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
           >
             {{ thHeader }}
           </th>
         </thead>
         <tbody class="divide-y divide-slate-50 dark:divide-slate-800">
 <<<<<<< HEAD
+<<<<<<< HEAD
           <DashboardAppsRow
 =======
           <dashboard-apps-row
 >>>>>>> 6694db093 (feat: Update the design for dashboard_apps (#9840))
+=======
+          <DashboardAppsRow
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
             v-for="(dashboardAppItem, index) in records"
             :key="dashboardAppItem.id"
             :index="index"
@@ -243,10 +263,14 @@ export default {
     </div>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     <DashboardAppModal
 =======
     <dashboard-app-modal
 >>>>>>> 6694db093 (feat: Update the design for dashboard_apps (#9840))
+=======
+    <DashboardAppModal
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
       v-if="showDashboardAppPopup"
       :show="showDashboardAppPopup"
       :mode="mode"

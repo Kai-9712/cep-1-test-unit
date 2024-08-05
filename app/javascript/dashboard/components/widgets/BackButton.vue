@@ -31,10 +31,14 @@ const buttonStyleClass = props.compact
 <template>
   <button
 <<<<<<< HEAD
+<<<<<<< HEAD
     class="flex items-center p-0 font-normal cursor-pointer"
 =======
     class="flex items-center font-normal p-0 cursor-pointer"
 >>>>>>> 6694db093 (feat: Update the design for dashboard_apps (#9840))
+=======
+    class="flex items-center p-0 font-normal cursor-pointer"
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
     :class="buttonStyleClass"
     @click.capture="goBack"
   >

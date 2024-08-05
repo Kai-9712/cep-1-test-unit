@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <template>
   <div class="relative flex">
@@ -45,6 +46,8 @@
 </template>
 
 >>>>>>> fb99ba7b4 (feat: Rewrite `uiSettings` mixin to a composable (#9819))
+=======
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
 <script>
 import wootConstants from 'dashboard/constants/globals';
 import { mapGetters } from 'vuex';

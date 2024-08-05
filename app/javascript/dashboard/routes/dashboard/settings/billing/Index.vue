@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <template>
   <div class="flex-1 p-6 overflow-auto dark:bg-slate-900">
@@ -38,6 +39,8 @@
 </template>
 
 >>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
+=======
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
 <script>
 import messageFormatterMixin from 'shared/mixins/messageFormatterMixin';
 

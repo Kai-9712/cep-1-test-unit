@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 <script>
 import { useVuelidate } from '@vuelidate/core';
 import { required } from '@vuelidate/validators';
@@ -61,6 +62,11 @@ import { useVuelidate } from '@vuelidate/core';
 import { required } from '@vuelidate/validators';
 import { mapGetters } from 'vuex';
 >>>>>>> fb99ba7b4 (feat: Rewrite `uiSettings` mixin to a composable (#9819))
+=======
+<script>
+import { useVuelidate } from '@vuelidate/core';
+import { required } from '@vuelidate/validators';
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
 import { useAlert } from 'dashboard/composables';
 import { useUISettings } from 'dashboard/composables/useUISettings';
 import aiMixin from 'dashboard/mixins/aiMixin';

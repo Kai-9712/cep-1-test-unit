@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <template>
   <div class="flex flex-grow-0 w-full h-full min-h-0 app-wrapper">
@@ -60,6 +61,8 @@
   </div>
 </template>
 >>>>>>> fb99ba7b4 (feat: Rewrite `uiSettings` mixin to a composable (#9819))
+=======
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
 <script>
 import { mapGetters } from 'vuex';
 import UpgradePage from './UpgradePage';

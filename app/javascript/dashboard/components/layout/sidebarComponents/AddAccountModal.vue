@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <template>
   <woot-modal
@@ -51,6 +52,8 @@
 </template>
 
 >>>>>>> ce8e1ec93 (chore: Migrate all instances of old vuelidate to new v2 syntax [CW-3274] (#9623))
+=======
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
 <script>
 import { useVuelidate } from '@vuelidate/core';
 import { required, minLength } from '@vuelidate/validators';
@@ -94,10 +97,14 @@ export default {
           account_name: this.accountName,
         });
 <<<<<<< HEAD
+<<<<<<< HEAD
         this.$emit('closeAccountCreateModal');
 =======
         this.$emit('close-account-create-modal');
 >>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
+=======
+        this.$emit('closeAccountCreateModal');
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
         useAlert(this.$t('CREATE_ACCOUNT.API.SUCCESS_MESSAGE'));
         window.location = `/app/accounts/${account_id}/dashboard`;
       } catch (error) {

@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <template>
   <div
@@ -9,6 +10,8 @@
 </template>
 
 >>>>>>> fb99ba7b4 (feat: Rewrite `uiSettings` mixin to a composable (#9819))
+=======
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
 <script>
 import { mapGetters } from 'vuex';
 import { useUISettings } from 'dashboard/composables/useUISettings';

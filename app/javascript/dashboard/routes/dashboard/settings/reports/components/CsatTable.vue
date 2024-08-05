@@ -26,7 +26,10 @@ export default {
   },
   computed: {
     ...mapGetters({
+<<<<<<< HEAD
       isRTL: 'accounts/isRTL',
+=======
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
       csatResponses: 'csat/getCSATResponses',
       metrics: 'csat/getMetrics',
     }),

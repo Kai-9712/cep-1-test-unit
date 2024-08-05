@@ -1,6 +1,10 @@
+<<<<<<< HEAD
 <script setup>
 import { ref, computed } from 'vue';
 import { useKeyboardEvents } from 'dashboard/composables/useKeyboardEvents';
+=======
+<script>
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
 import wootConstants from 'dashboard/constants/globals';
 
 const props = defineProps({
@@ -43,6 +47,7 @@ useKeyboardEvents(keyboardEvents, chatTypeTabsRef);
 </script>
 
 <template>
+<<<<<<< HEAD
   <div ref="chatTypeTabsRef">
     <woot-tabs :index="activeTabIndex" @change="onTabChange">
       <woot-tabs-item
@@ -53,4 +58,14 @@ useKeyboardEvents(keyboardEvents, chatTypeTabsRef);
       />
     </woot-tabs>
   </div>
+=======
+  <woot-tabs :index="activeTabIndex" @change="onTabChange">
+    <woot-tabs-item
+      v-for="item in items"
+      :key="item.key"
+      :name="item.name"
+      :count="item.count"
+    />
+  </woot-tabs>
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
 </template>

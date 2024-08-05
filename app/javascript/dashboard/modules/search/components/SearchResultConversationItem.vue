@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <template>
   <router-link :to="navigateTo" class="conversation-item">
@@ -41,6 +42,8 @@
 </template>
 
 >>>>>>> 79381b08c (feat: Move timeMixin to a helper (#9799))
+=======
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
 <script>
 import { frontendURL } from 'dashboard/helper/URLHelper.js';
 import { dynamicTime } from 'shared/helpers/timeHelper';

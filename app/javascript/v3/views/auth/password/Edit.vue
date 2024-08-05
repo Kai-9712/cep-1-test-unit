@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 <script>
 import { useVuelidate } from '@vuelidate/core';
 import { required, minLength } from '@vuelidate/validators';
@@ -52,6 +53,8 @@ import { required, minLength } from '@vuelidate/validators';
   </div>
 </template>
 
+=======
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
 <script>
 <<<<<<< HEAD
 import { required, minLength } from 'vuelidate/lib/validators';
@@ -73,9 +76,12 @@ export default {
   },
   props: {
     resetPasswordToken: { type: String, default: '' },
+<<<<<<< HEAD
   },
   setup() {
     return { v$: useVuelidate() };
+=======
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
   },
   setup() {
     return { v$: useVuelidate() };

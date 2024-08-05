@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 <script>
 import { useAlert } from 'dashboard/composables';
 import FormButton from 'v3/components/Form/Button.vue';
@@ -57,6 +58,8 @@ import { required, minLength, email } from 'vuelidate/lib/validators';
     </form-button>
   </form>
 </template>
+=======
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
 <script>
 import { useAlert } from 'dashboard/composables';
 import FormButton from 'v3/components/Form/Button.vue';

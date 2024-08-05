@@ -1,5 +1,62 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+<script>
+import { mapGetters } from 'vuex';
+import { useAlert } from 'dashboard/composables';
+import globalConfigMixin from 'shared/mixins/globalConfigMixin';
+import messageFormatterMixin from 'shared/mixins/messageFormatterMixin';
+
+export default {
+  mixins: [globalConfigMixin, messageFormatterMixin],
+  props: {
+    hasConnectedAChannel: {
+      type: Boolean,
+      default: true,
+    },
+  },
+  data() {
+    return { selectedChannelId: '', availableChannels: [] };
+  },
+  computed: {
+    ...mapGetters({
+      globalConfig: 'globalConfig/get',
+      uiFlags: 'integrations/getUIFlags',
+    }),
+    errorDescription() {
+      return !this.hasConnectedAChannel
+        ? this.$t('INTEGRATION_SETTINGS.SLACK.SELECT_CHANNEL.DESCRIPTION')
+        : this.$t('INTEGRATION_SETTINGS.SLACK.SELECT_CHANNEL.EXPIRED');
+    },
+  },
+  methods: {
+    async fetchChannels() {
+      try {
+        this.availableChannels = await this.$store.dispatch(
+          'integrations/listAllSlackChannels'
+        );
+        this.availableChannels.sort((c1, c2) => c1.name - c2.name);
+      } catch {
+        this.$t('INTEGRATION_SETTINGS.SLACK.FAILED_TO_FETCH_CHANNELS');
+        this.availableChannels = [];
+      }
+    },
+    async updateIntegration() {
+      try {
+        await this.$store.dispatch('integrations/updateSlack', {
+          referenceId: this.selectedChannelId,
+        });
+        useAlert(this.$t('INTEGRATION_SETTINGS.SLACK.UPDATE_SUCCESS'));
+      } catch (error) {
+        useAlert(error.message || 'INTEGRATION_SETTINGS.SLACK.UPDATE_ERROR');
+      }
+    },
+  },
+};
+</script>
+
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
 <template>
   <div
     class="px-6 py-4 mb-4 border border-yellow-200 rounded-md bg-yellow-50 dark:border-slate-700 dark:bg-slate-800"
@@ -73,6 +130,7 @@
     </div>
   </div>
 </template>
+<<<<<<< HEAD
 >>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
 <script>
 import { mapGetters } from 'vuex';
@@ -201,3 +259,5 @@ export default {
     </div>
   </div>
 </template>
+=======
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))

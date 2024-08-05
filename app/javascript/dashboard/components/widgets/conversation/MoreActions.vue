@@ -86,6 +86,7 @@ export default {
   </div>
 </template>
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 <script>
@@ -138,6 +139,9 @@ export default {
 };
 </script>
 >>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
+=======
+
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
 <style scoped lang="scss">
 .more--button {
   @apply items-center flex ml-2 rtl:ml-0 rtl:mr-2;

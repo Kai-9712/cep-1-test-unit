@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 <script>
 import Modal from 'dashboard/components/Modal.vue';
 import { useVuelidate } from '@vuelidate/core';
@@ -42,6 +43,8 @@ import { required, minLength } from '@vuelidate/validators';
   </modal>
 </template>
 
+=======
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
 <script>
 import Modal from 'dashboard/components/Modal.vue';
 <<<<<<< HEAD

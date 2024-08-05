@@ -115,11 +115,19 @@ export default {
               <CustomAttributes
                 :contact-id="contact.id"
                 attribute-type="contact_attribute"
+<<<<<<< HEAD
+=======
+                attribute-class="conversation--attribute"
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
                 attribute-from="contact_panel"
                 :custom-attributes="contact.custom_attributes"
                 :empty-state-message="
                   $t('CONTACT_PANEL.SIDEBAR_SECTIONS.NO_RECORDS_FOUND')
                 "
+<<<<<<< HEAD
+=======
+                class="even"
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
               />
             </AccordionItem>
           </div>

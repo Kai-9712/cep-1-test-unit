@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <script setup>
 import { ref, computed } from 'vue';
 import { useKeyboardEvents } from 'dashboard/composables/useKeyboardEvents';
@@ -24,11 +25,52 @@ const keyboardEvents = {
   },
 };
 useKeyboardEvents(keyboardEvents, addNoteRef);
+=======
+<script>
+import WootMessageEditor from 'dashboard/components/widgets/WootWriter/Editor.vue';
+import keyboardEventListenerMixins from 'shared/mixins/keyboardEventListenerMixins';
+export default {
+  components: {
+    WootMessageEditor,
+  },
+  mixins: [keyboardEventListenerMixins],
+  data() {
+    return {
+      noteContent: '',
+    };
+  },
+
+  computed: {
+    buttonDisabled() {
+      return this.noteContent === '';
+    },
+  },
+  methods: {
+    getKeyboardEvents() {
+      return {
+        '$mod+Enter': {
+          action: () => this.onAdd(),
+          allowOnFocusedInput: true,
+        },
+      };
+    },
+    onAdd() {
+      if (this.noteContent !== '') {
+        this.$emit('add', this.noteContent);
+      }
+      this.noteContent = '';
+    },
+  },
+};
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
 </script>
 
 <template>
   <div
+<<<<<<< HEAD
     ref="addNoteRef"
+=======
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
     class="flex flex-col flex-grow p-4 mb-2 overflow-hidden bg-white border border-solid rounded-md shadow-sm border-slate-75 dark:border-slate-700 dark:bg-slate-900 text-slate-700 dark:text-slate-100"
   >
     <WootMessageEditor

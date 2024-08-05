@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 <script>
 <<<<<<< HEAD
 import { useVuelidate } from '@vuelidate/core';
@@ -59,6 +60,8 @@ import { required, minLength, email } from 'vuelidate/lib/validators';
   </div>
 </template>
 
+=======
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
 <script>
 import { useVuelidate } from '@vuelidate/core';
 import { mapGetters } from 'vuex';

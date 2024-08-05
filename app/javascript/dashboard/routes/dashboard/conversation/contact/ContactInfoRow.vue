@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <template>
   <div class="w-full h-5 ltr:-ml-1 rtl:-mr-1">
@@ -59,6 +60,8 @@
   </div>
 </template>
 >>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
+=======
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
 <script>
 import { useAlert } from 'dashboard/composables';
 import EmojiOrIcon from 'shared/components/EmojiOrIcon.vue';

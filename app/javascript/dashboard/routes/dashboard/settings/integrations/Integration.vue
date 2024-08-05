@@ -67,10 +67,14 @@ export default {
       <img
         :src="`/dashboard/images/integrations/${integrationId}.png`"
 <<<<<<< HEAD
+<<<<<<< HEAD
         class="w-16 h-16 p-2 mr-4"
 =======
         class="p-2 h-16 w-16 mr-4"
 >>>>>>> 39d20b197 (chore: Update the integration icons, logic for enabled/active attributes for the integration (#9828))
+=======
+        class="w-16 h-16 p-2 mr-4"
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
       />
       <div>
         <h3 class="mb-1 text-xl font-medium text-slate-800 dark:text-slate-100">
@@ -137,6 +141,7 @@ export default {
   </div>
 </template>
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <script>
 import { mapGetters } from 'vuex';
@@ -201,3 +206,5 @@ export default {
 };
 </script>
 >>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
+=======
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))

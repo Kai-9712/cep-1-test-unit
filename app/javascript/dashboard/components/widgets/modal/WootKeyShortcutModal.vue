@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <script setup>
 import { ref, onMounted } from 'vue';
 import { useI18n } from 'dashboard/composables/useI18n';
@@ -38,6 +39,33 @@ const needsShiftKey = keySet => {
 onMounted(async () => {
   currentLayout.value = await useDetectKeyboardLayout();
 });
+=======
+<script>
+import { SHORTCUT_KEYS } from './constants';
+import Hotkey from 'dashboard/components/base/Hotkey.vue';
+
+export default {
+  components: {
+    Hotkey,
+  },
+  props: {
+    show: {
+      type: Boolean,
+      default: false,
+    },
+  },
+  data() {
+    return {
+      shortcutKeys: SHORTCUT_KEYS,
+    };
+  },
+  methods: {
+    title(item) {
+      return this.$t(`KEYBOARD_SHORTCUTS.TITLE.${item.label}`);
+    },
+  },
+};
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
 </script>
 
 <template>
@@ -110,12 +138,15 @@ onMounted(async () => {
           </h5>
           <div class="flex items-center gap-2 mb-1 ml-2">
             <Hotkey
+<<<<<<< HEAD
               v-if="needsShiftKey(shortcutKey.keySet)"
               custom-class="min-h-[28px] min-w-[36px] key"
             >
               {{ 'Shift' }}
             </Hotkey>
             <Hotkey
+=======
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
               :class="{ 'min-w-[60px]': shortcutKey.firstKey !== 'Up' }"
               custom-class="min-h-[28px] normal-case key"
             >

@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 <script>
 import { mapGetters } from 'vuex';
 import { useAlert } from 'dashboard/composables';
@@ -50,6 +51,8 @@ import { useUISettings } from 'dashboard/composables/useUISettings';
   </section>
 </template>
 
+=======
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
 <script>
 import { mapGetters } from 'vuex';
 import { useAlert } from 'dashboard/composables';
@@ -281,6 +284,9 @@ export default {
       </div>
     </div>
     <router-view />
+<<<<<<< HEAD
     <CmdBarConversationSnooze />
+=======
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
   </section>
 </template>

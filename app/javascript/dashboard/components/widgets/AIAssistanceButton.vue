@@ -110,6 +110,21 @@ export default {
   },
 
   methods: {
+<<<<<<< HEAD
+=======
+    getKeyboardEvents() {
+      return {
+        '$mod+KeyZ': {
+          action: () => {
+            if (this.initialMessage) {
+              this.$emit('replaceText', this.initialMessage);
+              this.initialMessage = '';
+            }
+          },
+        },
+      };
+    },
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
     hideAIAssistanceModal() {
       this.recordAnalytics('DISMISS_AI_SUGGESTION', {
         aiOption: this.aiOption,
@@ -145,7 +160,11 @@ export default {
 </script>
 
 <template>
+<<<<<<< HEAD
   <div ref="aiAssistanceButtonRef">
+=======
+  <div v-if="!isFetchingAppIntegrations">
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
     <div v-if="isAIIntegrationEnabled" class="relative">
       <AIAssistanceCTAButton
         v-if="shouldShowAIAssistCTAButton"

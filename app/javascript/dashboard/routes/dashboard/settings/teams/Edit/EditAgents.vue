@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 <script>
 import { mapGetters } from 'vuex';
 =======
@@ -39,6 +40,8 @@ import { mapGetters } from 'vuex';
   </div>
 </template>
 
+=======
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
 <script>
 import { mapGetters } from 'vuex';
 import router from '../../../../index';
@@ -65,6 +68,7 @@ export default {
     AgentSelector,
   },
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
   props: {
@@ -74,6 +78,8 @@ export default {
     },
   },
 >>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
+=======
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
   validations: {
     selectedAgents: {
       isEmpty() {

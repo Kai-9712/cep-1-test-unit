@@ -132,6 +132,19 @@ export default {
       );
     },
   },
+<<<<<<< HEAD
+=======
+
+  methods: {
+    getKeyboardEvents() {
+      return {
+        'Alt+KeyO': {
+          action: () => this.$emit('contactPanelToggle'),
+        },
+      };
+    },
+  },
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
 };
 </script>
 
@@ -183,7 +196,10 @@ export default {
           </div>
 
           <div
+<<<<<<< HEAD
             ref="conversationHeaderActionsRef"
+=======
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
             class="flex items-center gap-2 overflow-hidden text-xs conversation--header--actions text-ellipsis whitespace-nowrap"
           >
             <InboxName v-if="hasMultipleInboxes" :inbox="inbox" />

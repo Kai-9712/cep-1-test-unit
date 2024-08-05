@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 <script>
 import { mapGetters } from 'vuex';
 <<<<<<< HEAD
@@ -86,6 +87,8 @@ import { minValue } from 'vuelidate/lib/validators';
   </div>
 </template>
 
+=======
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
 <script>
 import { mapGetters } from 'vuex';
 import { useVuelidate } from '@vuelidate/core';

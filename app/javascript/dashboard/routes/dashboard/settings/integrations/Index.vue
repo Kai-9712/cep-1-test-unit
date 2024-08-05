@@ -38,6 +38,7 @@ onMounted(() => {
       <div class="flex-grow flex-shrink overflow-auto">
         <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
           <IntegrationItem
+<<<<<<< HEAD
             v-for="item in integrationList"
             :id="item.id"
             :key="item.id"
@@ -49,6 +50,8 @@ onMounted(() => {
 >>>>>>> 6694db093 (feat: Update the design for dashboard_apps (#9840))
         <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
           <integration-item
+=======
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
             v-for="item in integrationList"
             :id="item.id"
             :key="item.id"

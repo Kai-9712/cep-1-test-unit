@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 <script>
 /* global FB */
 import InboxReconnectionRequired from '../components/InboxReconnectionRequired';
@@ -10,6 +11,8 @@ import { loadScript } from 'dashboard/helper/DOMHelpers';
   <inbox-reconnection-required class="mx-8 mt-5" @reauthorize="startLogin" />
 </template>
 
+=======
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
 <script>
 /* global FB */
 import InboxReconnectionRequired from '../components/InboxReconnectionRequired';

@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <template>
   <div class="flex-1 overflow-auto">
@@ -133,6 +134,8 @@
   </div>
 </template>
 >>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
+=======
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
 <script>
 import { mapGetters } from 'vuex';
 import { useAlert } from 'dashboard/composables';
@@ -252,7 +255,11 @@ export default {
           {{ $t('INBOX_MGMT.LIST.404') }}
           <router-link
             v-if="isAdmin"
+<<<<<<< HEAD
             :to="accountScopedUrl('settings/inboxes/new')"
+=======
+            :to="addAccountScoping('settings/inboxes/new')"
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
           >
             {{ $t('SETTINGS.INBOXES.NEW_INBOX') }}
           </router-link>
@@ -314,7 +321,11 @@ export default {
               <td>
                 <div class="button-wrapper">
                   <router-link
+<<<<<<< HEAD
                     :to="accountScopedUrl(`settings/inboxes/${item.id}`)"
+=======
+                    :to="addAccountScoping(`settings/inboxes/${item.id}`)"
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
                   >
                     <woot-button
                       v-if="isAdmin"

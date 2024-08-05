@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 <script>
 import { useVuelidate } from '@vuelidate/core';
 import { required, minLength } from '@vuelidate/validators';
@@ -58,6 +59,8 @@ import { required, minLength } from '@vuelidate/validators';
   </modal>
 </template>
 
+=======
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
 <script>
 <<<<<<< HEAD
 import { required, minLength } from 'vuelidate/lib/validators';

@@ -106,3 +106,15 @@ const evenClass = [
     />
   </div>
 </template>
+<<<<<<< HEAD
+=======
+
+<style scoped lang="scss">
+.conversation--attribute {
+  @apply border-slate-50 dark:border-slate-700/50 border-b border-solid;
+  &:nth-child(2n) {
+    @apply bg-slate-25 dark:bg-slate-800/50;
+  }
+}
+</style>
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))

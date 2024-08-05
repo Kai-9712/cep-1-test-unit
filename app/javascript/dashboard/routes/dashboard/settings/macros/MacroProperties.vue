@@ -114,6 +114,7 @@ export default {
 </template>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <script>
 export default {
@@ -145,6 +146,8 @@ export default {
 </script>
 
 >>>>>>> ce8e1ec93 (chore: Migrate all instances of old vuelidate to new v2 syntax [CW-3274] (#9623))
+=======
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
 <style scoped lang="scss">
 ::v-deep input[type='text'] {
   @apply mb-0;

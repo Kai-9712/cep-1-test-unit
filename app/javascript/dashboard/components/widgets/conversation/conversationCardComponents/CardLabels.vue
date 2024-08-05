@@ -4,6 +4,7 @@ import { useMapGetter } from 'dashboard/composables/store';
 
 export default {
   props: {
+<<<<<<< HEAD
     conversationLabels: {
       type: Array,
       required: true,
@@ -21,6 +22,23 @@ export default {
     return {
       activeLabels,
     };
+=======
+    // conversationId prop is used in /conversation/labelMixin,
+    // remove this props when refactoring to composable if not needed
+    // eslint-disable-next-line vue/no-unused-properties
+    conversationId: {
+      type: Number,
+      required: true,
+    },
+    // conversationLabels prop is used in /conversation/labelMixin,
+    // remove this props when refactoring to composable if not needed
+    // eslint-disable-next-line vue/no-unused-properties
+    conversationLabels: {
+      type: String,
+      required: false,
+      default: '',
+    },
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
   },
   data() {
     return {

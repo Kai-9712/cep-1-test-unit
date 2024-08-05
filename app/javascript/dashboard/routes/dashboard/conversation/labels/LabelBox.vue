@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <script>
 import { ref } from 'vue';
 import { mapGetters } from 'vuex';
@@ -127,6 +128,8 @@ export default {
 
 <<<<<<< HEAD
 =======
+=======
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
 <script>
 import { mapGetters } from 'vuex';
 import { useAdmin } from 'dashboard/composables/useAdmin';
@@ -145,6 +148,9 @@ export default {
 
   mixins: [conversationLabelMixin, keyboardEventListenerMixins],
   props: {
+    // conversationId prop is used in /conversation/labelMixin,
+    // remove this props when refactoring to composable if not needed
+    // eslint-disable-next-line vue/no-unused-properties
     conversationId: {
       type: Number,
       required: true,
@@ -166,7 +172,6 @@ export default {
   computed: {
     ...mapGetters({
       conversationUiFlags: 'conversationLabels/getUIFlags',
-      labelUiFlags: 'conversationLabels/getUIFlags',
     }),
   },
   methods: {
@@ -198,7 +203,55 @@ export default {
 };
 </script>
 
+<<<<<<< HEAD
 >>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
+=======
+<template>
+  <div class="sidebar-labels-wrap">
+    <div
+      v-if="!conversationUiFlags.isFetching"
+      class="contact-conversation--list"
+    >
+      <div
+        v-on-clickaway="closeDropdownLabel"
+        class="label-wrap"
+        @keyup.esc="closeDropdownLabel"
+      >
+        <AddLabel @add="toggleLabels" />
+        <woot-label
+          v-for="label in activeLabels"
+          :key="label.id"
+          :title="label.title"
+          :description="label.description"
+          show-close
+          :color="label.color"
+          variant="smooth"
+          class="max-w-[calc(100%-0.5rem)]"
+          @click="removeLabelFromConversation"
+        />
+
+        <div class="dropdown-wrap">
+          <div
+            :class="{ 'dropdown-pane--open': showSearchDropdownLabel }"
+            class="dropdown-pane"
+          >
+            <LabelDropdown
+              v-if="showSearchDropdownLabel"
+              :account-labels="accountLabels"
+              :selected-labels="savedLabels"
+              :allow-creation="isAdmin"
+              @add="addLabelToConversation"
+              @remove="removeLabelFromConversation"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <Spinner v-else />
+  </div>
+</template>
+
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
 <style lang="scss" scoped>
 .sidebar-labels-wrap {
   margin-bottom: 0;

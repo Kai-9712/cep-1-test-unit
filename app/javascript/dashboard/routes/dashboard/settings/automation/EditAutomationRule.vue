@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <template>
   <div>
@@ -154,6 +155,13 @@ import AutomationActionInput from 'dashboard/components/widgets/AutomationAction
 import filterInputBox from 'dashboard/components/widgets/FilterInput/Index.vue';
 import automationActionInput from 'dashboard/components/widgets/AutomationActionInput.vue';
 >>>>>>> ce8e1ec93 (chore: Migrate all instances of old vuelidate to new v2 syntax [CW-3274] (#9623))
+=======
+<script>
+import { mapGetters } from 'vuex';
+import automationMethodsMixin from 'dashboard/mixins/automations/methodsMixin';
+import FilterInputBox from 'dashboard/components/widgets/FilterInput/Index.vue';
+import AutomationActionInput from 'dashboard/components/widgets/AutomationActionInput.vue';
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
 
 import {
   AUTOMATION_RULE_EVENTS,

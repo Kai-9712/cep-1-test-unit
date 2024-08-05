@@ -1,5 +1,6 @@
 <script>
 import { mapGetters } from 'vuex';
+<<<<<<< HEAD
 import { useAccount } from 'dashboard/composables/useAccount';
 
 export default {
@@ -19,6 +20,22 @@ export default {
     },
     newLabelsURL() {
       return this.accountScopedUrl('settings/labels/list');
+=======
+import accountMixin from '../../../mixins/account';
+
+export default {
+  mixins: [accountMixin],
+  computed: {
+    ...mapGetters({ globalConfig: 'globalConfig/get' }),
+    newInboxURL() {
+      return this.addAccountScoping('settings/inboxes/new');
+    },
+    newAgentURL() {
+      return this.addAccountScoping('settings/agents/list');
+    },
+    newLabelsURL() {
+      return this.addAccountScoping('settings/labels/list');
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
     },
   },
 };

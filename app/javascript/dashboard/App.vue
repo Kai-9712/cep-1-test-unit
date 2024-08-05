@@ -120,8 +120,13 @@ export default {
     v-if="!authUIFlags.isFetching && !accountUIFlags.isFetchingItem"
     id="app"
     class="flex-grow-0 w-full h-full min-h-0 app-wrapper"
+<<<<<<< HEAD
     :class="{ 'app-rtl--wrapper': isRTL }"
     :dir="isRTL ? 'rtl' : 'ltr'"
+=======
+    :class="{ 'app-rtl--wrapper': isRTLView }"
+    :dir="isRTLView ? 'rtl' : 'ltr'"
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
   >
     <UpdateBanner :latest-chatwoot-version="latestChatwootVersion" />
     <template v-if="currentAccountId">

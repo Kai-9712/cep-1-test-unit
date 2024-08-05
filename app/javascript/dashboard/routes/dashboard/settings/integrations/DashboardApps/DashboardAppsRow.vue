@@ -11,16 +11,21 @@ defineEmits(['edit', 'delete']);
 
 <template>
 <<<<<<< HEAD
+<<<<<<< HEAD
   <tr class="max-w-full py-1">
 =======
   <tr class="py-1 max-w-full">
 >>>>>>> 6694db093 (feat: Update the design for dashboard_apps (#9840))
+=======
+  <tr class="max-w-full py-1">
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
     <td
       class="py-4 pr-4 text-sm w-40 max-w-[10rem] truncate"
       :title="app.title"
     >
       {{ app.title }}
     </td>
+<<<<<<< HEAD
 <<<<<<< HEAD
     <td class="max-w-lg py-4 pr-4 text-sm truncate" :title="app.content[0].url">
       {{ app.content[0].url }}
@@ -32,6 +37,12 @@ defineEmits(['edit', 'delete']);
     </td>
     <td class="py-4 pr-4 text-sm flex gap-2 sm:pr-0">
 >>>>>>> 6694db093 (feat: Update the design for dashboard_apps (#9840))
+=======
+    <td class="max-w-lg py-4 pr-4 text-sm truncate" :title="app.content[0].url">
+      {{ app.content[0].url }}
+    </td>
+    <td class="flex gap-2 py-4 pr-4 text-sm sm:pr-0">
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
       <woot-button
         v-tooltip.top="
           $t('INTEGRATION_SETTINGS.DASHBOARD_APPS.LIST.EDIT_TOOLTIP')

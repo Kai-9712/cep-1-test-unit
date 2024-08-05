@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 <script>
 import Modal from 'dashboard/components/Modal.vue';
 import { useVuelidate } from '@vuelidate/core';
@@ -48,6 +49,8 @@ import { PORTALS_EVENTS } from '../../../../helper/AnalyticsHelper/events';
   </modal>
 </template>
 
+=======
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
 <script>
 import Modal from 'dashboard/components/Modal.vue';
 import { useVuelidate } from '@vuelidate/core';

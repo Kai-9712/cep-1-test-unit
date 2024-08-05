@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <template>
   <csml-bot-editor
@@ -11,6 +12,8 @@
   </div>
 </template>
 >>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
+=======
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
 <script>
 import { useAlert } from 'dashboard/composables';
 import Spinner from 'shared/components/Spinner.vue';

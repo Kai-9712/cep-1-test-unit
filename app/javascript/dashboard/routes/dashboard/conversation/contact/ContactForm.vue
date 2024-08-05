@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 <template>
   <form
     class="w-full px-8 pt-6 pb-8 contact--form"
@@ -150,6 +151,8 @@
   </form>
 </template>
 
+=======
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
 =======
 >>>>>>> b4b308336 (feat: Eslint rules (#9839))
 <script>

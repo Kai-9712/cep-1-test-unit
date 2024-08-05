@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <template>
   <div
@@ -53,6 +54,8 @@
 </template>
 
 >>>>>>> 79381b08c (feat: Move timeMixin to a helper (#9799))
+=======
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
 <script>
 import Thumbnail from 'dashboard/components/widgets/Thumbnail.vue';
 import messageFormatterMixin from 'shared/mixins/messageFormatterMixin';

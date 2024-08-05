@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <template>
   <div class="flex-grow flex-shrink min-w-0 p-6 overflow-auto">
@@ -131,6 +132,8 @@
 </template>
 
 >>>>>>> fb99ba7b4 (feat: Rewrite `uiSettings` mixin to a composable (#9819))
+=======
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
 <script>
 import { useVuelidate } from '@vuelidate/core';
 import { required, minValue, maxValue } from '@vuelidate/validators';

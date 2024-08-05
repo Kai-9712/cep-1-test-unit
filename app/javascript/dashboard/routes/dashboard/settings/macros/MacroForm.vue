@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <template>
   <div class="flex flex-col md:flex-row h-auto md:h-full w-full">
@@ -27,6 +28,8 @@
 </template>
 
 >>>>>>> ce8e1ec93 (chore: Migrate all instances of old vuelidate to new v2 syntax [CW-3274] (#9623))
+=======
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
 <script>
 import { provide } from 'vue';
 import MacroNodes from './MacroNodes.vue';

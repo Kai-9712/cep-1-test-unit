@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 <script>
 =======
 <template>
@@ -41,6 +42,9 @@
 <script>
 import { mapGetters } from 'vuex';
 >>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
+=======
+<script>
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
 import { useAdmin } from 'dashboard/composables/useAdmin';
 import BackButton from '../../../components/widgets/BackButton.vue';
 

@@ -45,9 +45,13 @@ const actionURL = computed(() =>
 );
 </script>
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> 8b1d98af5 (feat: Update the design for integration page (#9825))
+=======
+
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
 <template>
   <div
     class="flex flex-col flex-1 p-6 bg-white border border-solid rounded-md dark:bg-slate-800 border-slate-50 dark:border-slate-700/50"

@@ -2,9 +2,12 @@
 import { MESSAGE_TYPE, MESSAGE_STATUS } from 'shared/constants/messages';
 import inboxMixin from 'shared/mixins/inboxMixin';
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 import { mapGetters } from 'vuex';
 >>>>>>> 79381b08c (feat: Move timeMixin to a helper (#9799))
+=======
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
 import { messageTimestamp } from 'shared/helpers/timeHelper';
 
 export default {

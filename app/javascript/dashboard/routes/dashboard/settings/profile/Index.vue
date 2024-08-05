@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 <script>
 <<<<<<< HEAD
 =======
@@ -91,6 +92,8 @@ import { useAlert } from 'dashboard/composables';
     </form-section>
   </div>
 </template>
+=======
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
 <script>
 >>>>>>> fb99ba7b4 (feat: Rewrite `uiSettings` mixin to a composable (#9819))
 import { mapGetters } from 'vuex';
@@ -333,11 +336,16 @@ export default {
         </button>
       </div>
     </FormSection>
+<<<<<<< HEAD
     <FormSection
       v-if="!globalConfig.disableUserProfileUpdate"
       :title="$t('PROFILE_SETTINGS.FORM.PASSWORD_SECTION.TITLE')"
     >
       <ChangePassword />
+=======
+    <FormSection :title="$t('PROFILE_SETTINGS.FORM.PASSWORD_SECTION.TITLE')">
+      <ChangePassword v-if="!globalConfig.disableUserProfileUpdate" />
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
     </FormSection>
     <FormSection
       :title="$t('PROFILE_SETTINGS.FORM.AUDIO_NOTIFICATIONS_SECTION.TITLE')"

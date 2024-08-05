@@ -1,16 +1,26 @@
 <script>
+<<<<<<< HEAD
 import { useAccount } from 'dashboard/composables/useAccount';
 import Thumbnail from 'dashboard/components/widgets/Thumbnail.vue';
+=======
+import Thumbnail from 'dashboard/components/widgets/Thumbnail.vue';
+import accountMixin from 'dashboard/mixins/account.js';
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
 export default {
   components: {
     Thumbnail,
   },
+<<<<<<< HEAD
+=======
+  mixins: [accountMixin],
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
   props: {
     macro: {
       type: Object,
       required: true,
     },
   },
+<<<<<<< HEAD
   setup() {
     const { accountScopedUrl } = useAccount();
 
@@ -18,6 +28,8 @@ export default {
       accountScopedUrl,
     };
   },
+=======
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
   computed: {
     createdByName() {
       const createdBy = this.macro.created_by;
@@ -53,7 +65,11 @@ export default {
     </td>
     <td>{{ visibilityLabel }}</td>
     <td class="button-wrapper">
+<<<<<<< HEAD
       <router-link :to="accountScopedUrl(`settings/macros/${macro.id}/edit`)">
+=======
+      <router-link :to="addAccountScoping(`settings/macros/${macro.id}/edit`)">
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
         <woot-button
           v-tooltip.top="$t('MACROS.EDIT.TOOLTIP')"
           variant="smooth"

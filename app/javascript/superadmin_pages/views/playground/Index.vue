@@ -1,5 +1,9 @@
 <script>
 import messageFormatterMixin from 'shared/mixins/messageFormatterMixin';
+<<<<<<< HEAD
+=======
+import keyboardEventListenerMixins from 'shared/mixins/keyboardEventListenerMixins';
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
 import PlaygroundHeader from '../../components/playground/Header.vue';
 import UserMessage from '../../components/playground/UserMessage.vue';
 import BotMessage from '../../components/playground/BotMessage.vue';
@@ -122,8 +126,11 @@ export default {
         placeholder="Type a message... [CMD/CTRL + Enter to send]"
         autofocus
         autocomplete="off"
+<<<<<<< HEAD
         @keydown.meta.enter="onMessageSend"
         @keydown.ctrl.enter="onMessageSend"
+=======
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
       />
     </div>
   </section>

@@ -1,8 +1,11 @@
 <script>
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 import { mapGetters } from 'vuex';
 >>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
+=======
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
 import { useAlert } from 'dashboard/composables';
 import configMixin from 'shared/mixins/configMixin';
 import { useUISettings } from 'dashboard/composables/useUISettings';
@@ -45,6 +48,7 @@ export default {
     };
   },
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   computed: {
     ...mapGetters({
@@ -52,6 +56,8 @@ export default {
     }),
   },
 >>>>>>> fb99ba7b4 (feat: Rewrite `uiSettings` mixin to a composable (#9819))
+=======
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
   watch: {
     uiSettings(value) {
       this.notificationUISettings(value);

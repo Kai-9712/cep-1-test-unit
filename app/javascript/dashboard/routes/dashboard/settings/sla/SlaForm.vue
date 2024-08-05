@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <template>
   <div class="flex flex-col h-auto overflow-auto">
@@ -70,6 +71,8 @@
 </template>
 
 >>>>>>> 84c380c8c (feat: Replace SLA `validationMixin` within the component (#9804))
+=======
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
 <script>
 import { mapGetters } from 'vuex';
 import { convertSecondsToTimeUnit } from '@chatwoot/utils';

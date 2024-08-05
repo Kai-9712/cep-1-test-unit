@@ -69,7 +69,11 @@ export default {
 <template>
   <div class="flex-1 overflow-auto">
     <router-link
+<<<<<<< HEAD
       :to="accountScopedUrl('settings/macros/new')"
+=======
+      :to="addAccountScoping('settings/macros/new')"
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
       class="button success button--fixed-top button success button--fixed-top px-3.5 py-1 rounded-[5px] flex gap-2"
     >
       <fluent-icon icon="add-circle" />
@@ -80,7 +84,11 @@ export default {
     <div class="flex flex-row gap-4 p-8">
       <div class="w-full lg:w-3/5">
         <div v-if="!uiFlags.isFetching && !records.length" class="p-3">
+<<<<<<< HEAD
           <p class="flex flex-col items-center justify-center h-full">
+=======
+          <p class="flex h-full items-center flex-col justify-center">
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
             {{ $t('MACROS.LIST.404') }}
           </p>
         </div>
@@ -107,7 +115,11 @@ export default {
           </tbody>
         </table>
       </div>
+<<<<<<< HEAD
       <div class="hidden w-1/3 lg:block">
+=======
+      <div class="hidden lg:block w-1/3">
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
         <span v-dompurify-html="$t('MACROS.SIDEBAR_TXT')" />
       </div>
     </div>

@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <template>
   <div
@@ -94,6 +95,8 @@
   </div>
 </template>
 >>>>>>> cb0642564 (feat: add promise based loader for FB script (#9780))
+=======
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
 <script>
 /* eslint-env browser */
 /* global FB */
@@ -345,6 +348,9 @@ export default {
 };
 </script>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
 
 <template>
   <div
@@ -439,5 +445,8 @@ export default {
     </div>
   </div>
 </template>
+<<<<<<< HEAD
 =======
 >>>>>>> cb0642564 (feat: add promise based loader for FB script (#9780))
+=======
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))

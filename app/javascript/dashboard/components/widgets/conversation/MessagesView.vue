@@ -514,9 +514,14 @@ export default {
       />
     </ul>
     <div
+<<<<<<< HEAD
       ref="conversationFooterRef"
       class="conversation-footer"
       :class="{ 'modal-mask': isPopOutReplyBox }"
+=======
+      class="conversation-footer"
+      :class="{ 'modal-mask': isPopoutReplyBox }"
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
     >
       <div
         v-if="isAnyoneTyping"
@@ -535,8 +540,13 @@ export default {
       </div>
       <ReplyBox
         :conversation-id="currentChat.id"
+<<<<<<< HEAD
         :popout-reply-box.sync="isPopOutReplyBox"
         @click="showPopOutReplyBox"
+=======
+        :popout-reply-box.sync="isPopoutReplyBox"
+        @click="showPopoutReplyBox"
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
       />
     </div>
   </div>

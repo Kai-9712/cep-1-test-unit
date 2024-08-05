@@ -197,6 +197,7 @@ export default {
 </template>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <script>
 import AutomationActionTeamMessageInput from './AutomationActionTeamMessageInput.vue';
@@ -293,6 +294,8 @@ export default {
 </script>
 
 >>>>>>> ce8e1ec93 (chore: Migrate all instances of old vuelidate to new v2 syntax [CW-3274] (#9623))
+=======
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
 <style lang="scss" scoped>
 .filter {
   @apply bg-slate-50 dark:bg-slate-800 p-2 border border-solid border-slate-75 dark:border-slate-600 rounded-md mb-2;

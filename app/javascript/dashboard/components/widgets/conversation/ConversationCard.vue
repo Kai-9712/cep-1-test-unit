@@ -325,11 +325,15 @@ export default {
           {{ unreadCount > 9 ? '9+' : unreadCount }}
         </span>
       </div>
+<<<<<<< HEAD
       <CardLabels
         :conversation-id="chat.id"
         :conversation-labels="chat.labels"
         class="mt-0.5 mx-2 mb-0"
       >
+=======
+      <CardLabels :conversation-id="chat.id" class="mt-0.5 mx-2 mb-0">
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
         <template v-if="hasSlaPolicyId" #before>
           <SLACardLabel :chat="chat" class="ltr:mr-1 rtl:ml-1" />
         </template>

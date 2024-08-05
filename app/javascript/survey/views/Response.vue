@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <template>
   <div
@@ -54,6 +55,8 @@
 </template>
 
 >>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
+=======
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
 <script>
 import { useAlert } from 'dashboard/composables';
 import Branding from 'shared/components/Branding.vue';
@@ -75,6 +78,7 @@ export default {
   },
   mixins: [configMixin],
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   props: {
     showHomePage: {
@@ -83,6 +87,8 @@ export default {
     },
   },
 >>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
+=======
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
 
   data() {
     return {

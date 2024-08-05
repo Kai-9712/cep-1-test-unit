@@ -196,7 +196,11 @@ export default {
             <fluent-icon
               icon="chevron-left"
               size="16"
+<<<<<<< HEAD
               class="rtl:-mr-3 ltr:-ml-3"
+=======
+              :class="notificationPanelFooterIconClass"
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
             />
           </woot-button>
           <woot-button
@@ -231,7 +235,11 @@ export default {
             <fluent-icon
               icon="chevron-right"
               size="16"
+<<<<<<< HEAD
               class="rtl:-mr-3 ltr:-ml-3"
+=======
+              :class="notificationPanelFooterIconClass"
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
             />
           </woot-button>
         </div>

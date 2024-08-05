@@ -1,14 +1,29 @@
 <script>
+<<<<<<< HEAD
 import { ref } from 'vue';
 import { useKeyboardEvents } from 'dashboard/composables/useKeyboardEvents';
 import { REPLY_EDITOR_MODES, CHAR_LENGTH_WARNING } from './constants';
 export default {
   name: 'ReplyTopPanel',
+=======
+import { REPLY_EDITOR_MODES, CHAR_LENGTH_WARNING } from './constants';
+import keyboardEventListenerMixins from 'shared/mixins/keyboardEventListenerMixins';
+export default {
+  name: 'ReplyTopPanel',
+  mixins: [keyboardEventListenerMixins],
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
   props: {
     mode: {
       type: String,
       default: REPLY_EDITOR_MODES.REPLY,
     },
+<<<<<<< HEAD
+=======
+    setReplyMode: {
+      type: Function,
+      default: () => {},
+    },
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
     isMessageLengthReachingThreshold: {
       type: Boolean,
       default: () => false,
@@ -22,6 +37,7 @@ export default {
       default: false,
     },
   },
+<<<<<<< HEAD
   setup(props, { emit }) {
     const replyTopRef = ref(null);
 
@@ -52,6 +68,8 @@ export default {
       replyTopRef,
     };
   },
+=======
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
   computed: {
     replyButtonClass() {
       return {
@@ -72,14 +90,41 @@ export default {
         : `${this.charactersRemaining} ${CHAR_LENGTH_WARNING.UNDER_50}`;
     },
   },
+<<<<<<< HEAD
+=======
+  methods: {
+    getKeyboardEvents() {
+      return {
+        'Alt+KeyP': {
+          action: () => this.handleNoteClick(),
+          allowOnFocusedInput: true,
+        },
+        'Alt+KeyL': {
+          action: () => this.handleReplyClick(),
+          allowOnFocusedInput: true,
+        },
+      };
+    },
+    handleReplyClick() {
+      this.setReplyMode(REPLY_EDITOR_MODES.REPLY);
+    },
+    handleNoteClick() {
+      this.setReplyMode(REPLY_EDITOR_MODES.NOTE);
+    },
+  },
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
 };
 </script>
 
 <template>
+<<<<<<< HEAD
   <div
     ref="replyTopRef"
     class="flex justify-between bg-black-50 dark:bg-slate-800"
   >
+=======
+  <div class="flex justify-between bg-black-50 dark:bg-slate-800">
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
     <div class="button-group">
       <woot-button
         variant="clear"

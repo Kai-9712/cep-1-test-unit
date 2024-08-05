@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <template>
   <div
@@ -14,6 +15,8 @@
 </template>
 
 >>>>>>> 79381b08c (feat: Move timeMixin to a helper (#9799))
+=======
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
 <script>
 const MINUTE_IN_MILLI_SECONDS = 60000;
 const HOUR_IN_MILLI_SECONDS = MINUTE_IN_MILLI_SECONDS * 60;

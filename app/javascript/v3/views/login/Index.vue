@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 <template>
   <main
     class="flex flex-col w-full min-h-screen py-20 bg-woot-25 sm:px-6 lg:px-8 dark:bg-slate-900"
@@ -107,6 +108,8 @@
   </main>
 </template>
 
+=======
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
 =======
 >>>>>>> b4b308336 (feat: Eslint rules (#9839))
 <script>

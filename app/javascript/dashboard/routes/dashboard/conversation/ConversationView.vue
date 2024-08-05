@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 <template>
   <section class="bg-white conversation-page dark:bg-slate-900">
     <chat-list
@@ -26,6 +27,8 @@
   </section>
 </template>
 
+=======
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
 =======
 >>>>>>> b4b308336 (feat: Eslint rules (#9839))
 <script>
@@ -317,7 +320,19 @@ export default {
       :is-on-expanded-layout="isOnExpandedLayout"
       @contactPanelToggle="onToggleContactPanel"
     />
+<<<<<<< HEAD
     <CmdBarConversationSnooze />
+=======
+    <woot-modal
+      :show.sync="showCustomSnoozeModal"
+      :on-close="hideCustomSnoozeModal"
+    >
+      <CustomSnoozeModal
+        @close="hideCustomSnoozeModal"
+        @chooseTime="chooseSnoozeTime"
+      />
+    </woot-modal>
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
   </section>
 </template>
 
