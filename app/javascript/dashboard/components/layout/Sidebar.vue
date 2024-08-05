@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <template>
   <aside class="flex h-full">
     <primary-sidebar
@@ -28,6 +29,8 @@
   </aside>
 </template>
 
+=======
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
 <script>
 import { mapGetters } from 'vuex';
 import { getSidebarItems } from './config/default-sidebar';
@@ -64,7 +67,6 @@ export default {
   computed: {
     ...mapGetters({
       accountId: 'getCurrentAccountId',
-      currentRole: 'getCurrentRole',
       currentUser: 'getCurrentUser',
       globalConfig: 'globalConfig/get',
       inboxes: 'inboxes/getInboxes',
@@ -164,10 +166,10 @@ export default {
       }
     },
     toggleKeyShortcutModal() {
-      this.$emit('open-key-shortcut-modal');
+      this.$emit('openKeyShortcutModal');
     },
     closeKeyShortcutModal() {
-      this.$emit('close-key-shortcut-modal');
+      this.$emit('closeKeyShortcutModal');
     },
     getKeyboardEvents() {
       return {
@@ -199,14 +201,44 @@ export default {
       window.$chatwoot.toggle();
     },
     toggleAccountModal() {
-      this.$emit('toggle-account-modal');
+      this.$emit('toggleAccountModal');
     },
     showAddLabelPopup() {
-      this.$emit('show-add-label-popup');
+      this.$emit('showAddLabelPopup');
     },
     openNotificationPanel() {
-      this.$emit('open-notification-panel');
+      this.$emit('openNotificationPanel');
     },
   },
 };
 </script>
+
+<template>
+  <aside class="flex h-full">
+    <PrimarySidebar
+      :logo-source="globalConfig.logoThumbnail"
+      :installation-name="globalConfig.installationName"
+      :is-a-custom-branded-instance="isACustomBrandedInstance"
+      :account-id="accountId"
+      :menu-items="primaryMenuItems"
+      :active-menu-item="activePrimaryMenu.key"
+      @toggleAccounts="toggleAccountModal"
+      @openKeyShortcutModal="toggleKeyShortcutModal"
+      @openNotificationPanel="openNotificationPanel"
+    />
+    <SecondarySidebar
+      v-if="showSecondarySidebar"
+      :class="sidebarClassName"
+      :account-id="accountId"
+      :inboxes="inboxes"
+      :labels="labels"
+      :teams="teams"
+      :custom-views="customViews"
+      :menu-config="activeSecondaryMenu"
+      :current-user="currentUser"
+      :is-on-chatwoot-cloud="isOnChatwootCloud"
+      @addLabel="showAddLabelPopup"
+      @toggleAccounts="toggleAccountModal"
+    />
+  </aside>
+</template>

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <template>
   <section class="bg-white conversation-page dark:bg-slate-900">
     <chat-list
@@ -25,6 +26,8 @@
   </section>
 </template>
 
+=======
+>>>>>>> b4b308336 (feat: Eslint rules (#9839))
 <script>
 import { mapGetters } from 'vuex';
 <<<<<<< HEAD
@@ -250,6 +253,43 @@ export default {
   },
 };
 </script>
+
+<template>
+  <section class="bg-white conversation-page dark:bg-slate-900">
+    <ChatList
+      :show-conversation-list="showConversationList"
+      :conversation-inbox="inboxId"
+      :label="label"
+      :team-id="teamId"
+      :conversation-type="conversationType"
+      :folders-id="foldersId"
+      :is-on-expanded-layout="isOnExpandedLayout"
+      @conversationLoad="onConversationLoad"
+    >
+      <PopOverSearch
+        :is-on-expanded-layout="isOnExpandedLayout"
+        @toggleConversationLayout="toggleConversationLayout"
+      />
+    </ChatList>
+    <ConversationBox
+      v-if="showMessageView"
+      :inbox-id="inboxId"
+      :is-contact-panel-open="isContactPanelOpen"
+      :is-on-expanded-layout="isOnExpandedLayout"
+      @contactPanelToggle="onToggleContactPanel"
+    />
+    <woot-modal
+      :show.sync="showCustomSnoozeModal"
+      :on-close="hideCustomSnoozeModal"
+    >
+      <CustomSnoozeModal
+        @close="hideCustomSnoozeModal"
+        @chooseTime="chooseSnoozeTime"
+      />
+    </woot-modal>
+  </section>
+</template>
+
 <style lang="scss" scoped>
 .conversation-page {
   display: flex;
