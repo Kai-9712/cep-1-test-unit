@@ -1,22 +1,30 @@
 <script>
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { ref } from 'vue';
 import { useKeyboardEvents } from 'dashboard/composables/useKeyboardEvents';
 import { REPLY_EDITOR_MODES, CHAR_LENGTH_WARNING } from './constants';
 export default {
   name: 'ReplyTopPanel',
 =======
+=======
+import { ref } from 'vue';
+import { useKeyboardEvents } from 'dashboard/composables/useKeyboardEvents';
+>>>>>>> e0b67bb55 (feat: Rewrite `keyboardEventListener` mixin to a composable (#9831))
 import { REPLY_EDITOR_MODES, CHAR_LENGTH_WARNING } from './constants';
-import keyboardEventListenerMixins from 'shared/mixins/keyboardEventListenerMixins';
 export default {
   name: 'ReplyTopPanel',
+<<<<<<< HEAD
   mixins: [keyboardEventListenerMixins],
 >>>>>>> b4b308336 (feat: Eslint rules (#9839))
+=======
+>>>>>>> e0b67bb55 (feat: Rewrite `keyboardEventListener` mixin to a composable (#9831))
   props: {
     mode: {
       type: String,
       default: REPLY_EDITOR_MODES.REPLY,
     },
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
     setReplyMode: {
@@ -24,6 +32,8 @@ export default {
       default: () => {},
     },
 >>>>>>> b4b308336 (feat: Eslint rules (#9839))
+=======
+>>>>>>> e0b67bb55 (feat: Rewrite `keyboardEventListener` mixin to a composable (#9831))
     isMessageLengthReachingThreshold: {
       type: Boolean,
       default: () => false,
@@ -38,6 +48,9 @@ export default {
     },
   },
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> e0b67bb55 (feat: Rewrite `keyboardEventListener` mixin to a composable (#9831))
   setup(props, { emit }) {
     const replyTopRef = ref(null);
 
@@ -68,8 +81,11 @@ export default {
       replyTopRef,
     };
   },
+<<<<<<< HEAD
 =======
 >>>>>>> b4b308336 (feat: Eslint rules (#9839))
+=======
+>>>>>>> e0b67bb55 (feat: Rewrite `keyboardEventListener` mixin to a composable (#9831))
   computed: {
     replyButtonClass() {
       return {
@@ -90,6 +106,7 @@ export default {
         : `${this.charactersRemaining} ${CHAR_LENGTH_WARNING.UNDER_50}`;
     },
   },
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
   methods: {
@@ -113,18 +130,26 @@ export default {
     },
   },
 >>>>>>> b4b308336 (feat: Eslint rules (#9839))
+=======
+>>>>>>> e0b67bb55 (feat: Rewrite `keyboardEventListener` mixin to a composable (#9831))
 };
 </script>
 
 <template>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> e0b67bb55 (feat: Rewrite `keyboardEventListener` mixin to a composable (#9831))
   <div
     ref="replyTopRef"
     class="flex justify-between bg-black-50 dark:bg-slate-800"
   >
+<<<<<<< HEAD
 =======
   <div class="flex justify-between bg-black-50 dark:bg-slate-800">
 >>>>>>> b4b308336 (feat: Eslint rules (#9839))
+=======
+>>>>>>> e0b67bb55 (feat: Rewrite `keyboardEventListener` mixin to a composable (#9831))
     <div class="button-group">
       <woot-button
         variant="clear"

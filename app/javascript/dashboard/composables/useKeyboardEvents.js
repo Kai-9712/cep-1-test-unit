@@ -77,8 +77,13 @@ async function wrapEventsInKeybindingsHandler(events) {
 const setupListeners = (root, events) => {
   if (root instanceof Element && events) {
     const keydownHandler = createKeybindingsHandler(events);
+<<<<<<< HEAD
     document.addEventListener('keydown', keydownHandler);
     keyboardListenerMap.set(root, keydownHandler);
+=======
+    const handler = window.addEventListener('keydown', keydownHandler);
+    keyboardListenerMap.set(root, handler);
+>>>>>>> e0b67bb55 (feat: Rewrite `keyboardEventListener` mixin to a composable (#9831))
   }
 };
 
@@ -87,8 +92,11 @@ const setupListeners = (root, events) => {
  * @param {Element} root - The DOM element to remove listeners from.
  */
 const removeListeners = root => {
+<<<<<<< HEAD
   // In the future, let's use the abort controller to remove the listeners
   // https://caniuse.com/abortcontroller
+=======
+>>>>>>> e0b67bb55 (feat: Rewrite `keyboardEventListener` mixin to a composable (#9831))
   if (root instanceof Element) {
     const handlerToRemove = keyboardListenerMap.get(root);
     document.removeEventListener('keydown', handlerToRemove);

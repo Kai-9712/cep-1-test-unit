@@ -39,10 +39,15 @@ import { ref } from 'vue';
 import { mapGetters } from 'vuex';
 import { getSidebarItems } from './config/default-sidebar';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { useKeyboardEvents } from 'dashboard/composables/useKeyboardEvents';
 import { useRoute, useRouter } from 'dashboard/composables/route';
 =======
 >>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
+=======
+import { useKeyboardEvents } from 'dashboard/composables/useKeyboardEvents';
+import { useRoute, useRouter } from 'dashboard/composables/route';
+>>>>>>> e0b67bb55 (feat: Rewrite `keyboardEventListener` mixin to a composable (#9831))
 
 import PrimarySidebar from './sidebarComponents/Primary.vue';
 import SecondarySidebar from './sidebarComponents/Secondary.vue';
@@ -55,9 +60,12 @@ export default {
     SecondarySidebar,
   },
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   mixins: [keyboardEventListenerMixins],
 >>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
+=======
+>>>>>>> e0b67bb55 (feat: Rewrite `keyboardEventListener` mixin to a composable (#9831))
   props: {
     showSecondarySidebar: {
       type: Boolean,
@@ -223,6 +231,7 @@ export default {
       }
     },
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     toggleKeyShortcutModal() {
       this.$emit('openKeyShortcutModal');
@@ -257,6 +266,8 @@ export default {
       return this.$route.name === routeName;
     },
 >>>>>>> b4b308336 (feat: Eslint rules (#9839))
+=======
+>>>>>>> e0b67bb55 (feat: Rewrite `keyboardEventListener` mixin to a composable (#9831))
     toggleSupportChatWindow() {
       window.$chatwoot.toggle();
     },
@@ -275,10 +286,14 @@ export default {
 
 <template>
 <<<<<<< HEAD
+<<<<<<< HEAD
   <aside ref="sidebarRef" class="flex h-full">
 =======
   <aside class="flex h-full">
 >>>>>>> b4b308336 (feat: Eslint rules (#9839))
+=======
+  <aside ref="sidebarRef" class="flex h-full">
+>>>>>>> e0b67bb55 (feat: Rewrite `keyboardEventListener` mixin to a composable (#9831))
     <PrimarySidebar
       :logo-source="globalConfig.logoThumbnail"
       :installation-name="globalConfig.installationName"

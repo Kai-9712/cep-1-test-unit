@@ -1106,6 +1106,7 @@ export default {
     <ReplyTopPanel
       :mode="replyType"
 <<<<<<< HEAD
+<<<<<<< HEAD
       :is-message-length-reaching-threshold="isMessageLengthReachingThreshold"
       :characters-remaining="charactersRemaining"
       :popout-reply-box="popoutReplyBox"
@@ -1116,6 +1117,12 @@ export default {
       :characters-remaining="charactersRemaining"
       :popout-reply-box="popoutReplyBox"
 >>>>>>> b4b308336 (feat: Eslint rules (#9839))
+=======
+      :is-message-length-reaching-threshold="isMessageLengthReachingThreshold"
+      :characters-remaining="charactersRemaining"
+      :popout-reply-box="popoutReplyBox"
+      @setReplyMode="setReplyMode"
+>>>>>>> e0b67bb55 (feat: Rewrite `keyboardEventListener` mixin to a composable (#9831))
       @click="$emit('click')"
     />
     <ArticleSearchPopover

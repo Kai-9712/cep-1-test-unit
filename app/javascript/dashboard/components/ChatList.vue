@@ -139,9 +139,12 @@ import { mapGetters } from 'vuex';
 import { useUISettings } from 'dashboard/composables/useUISettings';
 import { useAlert } from 'dashboard/composables';
 import { useKeyboardEvents } from 'dashboard/composables/useKeyboardEvents';
+<<<<<<< HEAD
 =======
 import { useAlert } from 'dashboard/composables';
 >>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
+=======
+>>>>>>> e0b67bb55 (feat: Rewrite `keyboardEventListener` mixin to a composable (#9831))
 import VirtualList from 'vue-virtual-scroll-list';
 
 import ChatListHeader from './ChatListHeader.vue';
@@ -149,9 +152,12 @@ import ConversationAdvancedFilter from './widgets/conversation/ConversationAdvan
 import ChatTypeTabs from './widgets/ChatTypeTabs.vue';
 import ConversationItem from './ConversationItem.vue';
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 import keyboardEventListenerMixins from 'shared/mixins/keyboardEventListenerMixins';
 >>>>>>> 79381b08c (feat: Move timeMixin to a helper (#9799))
+=======
+>>>>>>> e0b67bb55 (feat: Rewrite `keyboardEventListener` mixin to a composable (#9831))
 import conversationMixin from '../mixins/conversations';
 import wootConstants from 'dashboard/constants/globals';
 import advancedFilterTypes from './widgets/conversation/advancedFilterItems';
@@ -191,6 +197,7 @@ export default {
   },
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   mixins: [conversationMixin, filterMixin],
 =======
   mixins: [
@@ -203,6 +210,9 @@ export default {
 =======
   mixins: [conversationMixin, keyboardEventListenerMixins, filterMixin],
 >>>>>>> fb99ba7b4 (feat: Rewrite `uiSettings` mixin to a composable (#9819))
+=======
+  mixins: [conversationMixin, filterMixin],
+>>>>>>> e0b67bb55 (feat: Rewrite `keyboardEventListener` mixin to a composable (#9831))
   provide() {
     return {
       // Actions to be performed on virtual list item and context menu.
@@ -251,6 +261,9 @@ export default {
     const { uiSettings } = useUISettings();
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> e0b67bb55 (feat: Rewrite `keyboardEventListener` mixin to a composable (#9831))
     const conversationListRef = ref(null);
 
     const getKeyboardListenerParams = () => {
@@ -308,10 +321,13 @@ export default {
     return {
       uiSettings,
       conversationListRef,
+<<<<<<< HEAD
 =======
     return {
       uiSettings,
 >>>>>>> fb99ba7b4 (feat: Rewrite `uiSettings` mixin to a composable (#9819))
+=======
+>>>>>>> e0b67bb55 (feat: Rewrite `keyboardEventListener` mixin to a composable (#9831))
     };
   },
   data() {
@@ -1141,10 +1157,14 @@ export default {
     />
     <div
 <<<<<<< HEAD
+<<<<<<< HEAD
       ref="conversationListRef"
 =======
       ref="conversationList"
 >>>>>>> b4b308336 (feat: Eslint rules (#9839))
+=======
+      ref="conversationListRef"
+>>>>>>> e0b67bb55 (feat: Rewrite `keyboardEventListener` mixin to a composable (#9831))
       class="flex-1 conversations-list"
       :class="{ 'overflow-hidden': isContextMenuOpen }"
     >
