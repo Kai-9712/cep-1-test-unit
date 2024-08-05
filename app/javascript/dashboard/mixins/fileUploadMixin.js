@@ -1,3 +1,4 @@
+import { mapGetters } from 'vuex';
 import { useAlert } from 'dashboard/composables';
 import {
   MAXIMUM_FILE_UPLOAD_SIZE,
@@ -10,6 +11,11 @@ import {
 import { DirectUpload } from 'activestorage';
 
 export default {
+  computed: {
+    ...mapGetters({
+      accountId: 'getCurrentAccountId',
+    }),
+  },
   methods: {
     onFileUpload(file) {
       if (this.globalConfig.directUploadsEnabled) {
