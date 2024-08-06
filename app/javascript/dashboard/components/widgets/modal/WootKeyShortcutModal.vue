@@ -1,8 +1,12 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 28d443215 (feat: Dynamically show `Shift` key in shortcut modal for `QWERTZ` layout (#9888))
 <script setup>
 import { ref, onMounted } from 'vue';
 import { useI18n } from 'dashboard/composables/useI18n';
 import { useDetectKeyboardLayout } from 'dashboard/composables/useDetectKeyboardLayout';
+<<<<<<< HEAD
 import { SHORTCUT_KEYS } from './constants';
 import {
   LAYOUT_QWERTZ,
@@ -41,31 +45,48 @@ onMounted(async () => {
 });
 =======
 <script>
+=======
+>>>>>>> 28d443215 (feat: Dynamically show `Shift` key in shortcut modal for `QWERTZ` layout (#9888))
 import { SHORTCUT_KEYS } from './constants';
+import {
+  LAYOUT_QWERTZ,
+  keysToModifyInQWERTZ,
+} from 'shared/helpers/KeyboardHelpers';
 import Hotkey from 'dashboard/components/base/Hotkey.vue';
 
-export default {
-  components: {
-    Hotkey,
+defineProps({
+  show: {
+    type: Boolean,
+    default: false,
   },
-  props: {
-    show: {
-      type: Boolean,
-      default: false,
-    },
-  },
-  data() {
-    return {
-      shortcutKeys: SHORTCUT_KEYS,
-    };
-  },
-  methods: {
-    title(item) {
-      return this.$t(`KEYBOARD_SHORTCUTS.TITLE.${item.label}`);
-    },
-  },
+});
+
+const { t } = useI18n();
+
+const shortcutKeys = SHORTCUT_KEYS;
+const currentLayout = ref(null);
+
+const title = item => t(`KEYBOARD_SHORTCUTS.TITLE.${item.label}`);
+
+// Added this function to check if the keySet needs a shift key
+// This is used to display the shift key in the modal
+// If the current layout is QWERTZ and the keySet contains a key that needs a shift key
+// If layout is QWERTZ then we add the Shift+keysToModify to fix an known issue
+// https://github.com/chatwoot/chatwoot/issues/9492
+const needsShiftKey = keySet => {
+  return (
+    currentLayout.value === LAYOUT_QWERTZ &&
+    keySet.some(key => keysToModifyInQWERTZ.has(key))
+  );
 };
+<<<<<<< HEAD
 >>>>>>> b4b308336 (feat: Eslint rules (#9839))
+=======
+
+onMounted(async () => {
+  currentLayout.value = await useDetectKeyboardLayout();
+});
+>>>>>>> 28d443215 (feat: Dynamically show `Shift` key in shortcut modal for `QWERTZ` layout (#9888))
 </script>
 
 <template>
@@ -139,14 +160,20 @@ export default {
           <div class="flex items-center gap-2 mb-1 ml-2">
             <Hotkey
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 28d443215 (feat: Dynamically show `Shift` key in shortcut modal for `QWERTZ` layout (#9888))
               v-if="needsShiftKey(shortcutKey.keySet)"
               custom-class="min-h-[28px] min-w-[36px] key"
             >
               {{ 'Shift' }}
             </Hotkey>
             <Hotkey
+<<<<<<< HEAD
 =======
 >>>>>>> b4b308336 (feat: Eslint rules (#9839))
+=======
+>>>>>>> 28d443215 (feat: Dynamically show `Shift` key in shortcut modal for `QWERTZ` layout (#9888))
               :class="{ 'min-w-[60px]': shortcutKey.firstKey !== 'Up' }"
               custom-class="min-h-[28px] normal-case key"
             >
