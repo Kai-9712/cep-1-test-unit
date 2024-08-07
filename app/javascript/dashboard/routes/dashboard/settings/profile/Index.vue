@@ -337,15 +337,21 @@ export default {
       </div>
     </FormSection>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ae938b215 (fix: Disable the password section is the admin has disabled user profile update (#9910))
     <FormSection
       v-if="!globalConfig.disableUserProfileUpdate"
       :title="$t('PROFILE_SETTINGS.FORM.PASSWORD_SECTION.TITLE')"
     >
       <ChangePassword />
+<<<<<<< HEAD
 =======
     <FormSection :title="$t('PROFILE_SETTINGS.FORM.PASSWORD_SECTION.TITLE')">
       <ChangePassword v-if="!globalConfig.disableUserProfileUpdate" />
 >>>>>>> b4b308336 (feat: Eslint rules (#9839))
+=======
+>>>>>>> ae938b215 (fix: Disable the password section is the admin has disabled user profile update (#9910))
     </FormSection>
     <FormSection
       :title="$t('PROFILE_SETTINGS.FORM.AUDIO_NOTIFICATIONS_SECTION.TITLE')"
