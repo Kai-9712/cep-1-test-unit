@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 <script setup>
 import { useAlert } from 'dashboard/composables';
 import { useAdmin } from 'dashboard/composables/useAdmin';
@@ -67,81 +68,85 @@ const confirmPlaceHolderText = computed(() =>
 =======
 <script>
 import { mapGetters } from 'vuex';
+=======
+<script setup>
+>>>>>>> e330c2f6c (feat: Update the design for teams (#9899))
 import { useAlert } from 'dashboard/composables';
 import { useAdmin } from 'dashboard/composables/useAdmin';
-import accountMixin from '../../../../mixins/account';
+import BaseSettingsHeader from '../components/BaseSettingsHeader.vue';
+import { computed, ref } from 'vue';
 
-export default {
-  components: {},
-  mixins: [accountMixin],
-  setup() {
-    const { isAdmin } = useAdmin();
-    return {
-      isAdmin,
-    };
-  },
-  data() {
-    return {
-      loading: {},
-      showSettings: false,
-      showDeletePopup: false,
-      selectedTeam: {},
-    };
-  },
-  computed: {
-    ...mapGetters({
-      teamsList: 'teams/getTeams',
-      globalConfig: 'globalConfig/get',
-    }),
-    deleteConfirmText() {
-      return `${this.$t('TEAMS_SETTINGS.DELETE.CONFIRM.YES')} ${
-        this.selectedTeam.name
-      }`;
-    },
-    deleteRejectText() {
-      return this.$t('TEAMS_SETTINGS.DELETE.CONFIRM.NO');
-    },
-    confirmDeleteTitle() {
-      return this.$t('TEAMS_SETTINGS.DELETE.CONFIRM.TITLE', {
-        teamName: this.selectedTeam.name,
-      });
-    },
-    confirmPlaceHolderText() {
-      return `${this.$t('TEAMS_SETTINGS.DELETE.CONFIRM.PLACE_HOLDER', {
-        teamName: this.selectedTeam.name,
-      })}`;
-    },
-  },
-  methods: {
-    async deleteTeam({ id }) {
-      try {
-        await this.$store.dispatch('teams/delete', id);
-        useAlert(this.$t('TEAMS_SETTINGS.DELETE.API.SUCCESS_MESSAGE'));
-      } catch (error) {
-        useAlert(this.$t('TEAMS_SETTINGS.DELETE.API.ERROR_MESSAGE'));
-      }
-    },
+import { useStoreGetters, useStore } from 'dashboard/composables/store';
+import { useI18n } from 'dashboard/composables/useI18n';
 
-    confirmDeletion() {
-      this.deleteTeam(this.selectedTeam);
-      this.closeDelete();
-    },
-    openDelete(team) {
-      this.showDeletePopup = true;
-      this.selectedTeam = team;
-    },
-    closeDelete() {
-      this.showDeletePopup = false;
-      this.selectedTeam = {};
-    },
-  },
+const store = useStore();
+const { t } = useI18n();
+const getters = useStoreGetters();
+const teamsList = computed(() => getters['teams/getTeams'].value);
+const uiFlags = computed(() => getters['teams/getUIFlags'].value);
+const { isAdmin } = useAdmin();
+
+const loading = ref({});
+
+const deleteTeam = async ({ id }) => {
+  try {
+    loading.value[id] = true;
+    await store.dispatch('teams/delete', id);
+    useAlert(t('TEAMS_SETTINGS.DELETE.API.SUCCESS_MESSAGE'));
+  } catch (error) {
+    useAlert(t('TEAMS_SETTINGS.DELETE.API.ERROR_MESSAGE'));
+  } finally {
+    loading.value[id] = false;
+  }
 };
+<<<<<<< HEAD
 >>>>>>> b4b308336 (feat: Eslint rules (#9839))
+=======
+
+const showDeletePopup = ref(false);
+const selectedTeam = ref({});
+
+const openDelete = team => {
+  showDeletePopup.value = true;
+  selectedTeam.value = team;
+};
+
+const closeDelete = () => {
+  showDeletePopup.value = false;
+  selectedTeam.value = {};
+};
+
+const confirmDeletion = () => {
+  deleteTeam(selectedTeam.value);
+  closeDelete();
+};
+
+const deleteConfirmText = computed(
+  () => `${t('TEAMS_SETTINGS.DELETE.CONFIRM.YES')} ${selectedTeam.value.name}`
+);
+
+const deleteRejectText = computed(() => t('TEAMS_SETTINGS.DELETE.CONFIRM.NO'));
+
+const confirmDeleteTitle = computed(() =>
+  t('TEAMS_SETTINGS.DELETE.CONFIRM.TITLE', {
+    teamName: selectedTeam.value.name,
+  })
+);
+
+const confirmPlaceHolderText = computed(() =>
+  t('TEAMS_SETTINGS.DELETE.CONFIRM.PLACE_HOLDER', {
+    teamName: selectedTeam.value.name,
+  })
+);
+>>>>>>> e330c2f6c (feat: Update the design for teams (#9899))
 </script>
 
 <template>
   <div class="flex-1 overflow-auto">
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> e330c2f6c (feat: Update the design for teams (#9899))
     <BaseSettingsHeader
       :title="$t('TEAMS_SETTINGS.HEADER')"
       :description="$t('TEAMS_SETTINGS.DESCRIPTION')"
@@ -153,6 +158,7 @@ export default {
           v-if="isAdmin"
           :to="{ name: 'settings_teams_new' }"
           class="button rounded-md primary"
+<<<<<<< HEAD
 =======
     <div class="flex flex-row gap-4 p-8">
       <div class="w-full md:w-3/5">
@@ -160,6 +166,8 @@ export default {
           v-if="!teamsList.length"
           class="flex flex-col items-center justify-center h-full"
 >>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
+=======
+>>>>>>> e330c2f6c (feat: Update the design for teams (#9899))
         >
           <fluent-icon icon="add-circle" />
           <span class="button__content">
@@ -192,6 +200,9 @@ export default {
             </td>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> e330c2f6c (feat: Update the design for teams (#9899))
             <td class="py-4 flex justify-end gap-1">
               <router-link
                 :to="{
@@ -224,6 +235,7 @@ export default {
           </tr>
         </tbody>
       </table>
+<<<<<<< HEAD
 =======
               <td>
                 <div class="button-wrapper">
@@ -268,6 +280,8 @@ export default {
         />
       </div>
 >>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
+=======
+>>>>>>> e330c2f6c (feat: Update the design for teams (#9899))
     </div>
     <woot-confirm-delete-modal
       v-if="showDeletePopup"
@@ -283,6 +297,7 @@ export default {
     />
   </div>
 </template>
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
@@ -302,3 +317,5 @@ import accountMixin from '../../../../mixins/account';
 }
 </style>
 >>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
+=======
+>>>>>>> e330c2f6c (feat: Update the design for teams (#9899))
