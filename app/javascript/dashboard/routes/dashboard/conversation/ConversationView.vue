@@ -31,6 +31,7 @@
 <script>
 import { mapGetters } from 'vuex';
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 import { useAlert } from 'dashboard/composables';
 import { useUISettings } from 'dashboard/composables/useUISettings';
@@ -46,16 +47,30 @@ import uiSettingsMixin from 'dashboard/mixins/uiSettings';
 =======
 import CustomSnoozeModal from 'dashboard/components/CustomSnoozeModal.vue';
 >>>>>>> fb99ba7b4 (feat: Rewrite `uiSettings` mixin to a composable (#9819))
+=======
+import { useUISettings } from 'dashboard/composables/useUISettings';
+import ChatList from '../../../components/ChatList.vue';
+import ConversationBox from '../../../components/widgets/conversation/ConversationBox.vue';
+import PopOverSearch from './search/PopOverSearch.vue';
+>>>>>>> 646cfb97e (fix: Snooze conversation not working in Inbox view (#9875))
 import wootConstants from 'dashboard/constants/globals';
 >>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
 import { BUS_EVENTS } from 'shared/constants/busEvents';
+<<<<<<< HEAD
 import wootConstants from 'dashboard/constants/globals';
+=======
+import CmdBarConversationSnooze from 'dashboard/routes/dashboard/commands/CmdBarConversationSnooze.vue';
+>>>>>>> 646cfb97e (fix: Snooze conversation not working in Inbox view (#9875))
 
 export default {
   components: {
     ChatList,
     ConversationBox,
     PopOverSearch,
+<<<<<<< HEAD
+=======
+    CmdBarConversationSnooze,
+>>>>>>> 646cfb97e (fix: Snooze conversation not working in Inbox view (#9875))
   },
   props: {
     inboxId: {
@@ -211,6 +226,7 @@ export default {
       this.showSearchModal = false;
     },
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     onCmdSnoozeConversation(snoozeType) {
       if (snoozeType === wootConstants.SNOOZE_OPTIONS.UNTIL_CUSTOM_TIME) {
@@ -250,6 +266,8 @@ export default {
       this.showCustomSnoozeModal = false;
     },
 >>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
+=======
+>>>>>>> 646cfb97e (fix: Snooze conversation not working in Inbox view (#9875))
   },
 };
 </script>
@@ -278,15 +296,7 @@ export default {
       :is-on-expanded-layout="isOnExpandedLayout"
       @contactPanelToggle="onToggleContactPanel"
     />
-    <woot-modal
-      :show.sync="showCustomSnoozeModal"
-      :on-close="hideCustomSnoozeModal"
-    >
-      <CustomSnoozeModal
-        @close="hideCustomSnoozeModal"
-        @chooseTime="chooseSnoozeTime"
-      />
-    </woot-modal>
+    <CmdBarConversationSnooze />
   </section>
 </template>
 
