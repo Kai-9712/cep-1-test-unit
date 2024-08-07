@@ -1,8 +1,12 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 56e93d152 (feat: Replace the use of `mentionSelectionKeyboard` mixin to a composable (#9904))
 <script setup>
 import { ref, computed, watch, nextTick } from 'vue';
 import { useStoreGetters } from 'dashboard/composables/store';
 import { useKeyboardNavigableList } from 'dashboard/composables/useKeyboardNavigableList';
+<<<<<<< HEAD
 
 const props = defineProps({
   searchKey: {
@@ -25,6 +29,18 @@ export default {
 
 const emit = defineEmits(['click']);
 
+=======
+
+const props = defineProps({
+  searchKey: {
+    type: String,
+    default: '',
+  },
+});
+
+const emit = defineEmits(['click']);
+
+>>>>>>> 56e93d152 (feat: Replace the use of `mentionSelectionKeyboard` mixin to a composable (#9904))
 const getters = useStoreGetters();
 const agents = computed(() => getters['agents/getVerifiedAgents'].value);
 
@@ -78,6 +94,9 @@ const onAgentSelect = index => {
 
 <template>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 56e93d152 (feat: Replace the use of `mentionSelectionKeyboard` mixin to a composable (#9904))
   <div>
     <ul
       v-if="items.length"
@@ -87,6 +106,7 @@ const onAgentSelect = index => {
         'border-b-[0.5rem] border-solid border-white dark:!border-slate-700':
           items.length <= 4,
       }"
+<<<<<<< HEAD
     >
       <li
         v-for="(agent, index) in items"
@@ -145,31 +165,53 @@ const onAgentSelect = index => {
       class="last:mb-2 items-center rounded-md flex p-2"
       @click="onAgentSelect(index)"
       @mouseover="onHover(index)"
+=======
+>>>>>>> 56e93d152 (feat: Replace the use of `mentionSelectionKeyboard` mixin to a composable (#9904))
     >
-      <div class="mr-2">
-        <woot-thumbnail
-          :src="agent.thumbnail"
-          :username="agent.name"
-          size="32px"
-        />
-      </div>
-      <div
-        class="flex-1 max-w-full overflow-hidden whitespace-nowrap text-ellipsis"
+      <li
+        v-for="(agent, index) in items"
+        :id="`mention-item-${index}`"
+        :key="agent.id"
+        :class="{
+          'bg-slate-50 dark:bg-slate-800': index === selectedIndex,
+          'last:mb-0': items.length <= 4,
+        }"
+        class="flex items-center p-2 rounded-md last:mb-2"
+        @click="onAgentSelect(index)"
+        @mouseover="onHover(index)"
       >
-        <h5
-          class="mention--user-name mb-0 text-sm text-slate-900 dark:text-slate-100 overflow-hidden whitespace-nowrap text-ellipsis"
-        >
-          {{ agent.name }}
-        </h5>
-        <div
-          class="mention--email overflow-hidden whitespace-nowrap text-ellipsis text-slate-700 dark:text-slate-300 text-xs"
-        >
-          {{ agent.email }}
+        <div class="mr-2">
+          <woot-thumbnail
+            :src="agent.thumbnail"
+            :username="agent.name"
+            size="32px"
+          />
         </div>
-      </div>
-    </li>
-  </ul>
+        <div
+          class="flex-1 max-w-full overflow-hidden whitespace-nowrap text-ellipsis"
+        >
+          <h5
+            class="mb-0 overflow-hidden text-sm text-slate-800 dark:text-slate-100 whitespace-nowrap text-ellipsis"
+            :class="{
+              'text-slate-900 dark:text-slate-100': index === selectedIndex,
+            }"
+          >
+            {{ agent.name }}
+          </h5>
+          <div
+            class="overflow-hidden text-xs whitespace-nowrap text-ellipsis text-slate-700 dark:text-slate-300"
+            :class="{
+              'text-slate-800 dark:text-slate-200': index === selectedIndex,
+            }"
+          >
+            {{ agent.email }}
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
 </template>
+<<<<<<< HEAD
 
 <style scoped lang="scss">
 .mention--box {
@@ -200,3 +242,5 @@ const onAgentSelect = index => {
 }
 </style>
 >>>>>>> b4b308336 (feat: Eslint rules (#9839))
+=======
+>>>>>>> 56e93d152 (feat: Replace the use of `mentionSelectionKeyboard` mixin to a composable (#9904))

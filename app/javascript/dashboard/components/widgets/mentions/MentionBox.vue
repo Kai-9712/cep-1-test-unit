@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 56e93d152 (feat: Replace the use of `mentionSelectionKeyboard` mixin to a composable (#9904))
 <script setup>
 import { ref, watch, computed } from 'vue';
 import { useKeyboardNavigableList } from 'dashboard/composables/useKeyboardNavigableList';
@@ -7,6 +10,7 @@ const props = defineProps({
   items: {
     type: Array,
     default: () => [],
+<<<<<<< HEAD
   },
   type: {
     type: String,
@@ -83,58 +87,80 @@ export default {
       type: String,
       default: 'canned',
     },
+=======
+>>>>>>> 56e93d152 (feat: Replace the use of `mentionSelectionKeyboard` mixin to a composable (#9904))
   },
-  data() {
-    return {
-      selectedIndex: 0,
-    };
+  type: {
+    type: String,
+    default: 'canned',
   },
-  watch: {
-    items(newItems) {
-      if (newItems.length < this.selectedIndex + 1) {
-        this.selectedIndex = 0;
-      }
-    },
-    selectedIndex() {
-      const container = this.$refs.mentionsListContainer;
-      const item = container.querySelector(
-        `#mention-item-${this.selectedIndex}`
-      );
-      if (item) {
-        const itemTop = item.offsetTop;
-        const itemBottom = itemTop + item.offsetHeight;
-        const containerTop = container.scrollTop;
-        const containerBottom = containerTop + container.offsetHeight;
-        if (itemTop < containerTop) {
-          container.scrollTop = itemTop;
-        } else if (itemBottom + 34 > containerBottom) {
-          container.scrollTop = itemBottom - container.offsetHeight + 34;
-        }
-      }
-    },
-  },
-  methods: {
-    adjustScroll() {},
-    onHover(index) {
-      this.selectedIndex = index;
-    },
-    onListItemSelection(index) {
-      this.selectedIndex = index;
-      this.onSelect();
-    },
-    onSelect() {
-      this.$emit('mentionSelect', this.items[this.selectedIndex]);
-    },
-    variableKey(item = {}) {
-      return this.type === 'variable' ? `{{${item.label}}}` : `/${item.label}`;
-    },
-  },
+<<<<<<< HEAD
 >>>>>>> b4b308336 (feat: Eslint rules (#9839))
+=======
+});
+
+const emit = defineEmits(['mentionSelect']);
+
+const mentionsListContainerRef = ref(null);
+const selectedIndex = ref(0);
+
+const adjustScroll = () => {
+  const container = mentionsListContainerRef.value;
+  const item = container.querySelector(`#mention-item-${selectedIndex.value}`);
+  if (item) {
+    const itemTop = item.offsetTop;
+    const itemBottom = itemTop + item.offsetHeight;
+    const containerTop = container.scrollTop;
+    const containerBottom = containerTop + container.offsetHeight;
+    if (itemTop < containerTop) {
+      container.scrollTop = itemTop;
+    } else if (itemBottom + 34 > containerBottom) {
+      container.scrollTop = itemBottom - container.offsetHeight + 34;
+    }
+  }
+};
+
+const onSelect = () => {
+  emit('mentionSelect', props.items[selectedIndex.value]);
+};
+
+useKeyboardNavigableList({
+  elementRef: mentionsListContainerRef,
+  items: computed(() => props.items),
+  onSelect,
+  adjustScroll,
+  selectedIndex,
+});
+
+watch(
+  () => props.items,
+  newItems => {
+    if (newItems.length < selectedIndex.value + 1) {
+      selectedIndex.value = 0;
+    }
+  }
+);
+
+watch(selectedIndex, adjustScroll);
+
+const onHover = index => {
+  selectedIndex.value = index;
+};
+
+const onListItemSelection = index => {
+  selectedIndex.value = index;
+  onSelect();
+};
+
+const variableKey = (item = {}) => {
+  return props.type === 'variable' ? `{{${item.label}}}` : `/${item.label}`;
+>>>>>>> 56e93d152 (feat: Replace the use of `mentionSelectionKeyboard` mixin to a composable (#9904))
 };
 </script>
 
 <template>
   <div
+<<<<<<< HEAD
 <<<<<<< HEAD
     ref="mentionsListContainerRef"
     class="bg-white dark:bg-slate-800 rounded-md overflow-auto absolute w-full z-20 pb-0 shadow-md left-0 bottom-full max-h-[9.75rem] border border-solid border-slate-100 dark:border-slate-700 mention--box"
@@ -146,6 +172,12 @@ export default {
   >
     <ul class="vertical dropdown menu">
 >>>>>>> b4b308336 (feat: Eslint rules (#9839))
+=======
+    ref="mentionsListContainerRef"
+    class="bg-white dark:bg-slate-800 rounded-md overflow-auto absolute w-full z-20 pb-0 shadow-md left-0 bottom-full max-h-[9.75rem] border border-solid border-slate-100 dark:border-slate-700 mention--box"
+  >
+    <ul class="mb-0 vertical dropdown menu">
+>>>>>>> 56e93d152 (feat: Replace the use of `mentionSelectionKeyboard` mixin to a composable (#9904))
       <woot-dropdown-item
         v-for="(item, index) in items"
         :id="`mention-item-${index}`"

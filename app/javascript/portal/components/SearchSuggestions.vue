@@ -84,9 +84,13 @@ export default {
 <template>
   <div
 <<<<<<< HEAD
+<<<<<<< HEAD
     ref="portalSearchSuggestionsRef"
 =======
 >>>>>>> b4b308336 (feat: Eslint rules (#9839))
+=======
+    ref="portalSearchSuggestionsRef"
+>>>>>>> 56e93d152 (feat: Replace the use of `mentionSelectionKeyboard` mixin to a composable (#9904))
     class="p-5 mt-2 overflow-y-auto text-sm bg-white border border-solid rounded-lg shadow-xl hover:shadow-lg dark:bg-slate-900 max-h-96 scroll-py-2 text-slate-700 dark:text-slate-100 border-slate-50 dark:border-slate-800"
   >
     <div
