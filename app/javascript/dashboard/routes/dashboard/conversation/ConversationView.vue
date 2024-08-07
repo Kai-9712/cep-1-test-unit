@@ -1,21 +1,19 @@
 <script>
 import { mapGetters } from 'vuex';
-import { useAlert } from 'dashboard/composables';
 import { useUISettings } from 'dashboard/composables/useUISettings';
-import { getUnixTime } from 'date-fns';
 import ChatList from '../../../components/ChatList.vue';
 import ConversationBox from '../../../components/widgets/conversation/ConversationBox.vue';
 import PopOverSearch from './search/PopOverSearch.vue';
-import CustomSnoozeModal from 'dashboard/components/CustomSnoozeModal.vue';
 import wootConstants from 'dashboard/constants/globals';
 import { BUS_EVENTS } from 'shared/constants/busEvents';
-import wootConstants from 'dashboard/constants/globals';
+import CmdBarConversationSnooze from 'dashboard/routes/dashboard/commands/CmdBarConversationSnooze.vue';
 
 export default {
   components: {
     ChatList,
     ConversationBox,
     PopOverSearch,
+    CmdBarConversationSnooze,
   },
   props: {
     inboxId: {
@@ -170,43 +168,6 @@ export default {
     closeSearch() {
       this.showSearchModal = false;
     },
-    onCmdSnoozeConversation(snoozeType) {
-      if (snoozeType === wootConstants.SNOOZE_OPTIONS.UNTIL_CUSTOM_TIME) {
-        this.showCustomSnoozeModal = true;
-      } else {
-        this.toggleStatus(
-          wootConstants.STATUS_TYPE.SNOOZED,
-          findSnoozeTime(snoozeType) || null
-        );
-      }
-    },
-    chooseSnoozeTime(customSnoozeTime) {
-      this.showCustomSnoozeModal = false;
-      if (customSnoozeTime) {
-        this.toggleStatus(
-          wootConstants.STATUS_TYPE.SNOOZED,
-          getUnixTime(customSnoozeTime)
-        );
-      }
-    },
-    toggleStatus(status, snoozedUntil) {
-      this.$store
-        .dispatch('toggleStatus', {
-          conversationId: this.currentChat?.id || this.contextMenuChatId,
-          status,
-          snoozedUntil,
-        })
-        .then(() => {
-          this.$store.dispatch('setContextMenuChatId', null);
-          useAlert(this.$t('CONVERSATION.CHANGE_STATUS'));
-        });
-    },
-    hideCustomSnoozeModal() {
-      // if we select custom snooze and the custom snooze modal is open
-      // Then if the custom snooze modal is closed then set the context menu chat id to null
-      this.$store.dispatch('setContextMenuChatId', null);
-      this.showCustomSnoozeModal = false;
-    },
   },
 };
 </script>
@@ -235,15 +196,7 @@ export default {
       :is-on-expanded-layout="isOnExpandedLayout"
       @contactPanelToggle="onToggleContactPanel"
     />
-    <woot-modal
-      :show.sync="showCustomSnoozeModal"
-      :on-close="hideCustomSnoozeModal"
-    >
-      <CustomSnoozeModal
-        @close="hideCustomSnoozeModal"
-        @chooseTime="chooseSnoozeTime"
-      />
-    </woot-modal>
+    <CmdBarConversationSnooze />
   </section>
 </template>
 
