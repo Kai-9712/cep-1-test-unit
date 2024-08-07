@@ -146,10 +146,14 @@ export const mutations = {
 
   [types.ADD_CONVERSATION_ATTACHMENTS](_state, message) {
     // early return if the message has not been sent, or has no attachments
+<<<<<<< HEAD
     if (
       message.status !== MESSAGE_STATUS.SENT ||
       !message.attachments?.length
     ) {
+=======
+    if (message.status !== MESSAGE_STATUS.SENT || !message.attachments.length) {
+>>>>>>> e393bcf12 (fix: Update the logic to handle attachments in a conversation (#9784))
       return;
     }
 
