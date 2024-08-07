@@ -69,12 +69,16 @@ import { INBOX_EVENTS } from 'dashboard/helper/AnalyticsHelper/events';
 import IntersectionObserver from 'dashboard/components/IntersectionObserver.vue';
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import CmdBarConversationSnooze from 'dashboard/routes/dashboard/commands/CmdBarConversationSnooze.vue';
 =======
 import uiSettingsMixin from 'dashboard/mixins/uiSettings';
 >>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
 =======
 >>>>>>> fb99ba7b4 (feat: Rewrite `uiSettings` mixin to a composable (#9819))
+=======
+import CmdBarConversationSnooze from 'dashboard/routes/dashboard/commands/CmdBarConversationSnooze.vue';
+>>>>>>> 646cfb97e (fix: Snooze conversation not working in Inbox view (#9875))
 
 export default {
   components: {
@@ -285,8 +289,12 @@ export default {
     </div>
     <router-view />
 <<<<<<< HEAD
+<<<<<<< HEAD
     <CmdBarConversationSnooze />
 =======
 >>>>>>> b4b308336 (feat: Eslint rules (#9839))
+=======
+    <CmdBarConversationSnooze />
+>>>>>>> 646cfb97e (fix: Snooze conversation not working in Inbox view (#9875))
   </section>
 </template>

@@ -211,6 +211,7 @@ useEmitter(CMD_RESOLVE_CONVERSATION, onCmdResolveConversation);
             size="small"
             icon="book-clock"
             @click="() => toggleStatus(wootConstants.STATUS_TYPE.PENDING)"
+<<<<<<< HEAD
           >
             {{ t('CONVERSATION.RESOLVE_DROPDOWN.MARK_PENDING') }}
           </woot-button>
@@ -442,6 +443,8 @@ useEmitter(CMD_RESOLVE_CONVERSATION, onCmdResolveConversation);
             size="small"
             icon="book-clock"
             @click="() => toggleStatus(STATUS_TYPE.PENDING)"
+=======
+>>>>>>> 646cfb97e (fix: Snooze conversation not working in Inbox view (#9875))
           >
             {{ t('CONVERSATION.RESOLVE_DROPDOWN.MARK_PENDING') }}
           </woot-button>

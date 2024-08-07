@@ -36,6 +36,7 @@ import { mapGetters } from 'vuex';
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 import { useAlert } from 'dashboard/composables';
 import { useUISettings } from 'dashboard/composables/useUISettings';
@@ -70,11 +71,21 @@ import PopOverSearch from './search/PopOverSearch.vue';
 =======
 import CustomSnoozeModal from 'dashboard/components/CustomSnoozeModal.vue';
 >>>>>>> fb99ba7b4 (feat: Rewrite `uiSettings` mixin to a composable (#9819))
+=======
+import { useUISettings } from 'dashboard/composables/useUISettings';
+import ChatList from '../../../components/ChatList.vue';
+import ConversationBox from '../../../components/widgets/conversation/ConversationBox.vue';
+import PopOverSearch from './search/PopOverSearch.vue';
+>>>>>>> 646cfb97e (fix: Snooze conversation not working in Inbox view (#9875))
 import wootConstants from 'dashboard/constants/globals';
 >>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
 import { BUS_EVENTS } from 'shared/constants/busEvents';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import wootConstants from 'dashboard/constants/globals';
+=======
+import CmdBarConversationSnooze from 'dashboard/routes/dashboard/commands/CmdBarConversationSnooze.vue';
+>>>>>>> 646cfb97e (fix: Snooze conversation not working in Inbox view (#9875))
 =======
 import CmdBarConversationSnooze from 'dashboard/routes/dashboard/commands/CmdBarConversationSnooze.vue';
 >>>>>>> 646cfb97e (fix: Snooze conversation not working in Inbox view (#9875))
@@ -85,6 +96,10 @@ export default {
     ConversationBox,
     PopOverSearch,
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+    CmdBarConversationSnooze,
+>>>>>>> 646cfb97e (fix: Snooze conversation not working in Inbox view (#9875))
 =======
     CmdBarConversationSnooze,
 >>>>>>> 646cfb97e (fix: Snooze conversation not working in Inbox view (#9875))
@@ -251,6 +266,7 @@ export default {
     },
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     onCmdSnoozeConversation(snoozeType) {
       if (snoozeType === wootConstants.SNOOZE_OPTIONS.UNTIL_CUSTOM_TIME) {
@@ -292,6 +308,8 @@ export default {
 >>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
 =======
 >>>>>>> 646cfb97e (fix: Snooze conversation not working in Inbox view (#9875))
+=======
+>>>>>>> 646cfb97e (fix: Snooze conversation not working in Inbox view (#9875))
   },
 };
 </script>
@@ -321,6 +339,7 @@ export default {
       @contactPanelToggle="onToggleContactPanel"
     />
 <<<<<<< HEAD
+<<<<<<< HEAD
     <CmdBarConversationSnooze />
 =======
     <woot-modal
@@ -333,6 +352,9 @@ export default {
       />
     </woot-modal>
 >>>>>>> b4b308336 (feat: Eslint rules (#9839))
+=======
+    <CmdBarConversationSnooze />
+>>>>>>> 646cfb97e (fix: Snooze conversation not working in Inbox view (#9875))
   </section>
 </template>
 

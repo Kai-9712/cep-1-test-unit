@@ -1,7 +1,10 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <!-- eslint-disable vue/attribute-hyphenation -->
 >>>>>>> b4b308336 (feat: Eslint rules (#9839))
+=======
+>>>>>>> 646cfb97e (fix: Snooze conversation not working in Inbox view (#9875))
 <script>
 import '@chatwoot/ninja-keys';
 import { useConversationLabels } from 'dashboard/composables/useConversationLabels';
@@ -119,6 +122,7 @@ export default {
 </script>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 <!-- eslint-disable vue/attribute-hyphenation -->
 <template>
   <ninja-keys
@@ -132,6 +136,14 @@ export default {
     no-auto-load-md-icons
     hide-breadcrumbs
 >>>>>>> b4b308336 (feat: Eslint rules (#9839))
+=======
+<!-- eslint-disable vue/attribute-hyphenation -->
+<template>
+  <ninja-keys
+    ref="ninjakeys"
+    noAutoLoadMdIcons
+    hideBreadcrumbs
+>>>>>>> 646cfb97e (fix: Snooze conversation not working in Inbox view (#9875))
     :placeholder="placeholder"
     @selected="onSelected"
     @closed="onClosed"
