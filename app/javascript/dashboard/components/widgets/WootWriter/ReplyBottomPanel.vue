@@ -1,16 +1,24 @@
 <script>
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { ref, watchEffect, computed } from 'vue';
 import { useUISettings } from 'dashboard/composables/useUISettings';
 import { useKeyboardEvents } from 'dashboard/composables/useKeyboardEvents';
 import FileUpload from 'vue-upload-component';
 import * as ActiveStorage from 'activestorage';
 =======
+=======
+import { ref, watchEffect, computed } from 'vue';
+>>>>>>> 89acbd8d0 (feat: Replace the use of `keyboardEventListener` mixin to a composable (Part -2) (#9892))
 import { useUISettings } from 'dashboard/composables/useUISettings';
+import { useKeyboardEvents } from 'dashboard/composables/useKeyboardEvents';
 import FileUpload from 'vue-upload-component';
 import * as ActiveStorage from 'activestorage';
+<<<<<<< HEAD
 import keyboardEventListenerMixins from 'shared/mixins/keyboardEventListenerMixins';
 >>>>>>> fb99ba7b4 (feat: Rewrite `uiSettings` mixin to a composable (#9819))
+=======
+>>>>>>> 89acbd8d0 (feat: Replace the use of `keyboardEventListener` mixin to a composable (Part -2) (#9892))
 import inboxMixin from 'shared/mixins/inboxMixin';
 import { FEATURE_FLAGS } from 'dashboard/featureFlags';
 import {
@@ -27,10 +35,14 @@ export default {
   name: 'ReplyBottomPanel',
   components: { FileUpload, VideoCallButton, AIAssistanceButton },
 <<<<<<< HEAD
+<<<<<<< HEAD
   mixins: [inboxMixin],
 =======
   mixins: [keyboardEventListenerMixins, inboxMixin],
 >>>>>>> fb99ba7b4 (feat: Rewrite `uiSettings` mixin to a composable (#9819))
+=======
+  mixins: [inboxMixin],
+>>>>>>> 89acbd8d0 (feat: Replace the use of `keyboardEventListener` mixin to a composable (Part -2) (#9892))
   props: {
     mode: {
       type: String,
@@ -128,6 +140,9 @@ export default {
     const { setSignatureFlagForInbox, fetchSignatureFlagFromUISettings } =
       useUISettings();
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 89acbd8d0 (feat: Replace the use of `keyboardEventListener` mixin to a composable (Part -2) (#9892))
     const uploadRef = ref(null);
     // TODO: This is really hacky, we need to replace the file picker component with
     // a custom one, where the logic and the component markup is isolated.
@@ -152,16 +167,23 @@ export default {
     watchEffect(() => {
       useKeyboardEvents(keyboardEvents, uploadTriggerButton);
     });
+<<<<<<< HEAD
 =======
 >>>>>>> fb99ba7b4 (feat: Rewrite `uiSettings` mixin to a composable (#9819))
+=======
+>>>>>>> 89acbd8d0 (feat: Replace the use of `keyboardEventListener` mixin to a composable (Part -2) (#9892))
 
     return {
       setSignatureFlagForInbox,
       fetchSignatureFlagFromUISettings,
 <<<<<<< HEAD
+<<<<<<< HEAD
       uploadRef,
 =======
 >>>>>>> fb99ba7b4 (feat: Rewrite `uiSettings` mixin to a composable (#9819))
+=======
+      uploadRef,
+>>>>>>> 89acbd8d0 (feat: Replace the use of `keyboardEventListener` mixin to a composable (Part -2) (#9892))
     };
   },
   computed: {
@@ -287,10 +309,14 @@ export default {
       />
       <FileUpload
 <<<<<<< HEAD
+<<<<<<< HEAD
         ref="uploadRef"
 =======
         ref="upload"
 >>>>>>> b4b308336 (feat: Eslint rules (#9839))
+=======
+        ref="uploadRef"
+>>>>>>> 89acbd8d0 (feat: Replace the use of `keyboardEventListener` mixin to a composable (Part -2) (#9892))
         v-tooltip.top-end="$t('CONVERSATION.REPLYBOX.TIP_ATTACH_ICON')"
         input-id="conversationAttachment"
         :size="4096 * 4096"
@@ -372,9 +398,13 @@ export default {
       />
       <AIAssistanceButton
 <<<<<<< HEAD
+<<<<<<< HEAD
         v-if="!isFetchingAppIntegrations"
 =======
 >>>>>>> b4b308336 (feat: Eslint rules (#9839))
+=======
+        v-if="!isFetchingAppIntegrations"
+>>>>>>> 89acbd8d0 (feat: Replace the use of `keyboardEventListener` mixin to a composable (Part -2) (#9892))
         :conversation-id="conversationId"
         :is-private-note="isOnPrivateNote"
         :message="message"
@@ -383,10 +413,14 @@ export default {
       <transition name="modal-fade">
         <div
 <<<<<<< HEAD
+<<<<<<< HEAD
           v-show="$refs.uploadRef && $refs.uploadRef.dropActive"
 =======
           v-show="$refs.upload && $refs.upload.dropActive"
 >>>>>>> b4b308336 (feat: Eslint rules (#9839))
+=======
+          v-show="$refs.uploadRef && $refs.uploadRef.dropActive"
+>>>>>>> 89acbd8d0 (feat: Replace the use of `keyboardEventListener` mixin to a composable (Part -2) (#9892))
           class="fixed top-0 bottom-0 left-0 right-0 z-20 flex flex-col items-center justify-center w-full h-full gap-2 text-slate-900 dark:text-slate-50 bg-modal-backdrop-light dark:bg-modal-backdrop-dark"
         >
           <fluent-icon icon="cloud-backup" size="40" />

@@ -1,10 +1,16 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 <script setup>
 import { ref, computed } from 'vue';
 import { useKeyboardEvents } from 'dashboard/composables/useKeyboardEvents';
 =======
 <script>
 >>>>>>> b4b308336 (feat: Eslint rules (#9839))
+=======
+<script setup>
+import { ref, computed } from 'vue';
+import { useKeyboardEvents } from 'dashboard/composables/useKeyboardEvents';
+>>>>>>> 89acbd8d0 (feat: Replace the use of `keyboardEventListener` mixin to a composable (Part -2) (#9892))
 import wootConstants from 'dashboard/constants/globals';
 
 const props = defineProps({
@@ -48,6 +54,9 @@ useKeyboardEvents(keyboardEvents, chatTypeTabsRef);
 
 <template>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 89acbd8d0 (feat: Replace the use of `keyboardEventListener` mixin to a composable (Part -2) (#9892))
   <div ref="chatTypeTabsRef">
     <woot-tabs :index="activeTabIndex" @change="onTabChange">
       <woot-tabs-item
@@ -58,6 +67,7 @@ useKeyboardEvents(keyboardEvents, chatTypeTabsRef);
       />
     </woot-tabs>
   </div>
+<<<<<<< HEAD
 =======
   <woot-tabs :index="activeTabIndex" @change="onTabChange">
     <woot-tabs-item
@@ -68,4 +78,6 @@ useKeyboardEvents(keyboardEvents, chatTypeTabsRef);
     />
   </woot-tabs>
 >>>>>>> b4b308336 (feat: Eslint rules (#9839))
+=======
+>>>>>>> 89acbd8d0 (feat: Replace the use of `keyboardEventListener` mixin to a composable (Part -2) (#9892))
 </template>

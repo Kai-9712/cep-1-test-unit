@@ -133,6 +133,7 @@ export default {
     },
   },
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
   methods: {
@@ -145,6 +146,8 @@ export default {
     },
   },
 >>>>>>> b4b308336 (feat: Eslint rules (#9839))
+=======
+>>>>>>> 89acbd8d0 (feat: Replace the use of `keyboardEventListener` mixin to a composable (Part -2) (#9892))
 };
 </script>
 
@@ -197,9 +200,13 @@ export default {
 
           <div
 <<<<<<< HEAD
+<<<<<<< HEAD
             ref="conversationHeaderActionsRef"
 =======
 >>>>>>> b4b308336 (feat: Eslint rules (#9839))
+=======
+            ref="conversationHeaderActionsRef"
+>>>>>>> 89acbd8d0 (feat: Replace the use of `keyboardEventListener` mixin to a composable (Part -2) (#9892))
             class="flex items-center gap-2 overflow-hidden text-xs conversation--header--actions text-ellipsis whitespace-nowrap"
           >
             <InboxName v-if="hasMultipleInboxes" :inbox="inbox" />

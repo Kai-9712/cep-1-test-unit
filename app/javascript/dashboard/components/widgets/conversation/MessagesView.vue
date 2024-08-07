@@ -515,6 +515,7 @@ export default {
     </ul>
     <div
 <<<<<<< HEAD
+<<<<<<< HEAD
       ref="conversationFooterRef"
       class="conversation-footer"
       :class="{ 'modal-mask': isPopOutReplyBox }"
@@ -522,6 +523,11 @@ export default {
       class="conversation-footer"
       :class="{ 'modal-mask': isPopoutReplyBox }"
 >>>>>>> b4b308336 (feat: Eslint rules (#9839))
+=======
+      ref="conversationFooterRef"
+      class="conversation-footer"
+      :class="{ 'modal-mask': isPopOutReplyBox }"
+>>>>>>> 89acbd8d0 (feat: Replace the use of `keyboardEventListener` mixin to a composable (Part -2) (#9892))
     >
       <div
         v-if="isAnyoneTyping"
@@ -541,12 +547,17 @@ export default {
       <ReplyBox
         :conversation-id="currentChat.id"
 <<<<<<< HEAD
+<<<<<<< HEAD
         :popout-reply-box.sync="isPopOutReplyBox"
         @click="showPopOutReplyBox"
 =======
         :popout-reply-box.sync="isPopoutReplyBox"
         @click="showPopoutReplyBox"
 >>>>>>> b4b308336 (feat: Eslint rules (#9839))
+=======
+        :popout-reply-box.sync="isPopOutReplyBox"
+        @click="showPopOutReplyBox"
+>>>>>>> 89acbd8d0 (feat: Replace the use of `keyboardEventListener` mixin to a composable (Part -2) (#9892))
       />
     </div>
   </div>

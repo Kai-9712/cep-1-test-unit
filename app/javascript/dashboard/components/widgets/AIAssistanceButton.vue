@@ -6,19 +6,25 @@ import { useAdmin } from 'dashboard/composables/useAdmin';
 <<<<<<< HEAD
 import { useUISettings } from 'dashboard/composables/useUISettings';
 import { useKeyboardEvents } from 'dashboard/composables/useKeyboardEvents';
+<<<<<<< HEAD
 =======
 >>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
 =======
 import { useUISettings } from 'dashboard/composables/useUISettings';
 >>>>>>> fb99ba7b4 (feat: Rewrite `uiSettings` mixin to a composable (#9819))
+=======
+>>>>>>> 89acbd8d0 (feat: Replace the use of `keyboardEventListener` mixin to a composable (Part -2) (#9892))
 import AICTAModal from './AICTAModal.vue';
 import AIAssistanceModal from './AIAssistanceModal.vue';
 import aiMixin from 'dashboard/mixins/aiMixin';
 import { CMD_AI_ASSIST } from 'dashboard/routes/dashboard/commands/commandBarBusEvents';
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 import keyboardEventListenerMixins from 'shared/mixins/keyboardEventListenerMixins';
 >>>>>>> fb99ba7b4 (feat: Rewrite `uiSettings` mixin to a composable (#9819))
+=======
+>>>>>>> 89acbd8d0 (feat: Replace the use of `keyboardEventListener` mixin to a composable (Part -2) (#9892))
 import AIAssistanceCTAButton from './AIAssistanceCTAButton.vue';
 
 export default {
@@ -27,6 +33,7 @@ export default {
     AICTAModal,
     AIAssistanceCTAButton,
   },
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
   mixins: [aiMixin],
@@ -67,14 +74,44 @@ export default {
   mixins: [aiMixin, keyboardEventListenerMixins],
 >>>>>>> fb99ba7b4 (feat: Rewrite `uiSettings` mixin to a composable (#9819))
   setup() {
+=======
+  mixins: [aiMixin],
+  setup(props, { emit }) {
+>>>>>>> 89acbd8d0 (feat: Replace the use of `keyboardEventListener` mixin to a composable (Part -2) (#9892))
     const { uiSettings, updateUISettings } = useUISettings();
+
     const { isAdmin } = useAdmin();
+
+    const aiAssistanceButtonRef = ref(null);
+    const initialMessage = ref('');
+
+    const initializeMessage = draftMessage => {
+      initialMessage.value = draftMessage;
+    };
+    const keyboardEvents = {
+      '$mod+KeyZ': {
+        action: () => {
+          if (initialMessage.value) {
+            emit('replaceText', initialMessage.value);
+            initialMessage.value = '';
+          }
+        },
+        allowOnFocusedInput: true,
+      },
+    };
+    useKeyboardEvents(keyboardEvents, aiAssistanceButtonRef);
 
     return {
       uiSettings,
       updateUISettings,
       isAdmin,
+<<<<<<< HEAD
 >>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
+=======
+      aiAssistanceButtonRef,
+      initialMessage,
+      initializeMessage,
+>>>>>>> 89acbd8d0 (feat: Replace the use of `keyboardEventListener` mixin to a composable (Part -2) (#9892))
     };
   },
   data: () => ({
@@ -111,6 +148,7 @@ export default {
 
   methods: {
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     getKeyboardEvents() {
       return {
@@ -125,6 +163,8 @@ export default {
       };
     },
 >>>>>>> b4b308336 (feat: Eslint rules (#9839))
+=======
+>>>>>>> 89acbd8d0 (feat: Replace the use of `keyboardEventListener` mixin to a composable (Part -2) (#9892))
     hideAIAssistanceModal() {
       this.recordAnalytics('DISMISS_AI_SUGGESTION', {
         aiOption: this.aiOption,
@@ -161,10 +201,14 @@ export default {
 
 <template>
 <<<<<<< HEAD
+<<<<<<< HEAD
   <div ref="aiAssistanceButtonRef">
 =======
   <div v-if="!isFetchingAppIntegrations">
 >>>>>>> b4b308336 (feat: Eslint rules (#9839))
+=======
+  <div ref="aiAssistanceButtonRef">
+>>>>>>> 89acbd8d0 (feat: Replace the use of `keyboardEventListener` mixin to a composable (Part -2) (#9892))
     <div v-if="isAIIntegrationEnabled" class="relative">
       <AIAssistanceCTAButton
         v-if="shouldShowAIAssistCTAButton"
