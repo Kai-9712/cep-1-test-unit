@@ -1,9 +1,12 @@
 <script>
 import messageFormatterMixin from 'shared/mixins/messageFormatterMixin';
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 import keyboardEventListenerMixins from 'shared/mixins/keyboardEventListenerMixins';
 >>>>>>> b4b308336 (feat: Eslint rules (#9839))
+=======
+>>>>>>> 74bbbd25b (feat: Replace the use of `keyboardEventListener` mixin to a composable (Part -3) (#9897))
 import PlaygroundHeader from '../../components/playground/Header.vue';
 import UserMessage from '../../components/playground/UserMessage.vue';
 import BotMessage from '../../components/playground/BotMessage.vue';
@@ -127,10 +130,15 @@ export default {
         autofocus
         autocomplete="off"
 <<<<<<< HEAD
+<<<<<<< HEAD
         @keydown.meta.enter="onMessageSend"
         @keydown.ctrl.enter="onMessageSend"
 =======
 >>>>>>> b4b308336 (feat: Eslint rules (#9839))
+=======
+        @keydown.meta.enter="onMessageSend"
+        @keydown.ctrl.enter="onMessageSend"
+>>>>>>> 74bbbd25b (feat: Replace the use of `keyboardEventListener` mixin to a composable (Part -3) (#9897))
       />
     </div>
   </section>

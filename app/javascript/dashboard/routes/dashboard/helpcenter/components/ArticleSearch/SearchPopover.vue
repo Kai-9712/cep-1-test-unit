@@ -43,8 +43,11 @@ import { useAlert } from 'dashboard/composables';
 <script>
 import { debounce } from '@chatwoot/utils';
 import { useAlert } from 'dashboard/composables';
+<<<<<<< HEAD
 import keyboardEventListenerMixins from 'shared/mixins/keyboardEventListenerMixins';
 >>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
+=======
+>>>>>>> 74bbbd25b (feat: Replace the use of `keyboardEventListener` mixin to a composable (Part -3) (#9897))
 
 import SearchHeader from './Header.vue';
 import SearchResults from './SearchResults.vue';
@@ -61,10 +64,14 @@ export default {
     ArticleView,
   },
 <<<<<<< HEAD
+<<<<<<< HEAD
   mixins: [portalMixin],
 =======
   mixins: [portalMixin, keyboardEventListenerMixins],
 >>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
+=======
+  mixins: [portalMixin],
+>>>>>>> 74bbbd25b (feat: Replace the use of `keyboardEventListener` mixin to a composable (Part -3) (#9897))
   props: {
     selectedPortalSlug: {
       type: String,
