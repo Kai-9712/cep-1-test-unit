@@ -148,10 +148,14 @@ import MultiselectDropdown from 'shared/components/ui/MultiselectDropdown.vue';
 import HelperTextPopup from 'dashboard/components/ui/HelperTextPopup.vue';
 import { isValidURL } from '../helper/URLHelper';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { getRegexp } from 'shared/helpers/Validators';
 =======
 import customAttributeMixin from '../mixins/customAttributeMixin';
 >>>>>>> ce8e1ec93 (chore: Migrate all instances of old vuelidate to new v2 syntax [CW-3274] (#9623))
+=======
+import { getRegexp } from 'shared/helpers/Validators';
+>>>>>>> d1d1398d8 (feat: Rewrite `customAttributeMixin` to validation helper (#9916))
 import { useVuelidate } from '@vuelidate/core';
 
 const DATE_FORMAT = 'yyyy-MM-dd';
