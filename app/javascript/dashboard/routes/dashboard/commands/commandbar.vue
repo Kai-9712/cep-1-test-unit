@@ -18,8 +18,11 @@ import agentMixin from 'dashboard/mixins/agentMixin';
 <<<<<<< HEAD
 =======
 import conversationLabelMixin from 'dashboard/mixins/conversation/labelMixin';
+<<<<<<< HEAD
 import conversationTeamMixin from 'dashboard/mixins/conversation/teamMixin';
 >>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
+=======
+>>>>>>> d5f34bf9d (feat: Replace `conversation/teamMixin` within the components (#9923))
 import { GENERAL_EVENTS } from '../../../helper/AnalyticsHelper/events';
 
 export default {
@@ -28,6 +31,10 @@ export default {
     conversationHotKeysMixin,
     bulkActionsHotKeysMixin,
     inboxHotKeysMixin,
+<<<<<<< HEAD
+=======
+    conversationLabelMixin,
+>>>>>>> d5f34bf9d (feat: Replace `conversation/teamMixin` within the components (#9923))
     appearanceHotKeys,
     goToCommandHotKeys,
   ],

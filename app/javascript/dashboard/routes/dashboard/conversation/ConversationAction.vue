@@ -16,10 +16,14 @@ export default {
     ConversationLabels,
   },
 <<<<<<< HEAD
+<<<<<<< HEAD
   mixins: [agentMixin],
 =======
   mixins: [agentMixin, teamMixin],
 >>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
+=======
+  mixins: [agentMixin],
+>>>>>>> d5f34bf9d (feat: Replace `conversation/teamMixin` within the components (#9923))
   props: {
     conversationId: {
       type: [Number, String],
