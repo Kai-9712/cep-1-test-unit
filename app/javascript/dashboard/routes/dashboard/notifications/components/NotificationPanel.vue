@@ -197,10 +197,14 @@ export default {
               icon="chevron-left"
               size="16"
 <<<<<<< HEAD
+<<<<<<< HEAD
               class="rtl:-mr-3 ltr:-ml-3"
 =======
               :class="notificationPanelFooterIconClass"
 >>>>>>> b4b308336 (feat: Eslint rules (#9839))
+=======
+              class="rtl:-mr-3 ltr:-ml-3"
+>>>>>>> 452096f4b (feat: Replace `rtlMixin` to a composable (#9924))
             />
           </woot-button>
           <woot-button
@@ -236,10 +240,14 @@ export default {
               icon="chevron-right"
               size="16"
 <<<<<<< HEAD
+<<<<<<< HEAD
               class="rtl:-mr-3 ltr:-ml-3"
 =======
               :class="notificationPanelFooterIconClass"
 >>>>>>> b4b308336 (feat: Eslint rules (#9839))
+=======
+              class="rtl:-mr-3 ltr:-ml-3"
+>>>>>>> 452096f4b (feat: Replace `rtlMixin` to a composable (#9924))
             />
           </woot-button>
         </div>

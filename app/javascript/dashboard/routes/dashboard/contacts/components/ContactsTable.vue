@@ -43,9 +43,12 @@ import Thumbnail from 'dashboard/components/widgets/Thumbnail.vue';
 import EmptyState from 'dashboard/components/widgets/EmptyState.vue';
 import { dynamicTime } from 'shared/helpers/timeHelper';
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 import rtlMixin from 'shared/mixins/rtlMixin';
 >>>>>>> 79381b08c (feat: Move timeMixin to a helper (#9799))
+=======
+>>>>>>> 452096f4b (feat: Replace `rtlMixin` to a composable (#9924))
 import FluentIcon from 'shared/components/FluentIcon/DashboardIcon.vue';
 
 export default {
@@ -55,9 +58,12 @@ export default {
     VeTable,
   },
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   mixins: [rtlMixin],
 >>>>>>> 79381b08c (feat: Move timeMixin to a helper (#9799))
+=======
+>>>>>>> 452096f4b (feat: Replace `rtlMixin` to a composable (#9924))
   props: {
     contacts: {
       type: Array,

@@ -121,12 +121,17 @@ export default {
     id="app"
     class="flex-grow-0 w-full h-full min-h-0 app-wrapper"
 <<<<<<< HEAD
+<<<<<<< HEAD
     :class="{ 'app-rtl--wrapper': isRTL }"
     :dir="isRTL ? 'rtl' : 'ltr'"
 =======
     :class="{ 'app-rtl--wrapper': isRTLView }"
     :dir="isRTLView ? 'rtl' : 'ltr'"
 >>>>>>> b4b308336 (feat: Eslint rules (#9839))
+=======
+    :class="{ 'app-rtl--wrapper': isRTL }"
+    :dir="isRTL ? 'rtl' : 'ltr'"
+>>>>>>> 452096f4b (feat: Replace `rtlMixin` to a composable (#9924))
   >
     <UpdateBanner :latest-chatwoot-version="latestChatwootVersion" />
     <template v-if="currentAccountId">

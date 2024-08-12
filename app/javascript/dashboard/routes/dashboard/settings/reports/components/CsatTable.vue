@@ -5,9 +5,12 @@ import { CSAT_RATINGS } from 'shared/constants/messages';
 import { mapGetters } from 'vuex';
 import { messageStamp, dynamicTime } from 'shared/helpers/timeHelper';
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 import rtlMixin from 'shared/mixins/rtlMixin';
 >>>>>>> 79381b08c (feat: Move timeMixin to a helper (#9799))
+=======
+>>>>>>> 452096f4b (feat: Replace `rtlMixin` to a composable (#9924))
 
 export default {
   components: {
@@ -15,9 +18,12 @@ export default {
     VePagination,
   },
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   mixins: [rtlMixin],
 >>>>>>> 79381b08c (feat: Move timeMixin to a helper (#9799))
+=======
+>>>>>>> 452096f4b (feat: Replace `rtlMixin` to a composable (#9924))
   props: {
     pageIndex: {
       type: Number,
@@ -27,9 +33,13 @@ export default {
   computed: {
     ...mapGetters({
 <<<<<<< HEAD
+<<<<<<< HEAD
       isRTL: 'accounts/isRTL',
 =======
 >>>>>>> b4b308336 (feat: Eslint rules (#9839))
+=======
+      isRTL: 'accounts/isRTL',
+>>>>>>> 452096f4b (feat: Replace `rtlMixin` to a composable (#9924))
       csatResponses: 'csat/getCSATResponses',
       metrics: 'csat/getMetrics',
     }),
