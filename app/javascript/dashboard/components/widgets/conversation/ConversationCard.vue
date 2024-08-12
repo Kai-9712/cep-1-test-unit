@@ -326,14 +326,20 @@ export default {
         </span>
       </div>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 4c6572c2c (feat: Rewrite `conversation/labelMixin` to a composable (#9936))
       <CardLabels
         :conversation-id="chat.id"
         :conversation-labels="chat.labels"
         class="mt-0.5 mx-2 mb-0"
       >
+<<<<<<< HEAD
 =======
       <CardLabels :conversation-id="chat.id" class="mt-0.5 mx-2 mb-0">
 >>>>>>> b4b308336 (feat: Eslint rules (#9839))
+=======
+>>>>>>> 4c6572c2c (feat: Rewrite `conversation/labelMixin` to a composable (#9936))
         <template v-if="hasSlaPolicyId" #before>
           <SLACardLabel :chat="chat" class="ltr:mr-1 rtl:ml-1" />
         </template>

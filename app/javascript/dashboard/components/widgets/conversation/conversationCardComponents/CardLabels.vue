@@ -5,6 +5,7 @@ import { useMapGetter } from 'dashboard/composables/store';
 export default {
   props: {
 <<<<<<< HEAD
+<<<<<<< HEAD
     conversationLabels: {
       type: Array,
       required: true,
@@ -39,6 +40,25 @@ export default {
       default: '',
     },
 >>>>>>> b4b308336 (feat: Eslint rules (#9839))
+=======
+    conversationLabels: {
+      type: Array,
+      required: true,
+    },
+  },
+  setup(props) {
+    const accountLabels = useMapGetter('labels/getLabels');
+
+    const activeLabels = computed(() => {
+      return props.conversationLabels.map(label =>
+        accountLabels.value.find(l => l.title === label)
+      );
+    });
+
+    return {
+      activeLabels,
+    };
+>>>>>>> 4c6572c2c (feat: Rewrite `conversation/labelMixin` to a composable (#9936))
   },
   data() {
     return {
