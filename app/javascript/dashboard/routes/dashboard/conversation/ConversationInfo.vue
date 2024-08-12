@@ -107,6 +107,7 @@ const evenClass = [
   </div>
 </template>
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 <style scoped lang="scss">
@@ -118,3 +119,5 @@ const evenClass = [
 }
 </style>
 >>>>>>> b4b308336 (feat: Eslint rules (#9839))
+=======
+>>>>>>> b1da3dc7c (feat: Replace `attributeMixin` within the component (#9919))

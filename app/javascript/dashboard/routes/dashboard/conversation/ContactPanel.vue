@@ -233,10 +233,13 @@ export default {
               <CustomAttributes
                 attribute-type="contact_attribute"
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
                 attribute-class="conversation--attribute"
                 class="even"
 >>>>>>> b4b308336 (feat: Eslint rules (#9839))
+=======
+>>>>>>> b1da3dc7c (feat: Replace `attributeMixin` within the component (#9919))
                 attribute-from="conversation_contact_panel"
                 :contact-id="contact.id"
                 :empty-state-message="
