@@ -2,25 +2,35 @@
 import { mapGetters } from 'vuex';
 import { useAlert } from 'dashboard/composables';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { useAccount } from 'dashboard/composables/useAccount';
 =======
 import accountMixin from 'dashboard/mixins/account.js';
 >>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
+=======
+import { useAccount } from 'dashboard/composables/useAccount';
+>>>>>>> 66db9a0cc (feat: Rewrite `accountMixin` to a composable (#9914))
 import MacrosTableRow from './MacrosTableRow.vue';
 export default {
   components: {
     MacrosTableRow,
   },
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 66db9a0cc (feat: Rewrite `accountMixin` to a composable (#9914))
   setup() {
     const { accountScopedUrl } = useAccount();
     return {
       accountScopedUrl,
     };
   },
+<<<<<<< HEAD
 =======
   mixins: [accountMixin],
 >>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
+=======
+>>>>>>> 66db9a0cc (feat: Rewrite `accountMixin` to a composable (#9914))
   data() {
     return {
       showDeleteConfirmationPopup: false,
@@ -70,10 +80,14 @@ export default {
   <div class="flex-1 overflow-auto">
     <router-link
 <<<<<<< HEAD
+<<<<<<< HEAD
       :to="accountScopedUrl('settings/macros/new')"
 =======
       :to="addAccountScoping('settings/macros/new')"
 >>>>>>> b4b308336 (feat: Eslint rules (#9839))
+=======
+      :to="accountScopedUrl('settings/macros/new')"
+>>>>>>> 66db9a0cc (feat: Rewrite `accountMixin` to a composable (#9914))
       class="button success button--fixed-top button success button--fixed-top px-3.5 py-1 rounded-[5px] flex gap-2"
     >
       <fluent-icon icon="add-circle" />
@@ -85,10 +99,14 @@ export default {
       <div class="w-full lg:w-3/5">
         <div v-if="!uiFlags.isFetching && !records.length" class="p-3">
 <<<<<<< HEAD
+<<<<<<< HEAD
           <p class="flex flex-col items-center justify-center h-full">
 =======
           <p class="flex h-full items-center flex-col justify-center">
 >>>>>>> b4b308336 (feat: Eslint rules (#9839))
+=======
+          <p class="flex flex-col items-center justify-center h-full">
+>>>>>>> 66db9a0cc (feat: Rewrite `accountMixin` to a composable (#9914))
             {{ $t('MACROS.LIST.404') }}
           </p>
         </div>
@@ -116,10 +134,14 @@ export default {
         </table>
       </div>
 <<<<<<< HEAD
+<<<<<<< HEAD
       <div class="hidden w-1/3 lg:block">
 =======
       <div class="hidden lg:block w-1/3">
 >>>>>>> b4b308336 (feat: Eslint rules (#9839))
+=======
+      <div class="hidden w-1/3 lg:block">
+>>>>>>> 66db9a0cc (feat: Rewrite `accountMixin` to a composable (#9914))
         <span v-dompurify-html="$t('MACROS.SIDEBAR_TXT')" />
       </div>
     </div>

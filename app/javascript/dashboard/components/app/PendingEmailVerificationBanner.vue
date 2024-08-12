@@ -2,17 +2,23 @@
 import Banner from 'dashboard/components/ui/Banner.vue';
 import { mapGetters } from 'vuex';
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 import accountMixin from 'dashboard/mixins/account';
 >>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
+=======
+>>>>>>> 66db9a0cc (feat: Rewrite `accountMixin` to a composable (#9914))
 import { useAlert } from 'dashboard/composables';
 
 export default {
   components: { Banner },
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   mixins: [accountMixin],
 >>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
+=======
+>>>>>>> 66db9a0cc (feat: Rewrite `accountMixin` to a composable (#9914))
   computed: {
     ...mapGetters({
       currentUser: 'getCurrentUser',

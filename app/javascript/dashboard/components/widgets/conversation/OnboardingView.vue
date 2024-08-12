@@ -1,6 +1,7 @@
 <script>
 import { mapGetters } from 'vuex';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { useAccount } from 'dashboard/composables/useAccount';
 
 export default {
@@ -22,20 +23,32 @@ export default {
       return this.accountScopedUrl('settings/labels/list');
 =======
 import accountMixin from '../../../mixins/account';
+=======
+import { useAccount } from 'dashboard/composables/useAccount';
+>>>>>>> 66db9a0cc (feat: Rewrite `accountMixin` to a composable (#9914))
 
 export default {
-  mixins: [accountMixin],
+  setup() {
+    const { accountScopedUrl } = useAccount();
+    return {
+      accountScopedUrl,
+    };
+  },
   computed: {
     ...mapGetters({ globalConfig: 'globalConfig/get' }),
     newInboxURL() {
-      return this.addAccountScoping('settings/inboxes/new');
+      return this.accountScopedUrl('settings/inboxes/new');
     },
     newAgentURL() {
-      return this.addAccountScoping('settings/agents/list');
+      return this.accountScopedUrl('settings/agents/list');
     },
     newLabelsURL() {
+<<<<<<< HEAD
       return this.addAccountScoping('settings/labels/list');
 >>>>>>> b4b308336 (feat: Eslint rules (#9839))
+=======
+      return this.accountScopedUrl('settings/labels/list');
+>>>>>>> 66db9a0cc (feat: Rewrite `accountMixin` to a composable (#9914))
     },
   },
 };

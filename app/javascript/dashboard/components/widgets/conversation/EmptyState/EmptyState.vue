@@ -2,10 +2,14 @@
 import { mapGetters } from 'vuex';
 import { useAdmin } from 'dashboard/composables/useAdmin';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { useAccount } from 'dashboard/composables/useAccount';
 =======
 import accountMixin from 'dashboard/mixins/account';
 >>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
+=======
+import { useAccount } from 'dashboard/composables/useAccount';
+>>>>>>> 66db9a0cc (feat: Rewrite `accountMixin` to a composable (#9914))
 import OnboardingView from '../OnboardingView.vue';
 import EmptyStateMessage from './EmptyStateMessage.vue';
 
@@ -15,9 +19,12 @@ export default {
     EmptyStateMessage,
   },
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   mixins: [accountMixin],
 >>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
+=======
+>>>>>>> 66db9a0cc (feat: Rewrite `accountMixin` to a composable (#9914))
   props: {
     isOnExpandedLayout: {
       type: Boolean,
@@ -27,16 +34,22 @@ export default {
   setup() {
     const { isAdmin } = useAdmin();
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 66db9a0cc (feat: Rewrite `accountMixin` to a composable (#9914))
 
     const { accountScopedUrl } = useAccount();
 
     return {
       isAdmin,
       accountScopedUrl,
+<<<<<<< HEAD
 =======
     return {
       isAdmin,
 >>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
+=======
+>>>>>>> 66db9a0cc (feat: Rewrite `accountMixin` to a composable (#9914))
     };
   },
   computed: {

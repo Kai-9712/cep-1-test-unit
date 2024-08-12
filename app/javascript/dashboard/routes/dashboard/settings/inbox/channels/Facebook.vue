@@ -113,6 +113,7 @@ import { required } from 'vuelidate/lib/validators';
 =======
 import { useVuelidate } from '@vuelidate/core';
 import { useAlert } from 'dashboard/composables';
+import { useAccount } from 'dashboard/composables/useAccount';
 import { required } from '@vuelidate/validators';
 >>>>>>> ce8e1ec93 (chore: Migrate all instances of old vuelidate to new v2 syntax [CW-3274] (#9623))
 import LoadingState from 'dashboard/components/widgets/LoadingState.vue';
@@ -121,9 +122,12 @@ import ChannelApi from '../../../../../api/channels';
 import PageHeader from '../../SettingsSubPageHeader.vue';
 import router from '../../../../index';
 import globalConfigMixin from 'shared/mixins/globalConfigMixin';
+<<<<<<< HEAD
 
 import { loadScript } from 'dashboard/helper/DOMHelpers';
 import * as Sentry from '@sentry/browser';
+=======
+>>>>>>> 66db9a0cc (feat: Rewrite `accountMixin` to a composable (#9914))
 
 import { loadScript } from 'dashboard/helper/DOMHelpers';
 import * as Sentry from '@sentry/browser';
@@ -133,6 +137,7 @@ export default {
     LoadingState,
     PageHeader,
   },
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
   mixins: [globalConfigMixin],
@@ -151,8 +156,15 @@ export default {
 <<<<<<< HEAD
 >>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
 =======
+=======
+  mixins: [globalConfigMixin],
+>>>>>>> 66db9a0cc (feat: Rewrite `accountMixin` to a composable (#9914))
   setup() {
-    return { v$: useVuelidate() };
+    const { accountId } = useAccount();
+    return {
+      accountId,
+      v$: useVuelidate(),
+    };
   },
 >>>>>>> ce8e1ec93 (chore: Migrate all instances of old vuelidate to new v2 syntax [CW-3274] (#9623))
   data() {

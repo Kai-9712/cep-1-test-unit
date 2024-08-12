@@ -141,18 +141,24 @@ import { mapGetters } from 'vuex';
 import { useAlert } from 'dashboard/composables';
 import { useAdmin } from 'dashboard/composables/useAdmin';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { useAccount } from 'dashboard/composables/useAccount';
 import Settings from './Settings.vue';
 =======
 import Settings from './Settings.vue';
 import accountMixin from '../../../../mixins/account';
 >>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
+=======
+import { useAccount } from 'dashboard/composables/useAccount';
+import Settings from './Settings.vue';
+>>>>>>> 66db9a0cc (feat: Rewrite `accountMixin` to a composable (#9914))
 import globalConfigMixin from 'shared/mixins/globalConfigMixin';
 
 export default {
   components: {
     Settings,
   },
+<<<<<<< HEAD
 <<<<<<< HEAD
   mixins: [globalConfigMixin],
   setup() {
@@ -163,11 +169,19 @@ export default {
       accountScopedUrl,
 =======
   mixins: [accountMixin, globalConfigMixin],
+=======
+  mixins: [globalConfigMixin],
+>>>>>>> 66db9a0cc (feat: Rewrite `accountMixin` to a composable (#9914))
   setup() {
     const { isAdmin } = useAdmin();
+    const { accountScopedUrl } = useAccount();
     return {
       isAdmin,
+<<<<<<< HEAD
 >>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
+=======
+      accountScopedUrl,
+>>>>>>> 66db9a0cc (feat: Rewrite `accountMixin` to a composable (#9914))
     };
   },
   data() {
@@ -256,10 +270,14 @@ export default {
           <router-link
             v-if="isAdmin"
 <<<<<<< HEAD
+<<<<<<< HEAD
             :to="accountScopedUrl('settings/inboxes/new')"
 =======
             :to="addAccountScoping('settings/inboxes/new')"
 >>>>>>> b4b308336 (feat: Eslint rules (#9839))
+=======
+            :to="accountScopedUrl('settings/inboxes/new')"
+>>>>>>> 66db9a0cc (feat: Rewrite `accountMixin` to a composable (#9914))
           >
             {{ $t('SETTINGS.INBOXES.NEW_INBOX') }}
           </router-link>
@@ -322,10 +340,14 @@ export default {
                 <div class="button-wrapper">
                   <router-link
 <<<<<<< HEAD
+<<<<<<< HEAD
                     :to="accountScopedUrl(`settings/inboxes/${item.id}`)"
 =======
                     :to="addAccountScoping(`settings/inboxes/${item.id}`)"
 >>>>>>> b4b308336 (feat: Eslint rules (#9839))
+=======
+                    :to="accountScopedUrl(`settings/inboxes/${item.id}`)"
+>>>>>>> 66db9a0cc (feat: Rewrite `accountMixin` to a composable (#9914))
                   >
                     <woot-button
                       v-if="isAdmin"

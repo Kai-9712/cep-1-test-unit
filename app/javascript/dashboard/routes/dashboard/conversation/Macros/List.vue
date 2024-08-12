@@ -1,6 +1,7 @@
 <script>
 import { mapGetters } from 'vuex';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { useAccount } from 'dashboard/composables/useAccount';
 import MacroItem from './MacroItem.vue';
 
@@ -69,19 +70,27 @@ export default {
 </template>
 
 =======
+=======
+import { useAccount } from 'dashboard/composables/useAccount';
+>>>>>>> 66db9a0cc (feat: Rewrite `accountMixin` to a composable (#9914))
 import MacroItem from './MacroItem.vue';
-import accountMixin from 'dashboard/mixins/account.js';
 
 export default {
   components: {
     MacroItem,
   },
-  mixins: [accountMixin],
   props: {
     conversationId: {
       type: [Number, String],
       required: true,
     },
+  },
+  setup() {
+    const { accountScopedUrl } = useAccount();
+
+    return {
+      accountScopedUrl,
+    };
   },
   computed: {
     ...mapGetters({
@@ -101,10 +110,10 @@ export default {
       v-if="!uiFlags.isFetching && !macros.length"
       class="macros_list--empty-state"
     >
-      <p class="flex h-full items-center flex-col justify-center">
+      <p class="flex flex-col items-center justify-center h-full">
         {{ $t('MACROS.LIST.404') }}
       </p>
-      <router-link :to="addAccountScoping('settings/macros')">
+      <router-link :to="accountScopedUrl('settings/macros')">
         <woot-button
           variant="smooth"
           icon="add"

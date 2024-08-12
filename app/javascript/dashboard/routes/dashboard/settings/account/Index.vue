@@ -155,6 +155,7 @@ import { getLanguageDirection } from 'dashboard/components/widgets/conversation/
 export default {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   mixins: [configMixin],
   setup() {
     const { updateUISettings } = useUISettings();
@@ -167,6 +168,9 @@ export default {
 >>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
 =======
   mixins: [accountMixin, configMixin],
+=======
+  mixins: [configMixin],
+>>>>>>> 66db9a0cc (feat: Rewrite `accountMixin` to a composable (#9914))
   setup() {
     const { updateUISettings } = useUISettings();
     const v$ = useVuelidate();
