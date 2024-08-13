@@ -1,8 +1,8 @@
 <script>
 import { mapGetters } from 'vuex';
+import { getLastMessage } from 'dashboard/helper/conversationHelper';
 import Thumbnail from '../Thumbnail.vue';
 import MessagePreview from './MessagePreview.vue';
-import conversationMixin from '../../../mixins/conversations';
 import router from '../../../routes';
 import { frontendURL, conversationUrl } from '../../../helper/URLHelper';
 import InboxName from '../InboxName.vue';
@@ -26,6 +26,7 @@ export default {
   },
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   mixins: [inboxMixin, conversationMixin],
 =======
 
@@ -34,6 +35,9 @@ export default {
 =======
   mixins: [inboxMixin, conversationMixin],
 >>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
+=======
+  mixins: [inboxMixin],
+>>>>>>> b33d59d80 (feat: Rewrite `conversations` mixin to a helper (#9931))
   props: {
     activeLabel: {
       type: String,
@@ -127,7 +131,7 @@ export default {
     },
 
     lastMessageInChat() {
-      return this.lastMessage(this.chat);
+      return getLastMessage(this.chat);
     },
 
     inbox() {

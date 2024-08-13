@@ -153,12 +153,15 @@ import ChatTypeTabs from './widgets/ChatTypeTabs.vue';
 import ConversationItem from './ConversationItem.vue';
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 import keyboardEventListenerMixins from 'shared/mixins/keyboardEventListenerMixins';
 >>>>>>> 79381b08c (feat: Move timeMixin to a helper (#9799))
 =======
 >>>>>>> e0b67bb55 (feat: Rewrite `keyboardEventListener` mixin to a composable (#9831))
 import conversationMixin from '../mixins/conversations';
+=======
+>>>>>>> b33d59d80 (feat: Rewrite `conversations` mixin to a helper (#9931))
 import wootConstants from 'dashboard/constants/globals';
 import advancedFilterTypes from './widgets/conversation/advancedFilterItems';
 import filterQueryGenerator from '../helper/filterQueryGenerator.js';
@@ -198,6 +201,7 @@ export default {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   mixins: [conversationMixin, filterMixin],
 =======
   mixins: [
@@ -213,6 +217,9 @@ export default {
 =======
   mixins: [conversationMixin, filterMixin],
 >>>>>>> e0b67bb55 (feat: Rewrite `keyboardEventListener` mixin to a composable (#9831))
+=======
+  mixins: [filterMixin],
+>>>>>>> b33d59d80 (feat: Rewrite `conversations` mixin to a helper (#9931))
   provide() {
     return {
       // Actions to be performed on virtual list item and context menu.
