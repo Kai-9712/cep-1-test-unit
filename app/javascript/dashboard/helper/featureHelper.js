@@ -4,6 +4,7 @@ const FEATURE_HELP_URLS = {
 =======
 >>>>>>> aea68f1ec (feat: Update the design of the audit logs page (#9901))
   agent_bots: 'https://chwt.app/hc/agent-bots',
+  agents: 'https://chwt.app/hc/agents',
   audit_logs: 'https://chwt.app/hc/audit-logs',
   campaigns: 'https://chwt.app/hc/campaigns',
   canned_responses: 'https://chwt.app/hc/canned',
