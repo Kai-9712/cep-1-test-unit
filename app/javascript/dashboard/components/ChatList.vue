@@ -10,7 +10,6 @@ import ChatListHeader from './ChatListHeader.vue';
 import ConversationAdvancedFilter from './widgets/conversation/ConversationAdvancedFilter.vue';
 import ChatTypeTabs from './widgets/ChatTypeTabs.vue';
 import ConversationItem from './ConversationItem.vue';
-import conversationMixin from '../mixins/conversations';
 import wootConstants from 'dashboard/constants/globals';
 import advancedFilterTypes from './widgets/conversation/advancedFilterItems';
 import filterQueryGenerator from '../helper/filterQueryGenerator.js';
@@ -47,7 +46,7 @@ export default {
     VirtualList,
     CustomSnoozeModal,
   },
-  mixins: [conversationMixin, filterMixin],
+  mixins: [filterMixin],
   provide() {
     return {
       // Actions to be performed on virtual list item and context menu.
