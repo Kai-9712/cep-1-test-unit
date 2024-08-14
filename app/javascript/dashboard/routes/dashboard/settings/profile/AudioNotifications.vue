@@ -7,7 +7,6 @@ import { mapGetters } from 'vuex';
 =======
 >>>>>>> b4b308336 (feat: Eslint rules (#9839))
 import { useAlert } from 'dashboard/composables';
-import configMixin from 'shared/mixins/configMixin';
 import { useUISettings } from 'dashboard/composables/useUISettings';
 import AudioAlertTone from './AudioAlertTone.vue';
 import AudioAlertEvent from './AudioAlertEvent.vue';
@@ -21,9 +20,12 @@ export default {
   },
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> fb99ba7b4 (feat: Rewrite `uiSettings` mixin to a composable (#9819))
   mixins: [configMixin],
+=======
+>>>>>>> dd8abe975 (feat: Rewrite `configMixin` to a composable (#9921))
   setup() {
     const { uiSettings, updateUISettings } = useUISettings();
 

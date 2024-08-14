@@ -432,7 +432,6 @@
 <script>
 import { mapGetters } from 'vuex';
 import { shouldBeUrl } from 'shared/helpers/Validators';
-import configMixin from 'shared/mixins/configMixin';
 import { useAlert } from 'dashboard/composables';
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -472,9 +471,13 @@ export default {
     SenderNameExamplePreview,
     MicrosoftReauthorize,
   },
+<<<<<<< HEAD
   mixins: [configMixin, inboxMixin],
 <<<<<<< HEAD
 <<<<<<< HEAD
+=======
+  mixins: [inboxMixin],
+>>>>>>> dd8abe975 (feat: Rewrite `configMixin` to a composable (#9921))
   setup() {
     return { v$: useVuelidate() };
   },

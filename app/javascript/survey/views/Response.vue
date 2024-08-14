@@ -64,7 +64,6 @@ import Spinner from 'shared/components/Spinner.vue';
 import Rating from 'survey/components/Rating.vue';
 import Feedback from 'survey/components/Feedback.vue';
 import Banner from 'survey/components/Banner.vue';
-import configMixin from 'shared/mixins/configMixin';
 import { getSurveyDetails, updateSurvey } from 'survey/api/survey';
 
 export default {
@@ -76,6 +75,7 @@ export default {
     Banner,
     Feedback,
   },
+<<<<<<< HEAD
   mixins: [configMixin],
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -90,6 +90,8 @@ export default {
 =======
 >>>>>>> b4b308336 (feat: Eslint rules (#9839))
 
+=======
+>>>>>>> dd8abe975 (feat: Rewrite `configMixin` to a composable (#9921))
   data() {
     return {
       surveyDetails: null,

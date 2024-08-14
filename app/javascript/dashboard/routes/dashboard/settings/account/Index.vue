@@ -142,12 +142,16 @@ import { useAlert } from 'dashboard/composables';
 <<<<<<< HEAD
 <<<<<<< HEAD
 import { useUISettings } from 'dashboard/composables/useUISettings';
+<<<<<<< HEAD
 =======
 >>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
 =======
 import { useUISettings } from 'dashboard/composables/useUISettings';
 >>>>>>> fb99ba7b4 (feat: Rewrite `uiSettings` mixin to a composable (#9819))
 import configMixin from 'shared/mixins/configMixin';
+=======
+import { useConfig } from 'dashboard/composables/useConfig';
+>>>>>>> dd8abe975 (feat: Rewrite `configMixin` to a composable (#9921))
 import { FEATURE_FLAGS } from '../../../../featureFlags';
 import semver from 'semver';
 import { getLanguageDirection } from 'dashboard/components/widgets/conversation/advancedFilterItems/languages';
@@ -156,12 +160,16 @@ export default {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   mixins: [configMixin],
+=======
+>>>>>>> dd8abe975 (feat: Rewrite `configMixin` to a composable (#9921))
   setup() {
     const { updateUISettings } = useUISettings();
+    const { enabledLanguages } = useConfig();
     const v$ = useVuelidate();
 
-    return { updateUISettings, v$ };
+    return { updateUISettings, v$, enabledLanguages };
   },
 =======
   mixins: [accountMixin, configMixin, uiSettingsMixin],

@@ -95,14 +95,13 @@ import { useVuelidate } from '@vuelidate/core';
 import { minValue } from '@vuelidate/validators';
 >>>>>>> ce8e1ec93 (chore: Migrate all instances of old vuelidate to new v2 syntax [CW-3274] (#9623))
 import { useAlert } from 'dashboard/composables';
-import configMixin from 'shared/mixins/configMixin';
+import { useConfig } from 'dashboard/composables/useConfig';
 import SettingsSection from '../../../../../components/SettingsSection.vue';
 
 export default {
   components: {
     SettingsSection,
   },
-  mixins: [configMixin],
   props: {
     inbox: {
       type: Object,
@@ -110,7 +109,9 @@ export default {
     },
   },
   setup() {
-    return { v$: useVuelidate() };
+    const { isEnterprise } = useConfig();
+
+    return { v$: useVuelidate(), isEnterprise };
   },
   data() {
     return {

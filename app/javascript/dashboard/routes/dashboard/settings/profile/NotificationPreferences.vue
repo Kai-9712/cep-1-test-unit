@@ -2,7 +2,6 @@
 <script>
 import { mapGetters } from 'vuex';
 import { useAlert } from 'dashboard/composables';
-import configMixin from 'shared/mixins/configMixin';
 import TableHeaderCell from 'dashboard/components/widgets/TableHeaderCell.vue';
 import CheckBox from 'v3/components/Form/CheckBox.vue';
 import {
@@ -20,7 +19,6 @@ export default {
     FormSwitch,
     CheckBox,
   },
-  mixins: [configMixin],
   data() {
     return {
       selectedEmailFlags: [],
