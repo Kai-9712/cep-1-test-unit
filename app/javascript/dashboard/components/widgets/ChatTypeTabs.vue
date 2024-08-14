@@ -58,7 +58,11 @@ useKeyboardEvents(keyboardEvents, chatTypeTabsRef);
 =======
 >>>>>>> 89acbd8d0 (feat: Replace the use of `keyboardEventListener` mixin to a composable (Part -2) (#9892))
   <div ref="chatTypeTabsRef">
-    <woot-tabs :index="activeTabIndex" @change="onTabChange">
+    <woot-tabs
+      :index="activeTabIndex"
+      class="tab--chat-type py-0 px-4 w-full"
+      @change="onTabChange"
+    >
       <woot-tabs-item
         v-for="item in items"
         :key="item.key"
@@ -81,3 +85,13 @@ useKeyboardEvents(keyboardEvents, chatTypeTabsRef);
 =======
 >>>>>>> 89acbd8d0 (feat: Replace the use of `keyboardEventListener` mixin to a composable (Part -2) (#9892))
 </template>
+
+<style scoped lang="scss">
+.tab--chat-type {
+  ::v-deep {
+    .tabs {
+      @apply p-0;
+    }
+  }
+}
+</style>
