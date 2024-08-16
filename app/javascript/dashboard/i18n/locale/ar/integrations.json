@@ -8,6 +8,7 @@
     "DESCRIPTION": "Chatwoot تتكامل مع أدوات وخدمات متعددة لتحسين كفاءة فريقك. استكشف القائمة أدناه لتكوين تطبيقاتك المفضلة.",
     "LEARN_MORE": "معرفة المزيد عن التكاملات",
     "LOADING": "جاري جلب التكاملات",
+<<<<<<< HEAD
 =======
     "DESCRIPTION": "Chatwoot integrates with multiple tools and services to improve your team's efficiency. Explore the list below to configure your favorite apps.",
     "LEARN_MORE": "Learn more about integrations",
@@ -28,6 +29,14 @@
     "LEARN_MORE": "معرفة المزيد عن التكاملات",
     "LOADING": "جاري جلب التكاملات",
 >>>>>>> a196e2358 (chore: Update translations (#9845))
+=======
+    "CAPTAIN": {
+      "DISABLED": "لم يتم تمكين الكابتن على حسابك.",
+      "CLICK_HERE_TO_CONFIGURE": "انقر هنا للتهيئة",
+      "LOADING_CONSOLE": "جار جلب وحدة التحكم بالكابتن...",
+      "FAILED_TO_LOAD_CONSOLE": "فشل أثناء جلب وحدة تحكم الكابتن. الرجاء التحديث والمحاولة مرة أخرى."
+    },
+>>>>>>> bb7863969 (chore: Update translations (#9946))
     "WEBHOOK": {
       "SUBSCRIBED_EVENTS": "الأحداث المشتركة",
       "FORM": {

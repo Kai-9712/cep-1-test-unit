@@ -6,6 +6,7 @@
     "DESCRIPTION": "Chatwoot integrates with multiple tools and services to improve your team's efficiency. Explore the list below to configure your favorite apps.",
     "LEARN_MORE": "Learn more about integrations",
     "LOADING": "Fetching integrations",
+<<<<<<< HEAD
 =======
 >>>>>>> 027a540bb (chore: Update translations from Crowdin (#9835))
 =======
@@ -13,6 +14,14 @@
     "LEARN_MORE": "Learn more about integrations",
     "LOADING": "Fetching integrations",
 >>>>>>> 066f0b990 (chore: Update translations (#9841))
+=======
+    "CAPTAIN": {
+      "DISABLED": "Captain is not enabled on your account.",
+      "CLICK_HERE_TO_CONFIGURE": "Click here to configure",
+      "LOADING_CONSOLE": "Loading Captain Console...",
+      "FAILED_TO_LOAD_CONSOLE": "Failed to load Captain Console. Please refresh and try again."
+    },
+>>>>>>> bb7863969 (chore: Update translations (#9946))
     "WEBHOOK": {
       "SUBSCRIBED_EVENTS": "Subscribed Events",
       "FORM": {

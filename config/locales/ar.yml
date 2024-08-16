@@ -211,12 +211,18 @@ ar:
       conversation_assignment: "تم تعيين محادثة (#%{display_id}) لك"
       assigned_conversation_new_message: "تم إنشاء رسالة جديدة في المحادثة (#%{display_id})"
       conversation_mention: "تمت الإشارة إليك في المحادثة من قبل (#%{display_id})"
+<<<<<<< HEAD
       sla_missed_first_response: "هدف SLA أول رد مفقود للمحادثة (#%{display_id})"
       sla_missed_next_response: "SLA target next response missed for conversation (#%{display_id})"
       sla_missed_resolution: "SLA target resolution missed for conversation (#%{display_id})"
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+=======
+      sla_missed_first_response: "هدف سياسة خدمة أول رد مفقود للمحادثة (#%{display_id})"
+      sla_missed_next_response: "هدف سياسة خدمة الرد القادم مفقود للمحادثة (#%{display_id})"
+      sla_missed_resolution: "هدف سياسة خدمة أول حل مفقود للمحادثة (#%{display_id})"
+>>>>>>> bb7863969 (chore: Update translations (#9946))
     attachment: "المرفقات"
 =======
     attachment: "Attachment"
@@ -365,7 +371,7 @@ ar:
       description: "الاستفادة من قوة نماذج اللغات الكبيرة من OpenAI مع ميزات مثل اقتراحات الرد، التلخيص، إعادة صياغة الرسائل، التحقق الإملائي، تصنيف البطاقات."
     linear:
       name: "Linear"
-      description: "إنشاء مشكلات في الخط الخطي مباشرة من نافذة المحادثة الخاصة بك. بدلاً من ذلك، قم بربط المشكلات الخطية القائمة من أجل عملية تتبع أكثر تبسيطاً وكفاءة."
+      description: "إنشاء مشكلات في Linear مباشرة من نافذة المحادثة الخاصة بك. بدلاً من ذلك، قم بربط مشكلات Linear القائمة من أجل عملية تتبع أكثر تبسيطاً وكفاءة."
     captain:
 <<<<<<< HEAD
       name: "Captain"
