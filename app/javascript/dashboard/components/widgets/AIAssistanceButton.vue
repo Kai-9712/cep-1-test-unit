@@ -7,6 +7,7 @@ import { useAdmin } from 'dashboard/composables/useAdmin';
 import { useUISettings } from 'dashboard/composables/useUISettings';
 import { useKeyboardEvents } from 'dashboard/composables/useKeyboardEvents';
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
 =======
@@ -14,9 +15,11 @@ import { useUISettings } from 'dashboard/composables/useUISettings';
 >>>>>>> fb99ba7b4 (feat: Rewrite `uiSettings` mixin to a composable (#9819))
 =======
 >>>>>>> 89acbd8d0 (feat: Replace the use of `keyboardEventListener` mixin to a composable (Part -2) (#9892))
+=======
+import { useAI } from 'dashboard/composables/useAI';
+>>>>>>> d19a9c38d (feat: Rewrite `aiMixin` to a composable (#9955))
 import AICTAModal from './AICTAModal.vue';
 import AIAssistanceModal from './AIAssistanceModal.vue';
-import aiMixin from 'dashboard/mixins/aiMixin';
 import { CMD_AI_ASSIST } from 'dashboard/routes/dashboard/commands/commandBarBusEvents';
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -36,17 +39,22 @@ export default {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   mixins: [aiMixin],
+=======
+>>>>>>> d19a9c38d (feat: Rewrite `aiMixin` to a composable (#9955))
   setup(props, { emit }) {
     const { uiSettings, updateUISettings } = useUISettings();
+
+    const { isAIIntegrationEnabled, draftMessage, recordAnalytics } = useAI();
 
     const { isAdmin } = useAdmin();
 
     const aiAssistanceButtonRef = ref(null);
     const initialMessage = ref('');
 
-    const initializeMessage = draftMessage => {
-      initialMessage.value = draftMessage;
+    const initializeMessage = draftMsg => {
+      initialMessage.value = draftMsg;
     };
     const keyboardEvents = {
       '$mod+KeyZ': {
@@ -68,6 +76,7 @@ export default {
       aiAssistanceButtonRef,
       initialMessage,
       initializeMessage,
+<<<<<<< HEAD
 =======
   mixins: [aiMixin, keyboardEventListenerMixins, uiSettingsMixin],
 =======
@@ -112,6 +121,11 @@ export default {
       initialMessage,
       initializeMessage,
 >>>>>>> 89acbd8d0 (feat: Replace the use of `keyboardEventListener` mixin to a composable (Part -2) (#9892))
+=======
+      recordAnalytics,
+      isAIIntegrationEnabled,
+      draftMessage,
+>>>>>>> d19a9c38d (feat: Rewrite `aiMixin` to a composable (#9955))
     };
   },
   data: () => ({
