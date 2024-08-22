@@ -8,12 +8,14 @@
 <script>
 import '@chatwoot/ninja-keys';
 import { useConversationLabels } from 'dashboard/composables/useConversationLabels';
+import { useAgentsList } from 'dashboard/composables/useAgentsList';
 import wootConstants from 'dashboard/constants/globals';
 import conversationHotKeysMixin from './conversationHotKeys';
 import bulkActionsHotKeysMixin from './bulkActionsHotKeys';
 import inboxHotKeysMixin from './inboxHotKeys';
 import goToCommandHotKeys from './goToCommandHotKeys';
 import appearanceHotKeys from './appearanceHotKeys';
+<<<<<<< HEAD
 import agentMixin from 'dashboard/mixins/agentMixin';
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -26,11 +28,12 @@ import conversationTeamMixin from 'dashboard/mixins/conversation/teamMixin';
 >>>>>>> d5f34bf9d (feat: Replace `conversation/teamMixin` within the components (#9923))
 =======
 >>>>>>> 4c6572c2c (feat: Rewrite `conversation/labelMixin` to a composable (#9936))
+=======
+>>>>>>> c63a6ed8e (feat: Rewrite `agentMixin` to a helper (#9940))
 import { GENERAL_EVENTS } from '../../../helper/AnalyticsHelper/events';
 
 export default {
   mixins: [
-    agentMixin,
     conversationHotKeysMixin,
     bulkActionsHotKeysMixin,
     inboxHotKeysMixin,
@@ -53,7 +56,11 @@ export default {
       removeLabelFromConversation,
     } = useConversationLabels();
 
+    const { agentsList, assignableAgents } = useAgentsList();
+
     return {
+      agentsList,
+      assignableAgents,
       activeLabels,
       inactiveLabels,
       addLabelToConversation,
