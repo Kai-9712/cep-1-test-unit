@@ -103,7 +103,7 @@ import FileBubble from 'widget/components/FileBubble.vue';
 import Thumbnail from 'dashboard/components/widgets/Thumbnail.vue';
 import { MESSAGE_TYPE } from 'widget/helpers/constants';
 import configMixin from '../mixins/configMixin';
-import { useMessage } from '../composables/useMessage';
+import messageMixin from '../mixins/messageMixin';
 import { isASubmittedFormMessage } from 'shared/helpers/MessageTypeHelper';
 import darkModeMixin from 'widget/mixins/darkModeMixin.js';
 import ReplyToChip from 'widget/components/ReplyToChip.vue';
@@ -122,7 +122,7 @@ export default {
     MessageReplyButton,
     ReplyToChip,
   },
-  mixins: [configMixin, darkModeMixin],
+  mixins: [configMixin, messageMixin, darkModeMixin],
   props: {
     message: {
       type: Object,
@@ -132,15 +132,6 @@ export default {
       type: Object,
       default: () => {},
     },
-  },
-  setup(props) {
-    const { messageContentAttributes, hasAttachments } = useMessage(
-      props.message
-    );
-    return {
-      messageContentAttributes,
-      hasAttachments,
-    };
   },
   data() {
     return {
