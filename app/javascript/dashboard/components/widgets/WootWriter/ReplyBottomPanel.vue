@@ -1,7 +1,10 @@
 <script>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { ref, watchEffect, computed } from 'vue';
+=======
+>>>>>>> dadd572f9 (refactor: `useKeyboardEvents` composable  (#9959))
 import { useUISettings } from 'dashboard/composables/useUISettings';
 import { useKeyboardEvents } from 'dashboard/composables/useKeyboardEvents';
 import FileUpload from 'vue-upload-component';
@@ -146,6 +149,7 @@ export default {
 >>>>>>> 89acbd8d0 (feat: Replace the use of `keyboardEventListener` mixin to a composable (Part -2) (#9892))
 =======
 
+<<<<<<< HEAD
 >>>>>>> 207933ed7 (fix: TypeError cannot read properties of undefined (reading '$el') (#9951))
     const uploadRef = ref(null);
     // TODO: This is really hacky, we need to replace the file picker component with
@@ -153,9 +157,15 @@ export default {
     // Once we have the custom component, we can remove the hacky logic below.
     const uploadRefElem = computed(() => uploadRef.value?.$el);
 
+=======
+>>>>>>> dadd572f9 (refactor: `useKeyboardEvents` composable  (#9959))
     const keyboardEvents = {
       'Alt+KeyA': {
         action: () => {
+          // TODO: This is really hacky, we need to replace the file picker component with
+          // a custom one, where the logic and the component markup is isolated.
+          // Once we have the custom component, we can remove the hacky logic below.
+
           const uploadTriggerButton = document.querySelector(
             '#conversationAttachment'
           );
@@ -165,6 +175,7 @@ export default {
       },
     };
 
+<<<<<<< HEAD
     watchEffect(() => {
       useKeyboardEvents(keyboardEvents, uploadRefElem);
     });
@@ -173,10 +184,14 @@ export default {
 >>>>>>> fb99ba7b4 (feat: Rewrite `uiSettings` mixin to a composable (#9819))
 =======
 >>>>>>> 89acbd8d0 (feat: Replace the use of `keyboardEventListener` mixin to a composable (Part -2) (#9892))
+=======
+    useKeyboardEvents(keyboardEvents);
+>>>>>>> dadd572f9 (refactor: `useKeyboardEvents` composable  (#9959))
 
     return {
       setSignatureFlagForInbox,
       fetchSignatureFlagFromUISettings,
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
       uploadRef,
@@ -185,6 +200,8 @@ export default {
 =======
       uploadRef,
 >>>>>>> 89acbd8d0 (feat: Replace the use of `keyboardEventListener` mixin to a composable (Part -2) (#9892))
+=======
+>>>>>>> dadd572f9 (refactor: `useKeyboardEvents` composable  (#9959))
     };
   },
   computed: {
@@ -311,6 +328,7 @@ export default {
       <FileUpload
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         ref="uploadRef"
 =======
         ref="upload"
@@ -318,6 +336,8 @@ export default {
 =======
         ref="uploadRef"
 >>>>>>> 89acbd8d0 (feat: Replace the use of `keyboardEventListener` mixin to a composable (Part -2) (#9892))
+=======
+>>>>>>> dadd572f9 (refactor: `useKeyboardEvents` composable  (#9959))
         v-tooltip.top-end="$t('CONVERSATION.REPLYBOX.TIP_ATTACH_ICON')"
         input-id="conversationAttachment"
         :size="4096 * 4096"

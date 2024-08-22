@@ -52,7 +52,6 @@ export default {
     },
   },
   setup() {
-    const conversationFooterRef = ref(null);
     const isPopOutReplyBox = ref(false);
     const { isEnterprise } = useConfig();
 
@@ -70,7 +69,7 @@ export default {
       },
     };
 
-    useKeyboardEvents(keyboardEvents, conversationFooterRef);
+    useKeyboardEvents(keyboardEvents);
 
     const {
       isAIIntegrationEnabled,
@@ -81,7 +80,6 @@ export default {
 
     return {
       isEnterprise,
-      conversationFooterRef,
       isPopOutReplyBox,
       closePopOutReplyBox,
       showPopOutReplyBox,
@@ -531,7 +529,10 @@ export default {
     <div
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       ref="conversationFooterRef"
+=======
+>>>>>>> dadd572f9 (refactor: `useKeyboardEvents` composable  (#9959))
       class="conversation-footer"
       :class="{ 'modal-mask': isPopOutReplyBox }"
 =======

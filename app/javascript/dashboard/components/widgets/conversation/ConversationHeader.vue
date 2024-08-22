@@ -1,5 +1,4 @@
 <script>
-import { ref } from 'vue';
 import { mapGetters } from 'vuex';
 import { useKeyboardEvents } from 'dashboard/composables/useKeyboardEvents';
 import BackButton from '../BackButton.vue';
@@ -43,18 +42,12 @@ export default {
     },
   },
   setup(props, { emit }) {
-    const conversationHeaderActionsRef = ref(null);
-
     const keyboardEvents = {
       'Alt+KeyO': {
         action: () => emit('contactPanelToggle'),
       },
     };
-    useKeyboardEvents(keyboardEvents, conversationHeaderActionsRef);
-
-    return {
-      conversationHeaderActionsRef,
-    };
+    useKeyboardEvents(keyboardEvents);
   },
   computed: {
     ...mapGetters({
@@ -200,12 +193,15 @@ export default {
           <div
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
             ref="conversationHeaderActionsRef"
 =======
 >>>>>>> b4b308336 (feat: Eslint rules (#9839))
 =======
             ref="conversationHeaderActionsRef"
 >>>>>>> 89acbd8d0 (feat: Replace the use of `keyboardEventListener` mixin to a composable (Part -2) (#9892))
+=======
+>>>>>>> dadd572f9 (refactor: `useKeyboardEvents` composable  (#9959))
             class="flex items-center gap-2 overflow-hidden text-xs conversation--header--actions text-ellipsis whitespace-nowrap"
           >
             <InboxName v-if="hasMultipleInboxes" :inbox="inbox" />

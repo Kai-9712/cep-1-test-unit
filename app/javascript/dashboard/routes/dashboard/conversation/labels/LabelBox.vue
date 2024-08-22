@@ -26,7 +26,6 @@ export default {
       removeLabelFromConversation,
     } = useConversationLabels();
 
-    const conversationLabelBoxRef = ref(null);
     const showSearchDropdownLabel = ref(false);
 
     const toggleLabels = () => {
@@ -53,7 +52,7 @@ export default {
         allowOnFocusedInput: true,
       },
     };
-    useKeyboardEvents(keyboardEvents, conversationLabelBoxRef);
+    useKeyboardEvents(keyboardEvents);
     return {
       isAdmin,
       savedLabels,
@@ -61,7 +60,6 @@ export default {
       accountLabels,
       addLabelToConversation,
       removeLabelFromConversation,
-      conversationLabelBoxRef,
       showSearchDropdownLabel,
       closeDropdownLabel,
       toggleLabels,
@@ -82,7 +80,7 @@ export default {
 </script>
 
 <template>
-  <div ref="conversationLabelBoxRef" class="sidebar-labels-wrap">
+  <div class="sidebar-labels-wrap">
     <div
       v-if="!conversationUiFlags.isFetching"
       class="contact-conversation--list"

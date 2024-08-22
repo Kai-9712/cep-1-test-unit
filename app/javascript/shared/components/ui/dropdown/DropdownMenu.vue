@@ -54,6 +54,7 @@ const keyboardEvents = {
   },
 };
 
+<<<<<<< HEAD
 useKeyboardEvents(keyboardEvents, dropdownMenuRef);
 =======
 <script>
@@ -122,6 +123,9 @@ const keyboardEvents = {
 
 useKeyboardEvents(keyboardEvents, dropdownMenuRef);
 >>>>>>> 74bbbd25b (feat: Replace the use of `keyboardEventListener` mixin to a composable (Part -3) (#9897))
+=======
+useKeyboardEvents(keyboardEvents);
+>>>>>>> dadd572f9 (refactor: `useKeyboardEvents` composable  (#9959))
 </script>
 
 <template>

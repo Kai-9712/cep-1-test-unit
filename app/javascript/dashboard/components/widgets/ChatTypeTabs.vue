@@ -1,7 +1,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <script setup>
-import { ref, computed } from 'vue';
+import { computed } from 'vue';
 import { useKeyboardEvents } from 'dashboard/composables/useKeyboardEvents';
 =======
 <script>
@@ -26,8 +26,6 @@ const props = defineProps({
 
 const emit = defineEmits(['chatTabChange']);
 
-const chatTypeTabsRef = ref(null);
-
 const activeTabIndex = computed(() => {
   return props.items.findIndex(item => item.key === props.activeTab);
 });
@@ -49,10 +47,12 @@ const keyboardEvents = {
     },
   },
 };
-useKeyboardEvents(keyboardEvents, chatTypeTabsRef);
+
+useKeyboardEvents(keyboardEvents);
 </script>
 
 <template>
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
@@ -74,6 +74,13 @@ useKeyboardEvents(keyboardEvents, chatTypeTabsRef);
 <<<<<<< HEAD
 =======
   <woot-tabs :index="activeTabIndex" @change="onTabChange">
+=======
+  <woot-tabs
+    :index="activeTabIndex"
+    class="w-full px-4 py-0 tab--chat-type"
+    @change="onTabChange"
+  >
+>>>>>>> dadd572f9 (refactor: `useKeyboardEvents` composable  (#9959))
     <woot-tabs-item
       v-for="item in items"
       :key="item.key"
@@ -81,9 +88,12 @@ useKeyboardEvents(keyboardEvents, chatTypeTabsRef);
       :count="item.count"
     />
   </woot-tabs>
+<<<<<<< HEAD
 >>>>>>> b4b308336 (feat: Eslint rules (#9839))
 =======
 >>>>>>> 89acbd8d0 (feat: Replace the use of `keyboardEventListener` mixin to a composable (Part -2) (#9892))
+=======
+>>>>>>> dadd572f9 (refactor: `useKeyboardEvents` composable  (#9959))
 </template>
 
 <style scoped lang="scss">

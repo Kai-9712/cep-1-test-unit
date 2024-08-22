@@ -40,7 +40,6 @@ const ALLOWED_FILE_TYPES = {
 const MAX_ZOOM_LEVEL = 2;
 const MIN_ZOOM_LEVEL = 1;
 
-const galleryViewRef = ref(null);
 const zoomScale = ref(1);
 const activeAttachment = ref({});
 const activeFileType = ref('');
@@ -207,7 +206,7 @@ const keyboardEvents = {
     },
   },
 };
-useKeyboardEvents(keyboardEvents, galleryViewRef);
+useKeyboardEvents(keyboardEvents);
 
 onMounted(() => {
   setImageAndVideoSrc(props.attachment);
@@ -223,7 +222,6 @@ onMounted(() => {
     :on-close="onClose"
   >
     <div
-      ref="galleryViewRef"
       v-on-clickaway="onClose"
       class="bg-white dark:bg-slate-900 flex flex-col h-[inherit] w-[inherit] overflow-hidden"
       @click="onClose"

@@ -35,7 +35,6 @@
 =======
 >>>>>>> b4b308336 (feat: Eslint rules (#9839))
 <script>
-import { ref } from 'vue';
 import { mapGetters } from 'vuex';
 import { getSidebarItems } from './config/default-sidebar';
 <<<<<<< HEAD
@@ -80,7 +79,6 @@ export default {
     },
   },
   setup(props, { emit }) {
-    const sidebarRef = ref(null);
     const route = useRoute();
     const router = useRouter();
 
@@ -118,11 +116,10 @@ export default {
         action: () => navigateToRoute('agent_list'),
       },
     };
-    useKeyboardEvents(keyboardEvents, sidebarRef);
+    useKeyboardEvents(keyboardEvents);
 
     return {
       toggleKeyShortcutModal,
-      sidebarRef,
     };
   },
   data() {
@@ -293,6 +290,7 @@ export default {
 <template>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   <aside ref="sidebarRef" class="flex h-full">
 =======
   <aside class="flex h-full">
@@ -300,6 +298,9 @@ export default {
 =======
   <aside ref="sidebarRef" class="flex h-full">
 >>>>>>> e0b67bb55 (feat: Rewrite `keyboardEventListener` mixin to a composable (#9831))
+=======
+  <aside class="flex h-full">
+>>>>>>> dadd572f9 (refactor: `useKeyboardEvents` composable  (#9959))
     <PrimarySidebar
       :logo-source="globalConfig.logoThumbnail"
       :installation-name="globalConfig.installationName"

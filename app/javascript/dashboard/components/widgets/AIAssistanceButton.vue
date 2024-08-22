@@ -50,7 +50,6 @@ export default {
 
     const { isAdmin } = useAdmin();
 
-    const aiAssistanceButtonRef = ref(null);
     const initialMessage = ref('');
 
     const initializeMessage = draftMsg => {
@@ -67,13 +66,12 @@ export default {
         allowOnFocusedInput: true,
       },
     };
-    useKeyboardEvents(keyboardEvents, aiAssistanceButtonRef);
+    useKeyboardEvents(keyboardEvents);
 
     return {
       uiSettings,
       updateUISettings,
       isAdmin,
-      aiAssistanceButtonRef,
       initialMessage,
       initializeMessage,
 <<<<<<< HEAD
@@ -216,6 +214,7 @@ export default {
 <template>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   <div ref="aiAssistanceButtonRef">
 =======
   <div v-if="!isFetchingAppIntegrations">
@@ -223,6 +222,9 @@ export default {
 =======
   <div ref="aiAssistanceButtonRef">
 >>>>>>> 89acbd8d0 (feat: Replace the use of `keyboardEventListener` mixin to a composable (Part -2) (#9892))
+=======
+  <div>
+>>>>>>> dadd572f9 (refactor: `useKeyboardEvents` composable  (#9959))
     <div v-if="isAIIntegrationEnabled" class="relative">
       <AIAssistanceCTAButton
         v-if="shouldShowAIAssistCTAButton"

@@ -1,7 +1,10 @@
 <script>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { ref } from 'vue';
+=======
+>>>>>>> dadd572f9 (refactor: `useKeyboardEvents` composable  (#9959))
 import { useKeyboardEvents } from 'dashboard/composables/useKeyboardEvents';
 import { REPLY_EDITOR_MODES, CHAR_LENGTH_WARNING } from './constants';
 export default {
@@ -52,8 +55,6 @@ export default {
 =======
 >>>>>>> e0b67bb55 (feat: Rewrite `keyboardEventListener` mixin to a composable (#9831))
   setup(props, { emit }) {
-    const replyTopRef = ref(null);
-
     const setReplyMode = mode => {
       emit('setReplyMode', mode);
     };
@@ -73,12 +74,11 @@ export default {
         allowOnFocusedInput: true,
       },
     };
-    useKeyboardEvents(keyboardEvents, replyTopRef);
+    useKeyboardEvents(keyboardEvents);
 
     return {
       handleReplyClick,
       handleNoteClick,
-      replyTopRef,
     };
   },
 <<<<<<< HEAD
@@ -138,6 +138,7 @@ export default {
 <template>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> e0b67bb55 (feat: Rewrite `keyboardEventListener` mixin to a composable (#9831))
   <div
@@ -150,6 +151,9 @@ export default {
 >>>>>>> b4b308336 (feat: Eslint rules (#9839))
 =======
 >>>>>>> e0b67bb55 (feat: Rewrite `keyboardEventListener` mixin to a composable (#9831))
+=======
+  <div class="flex justify-between bg-black-50 dark:bg-slate-800">
+>>>>>>> dadd572f9 (refactor: `useKeyboardEvents` composable  (#9959))
     <div class="button-group">
       <woot-button
         variant="clear"

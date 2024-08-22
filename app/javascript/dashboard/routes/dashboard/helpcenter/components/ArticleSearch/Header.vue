@@ -13,7 +13,6 @@ defineProps({
 
 const emit = defineEmits(['search', 'close']);
 
-const articleSearchHeaderRef = ref(null);
 const searchInputRef = ref(null);
 const searchQuery = ref('');
 
@@ -43,10 +42,11 @@ const keyboardEvents = {
     allowOnFocusedInput: true,
   },
 };
-useKeyboardEvents(keyboardEvents, articleSearchHeaderRef);
+useKeyboardEvents(keyboardEvents);
 </script>
 
 <template>
+<<<<<<< HEAD
   <div ref="articleSearchHeaderRef" class="flex flex-col py-1">
 =======
 <script>
@@ -106,6 +106,9 @@ useKeyboardEvents(keyboardEvents, articleSearchHeaderRef);
 =======
   <div ref="articleSearchHeaderRef" class="flex flex-col py-1">
 >>>>>>> 74bbbd25b (feat: Replace the use of `keyboardEventListener` mixin to a composable (Part -3) (#9897))
+=======
+  <div class="flex flex-col py-1">
+>>>>>>> dadd572f9 (refactor: `useKeyboardEvents` composable  (#9959))
     <div class="flex items-center justify-between py-2 mb-1">
       <h3 class="text-base text-slate-900 dark:text-slate-25">
         {{ title }}
