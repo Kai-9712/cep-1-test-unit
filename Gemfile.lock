@@ -635,6 +635,7 @@ GEM
       nokogiri
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     rexml (3.3.4)
 =======
     rexml (3.3.2)
@@ -642,6 +643,9 @@ GEM
 =======
     rexml (3.3.4)
 >>>>>>> 17a6df10a (chore: Security advisory fix for rexml (#9872))
+=======
+    rexml (3.3.6)
+>>>>>>> 41c5e7d3f (chore(deps): bump rexml from 3.3.4 to 3.3.6 (#10013))
       strscan
     rspec-core (3.13.0)
       rspec-support (~> 3.13.0)
