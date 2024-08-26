@@ -20,6 +20,7 @@ import { useAI } from 'dashboard/composables/useAI';
 >>>>>>> d19a9c38d (feat: Rewrite `aiMixin` to a composable (#9955))
 import AICTAModal from './AICTAModal.vue';
 import AIAssistanceModal from './AIAssistanceModal.vue';
+<<<<<<< HEAD
 import { CMD_AI_ASSIST } from 'dashboard/routes/dashboard/commands/commandBarBusEvents';
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -28,6 +29,9 @@ import keyboardEventListenerMixins from 'shared/mixins/keyboardEventListenerMixi
 >>>>>>> fb99ba7b4 (feat: Rewrite `uiSettings` mixin to a composable (#9819))
 =======
 >>>>>>> 89acbd8d0 (feat: Replace the use of `keyboardEventListener` mixin to a composable (Part -2) (#9892))
+=======
+import { CMD_AI_ASSIST } from 'dashboard/helper/commandbar/events';
+>>>>>>> 7f8d718da (feat: Rewrite command bar mixin to a composable (#10015))
 import AIAssistanceCTAButton from './AIAssistanceCTAButton.vue';
 
 export default {
