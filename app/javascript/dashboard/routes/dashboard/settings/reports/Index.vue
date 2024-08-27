@@ -32,7 +32,6 @@ import fromUnixTime from 'date-fns/fromUnixTime';
 import format from 'date-fns/format';
 import ReportFilterSelector from './components/FilterSelector.vue';
 import { GROUP_BY_FILTER } from './constants';
-import reportMixin from 'dashboard/mixins/reportMixin';
 import { REPORTS_EVENTS } from '../../../../helper/AnalyticsHelper/events';
 import ReportContainer from './ReportContainer.vue';
 
@@ -52,7 +51,6 @@ export default {
     ReportFilterSelector,
     ReportContainer,
   },
-  mixins: [reportMixin],
   data() {
     return {
       from: 0,
