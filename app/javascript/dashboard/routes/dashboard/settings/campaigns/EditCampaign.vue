@@ -131,14 +131,13 @@ import { required } from '@vuelidate/validators';
 >>>>>>> ce8e1ec93 (chore: Migrate all instances of old vuelidate to new v2 syntax [CW-3274] (#9623))
 import { useAlert } from 'dashboard/composables';
 import WootMessageEditor from 'dashboard/components/widgets/WootWriter/Editor.vue';
-import campaignMixin from 'shared/mixins/campaignMixin';
+import { useCampaign } from 'shared/composables/useCampaign';
 import { URLPattern } from 'urlpattern-polyfill';
 
 export default {
   components: {
     WootMessageEditor,
   },
-  mixins: [campaignMixin],
   props: {
     selectedCampaign: {
       type: Object,
@@ -146,7 +145,8 @@ export default {
     },
   },
   setup() {
-    return { v$: useVuelidate() };
+    const { isOngoingType } = useCampaign();
+    return { v$: useVuelidate(), isOngoingType };
   },
   data() {
     return {

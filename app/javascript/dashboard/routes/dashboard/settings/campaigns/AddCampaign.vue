@@ -194,7 +194,7 @@ import { required } from '@vuelidate/validators';
 >>>>>>> ce8e1ec93 (chore: Migrate all instances of old vuelidate to new v2 syntax [CW-3274] (#9623))
 import { useAlert } from 'dashboard/composables';
 import WootMessageEditor from 'dashboard/components/widgets/WootWriter/Editor.vue';
-import campaignMixin from 'shared/mixins/campaignMixin';
+import { useCampaign } from 'shared/composables/useCampaign';
 import WootDateTimePicker from 'dashboard/components/ui/DateTimePicker.vue';
 import { URLPattern } from 'urlpattern-polyfill';
 import { CAMPAIGNS_EVENTS } from '../../../../helper/AnalyticsHelper/events';
@@ -206,9 +206,13 @@ export default {
   },
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   mixins: [campaignMixin],
+=======
+>>>>>>> 3b5f5b41a (chore: Replace campaign mixin with composable [CW-3463] (#9987))
   setup() {
-    return { v$: useVuelidate() };
+    const { campaignType, isOngoingType, isOneOffType } = useCampaign();
+    return { v$: useVuelidate(), campaignType, isOngoingType, isOneOffType };
   },
 =======
 
