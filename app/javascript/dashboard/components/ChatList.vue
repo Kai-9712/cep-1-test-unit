@@ -140,11 +140,15 @@ import { useUISettings } from 'dashboard/composables/useUISettings';
 import { useAlert } from 'dashboard/composables';
 import { useKeyboardEvents } from 'dashboard/composables/useKeyboardEvents';
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 import { useAlert } from 'dashboard/composables';
 >>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
 =======
 >>>>>>> e0b67bb55 (feat: Rewrite `keyboardEventListener` mixin to a composable (#9831))
+=======
+import { useFilter } from 'shared/composables/useFilter';
+>>>>>>> fe5670832 (chore: Replace filtersMixin with useFilter composable [CW-3466] (#10036))
 import VirtualList from 'vue-virtual-scroll-list';
 
 import ChatListHeader from './ChatListHeader.vue';
@@ -168,7 +172,6 @@ import filterQueryGenerator from '../helper/filterQueryGenerator.js';
 import AddCustomViews from 'dashboard/routes/dashboard/customviews/AddCustomViews.vue';
 import DeleteCustomViews from 'dashboard/routes/dashboard/customviews/DeleteCustomViews.vue';
 import ConversationBulkActions from './widgets/conversation/conversationBulkActions/Index.vue';
-import filterMixin from 'shared/mixins/filterMixin';
 import languages from 'dashboard/components/widgets/conversation/advancedFilterItems/languages';
 import countries from 'shared/constants/countries';
 import { generateValuesForEditCustomViews } from 'dashboard/helper/customViewsHelper';
@@ -202,6 +205,7 @@ export default {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   mixins: [conversationMixin, filterMixin],
 =======
   mixins: [
@@ -220,6 +224,8 @@ export default {
 =======
   mixins: [filterMixin],
 >>>>>>> b33d59d80 (feat: Rewrite `conversations` mixin to a helper (#9931))
+=======
+>>>>>>> fe5670832 (chore: Replace filtersMixin with useFilter composable [CW-3466] (#10036))
   provide() {
     return {
       // Actions to be performed on virtual list item and context menu.
@@ -272,6 +278,15 @@ export default {
 =======
 >>>>>>> e0b67bb55 (feat: Rewrite `keyboardEventListener` mixin to a composable (#9831))
     const conversationListRef = ref(null);
+
+    const {
+      setFilterAttributes,
+      initializeStatusAndAssigneeFilterToModal,
+      initializeInboxTeamAndLabelFilterToModal,
+    } = useFilter({
+      filteri18nKey: 'FILTER',
+      attributeModel: 'conversation_attribute',
+    });
 
     const getKeyboardListenerParams = () => {
       const allConversations = conversationListRef.value.querySelectorAll(
@@ -329,12 +344,18 @@ export default {
       uiSettings,
       conversationListRef,
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     return {
       uiSettings,
 >>>>>>> fb99ba7b4 (feat: Rewrite `uiSettings` mixin to a composable (#9819))
 =======
 >>>>>>> e0b67bb55 (feat: Rewrite `keyboardEventListener` mixin to a composable (#9831))
+=======
+      setFilterAttributes,
+      initializeStatusAndAssigneeFilterToModal,
+      initializeInboxTeamAndLabelFilterToModal,
+>>>>>>> fe5670832 (chore: Replace filtersMixin with useFilter composable [CW-3466] (#10036))
     };
   },
   data() {
@@ -1056,6 +1077,7 @@ export default {
     onContextMenuToggle(state) {
       this.isContextMenuOpen = state;
     },
+<<<<<<< HEAD
     onCmdSnoozeConversation(snoozeType) {
       if (snoozeType === wootConstants.SNOOZE_OPTIONS.UNTIL_CUSTOM_TIME) {
         this.showCustomSnoozeModal = true;
@@ -1092,6 +1114,26 @@ export default {
       // Then if the custom snooze modal is closed and set the context menu chat id to null
       this.$store.dispatch('setContextMenuChatId', null);
       this.showCustomSnoozeModal = false;
+=======
+    initializeExistingFilterToModal() {
+      const statusFilter = this.initializeStatusAndAssigneeFilterToModal(
+        this.activeStatus,
+        this.currentUserDetails,
+        this.activeAssigneeTab
+      );
+      if (statusFilter) {
+        this.appliedFilter.push(statusFilter);
+      }
+
+      const otherFilters = this.initializeInboxTeamAndLabelFilterToModal(
+        this.conversationInbox,
+        this.inbox,
+        this.teamId,
+        this.activeTeam,
+        this.label
+      );
+      this.appliedFilter.push(...otherFilters);
+>>>>>>> fe5670832 (chore: Replace filtersMixin with useFilter composable [CW-3466] (#10036))
     },
   },
 };

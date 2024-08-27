@@ -106,7 +106,7 @@ import FilterInputBox from '../../../../components/widgets/FilterInput/Index.vue
 import countries from 'shared/constants/countries.js';
 import { mapGetters } from 'vuex';
 import { filterAttributeGroups } from '../contactFilterItems';
-import filterMixin from 'shared/mixins/filterMixin';
+import { useFilter } from 'shared/composables/useFilter';
 import * as OPERATORS from 'dashboard/components/widgets/FilterInput/FilterOperatorTypes.js';
 import { CONTACTS_EVENTS } from '../../../../helper/AnalyticsHelper/events';
 import { validateConversationOrContactFilters } from 'dashboard/helper/validations.js';
@@ -115,7 +115,6 @@ export default {
   components: {
     FilterInputBox,
   },
-  mixins: [filterMixin],
   props: {
     onClose: {
       type: Function,
@@ -137,6 +136,15 @@ export default {
       type: String,
       default: '',
     },
+  },
+  setup() {
+    const { setFilterAttributes } = useFilter({
+      filteri18nKey: 'CONTACTS_FILTER',
+      attributeModel: 'contact_attribute',
+    });
+    return {
+      setFilterAttributes,
+    };
   },
   data() {
     return {
@@ -171,7 +179,10 @@ export default {
     },
   },
   mounted() {
-    this.setFilterAttributes();
+    const { filterGroups, filterTypes } = this.setFilterAttributes();
+    this.filterTypes = [...this.filterTypes, ...filterTypes];
+    this.filterGroups = filterGroups;
+
     if (this.getAppliedContactFilters.length) {
       this.appliedFilters = [...this.getAppliedContactFilters];
     } else if (!this.isSegmentsView) {
