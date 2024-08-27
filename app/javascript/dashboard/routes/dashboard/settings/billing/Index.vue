@@ -42,7 +42,7 @@
 =======
 >>>>>>> b4b308336 (feat: Eslint rules (#9839))
 <script>
-import messageFormatterMixin from 'shared/mixins/messageFormatterMixin';
+import { useMessageFormatter } from 'shared/composables/useMessageFormatter';
 
 import { mapGetters } from 'vuex';
 <<<<<<< HEAD
@@ -60,14 +60,18 @@ export default {
   components: { BillingItem },
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 66db9a0cc (feat: Rewrite `accountMixin` to a composable (#9914))
   mixins: [messageFormatterMixin],
+=======
+>>>>>>> f82ec3b88 (chore: Repalce message formatter mixin with useMessageFormatter [CW-3470] (#9986))
   setup() {
     const { accountId } = useAccount();
-
+    const { formatMessage } = useMessageFormatter();
     return {
       accountId,
+      formatMessage,
     };
   },
 <<<<<<< HEAD

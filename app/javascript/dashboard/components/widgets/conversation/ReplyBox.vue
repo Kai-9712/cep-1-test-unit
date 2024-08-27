@@ -24,7 +24,6 @@ import Banner from 'dashboard/components/ui/Banner.vue';
 import { REPLY_EDITOR_MODES } from 'dashboard/components/widgets/WootWriter/constants';
 import WootMessageEditor from 'dashboard/components/widgets/WootWriter/Editor.vue';
 import WootAudioRecorder from 'dashboard/components/widgets/WootWriter/AudioRecorder.vue';
-import messageFormatterMixin from 'shared/mixins/messageFormatterMixin';
 import { AUDIO_FORMATS } from 'shared/constants/messages';
 import { BUS_EVENTS } from 'shared/constants/busEvents';
 import {
@@ -68,6 +67,7 @@ export default {
     MessageSignatureMissingAlert,
     ArticleSearchPopover,
   },
+<<<<<<< HEAD
   mixins: [
     inboxMixin,
 <<<<<<< HEAD
@@ -81,6 +81,9 @@ export default {
     fileUploadMixin,
     keyboardEventListenerMixins,
   ],
+=======
+  mixins: [inboxMixin, fileUploadMixin, keyboardEventListenerMixins],
+>>>>>>> f82ec3b88 (chore: Repalce message formatter mixin with useMessageFormatter [CW-3470] (#9986))
   props: {
     popoutReplyBox: {
       type: Boolean,

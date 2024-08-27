@@ -1,4 +1,5 @@
 <script>
+<<<<<<< HEAD
 import messageFormatterMixin from 'shared/mixins/messageFormatterMixin';
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -7,6 +8,9 @@ import keyboardEventListenerMixins from 'shared/mixins/keyboardEventListenerMixi
 >>>>>>> b4b308336 (feat: Eslint rules (#9839))
 =======
 >>>>>>> 74bbbd25b (feat: Replace the use of `keyboardEventListener` mixin to a composable (Part -3) (#9897))
+=======
+import { useMessageFormatter } from 'shared/composables/useMessageFormatter';
+>>>>>>> f82ec3b88 (chore: Repalce message formatter mixin with useMessageFormatter [CW-3470] (#9986))
 import PlaygroundHeader from '../../components/playground/Header.vue';
 import UserMessage from '../../components/playground/UserMessage.vue';
 import BotMessage from '../../components/playground/BotMessage.vue';
@@ -19,12 +23,17 @@ export default {
     BotMessage,
     TypingIndicator,
   },
-  mixins: [messageFormatterMixin],
   props: {
     componentData: {
       type: Object,
       default: () => ({}),
     },
+  },
+  setup() {
+    const { formatMessage } = useMessageFormatter();
+    return {
+      formatMessage,
+    };
   },
   data() {
     return { messages: [], messageContent: '', isWaiting: false };

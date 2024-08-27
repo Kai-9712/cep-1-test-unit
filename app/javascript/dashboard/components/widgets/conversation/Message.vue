@@ -1,5 +1,5 @@
 <script>
-import messageFormatterMixin from 'shared/mixins/messageFormatterMixin';
+import { useMessageFormatter } from 'shared/composables/useMessageFormatter';
 import BubbleActions from './bubble/Actions.vue';
 import BubbleContact from './bubble/Contact.vue';
 import BubbleFile from './bubble/File.vue';
@@ -48,6 +48,7 @@ export default {
   },
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   mixins: [messageFormatterMixin],
 =======
   mixins: [alertMixin, messageFormatterMixin],
@@ -55,6 +56,8 @@ export default {
 =======
   mixins: [messageFormatterMixin],
 >>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
+=======
+>>>>>>> f82ec3b88 (chore: Repalce message formatter mixin with useMessageFormatter [CW-3470] (#9986))
   props: {
     data: {
       type: Object,
@@ -88,6 +91,12 @@ export default {
       type: Object,
       default: () => ({}),
     },
+  },
+  setup() {
+    const { formatMessage } = useMessageFormatter();
+    return {
+      formatMessage,
+    };
   },
   data() {
     return {
