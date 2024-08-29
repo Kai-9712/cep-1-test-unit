@@ -481,10 +481,12 @@ export default {
 ::v-deep {
   .selector-wrap {
     @apply m-0 top-1;
+
     .selector-name {
       @apply ml-0;
     }
   }
+
   .name {
     @apply ml-0;
   }
