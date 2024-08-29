@@ -22,6 +22,7 @@ const FEATURE_HELP_URLS = {
   reports: 'https://chwt.app/hc/reports',
   sla: 'https://chwt.app/hc/sla',
   team_management: 'https://chwt.app/hc/teams',
+<<<<<<< HEAD
 =======
 =======
 >>>>>>> aea68f1ec (feat: Update the design of the audit logs page (#9901))
@@ -40,6 +41,9 @@ const FEATURE_HELP_URLS = {
   sla: 'https://chwt.app/hc/sla',
   team_management: 'https://chwt.app/hc/teams',
 >>>>>>> aea68f1ec (feat: Update the design of the audit logs page (#9901))
+=======
+  webhook: 'https://chwt.app/hc/webhooks',
+>>>>>>> f087461ab (feat: Update the design for the webhook management page (#10050))
 };
 
 export function getHelpUrlForFeature(featureName) {

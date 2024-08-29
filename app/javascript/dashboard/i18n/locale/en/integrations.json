@@ -21,6 +21,7 @@
 >>>>>>> 829bb842f (feat: Generate SSO URL in Chatwoot, move Captain to primary tab (#9871))
     "WEBHOOK": {
       "SUBSCRIBED_EVENTS": "Subscribed Events",
+      "LEARN_MORE": "Learn more about webhooks",
       "FORM": {
         "CANCEL": "Cancel",
         "DESC": "Webhook events provide you the realtime information about what's happening in your Chatwoot account. Please enter a valid URL to configure a callback.",

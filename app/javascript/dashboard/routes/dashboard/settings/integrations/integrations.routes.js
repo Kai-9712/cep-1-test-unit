@@ -35,6 +35,17 @@ export default {
           },
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+        {
+          path: 'webhook',
+          component: Webhook,
+          name: 'settings_integrations_webhook',
+          meta: {
+            permissions: ['administrator'],
+          },
+        },
+>>>>>>> f087461ab (feat: Update the design for the webhook management page (#10050))
       ],
     },
 =======
@@ -64,6 +75,7 @@ export default {
       },
       children: [
         {
+<<<<<<< HEAD
           path: 'webhook',
           component: Webhook,
           name: 'settings_integrations_webhook',
@@ -86,6 +98,8 @@ export default {
 >>>>>>> 39d20b197 (chore: Update the integration icons, logic for enabled/active attributes for the integration (#9828))
 =======
 >>>>>>> 6694db093 (feat: Update the design for dashboard_apps (#9840))
+=======
+>>>>>>> f087461ab (feat: Update the design for the webhook management page (#10050))
           path: 'slack',
           name: 'settings_integrations_slack',
           component: Slack,
