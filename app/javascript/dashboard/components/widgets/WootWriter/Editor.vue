@@ -17,6 +17,8 @@ import { BUS_EVENTS } from 'shared/constants/busEvents';
 import TagAgents from '../conversation/TagAgents.vue';
 import CannedResponse from '../conversation/CannedResponse.vue';
 import VariableList from '../conversation/VariableList.vue';
+import KeyboardEmojiSelector from './keyboardEmojiSelector.vue';
+
 import {
   appendSignature,
   removeSignature,
@@ -24,6 +26,7 @@ import {
   scrollCursorIntoView,
   findNodeToInsertImage,
   setURLWithQueryAndSize,
+  getContentNode,
 } from 'dashboard/helper/editorHelper';
 
 const TYPING_INDICATOR_IDLE_TIME = 4000;
@@ -35,10 +38,8 @@ import {
 } from 'shared/helpers/KeyboardHelpers';
 import keyboardEventListenerMixins from 'shared/mixins/keyboardEventListenerMixins';
 import { useUISettings } from 'dashboard/composables/useUISettings';
-import {
-  replaceVariablesInMessage,
-  createTypingIndicator,
-} from '@chatwoot/utils';
+
+import { createTypingIndicator } from '@chatwoot/utils';
 import { CONVERSATION_EVENTS } from '../../../helper/AnalyticsHelper/events';
 import { checkFileSizeLimit } from 'shared/helpers/FileHelper';
 import { uploadFile } from 'dashboard/helper/uploadHelper';
@@ -71,9 +72,18 @@ const createState = (
 
 export default {
   name: 'WootMessageEditor',
+<<<<<<< HEAD
   components: { TagAgents, CannedResponse, VariableList },
 <<<<<<< HEAD
 <<<<<<< HEAD
+=======
+  components: {
+    TagAgents,
+    CannedResponse,
+    VariableList,
+    KeyboardEmojiSelector,
+  },
+>>>>>>> a3732c8f5 (feat: Adds support for selecting emojis using the keyboard (#10055))
   mixins: [keyboardEventListenerMixins],
 =======
   mixins: [keyboardEventListenerMixins, uiSettingsMixin],
@@ -127,9 +137,11 @@ export default {
       showUserMentions: false,
       showCannedMenu: false,
       showVariables: false,
+      showEmojiMenu: false,
       mentionSearchKey: '',
       cannedSearchTerm: '',
       variableSearchTerm: '',
+      emojiSearchTerm: '',
       editorView: null,
       range: null,
       state: undefined,
@@ -177,7 +189,7 @@ export default {
             this.editorView = args.view;
             this.range = args.range;
 
-            this.mentionSearchKey = args.text.replace('@', '');
+            this.mentionSearchKey = args.text;
 
             return false;
           },
@@ -206,7 +218,7 @@ export default {
             this.editorView = args.view;
             this.range = args.range;
 
-            this.cannedSearchTerm = args.text.replace('/', '');
+            this.cannedSearchTerm = args.text;
             return false;
           },
           onExit: () => {
@@ -234,7 +246,7 @@ export default {
             this.editorView = args.view;
             this.range = args.range;
 
-            this.variableSearchTerm = args.text.replace('{{', '');
+            this.variableSearchTerm = args.text;
             return false;
           },
           onExit: () => {
@@ -244,6 +256,31 @@ export default {
           },
           onKeyDown: ({ event }) => {
             return event.keyCode === 13 && this.showVariables;
+          },
+        }),
+        suggestionsPlugin({
+          matcher: triggerCharacters(':', 1), // Trigger after ':' and at least 1 characters
+          suggestionClass: '',
+          onEnter: args => {
+            this.showEmojiMenu = true;
+            this.emojiSearchTerm = args.text || '';
+            this.range = args.range;
+            this.editorView = args.view;
+            return false;
+          },
+          onChange: args => {
+            this.editorView = args.view;
+            this.range = args.range;
+            this.emojiSearchTerm = args.text;
+            return false;
+          },
+          onExit: () => {
+            this.emojiSearchTerm = '';
+            this.showEmojiMenu = false;
+            return false;
+          },
+          onKeyDown: ({ event }) => {
+            return event.keyCode === 13 && this.showEmojiMenu;
           },
         }),
       ];
@@ -275,6 +312,8 @@ export default {
     },
     editorId() {
       this.showCannedMenu = false;
+      this.showEmojiMenu = false;
+      this.showVariables = false;
       this.cannedSearchTerm = '';
       this.reloadState(this.value);
     },
@@ -525,57 +564,36 @@ export default {
       this.editorView.dispatch(tr.setSelection(selection));
       this.editorView.focus();
     },
-    insertMentionNode(mentionItem) {
+    /**
+     * Inserts special content (mention, canned response, variable, emoji) into the editor.
+     * @param {string} type - The type of special content to insert. Possible values: 'mention', 'canned_response', 'variable', 'emoji'.
+     * @param {Object|string} content - The content to insert, depending on the type.
+     */
+    insertSpecialContent(type, content) {
       if (!this.editorView) {
-        return null;
-      }
-      const node = this.editorView.state.schema.nodes.mention.create({
-        userId: mentionItem.id,
-        userFullName: mentionItem.name,
-      });
-
-      this.insertNodeIntoEditor(node, this.range.from, this.range.to);
-      this.$track(CONVERSATION_EVENTS.USED_MENTIONS);
-
-      return false;
-    },
-    insertCannedResponse(cannedItem) {
-      const updatedMessage = replaceVariablesInMessage({
-        message: cannedItem,
-        variables: this.variables,
-      });
-
-      if (!this.editorView) {
-        return null;
+        return;
       }
 
-      let node = new MessageMarkdownTransformer(messageSchema).parse(
-        updatedMessage
+      let { node, from, to } = getContentNode(
+        this.editorView,
+        type,
+        content,
+        this.range,
+        this.variables
       );
 
-      const from =
-        node.textContent === updatedMessage
-          ? this.range.from
-          : this.range.from - 1;
-
-      this.insertNodeIntoEditor(node, from, this.range.to);
-
-      this.$track(CONVERSATION_EVENTS.INSERTED_A_CANNED_RESPONSE);
-      return false;
-    },
-    insertVariable(variable) {
-      if (!this.editorView) {
-        return null;
-      }
-
-      const content = `{{${variable}}}`;
-      let node = this.editorView.state.schema.text(content);
-      const { from, to } = this.range;
+      if (!node) return;
 
       this.insertNodeIntoEditor(node, from, to);
-      this.showVariables = false;
-      this.$track(CONVERSATION_EVENTS.INSERTED_A_VARIABLE);
-      return false;
+
+      const event_map = {
+        mention: CONVERSATION_EVENTS.USED_MENTIONS,
+        cannedResponse: CONVERSATION_EVENTS.INSERTED_A_CANNED_RESPONSE,
+        variable: CONVERSATION_EVENTS.INSERTED_A_VARIABLE,
+        emoji: CONVERSATION_EVENTS.INSERTED_AN_EMOJI,
+      };
+
+      this.$track(event_map[type]);
     },
     openFileBrowser() {
       this.$refs.imageUpload.click();
@@ -695,17 +713,22 @@ export default {
     <TagAgents
       v-if="showUserMentions && isPrivate"
       :search-key="mentionSearchKey"
-      @click="insertMentionNode"
+      @click="content => insertSpecialContent('mention', content)"
     />
     <CannedResponse
       v-if="shouldShowCannedResponses"
       :search-key="cannedSearchTerm"
-      @click="insertCannedResponse"
+      @click="content => insertSpecialContent('cannedResponse', content)"
     />
     <VariableList
       v-if="shouldShowVariables"
       :search-key="variableSearchTerm"
-      @click="insertVariable"
+      @click="content => insertSpecialContent('variable', content)"
+    />
+    <KeyboardEmojiSelector
+      v-if="showEmojiMenu"
+      :search-key="emojiSearchTerm"
+      @click="emoji => insertSpecialContent('emoji', emoji)"
     />
     <input
       ref="imageUpload"
