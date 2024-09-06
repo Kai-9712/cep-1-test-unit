@@ -3439,6 +3439,7 @@
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 "@chatwoot/prosemirror-schema@1.0.10":
   version "1.0.10"
   resolved "https://registry.npmjs.org/@chatwoot/prosemirror-schema/-/prosemirror-schema-1.0.10.tgz"
@@ -3455,6 +3456,12 @@
   resolved "https://registry.yarnpkg.com/@chatwoot/prosemirror-schema/-/prosemirror-schema-1.0.13.tgz#1b7cd82e16bd66d8fcd96bc3415b56e7e40841a0"
   integrity sha512-Ki7H2kUxkbDup+A8useTRQb2F45BxdTe1C9VsX4oSRh3WHqWriedEMmpnZy1SCzRm0zEFCw57RA4XppgZVkfrg==
 >>>>>>> a3732c8f5 (feat: Adds support for selecting emojis using the keyboard (#10055))
+=======
+"@chatwoot/prosemirror-schema@1.0.16":
+  version "1.0.16"
+  resolved "https://registry.yarnpkg.com/@chatwoot/prosemirror-schema/-/prosemirror-schema-1.0.16.tgz#63cfd4cff0f138466a95fedba5d237409a0b418e"
+  integrity sha512-qFPHPrfkG14vB0C/8+kF6huAvz4c2h6s07WKznZqUZ5CgJYd+fESQ49CScOYwOTO6luV4ghILv9kAVRjiaenOQ==
+>>>>>>> 05dece826 (fix: Editor controls not working after newline `(Shift+Enter)` (#10079))
   dependencies:
     markdown-it-sup "^1.0.0"
     prosemirror-commands "^1.1.4"
