@@ -2,7 +2,7 @@ import { uploadFile } from '../uploadHelper';
 import axios from 'axios';
 
 global.axios = axios;
-vi.mock('axios');
+jest.mock('axios');
 
 describe('#Upload Helpers', () => {
   afterEach(() => {

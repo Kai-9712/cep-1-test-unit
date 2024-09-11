@@ -23,17 +23,17 @@ describe('portalThemeHelper', () => {
     appearanceDropdown.id = 'appearance-dropdown';
     document.body.appendChild(appearanceDropdown);
 
-    window.matchMedia = vi.fn().mockImplementation(query => ({
+    window.matchMedia = jest.fn().mockImplementation(query => ({
       matches: query === '(prefers-color-scheme: dark)',
-      addEventListener: vi.fn(),
-      removeEventListener: vi.fn(),
+      addEventListener: jest.fn(),
+      removeEventListener: jest.fn(),
     }));
 
     window.portalConfig = { portalColor: '#ff5733' };
-    document.documentElement.style.setProperty = vi.fn();
+    document.documentElement.style.setProperty = jest.fn();
     document.documentElement.classList.remove('dark', 'light');
 
-    vi.clearAllMocks();
+    jest.clearAllMocks();
   });
 
   afterEach(() => {
@@ -72,7 +72,7 @@ describe('portalThemeHelper', () => {
       originalLocation = window.location;
       delete window.location;
       window.location = new URL('http://localhost:3000/');
-      window.history.replaceState = vi.fn();
+      window.history.replaceState = jest.fn();
     });
 
     afterEach(() => {
@@ -123,7 +123,7 @@ describe('portalThemeHelper', () => {
 
   describe('#switchTheme', () => {
     it('should set theme to system theme and update classes', () => {
-      window.matchMedia = vi.fn().mockReturnValue({ matches: true });
+      window.matchMedia = jest.fn().mockReturnValue({ matches: true });
       switchTheme('system');
       expect(localStorage.theme).toBeUndefined();
       expect(document.documentElement.classList).toContain('dark');
@@ -198,10 +198,10 @@ describe('portalThemeHelper', () => {
 
     beforeEach(() => {
       mediaQuery = {
-        addEventListener: vi.fn(),
+        addEventListener: jest.fn(),
         matches: false,
       };
-      window.matchMedia = vi.fn().mockReturnValue(mediaQuery);
+      window.matchMedia = jest.fn().mockReturnValue(mediaQuery);
     });
 
     it('adds a listener to the media query', () => {

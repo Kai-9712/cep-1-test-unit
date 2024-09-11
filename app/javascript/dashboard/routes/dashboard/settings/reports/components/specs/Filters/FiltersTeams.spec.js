@@ -26,7 +26,7 @@ describe('ReportsFiltersTeams.vue', () => {
         ],
       },
       actions: {
-        get: vi.fn(),
+        get: jest.fn(),
       },
     };
 

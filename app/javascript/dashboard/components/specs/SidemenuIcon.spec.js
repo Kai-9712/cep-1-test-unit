@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils';
-import SidemenuIcon from '../SidemenuIcon.vue';
+import SidemenuIcon from '../SidemenuIcon';
 
 describe('SidemenuIcon', () => {
   test('matches snapshot', () => {

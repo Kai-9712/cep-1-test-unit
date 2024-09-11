@@ -1,11 +1,17 @@
+import 'expect-more-jest';
 import { validateAuthenticateRoutePermission } from './index';
+
+jest.mock('./dashboard/dashboard.routes', () => ({
+  routes: [],
+}));
+window.roleWiseRoutes = {};
 
 describe('#validateAuthenticateRoutePermission', () => {
   describe(`when route is protected`, () => {
     describe(`when user not logged in`, () => {
       it(`should redirect to login`, () => {
         const to = { name: 'some-protected-route', params: { accountId: 1 } };
-        const next = vi.fn();
+        const next = jest.fn();
         const getters = {
           isLoggedIn: false,
           getCurrentUser: {
@@ -23,25 +29,15 @@ describe('#validateAuthenticateRoutePermission', () => {
     describe(`when user is logged in`, () => {
       describe(`when route is not accessible to current user`, () => {
         it(`should redirect to dashboard`, () => {
-          const to = {
-            name: 'general_settings_index',
-            params: { accountId: 1 },
-            meta: { permissions: ['administrator'] },
-          };
-          const next = vi.fn();
+          window.roleWiseRoutes.agent = ['dashboard'];
+          const to = { name: 'admin', params: { accountId: 1 } };
+          const next = jest.fn();
           const getters = {
             isLoggedIn: true,
             getCurrentUser: {
               account_id: 1,
               id: 1,
-              accounts: [
-                {
-                  permissions: ['agent'],
-                  id: 1,
-                  role: 'agent',
-                  status: 'active',
-                },
-              ],
+              accounts: [{ id: 1, role: 'agent', status: 'active' }],
             },
           };
           validateAuthenticateRoutePermission(to, next, { getters });
@@ -50,25 +46,15 @@ describe('#validateAuthenticateRoutePermission', () => {
       });
       describe(`when route is accessible to current user`, () => {
         it(`should go there`, () => {
-          const to = {
-            name: 'general_settings_index',
-            params: { accountId: 1 },
-            meta: { permissions: ['administrator'] },
-          };
-          const next = vi.fn();
+          window.roleWiseRoutes.agent = ['dashboard', 'admin'];
+          const to = { name: 'admin', params: { accountId: 1 } };
+          const next = jest.fn();
           const getters = {
             isLoggedIn: true,
             getCurrentUser: {
               account_id: 1,
               id: 1,
-              accounts: [
-                {
-                  id: 1,
-                  role: 'administrator',
-                  permissions: ['administrator'],
-                  status: 'active',
-                },
-              ],
+              accounts: [{ id: 1, role: 'agent', status: 'active' }],
             },
           };
           validateAuthenticateRoutePermission(to, next, { getters });

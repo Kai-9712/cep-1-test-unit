@@ -2,18 +2,18 @@ import Vue from 'vue';
 import { useAlert } from 'dashboard/composables';
 import fileUploadMixin from 'dashboard/mixins/fileUploadMixin';
 
-vi.mock('shared/helpers/FileHelper', () => ({
-  checkFileSizeLimit: vi.fn(),
+jest.mock('shared/helpers/FileHelper', () => ({
+  checkFileSizeLimit: jest.fn(),
 }));
 
-vi.mock('activestorage', () => ({
-  DirectUpload: vi.fn().mockImplementation(() => ({
-    create: vi.fn(),
+jest.mock('activestorage', () => ({
+  DirectUpload: jest.fn().mockImplementation(() => ({
+    create: jest.fn(),
   })),
 }));
 
-vi.mock('dashboard/composables', () => ({
-  useAlert: vi.fn(),
+jest.mock('dashboard/composables', () => ({
+  useAlert: jest.fn(),
 }));
 
 describe('FileUploadMixin', () => {
@@ -32,20 +32,20 @@ describe('FileUploadMixin', () => {
     vm.currentUser = {
       access_token: 'token',
     };
-    vm.$t = vi.fn(message => message);
-    vm.showAlert = vi.fn();
-    vm.attachFile = vi.fn();
+    vm.$t = jest.fn(message => message);
+    vm.showAlert = jest.fn();
+    vm.attachFile = jest.fn();
   });
 
   it('should call onDirectFileUpload when direct uploads are enabled', () => {
-    vm.onDirectFileUpload = vi.fn();
+    vm.onDirectFileUpload = jest.fn();
     vm.onFileUpload({});
     expect(vm.onDirectFileUpload).toHaveBeenCalledWith({});
   });
 
   it('should call onIndirectFileUpload when direct uploads are disabled', () => {
     vm.globalConfig.directUploadsEnabled = false;
-    vm.onIndirectFileUpload = vi.fn();
+    vm.onIndirectFileUpload = jest.fn();
     vm.onFileUpload({});
     expect(vm.onIndirectFileUpload).toHaveBeenCalledWith({});
   });

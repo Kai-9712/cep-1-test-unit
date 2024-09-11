@@ -8,7 +8,7 @@ import FluentIcon from 'shared/components/FluentIcon/Index.vue';
 import ResizableTextArea from 'shared/components/ResizableTextArea.vue';
 import darkModeMixin from 'widget/mixins/darkModeMixin.js';
 
-const EmojiInput = () => import('shared/components/emoji/EmojiInput.vue');
+const EmojiInput = () => import('shared/components/emoji/EmojiInput');
 
 export default {
   name: 'ChatInputWrap',

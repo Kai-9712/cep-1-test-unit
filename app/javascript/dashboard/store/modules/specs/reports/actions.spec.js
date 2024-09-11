@@ -1,12 +1,13 @@
 import axios from 'axios';
 import { actions } from '../../reports';
-import * as DownloadHelper from 'dashboard/helper/downloadHelper';
+import DownloadHelper from 'dashboard/helper/downloadHelper';
 
-global.open = vi.fn();
+global.open = jest.fn();
 global.axios = axios;
 
-vi.mock('axios');
-vi.spyOn(DownloadHelper, 'downloadCsvFile');
+jest.mock('dashboard/helper/downloadHelper', () => ({
+  downloadCsvFile: jest.fn(),
+}));
 
 describe('#actions', () => {
   describe('#downloadAgentReports', () => {

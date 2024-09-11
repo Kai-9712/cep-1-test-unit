@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils';
-import ReportsFiltersDateGroupBy from '../../Filters/DateGroupBy.vue';
+import ReportsFiltersDateGroupBy from '../../Filters/DateGroupBy';
 import { GROUP_BY_OPTIONS } from '../../../constants';
 
 const mountParams = {

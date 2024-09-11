@@ -1,11 +1,11 @@
 import types from '../../../mutation-types';
 import { mutations } from '../../conversations';
 
-vi.mock('shared/helpers/mitt', () => ({
+jest.mock('shared/helpers/mitt', () => ({
   emitter: {
-    emit: vi.fn(),
-    on: vi.fn(),
-    off: vi.fn(),
+    emit: jest.fn(),
+    on: jest.fn(),
+    off: jest.fn(),
   },
 }));
 
@@ -116,7 +116,7 @@ describe('#mutations', () => {
     });
 
     it('add message to the conversation if it does not exist in the store', () => {
-      global.bus = { $emit: vi.fn() };
+      global.bus = { $emit: jest.fn() };
       const state = {
         allConversations: [{ id: 1, messages: [] }],
         selectedChatId: -1,
@@ -144,7 +144,7 @@ describe('#mutations', () => {
     });
 
     it('add message to the conversation and emit scrollToMessage if it does not exist in the store', () => {
-      global.bus = { $emit: vi.fn() };
+      global.bus = { $emit: jest.fn() };
       const state = {
         allConversations: [{ id: 1, messages: [] }],
         selectedChatId: 1,
@@ -172,7 +172,7 @@ describe('#mutations', () => {
     });
 
     it('update message if it exist in the store', () => {
-      global.bus = { $emit: vi.fn() };
+      global.bus = { $emit: jest.fn() };
       const state = {
         allConversations: [
           {

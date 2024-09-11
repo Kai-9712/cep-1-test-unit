@@ -1,20 +1,19 @@
 <script>
 import { mapGetters } from 'vuex';
-import { useUISettings } from 'dashboard/composables/useUISettings';
 import ChatList from '../../../components/ChatList.vue';
 import ConversationBox from '../../../components/widgets/conversation/ConversationBox.vue';
 import PopOverSearch from './search/PopOverSearch.vue';
-import wootConstants from 'dashboard/constants/globals';
+import uiSettingsMixin from 'dashboard/mixins/uiSettings';
 import { BUS_EVENTS } from 'shared/constants/busEvents';
-import CmdBarConversationSnooze from 'dashboard/routes/dashboard/commands/CmdBarConversationSnooze.vue';
+import wootConstants from 'dashboard/constants/globals';
 
 export default {
   components: {
     ChatList,
     ConversationBox,
     PopOverSearch,
-    CmdBarConversationSnooze,
   },
+  mixins: [uiSettingsMixin],
   props: {
     inboxId: {
       type: [String, Number],
@@ -40,14 +39,6 @@ export default {
       type: [String, Number],
       default: 0,
     },
-  },
-  setup() {
-    const { uiSettings, updateUISettings } = useUISettings();
-
-    return {
-      uiSettings,
-      updateUISettings,
-    };
   },
   data() {
     return {
@@ -184,8 +175,8 @@ export default {
 </script>
 
 <template>
-  <section class="bg-white conversation-page dark:bg-slate-900">
-    <ChatList
+  <section class="conversation-page bg-white dark:bg-slate-900">
+    <chat-list
       :show-conversation-list="showConversationList"
       :conversation-inbox="inboxId"
       :label="label"
@@ -193,21 +184,20 @@ export default {
       :conversation-type="conversationType"
       :folders-id="foldersId"
       :is-on-expanded-layout="isOnExpandedLayout"
-      @conversationLoad="onConversationLoad"
+      @conversation-load="onConversationLoad"
     >
-      <PopOverSearch
+      <pop-over-search
         :is-on-expanded-layout="isOnExpandedLayout"
-        @toggleConversationLayout="toggleConversationLayout"
+        @toggle-conversation-layout="toggleConversationLayout"
       />
-    </ChatList>
-    <ConversationBox
+    </chat-list>
+    <conversation-box
       v-if="showMessageView"
       :inbox-id="inboxId"
       :is-contact-panel-open="isContactPanelOpen"
       :is-on-expanded-layout="isOnExpandedLayout"
-      @contactPanelToggle="onToggleContactPanel"
+      @contact-panel-toggle="onToggleContactPanel"
     />
-    <CmdBarConversationSnooze />
   </section>
 </template>
 

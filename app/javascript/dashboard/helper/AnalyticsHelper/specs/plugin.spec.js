@@ -2,35 +2,34 @@ import Vue from 'vue';
 import plugin from '../plugin';
 import analyticsHelper from '../index';
 
-vi.spyOn(analyticsHelper, 'init');
-vi.spyOn(analyticsHelper, 'track');
-
 describe('Vue Analytics Plugin', () => {
   beforeEach(() => {
+    jest.spyOn(analyticsHelper, 'init');
+    jest.spyOn(analyticsHelper, 'track');
     Vue.use(plugin);
   });
 
-  it('should call the init method on analyticsHelper once during plugin installation', () => {
-    expect(analyticsHelper.init).toHaveBeenCalledTimes(1);
+  afterEach(() => {
+    jest.resetModules();
+    jest.clearAllMocks();
   });
 
-  it('should add the analyticsHelper to the Vue prototype as $analytics', () => {
+  it('should call the init method on the analyticsHelper', () => {
+    expect(analyticsHelper.init).toHaveBeenCalled();
+  });
+
+  it('should add the analyticsHelper to the Vue prototype', () => {
     expect(Vue.prototype.$analytics).toBe(analyticsHelper);
   });
 
-  it('should add a track method to the Vue prototype as $track', () => {
+  it('should add the track method to the Vue prototype', () => {
     expect(typeof Vue.prototype.$track).toBe('function');
     Vue.prototype.$track('eventName');
-    expect(analyticsHelper.track)
-      .toHaveBeenCalledTimes(1)
-      .toHaveBeenCalledWith('eventName');
+    expect(analyticsHelper.track).toHaveBeenCalledWith('eventName');
   });
 
-  it('should call the track method on analyticsHelper with the correct event name when $track is called', () => {
-    const eventName = 'testEvent';
-    Vue.prototype.$track(eventName);
-    expect(analyticsHelper.track)
-      .toHaveBeenCalledTimes(1)
-      .toHaveBeenCalledWith(eventName);
+  it('should call the track method on the analyticsHelper when $track is called', () => {
+    Vue.prototype.$track('eventName');
+    expect(analyticsHelper.track).toHaveBeenCalledWith('eventName');
   });
 });

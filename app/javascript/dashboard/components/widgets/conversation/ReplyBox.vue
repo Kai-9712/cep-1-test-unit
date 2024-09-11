@@ -41,7 +41,7 @@ import {
 import { LOCAL_STORAGE_KEYS } from 'dashboard/constants/localStorage';
 import { LocalStorage } from 'shared/helpers/localStorage';
 
-const EmojiInput = () => import('shared/components/emoji/EmojiInput.vue');
+const EmojiInput = () => import('shared/components/emoji/EmojiInput');
 
 export default {
   components: {
@@ -663,7 +663,8 @@ export default {
         const isOnWhatsApp =
           this.isATwilioWhatsAppChannel ||
           this.isAWhatsAppCloudChannel ||
-          this.is360DialogWhatsAppChannel;
+          this.is360DialogWhatsAppChannel ||
+          this.isFireMobileWhatsAppChannel;
         if (isOnWhatsApp && !this.isPrivate) {
           this.sendMessageAsMultipleMessages(this.message);
         } else {

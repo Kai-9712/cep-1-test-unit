@@ -1,6 +1,6 @@
 import { shallowMount, createLocalVue } from '@vue/test-utils';
 import Vuex from 'vuex';
-import ReportsFiltersLabels from '../../Filters/Labels.vue';
+import ReportsFiltersLabels from '../../Filters/Labels';
 
 const localVue = createLocalVue();
 localVue.use(Vuex);
@@ -26,7 +26,7 @@ describe('ReportsFiltersLabels.vue', () => {
         ],
       },
       actions: {
-        get: vi.fn(),
+        get: jest.fn(),
       },
     };
 

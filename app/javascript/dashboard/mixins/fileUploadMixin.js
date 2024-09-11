@@ -1,18 +1,14 @@
-import { mapGetters } from 'vuex';
-import { useAlert } from 'dashboard/composables';
 import {
   MAXIMUM_FILE_UPLOAD_SIZE,
   MAXIMUM_FILE_UPLOAD_SIZE_TWILIO_SMS_CHANNEL,
 } from 'shared/constants/messages';
-import { checkFileSizeLimit } from 'shared/helpers/FileHelper';
+import {
+  checkFileSizeLimit,
+  checkFileExtension,
+} from 'shared/helpers/FileHelper';
 import { DirectUpload } from 'activestorage';
 
 export default {
-  computed: {
-    ...mapGetters({
-      accountId: 'getCurrentAccountId',
-    }),
-  },
   methods: {
     onFileUpload(file) {
       if (this.globalConfig.directUploadsEnabled) {
@@ -45,13 +41,13 @@ export default {
 
         upload.create((error, blob) => {
           if (error) {
-            useAlert(error);
+            this.showAlert(error);
           } else {
             this.attachFile({ file, blob });
           }
         });
       } else {
-        useAlert(
+        this.showAlert(
           this.$t('CONVERSATION.FILE_SIZE_LIMIT', {
             MAXIMUM_SUPPORTED_FILE_UPLOAD_SIZE,
           })
@@ -65,10 +61,19 @@ export default {
       if (!file) {
         return;
       }
+      if (this.isFireMobileWhatsAppChannel) {
+        const fileExtension = checkFileExtension(file);
+        if (fileExtension === 'webp') {
+          alert('WebP files are not supported');
+          return;
+        }
+        this.attachFile({ file });
+        return;
+      }
       if (checkFileSizeLimit(file, MAXIMUM_SUPPORTED_FILE_UPLOAD_SIZE)) {
         this.attachFile({ file });
       } else {
-        useAlert(
+        this.showAlert(
           this.$t('CONVERSATION.FILE_SIZE_LIMIT', {
             MAXIMUM_SUPPORTED_FILE_UPLOAD_SIZE,
           })
