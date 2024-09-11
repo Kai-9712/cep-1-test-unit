@@ -3,7 +3,6 @@ import PageHeader from '../../SettingsSubPageHeader.vue';
 import Twilio from './Twilio.vue';
 import ThreeSixtyDialogWhatsapp from './360DialogWhatsapp.vue';
 import CloudWhatsapp from './CloudWhatsapp.vue';
-import FireMobileWhatsapp from './FireMobileWhatsapp.vue';
 
 export default {
   components: {
@@ -11,7 +10,6 @@ export default {
     Twilio,
     ThreeSixtyDialogWhatsapp,
     CloudWhatsapp,
-    FireMobileWhatsapp,
   },
   data() {
     return {
@@ -33,9 +31,6 @@ export default {
       <label>
         {{ $t('INBOX_MGMT.ADD.WHATSAPP.PROVIDERS.LABEL') }}
         <select v-model="provider">
-          <option value="fire_mobile">
-            {{ $t('INBOX_MGMT.ADD.WHATSAPP.PROVIDERS.FIRE_MOBILE') }}
-          </option>
           <option value="whatsapp_cloud">
             {{ $t('INBOX_MGMT.ADD.WHATSAPP.PROVIDERS.WHATSAPP_CLOUD') }}
           </option>
@@ -48,7 +43,6 @@ export default {
 
     <Twilio v-if="provider === 'twilio'" type="whatsapp" />
     <ThreeSixtyDialogWhatsapp v-else-if="provider === '360dialog'" />
-    <fire-mobile-whatsapp v-else-if="provider === 'fire_mobile'" />
     <CloudWhatsapp v-else />
   </div>
 </template>

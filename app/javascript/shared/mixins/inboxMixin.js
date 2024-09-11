@@ -97,12 +97,6 @@ export default {
         this.whatsAppAPIProvider === 'default'
       );
     },
-    isFireMobileWhatsAppChannel() {
-      return (
-        this.channelType === INBOX_TYPES.WHATSAPP &&
-        this.whatsAppAPIProvider === 'whatsapp_fire_mobile'
-      );
-    },
     chatAdditionalAttributes() {
       const { additional_attributes: additionalAttributes } = this.chat || {};
       return additionalAttributes || {};

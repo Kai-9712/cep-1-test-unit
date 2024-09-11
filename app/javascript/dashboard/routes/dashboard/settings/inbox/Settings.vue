@@ -82,9 +82,6 @@ export default {
       if (this.isATwilioWhatsAppChannel) {
         return this.$t('INBOX_MGMT.ADD.WHATSAPP.PROVIDERS.TWILIO');
       }
-      if (this.isFireMobileWhatsAppChannel) {
-        return this.$t('INBOX_MGMT.ADD.WHATSAPP.PROVIDERS.FIRE_MOBILE');
-      }
       return '';
     },
     tabs() {

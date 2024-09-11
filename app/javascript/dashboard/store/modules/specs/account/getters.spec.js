@@ -6,7 +6,7 @@ const accountData = {
   name: 'Company one',
   locale: 'en',
   features: {
-    auto_resolve_conversations: false,
+    auto_resolve_conversations: true,
     agent_management: false,
   },
 };
@@ -39,17 +39,11 @@ describe('#getters', () => {
     const state = {
       records: [accountData],
     };
-    const rootGetters = {
-      getCurrentUser: {
-        type: 'SuperAdmin',
-      },
-    };
     expect(
       getters.isFeatureEnabledonAccount(
         state,
         null,
-        null,
-        rootGetters
+        null
       )(1, 'auto_resolve_conversations')
     ).toEqual(true);
   });
