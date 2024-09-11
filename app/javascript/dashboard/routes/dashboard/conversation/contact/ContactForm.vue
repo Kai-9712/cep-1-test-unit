@@ -386,7 +386,7 @@ export default {
     />
 
     <div class="w-full">
-      <label>{{ $t('CONTACTS_PAGE.LIST.TABLE_HEADER.SOCIAL_PROFILES') }}</label>
+      <label> Social Profiles </label>
       <div
         v-for="socialProfile in socialProfileKeys"
         :key="socialProfile.key"
@@ -399,7 +399,7 @@ export default {
         </span>
         <input
           v-model="socialProfileUserNames[socialProfile.key]"
-          class="input-group-field ltr:!rounded-l-none rtl:rounded-r-none !mb-0"
+          class="input-group-field ltr:rounded-l-none rtl:rounded-r-none !mb-0"
           type="text"
         />
       </div>

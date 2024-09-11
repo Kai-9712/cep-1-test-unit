@@ -1,5 +1,5 @@
 <script>
-const EmojiInput = () => import('shared/components/emoji/EmojiInput.vue');
+const EmojiInput = () => import('shared/components/emoji/EmojiInput');
 
 export default {
   components: { EmojiInput },

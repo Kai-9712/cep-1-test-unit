@@ -2,7 +2,7 @@ import { emitter } from '../mitt';
 
 describe('emitter', () => {
   it('should emit and listen to events correctly', () => {
-    const mockCallback = vi.fn();
+    const mockCallback = jest.fn();
 
     // Subscribe to an event
     emitter.on('event', mockCallback);

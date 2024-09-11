@@ -3,9 +3,9 @@ import { actions } from '../../agentBots';
 import types from '../../../mutation-types';
 import { agentBotRecords } from './fixtures';
 
-const commit = vi.fn();
+const commit = jest.fn();
 global.axios = axios;
-vi.mock('axios');
+jest.mock('axios');
 
 describe('#actions', () => {
   describe('#get', () => {

@@ -36,14 +36,16 @@ describe('#createPendingMessage', () => {
     message: 'hi',
   };
   it('returns the pending message with expected new keys', () => {
-    expect(createPendingMessage(message)).toMatchObject({
-      content: expect.anything(),
-      id: expect.anything(),
-      status: expect.anything(),
-      echo_id: expect.anything(),
-      created_at: expect.anything(),
-      message_type: expect.anything(),
-    });
+    expect(createPendingMessage(message)).toHaveProperty(
+      'content',
+      'id',
+      'status',
+      'echo_id',
+      'status',
+      'created_at',
+      'message_type',
+      'conversation_id'
+    );
   });
 
   it('returns the pending message with status progress', () => {
@@ -64,15 +66,18 @@ describe('#createPendingMessage', () => {
       message: 'hi',
       file: {},
     };
-    expect(createPendingMessage(messageWithFile)).toMatchObject({
-      content: expect.anything(),
-      id: expect.anything(),
-      status: expect.anything(),
-      echo_id: expect.anything(),
-      created_at: expect.anything(),
-      message_type: expect.anything(),
-      attachments: [{ id: expect.anything() }],
-    });
+    expect(createPendingMessage(messageWithFile)).toHaveProperty(
+      'content',
+      'id',
+      'status',
+      'echo_id',
+      'status',
+      'created_at',
+      'message_type',
+      'conversation_id',
+      'attachments',
+      'private'
+    );
   });
 
   it('returns the pending message to have one attachment', () => {

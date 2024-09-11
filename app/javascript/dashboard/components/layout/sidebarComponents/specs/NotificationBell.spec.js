@@ -1,15 +1,13 @@
-import NotificationBell from '../NotificationBell.vue';
+import NotificationBell from '../NotificationBell';
 import { createLocalVue, shallowMount } from '@vue/test-utils';
 import Vuex from 'vuex';
 import VueI18n from 'vue-i18n';
-import FluentIcon from 'shared/components/FluentIcon/DashboardIcon.vue';
 
 import i18n from 'dashboard/i18n';
 
 const localVue = createLocalVue();
 localVue.use(Vuex);
 localVue.use(VueI18n);
-localVue.component('fluent-icon', FluentIcon);
 
 const i18nConfig = new VueI18n({
   locale: 'en',
@@ -29,7 +27,7 @@ describe('notificationBell', () => {
 
   beforeEach(() => {
     actions = {
-      showNotification: vi.fn(),
+      showNotification: jest.fn(),
     };
     modules = {
       auth: {

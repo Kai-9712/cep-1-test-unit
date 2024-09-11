@@ -19,19 +19,19 @@ describe('resize directive', () => {
   beforeEach(() => {
     el = document.createElement('div');
     binding = {
-      value: vi.fn(),
+      value: jest.fn(),
     };
     observer = {
-      observe: vi.fn(),
-      unobserve: vi.fn(),
-      disconnect: vi.fn(),
+      observe: jest.fn(),
+      unobserve: jest.fn(),
+      disconnect: jest.fn(),
     };
     window.ResizeObserver = ResizeObserverMock;
-    vi.spyOn(window, 'ResizeObserver').mockImplementation(() => observer);
+    jest.spyOn(window, 'ResizeObserver').mockImplementation(() => observer);
   });
 
   afterEach(() => {
-    vi.clearAllMocks();
+    jest.clearAllMocks();
   });
 
   it('should create ResizeObserver on bind', () => {
@@ -44,7 +44,7 @@ describe('resize directive', () => {
   it('should call callback on observer callback', () => {
     el = document.createElement('div');
     binding = {
-      value: vi.fn(),
+      value: jest.fn(),
     };
 
     resize.bind(el, binding);

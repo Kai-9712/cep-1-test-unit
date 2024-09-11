@@ -1,19 +1,14 @@
-import Vue from 'vue';
-import { useAlert } from 'dashboard/composables';
 import fileUploadMixin from 'dashboard/mixins/fileUploadMixin';
+import Vue from 'vue';
 
-vi.mock('shared/helpers/FileHelper', () => ({
-  checkFileSizeLimit: vi.fn(),
+jest.mock('shared/helpers/FileHelper', () => ({
+  checkFileSizeLimit: jest.fn(),
 }));
 
-vi.mock('activestorage', () => ({
-  DirectUpload: vi.fn().mockImplementation(() => ({
-    create: vi.fn(),
+jest.mock('activestorage', () => ({
+  DirectUpload: jest.fn().mockImplementation(() => ({
+    create: jest.fn(),
   })),
-}));
-
-vi.mock('dashboard/composables', () => ({
-  useAlert: vi.fn(),
 }));
 
 describe('FileUploadMixin', () => {
@@ -32,20 +27,20 @@ describe('FileUploadMixin', () => {
     vm.currentUser = {
       access_token: 'token',
     };
-    vm.$t = vi.fn(message => message);
-    vm.showAlert = vi.fn();
-    vm.attachFile = vi.fn();
+    vm.$t = jest.fn(message => message);
+    vm.showAlert = jest.fn();
+    vm.attachFile = jest.fn();
   });
 
   it('should call onDirectFileUpload when direct uploads are enabled', () => {
-    vm.onDirectFileUpload = vi.fn();
+    vm.onDirectFileUpload = jest.fn();
     vm.onFileUpload({});
     expect(vm.onDirectFileUpload).toHaveBeenCalledWith({});
   });
 
   it('should call onIndirectFileUpload when direct uploads are disabled', () => {
     vm.globalConfig.directUploadsEnabled = false;
-    vm.onIndirectFileUpload = vi.fn();
+    vm.onIndirectFileUpload = jest.fn();
     vm.onFileUpload({});
     expect(vm.onIndirectFileUpload).toHaveBeenCalledWith({});
   });
@@ -58,8 +53,9 @@ describe('FileUploadMixin', () => {
 
     it('shows an alert if the file size exceeds the maximum limit', () => {
       const fakeFile = { size: 999999999 };
+      vm.showAlert = jest.fn();
       vm.onDirectFileUpload(fakeFile);
-      expect(useAlert).toHaveBeenCalledWith(expect.any(String));
+      expect(vm.showAlert).toHaveBeenCalledWith(expect.any(String));
     });
   });
 
@@ -71,8 +67,9 @@ describe('FileUploadMixin', () => {
 
     it('shows an alert if the file size exceeds the maximum limit', () => {
       const fakeFile = { size: 999999999 };
+      vm.showAlert = jest.fn();
       vm.onIndirectFileUpload(fakeFile);
-      expect(useAlert).toHaveBeenCalledWith(expect.any(String));
+      expect(vm.showAlert).toHaveBeenCalledWith(expect.any(String));
     });
   });
 });

@@ -1,6 +1,6 @@
 import { actions } from '../../appConfig';
 
-const commit = vi.fn();
+const commit = jest.fn();
 describe('#actions', () => {
   describe('#setReferrerHost', () => {
     it('creates actions properly', () => {

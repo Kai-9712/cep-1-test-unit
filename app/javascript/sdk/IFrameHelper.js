@@ -13,6 +13,7 @@ import {
   bubbleSVG,
   chatBubble,
   closeBubble,
+  createNotificationBubble,
   bubbleHolder,
   onClickChatBubble,
   onBubbleClick,
@@ -314,6 +315,7 @@ export const IFrameHelper = {
 
     bubbleHolder.appendChild(chatIcon);
     bubbleHolder.appendChild(closeBubble);
+    bubbleHolder.appendChild(createNotificationBubble());
     onClickChatBubble();
   },
   toggleCloseButton: () => {

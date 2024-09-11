@@ -15,10 +15,10 @@ const dataToSend = {
 };
 import { dataReceived } from './testConversationResponse';
 
-const commit = vi.fn();
-const dispatch = vi.fn();
+const commit = jest.fn();
+const dispatch = jest.fn();
 global.axios = axios;
-vi.mock('axios');
+jest.mock('axios');
 
 describe('#hasMessageFailedWithExternalError', () => {
   it('returns false if message is sent', () => {
@@ -292,7 +292,7 @@ describe('#actions', () => {
 
   describe('#markMessagesRead', () => {
     beforeEach(() => {
-      vi.useFakeTimers();
+      jest.useFakeTimers();
     });
 
     it('sends correct mutations if api is successful', async () => {
@@ -301,7 +301,7 @@ describe('#actions', () => {
         data: { id: 1, agent_last_seen_at: lastSeen },
       });
       await actions.markMessagesRead({ commit }, { id: 1 });
-      vi.runAllTimers();
+      jest.runAllTimers();
       expect(commit).toHaveBeenCalledTimes(1);
       expect(commit.mock.calls).toEqual([
         [types.UPDATE_MESSAGE_UNREAD_COUNT, { id: 1, lastSeen }],
@@ -321,7 +321,7 @@ describe('#actions', () => {
         data: { id: 1, agent_last_seen_at: lastSeen, unread_count: 1 },
       });
       await actions.markMessagesUnread({ commit }, { id: 1 });
-      vi.runAllTimers();
+      jest.runAllTimers();
       expect(commit).toHaveBeenCalledTimes(1);
       expect(commit.mock.calls).toEqual([
         [

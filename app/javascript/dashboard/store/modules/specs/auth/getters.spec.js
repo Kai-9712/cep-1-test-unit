@@ -1,5 +1,8 @@
 import { getters } from '../../auth';
 
+import '../../../../routes';
+
+jest.mock('../../../../routes', () => {});
 describe('#getters', () => {
   describe('#isLoggedIn', () => {
     it('return correct value if user data is available', () => {

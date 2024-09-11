@@ -2,17 +2,17 @@ import { shallowMount } from '@vue/test-utils';
 import { emitter } from 'shared/helpers/mitt';
 import { useEmitter } from '../emitter';
 
-vi.mock('shared/helpers/mitt', () => ({
+jest.mock('shared/helpers/mitt', () => ({
   emitter: {
-    on: vi.fn(),
-    off: vi.fn(),
+    on: jest.fn(),
+    off: jest.fn(),
   },
 }));
 
 describe('useEmitter', () => {
   let wrapper;
   const eventName = 'my-event';
-  const callback = vi.fn();
+  const callback = jest.fn();
 
   beforeEach(() => {
     wrapper = shallowMount({
@@ -27,6 +27,10 @@ describe('useEmitter', () => {
         };
       },
     });
+  });
+
+  afterEach(() => {
+    jest.resetAllMocks();
   });
 
   it('should add an event listener on mount', () => {
