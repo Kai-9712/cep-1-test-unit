@@ -31,7 +31,7 @@ ar:
       disposable_email: نحن لا نسمح باسخدام عناوين البريد الإلكتروني المؤقتة
       invalid_email: لقد قمت بإدخال عنوان بريد إلكتروني غير صالح
       email_already_exists: "لقد قمت بالفعل بتسجيل حساب سابقاً بالعنوان %{email}"
-      invalid_params: 'Invalid, please check the signup paramters and try again'
+      invalid_params: 'غير صالح، الرجاء التحقق من خانات التسجيل وحاول مرة أخرى'
       failed: فشلت عملية التسجيل
     data_import:
       data_type:
@@ -40,7 +40,7 @@ ar:
       import:
         failed: الملف فارغ
       export:
-        success: We will notify you once contacts export file is ready to view.
+        success: سنقوم بإعلامك بمجرد أن يكون ملف تصدير جهات الاتصال جاهزاً للعرض.
       email:
         invalid: إيميل غير صالح
       phone_number:
@@ -49,7 +49,7 @@ ar:
       locale:
         unique: يجب أن تكون فريدة من نوعها في الفئة والبوابة
     dyte:
-      invalid_message_type: "Invalid message type. Action not permitted"
+      invalid_message_type: "نوع الرسالة غير صالح. الإجراء غير مسموح به"
     slack:
       invalid_channel_id: "قناة Slack غير صحيحة. الرجاء المحاولة مرة أخرى"
     inboxes:
@@ -68,14 +68,14 @@ ar:
       invalid_value: قيمة غير صالحة. القيم المقدمة ل %{attribute_name} غير صالحة
   reports:
     period: فترة التبليغ %{since} إلى %{until}
-    utc_warning: The report generated is in UTC timezone
+    utc_warning: التقرير الذي تم إنشاؤه في التوقيت العالمي الموحّد
     agent_csv:
-      agent_name: اسم الموظف
-      conversations_count: Assigned conversations
-      avg_first_response_time: Avg first response time
-      avg_resolution_time: Avg resolution time
+      agent_name: اسم الوكيل
+      conversations_count: المحادثات المعينة
+      avg_first_response_time: متوسط وقت الاستجابة الأولى
+      avg_resolution_time: متوسط وقت الحل
       resolution_count: عدد مرات الإغلاق
-      avg_customer_waiting_time: Avg customer waiting time
+      avg_customer_waiting_time: متوسط وقت انتظار العميل
     inbox_csv:
       inbox_name: اسم صندوق الوارد
       inbox_type: نوع صندوق البريد
@@ -93,13 +93,13 @@ ar:
       avg_first_response_time: متوسط وقت الرد الأول
       avg_resolution_time: متوسط وقت الحل
       resolution_count: عدد مرات الإغلاق
-      avg_customer_waiting_time: Avg customer waiting time
+      avg_customer_waiting_time: متوسط وقت انتظار العميل
     conversation_traffic_csv:
-      timezone: Timezone
+      timezone: منطقة زمنية
     sla_csv:
       conversation_id: معرف المحادثة
-      sla_policy_breached: SLA Policy
-      assignee: Assignee
+      sla_policy_breached: سياسة مستوى الخدمة
+      assignee: المكلَّف
       team: الفريق
       inbox: صندوق الوارد
       labels: الوسوم
@@ -133,7 +133,7 @@ ar:
       instagram_deleted_story_content: هذه القصة لم تعد متاحة.
       deleted: تم حذف هذه الرسالة
       delivery_status:
-        error_code: "Error code: %{error_code}"
+        error_code: "رمز الخطأ: %{error_code}"
     activity:
       status:
         resolved: "تم تحديث حالة المحادثة لـ\"مغلقة\" بواسطة %{user_name}"
@@ -144,9 +144,9 @@ ar:
         auto_resolved: "تم وضع علامة على المحادثة كمحلولة من قبل النظام بسبب %{duration} أيام من عدم النشاط"
         system_auto_open: أعاد النظام فتح المحادثة بسبب رسالة واردة جديدة.
       priority:
-        added: '%{user_name} set the priority to %{new_priority}'
-        updated: '%{user_name} changed the priority from %{old_priority} to %{new_priority}'
-        removed: '%{user_name} removed the priority'
+        added: '%{user_name} حدد الأولوية إلى %{new_priority}'
+        updated: '%{user_name} غيّر الأولوية من %{old_priority} إلى %{new_priority}'
+        removed: '%{user_name} أزال الأولوية'
       assignee:
         self_assigned: "%{user_name} تم تعيينه تلقائياً لهذه المحادثة"
         assigned: "تم إسنادها إلى %{assignee_name} بواسطة %{user_name}"
@@ -159,8 +159,8 @@ ar:
         added: "%{user_name} أضاف %{labels}"
         removed: "%{user_name} أزال %{labels}"
       sla:
-        added: "%{user_name} added SLA policy %{sla_name}"
-        removed: "%{user_name} removed SLA policy %{sla_name}"
+        added: "%{user_name} أضاف سياسة مستوى الخدمة %{sla_name}"
+        removed: "%{user_name} أزال سياسة مستوى الخدمة %{sla_name}"
       muted: "%{user_name} كتم صوت المحادثة"
       unmuted: "%{user_name} قام بإلغاء كتم المحادثة"
     templates:
@@ -232,20 +232,20 @@ ar:
       articles: المقالات
       author: المؤلف
       authors: المؤلفون
-      other: other
-      others: others
+      other: آخر
+      others: الآخرين
       by: بواسطة
       no_articles: لا توجد مقالات
     footer:
-      made_with: Made with
+      made_with: صنع بـ
     header:
-      go_to_homepage: Website
+      go_to_homepage: الموقع الإلكتروني
       appearance:
         system: النظام
         light: فاتح
         dark: مظلم
-      featured_articles: Featured Articles
-      uncategorized: Uncategorized
+      featured_articles: المقالات المميزة
+      uncategorized: غير مصنف
     404:
       title: لم يتم العثور على الصفحة
       description: لم نتمكن من العثور على الصفحة التي تبحث عنها.
@@ -257,34 +257,34 @@ ar:
       phone_number: هاتف
       company_name: المنشأة
       inbox_name: صندوق الوارد
-      inbox_type: Inbox Type
+      inbox_type: نوع صندوق الوارد
     button: فتح المحادثة
   time_units:
     days:
-      zero: "%{count} days"
-      one: "%{count} day"
-      two: "%{count} days"
-      few: "%{count} days"
-      many: "%{count} days"
-      other: "%{count} days"
+      zero: "%{count} يوم"
+      one: "%{count} يوم"
+      two: "%{count} يوم"
+      few: "%{count} أيام"
+      many: "%{count} أيام"
+      other: "%{count} يوم"
     hours:
-      zero: "%{count} hours"
-      one: "%{count} hour"
-      two: "%{count} hours"
-      few: "%{count} hours"
-      many: "%{count} hours"
-      other: "%{count} hours"
+      zero: "%{count} ساعة"
+      one: "%{count} ساعة"
+      two: "%{count} ساعات"
+      few: "%{count} ساعات"
+      many: "%{count} ساعة"
+      other: "%{count} ساعة"
     minutes:
-      zero: "%{count} minutes"
-      one: "%{count} minute"
-      two: "%{count} minutes"
-      few: "%{count} minutes"
-      many: "%{count} minutes"
-      other: "%{count} minutes"
+      zero: "%{count} دقيقة"
+      one: "%{count} دقيقة"
+      two: "%{count} دقائق"
+      few: "%{count} دقائق"
+      many: "%{count} دقيقة"
+      other: "%{count} دقيقة"
     seconds:
-      zero: "%{count} seconds"
-      one: "%{count} second"
-      two: "%{count} seconds"
-      few: "%{count} seconds"
-      many: "%{count} seconds"
-      other: "%{count} seconds"
+      zero: "%{count} ثانية"
+      one: "%{count} ثانية"
+      two: "%{count} ثواني"
+      few: "%{count} ثواني"
+      many: "%{count} ثانية"
+      other: "%{count} ثانية"
