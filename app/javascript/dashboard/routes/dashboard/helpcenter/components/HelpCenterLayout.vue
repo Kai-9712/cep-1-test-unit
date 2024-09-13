@@ -1,8 +1,5 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 <template>
-  <div class="flex flex-grow-0 w-full h-full min-h-0 app-wrapper">
+  <div class="app-wrapper flex h-full flex-grow-0 min-h-0 w-full">
     <sidebar
       :route="currentRoute"
       @toggle-account-modal="toggleAccountModal"
@@ -23,7 +20,7 @@
     />
     <section
       v-if="isHelpCenterEnabled"
-      class="flex flex-1 h-full min-h-0 px-0 overflow-hidden bg-white dark:bg-slate-900"
+      class="flex h-full min-h-0 overflow-hidden flex-1 px-0 bg-white dark:bg-slate-900"
     >
       <router-view @reload-locale="fetchPortalAndItsCategories" />
       <command-bar />
@@ -60,9 +57,6 @@
     <upgrade-page v-else />
   </div>
 </template>
->>>>>>> fb99ba7b4 (feat: Rewrite `uiSettings` mixin to a composable (#9819))
-=======
->>>>>>> b4b308336 (feat: Eslint rules (#9839))
 <script>
 import { mapGetters } from 'vuex';
 import UpgradePage from './UpgradePage';
@@ -75,7 +69,7 @@ import CommandBar from 'dashboard/routes/dashboard/commands/commandbar.vue';
 import WootKeyShortcutModal from 'dashboard/components/widgets/modal/WootKeyShortcutModal.vue';
 import AccountSelector from 'dashboard/components/layout/sidebarComponents/AccountSelector.vue';
 import NotificationPanel from 'dashboard/routes/dashboard/notifications/components/NotificationPanel.vue';
-import { useUISettings } from 'dashboard/composables/useUISettings';
+import uiSettingsMixin from 'dashboard/mixins/uiSettings';
 import portalMixin from '../mixins/portalMixin';
 import AddCategory from '../pages/categories/AddCategory.vue';
 import { FEATURE_FLAGS } from 'dashboard/featureFlags';
@@ -92,15 +86,7 @@ export default {
     UpgradePage,
     WootKeyShortcutModal,
   },
-  mixins: [portalMixin],
-  setup() {
-    const { uiSettings, updateUISettings } = useUISettings();
-
-    return {
-      uiSettings,
-      updateUISettings,
-    };
-  },
+  mixins: [portalMixin, uiSettingsMixin],
   data() {
     return {
       isOnDesktop: true,
@@ -119,6 +105,7 @@ export default {
       portals: 'portals/allPortals',
       categories: 'categories/allCategories',
       meta: 'portals/getMeta',
+      isFetching: 'portals/isFetchingPortals',
       isFeatureEnabledonAccount: 'accounts/isFeatureEnabledonAccount',
     }),
 
@@ -346,63 +333,3 @@ export default {
   },
 };
 </script>
-
-<template>
-  <div class="flex flex-grow-0 w-full h-full min-h-0 app-wrapper">
-    <Sidebar
-      :route="currentRoute"
-      @toggleAccountModal="toggleAccountModal"
-      @openNotificationPanel="openNotificationPanel"
-      @openKeyShortcutModal="toggleKeyShortcutModal"
-      @closeKeyShortcutModal="closeKeyShortcutModal"
-    />
-    <HelpCenterSidebar
-      v-if="showHelpCenterSidebar"
-      :header-title="headerTitle"
-      :portal-slug="selectedPortalSlug"
-      :locale-slug="selectedLocaleInPortal"
-      :sub-title="localeName(selectedLocaleInPortal)"
-      :accessible-menu-items="accessibleMenuItems"
-      :additional-secondary-menu-items="additionalSecondaryMenuItems"
-      @openPopover="openPortalPopover"
-      @openModal="onClickOpenAddCategoryModal"
-    />
-    <section
-      v-if="isHelpCenterEnabled"
-      class="flex flex-1 h-full min-h-0 px-0 overflow-hidden bg-white dark:bg-slate-900"
-    >
-      <router-view @reloadLocale="fetchPortalAndItsCategories" />
-      <CommandBar />
-      <AccountSelector
-        :show-account-modal="showAccountModal"
-        @closeAccountModal="toggleAccountModal"
-      />
-      <WootKeyShortcutModal
-        v-if="showShortcutModal"
-        @close="closeKeyShortcutModal"
-        @clickaway="closeKeyShortcutModal"
-      />
-      <NotificationPanel
-        v-if="showNotificationPanel"
-        @close="closeNotificationPanel"
-      />
-      <PortalPopover
-        v-if="showPortalPopover"
-        :portals="portals"
-        :active-portal-slug="selectedPortalSlug"
-        :active-locale="selectedLocaleInPortal"
-        @fetchPortal="fetchPortalAndItsCategories"
-        @closePopover="closePortalPopover"
-      />
-      <AddCategory
-        v-if="showAddCategoryModal"
-        :show.sync="showAddCategoryModal"
-        :portal-name="selectedPortalName"
-        :locale="selectedLocaleInPortal"
-        :portal-slug="selectedPortalSlug"
-        @cancel="onClickCloseAddCategoryModal"
-      />
-    </section>
-    <UpgradePage v-else />
-  </div>
-</template>

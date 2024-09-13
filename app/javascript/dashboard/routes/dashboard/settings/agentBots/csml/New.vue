@@ -1,11 +1,16 @@
+<template>
+  <csml-bot-editor :agent-bot="{ bot_config: {} }" @submit="saveBot" />
+</template>
+
 <script>
-import { mapGetters } from 'vuex';
-import { useAlert } from 'dashboard/composables';
-import { frontendURL } from '../../../../../helper/URLHelper';
+import alertMixin from 'shared/mixins/alertMixin';
 import CsmlBotEditor from '../components/CSMLBotEditor.vue';
+import { frontendURL } from '../../../../../helper/URLHelper';
+import { mapGetters } from 'vuex';
 
 export default {
   components: { CsmlBotEditor },
+  mixins: [alertMixin],
   computed: {
     ...mapGetters({
       accountId: 'getCurrentAccountId',
@@ -27,15 +32,11 @@ export default {
             )
           );
         }
-        useAlert(this.$t('AGENT_BOTS.ADD.API.SUCCESS_MESSAGE'));
+        this.showAlert(this.$t('AGENT_BOTS.ADD.API.SUCCESS_MESSAGE'));
       } catch (error) {
-        useAlert(this.$t('AGENT_BOTS.ADD.API.ERROR_MESSAGE'));
+        this.showAlert(this.$t('AGENT_BOTS.ADD.API.ERROR_MESSAGE'));
       }
     },
   },
 };
 </script>
-
-<template>
-  <CsmlBotEditor :agent-bot="{ bot_config: {} }" @submit="saveBot" />
-</template>

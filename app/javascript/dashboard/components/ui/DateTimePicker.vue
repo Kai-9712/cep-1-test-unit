@@ -1,3 +1,19 @@
+<template>
+  <div class="date-picker">
+    <date-picker
+      type="datetime"
+      :confirm="true"
+      :clearable="false"
+      :editable="false"
+      :confirm-text="confirmText"
+      :placeholder="placeholder"
+      :value="value"
+      :disabled-date="disableBeforeToday"
+      @change="handleChange"
+    />
+  </div>
+</template>
+
 <script>
 import addDays from 'date-fns/addDays';
 import DatePicker from 'vue2-datepicker';
@@ -29,19 +45,3 @@ export default {
   },
 };
 </script>
-
-<template>
-  <div class="date-picker">
-    <DatePicker
-      type="datetime"
-      confirm
-      :clearable="false"
-      :editable="false"
-      :confirm-text="confirmText"
-      :placeholder="placeholder"
-      :value="value"
-      :disabled-date="disableBeforeToday"
-      @change="handleChange"
-    />
-  </div>
-</template>

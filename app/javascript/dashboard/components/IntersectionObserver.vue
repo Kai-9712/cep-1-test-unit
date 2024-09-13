@@ -1,3 +1,7 @@
+<template>
+  <div ref="observedElement" class="h-6 w-full" />
+</template>
+
 <script>
 export default {
   props: {
@@ -28,7 +32,3 @@ export default {
   },
 };
 </script>
-
-<template>
-  <div ref="observedElement" class="h-6 w-full" />
-</template>

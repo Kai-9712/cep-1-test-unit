@@ -1,3 +1,30 @@
+<template>
+  <button
+    class="inline-flex items-center gap-1 text-sm font-medium reset-base rounded-xl w-fit"
+    :class="buttonClasses"
+    v-bind="$attrs"
+    @click="onClick"
+  >
+    <fluent-icon
+      v-if="icon && !trailingIcon"
+      size="1.16em"
+      :icon="icon"
+      class="flex-shrink-0"
+    />
+    <span
+      v-if="$slots.default"
+      class="text-sm font-medium truncate ltr:text-left rtl:text-right"
+    >
+      <slot />
+    </span>
+    <fluent-icon
+      v-if="icon && trailingIcon"
+      size="1.16em"
+      :icon="icon"
+      class="flex-shrink-0"
+    />
+  </button>
+</template>
 <script setup>
 import { computed, useAttrs } from 'vue';
 
@@ -26,8 +53,6 @@ const props = defineProps({
     default: false,
   },
 });
-
-const emit = defineEmits(['click']);
 
 const attrs = useAttrs();
 
@@ -74,6 +99,8 @@ const sizeClass = computed(() => {
 
 const buttonClasses = computed(() => [colorClass.value, sizeClass.value]);
 
+const emit = defineEmits(['click']);
+
 const onClick = () => {
   if (props.disabled) {
     return;
@@ -81,31 +108,3 @@ const onClick = () => {
   emit('click');
 };
 </script>
-
-<template>
-  <button
-    class="inline-flex items-center gap-1 text-sm font-medium reset-base rounded-xl w-fit"
-    :class="buttonClasses"
-    v-bind="$attrs"
-    @click="onClick"
-  >
-    <fluent-icon
-      v-if="icon && !trailingIcon"
-      size="1.16em"
-      :icon="icon"
-      class="flex-shrink-0"
-    />
-    <span
-      v-if="$slots.default"
-      class="text-sm font-medium truncate ltr:text-left rtl:text-right"
-    >
-      <slot />
-    </span>
-    <fluent-icon
-      v-if="icon && trailingIcon"
-      size="1.16em"
-      :icon="icon"
-      class="flex-shrink-0"
-    />
-  </button>
-</template>

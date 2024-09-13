@@ -1,58 +1,11 @@
-<<<<<<< HEAD
-<script>
-import { useVuelidate } from '@vuelidate/core';
-import { required } from '@vuelidate/validators';
-import CsmlMonacoEditor from './CSMLMonacoEditor.vue';
-
-export default {
-  components: { CsmlMonacoEditor },
-  props: {
-    agentBot: {
-      type: Object,
-      default: () => {},
-    },
-  },
-  setup() {
-    return { v$: useVuelidate() };
-  },
-  validations: {
-    bot: {
-      name: { required },
-      csmlContent: { required },
-    },
-  },
-  data() {
-    return {
-      bot: {
-        name: this.agentBot.name || '',
-        description: this.agentBot.description || '',
-        csmlContent: this.agentBot.bot_config.csml_content || '',
-      },
-    };
-  },
-  methods: {
-    onSubmit() {
-      this.v$.$touch();
-      if (this.v$.$invalid) {
-        return;
-      }
-      this.$emit('submit', {
-        id: this.agentBot.id || '',
-        ...this.bot,
-      });
-    },
-  },
-};
-</script>
-
 <template>
   <div class="h-auto overflow-auto flex flex-col">
     <div class="flex flex-row">
       <div class="w-[68%]">
         <div class="h-[calc(100vh-56px)] relative">
-          <CsmlMonacoEditor v-model="bot.csmlContent" class="w-full h-full" />
+          <csml-monaco-editor v-model="bot.csmlContent" class="w-full h-full" />
           <div
-            v-if="v$.bot.csmlContent.$error"
+            v-if="$v.bot.csmlContent.$error"
             class="bg-red-100 dark:bg-red-200 text-white dark:text-white absolute bottom-0 w-full p-2.5 flex items-center text-xs justify-center flex-shrink-0"
           >
             <span>{{ $t('AGENT_BOTS.CSML_BOT_EDITOR.BOT_CONFIG.ERROR') }}</span>
@@ -65,14 +18,14 @@ export default {
           @submit.prevent="onSubmit"
         >
           <div>
-            <label :class="{ error: v$.bot.name.$error }">
+            <label :class="{ error: $v.bot.name.$error }">
               {{ $t('AGENT_BOTS.CSML_BOT_EDITOR.NAME.LABEL') }}
               <input
                 v-model="bot.name"
                 type="text"
                 :placeholder="$t('AGENT_BOTS.CSML_BOT_EDITOR.NAME.PLACEHOLDER')"
               />
-              <span v-if="v$.bot.name.$error" class="message">
+              <span v-if="$v.bot.name.$error" class="message">
                 {{ $t('AGENT_BOTS.CSML_BOT_EDITOR.NAME.ERROR') }}
               </span>
             </label>
@@ -95,14 +48,9 @@ export default {
     </div>
   </div>
 </template>
-<<<<<<< HEAD
-=======
 
-=======
->>>>>>> b4b308336 (feat: Eslint rules (#9839))
 <script>
-import { useVuelidate } from '@vuelidate/core';
-import { required } from '@vuelidate/validators';
+import { required } from 'vuelidate/lib/validators';
 import CsmlMonacoEditor from './CSMLMonacoEditor.vue';
 
 export default {
@@ -112,9 +60,6 @@ export default {
       type: Object,
       default: () => {},
     },
-  },
-  setup() {
-    return { v$: useVuelidate() };
   },
   validations: {
     bot: {
@@ -133,8 +78,8 @@ export default {
   },
   methods: {
     onSubmit() {
-      this.v$.$touch();
-      if (this.v$.$invalid) {
+      this.$v.$touch();
+      if (this.$v.$invalid) {
         return;
       }
       this.$emit('submit', {
@@ -145,58 +90,3 @@ export default {
   },
 };
 </script>
-<<<<<<< HEAD
->>>>>>> ce8e1ec93 (chore: Migrate all instances of old vuelidate to new v2 syntax [CW-3274] (#9623))
-=======
-
-<template>
-  <div class="h-auto overflow-auto flex flex-col">
-    <div class="flex flex-row">
-      <div class="w-[68%]">
-        <div class="h-[calc(100vh-56px)] relative">
-          <CsmlMonacoEditor v-model="bot.csmlContent" class="w-full h-full" />
-          <div
-            v-if="v$.bot.csmlContent.$error"
-            class="bg-red-100 dark:bg-red-200 text-white dark:text-white absolute bottom-0 w-full p-2.5 flex items-center text-xs justify-center flex-shrink-0"
-          >
-            <span>{{ $t('AGENT_BOTS.CSML_BOT_EDITOR.BOT_CONFIG.ERROR') }}</span>
-          </div>
-        </div>
-      </div>
-      <div class="w-[32%] overflow-auto p-4 h-[calc(100vh-56px)]">
-        <form
-          class="flex flex-col justify-between h-full"
-          @submit.prevent="onSubmit"
-        >
-          <div>
-            <label :class="{ error: v$.bot.name.$error }">
-              {{ $t('AGENT_BOTS.CSML_BOT_EDITOR.NAME.LABEL') }}
-              <input
-                v-model="bot.name"
-                type="text"
-                :placeholder="$t('AGENT_BOTS.CSML_BOT_EDITOR.NAME.PLACEHOLDER')"
-              />
-              <span v-if="v$.bot.name.$error" class="message">
-                {{ $t('AGENT_BOTS.CSML_BOT_EDITOR.NAME.ERROR') }}
-              </span>
-            </label>
-            <label>
-              {{ $t('AGENT_BOTS.CSML_BOT_EDITOR.DESCRIPTION.LABEL') }}
-              <textarea
-                v-model="bot.description"
-                rows="4"
-                :placeholder="
-                  $t('AGENT_BOTS.CSML_BOT_EDITOR.DESCRIPTION.PLACEHOLDER')
-                "
-              />
-            </label>
-            <woot-button>
-              {{ $t('AGENT_BOTS.CSML_BOT_EDITOR.SUBMIT') }}
-            </woot-button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-</template>
->>>>>>> b4b308336 (feat: Eslint rules (#9839))

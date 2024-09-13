@@ -1,3 +1,18 @@
+<template>
+  <div class="customer-satisfcation mb-2">
+    <div class="ratings flex py-5 px-0">
+      <button
+        v-for="rating in ratings"
+        :key="rating.key"
+        :class="buttonClass(rating)"
+        @click="onClick(rating)"
+      >
+        {{ rating.emoji }}
+      </button>
+    </div>
+  </div>
+</template>
+
 <script>
 import { CSAT_RATINGS } from 'shared/constants/messages';
 
@@ -29,21 +44,6 @@ export default {
   },
 };
 </script>
-
-<template>
-  <div class="customer-satisfcation mb-2">
-    <div class="ratings flex py-5 px-0">
-      <button
-        v-for="rating in ratings"
-        :key="rating.key"
-        :class="buttonClass(rating)"
-        @click="onClick(rating)"
-      >
-        {{ rating.emoji }}
-      </button>
-    </div>
-  </div>
-</template>
 
 <style lang="scss" scoped>
 .emoji-button {

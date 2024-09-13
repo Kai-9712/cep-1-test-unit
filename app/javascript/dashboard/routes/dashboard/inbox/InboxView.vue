@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 <template>
   <div class="h-full w-full md:w-[calc(100%-360px)]">
     <div v-if="showEmptyState" class="flex w-full h-full">
@@ -8,7 +5,7 @@
         :empty-state-message="$t('INBOX.LIST.NO_MESSAGES_AVAILABLE')"
       />
     </div>
-    <div v-else class="flex flex-col w-full h-full">
+    <div v-else class="flex flex-col h-full w-full">
       <inbox-item-header
         class="flex-1"
         :total-length="totalNotificationCount"
@@ -21,7 +18,7 @@
         v-if="isConversationLoading"
         class="flex items-center h-[calc(100%-56px)] justify-center bg-slate-25 dark:bg-slate-800"
       >
-        <span class="my-4 spinner" />
+        <span class="spinner my-4" />
       </div>
       <conversation-box
         v-else
@@ -36,15 +33,12 @@
   </div>
 </template>
 
->>>>>>> fb99ba7b4 (feat: Rewrite `uiSettings` mixin to a composable (#9819))
-=======
->>>>>>> b4b308336 (feat: Eslint rules (#9839))
 <script>
 import { mapGetters } from 'vuex';
 import InboxItemHeader from './components/InboxItemHeader.vue';
 import ConversationBox from 'dashboard/components/widgets/conversation/ConversationBox.vue';
 import InboxEmptyState from './InboxEmptyState.vue';
-import { useUISettings } from 'dashboard/composables/useUISettings';
+import uiSettingsMixin from 'dashboard/mixins/uiSettings';
 import { BUS_EVENTS } from 'shared/constants/busEvents';
 import { INBOX_EVENTS } from 'dashboard/helper/AnalyticsHelper/events';
 
@@ -54,14 +48,7 @@ export default {
     InboxEmptyState,
     ConversationBox,
   },
-  setup() {
-    const { uiSettings, updateUISettings } = useUISettings();
-
-    return {
-      uiSettings,
-      updateUISettings,
-    };
-  },
+  mixins: [uiSettingsMixin],
   data() {
     return {
       isConversationLoading: false,
@@ -69,6 +56,7 @@ export default {
   },
   computed: {
     ...mapGetters({
+      currentAccountId: 'getCurrentAccountId',
       notification: 'notifications/getFilteredNotifications',
       currentChat: 'getSelectedChat',
       activeNotificationById: 'notifications/getNotificationById',
@@ -212,38 +200,3 @@ export default {
   },
 };
 </script>
-
-<template>
-  <div class="h-full w-full md:w-[calc(100%-360px)]">
-    <div v-if="showEmptyState" class="flex w-full h-full">
-      <InboxEmptyState
-        :empty-state-message="$t('INBOX.LIST.NO_MESSAGES_AVAILABLE')"
-      />
-    </div>
-    <div v-else class="flex flex-col w-full h-full">
-      <InboxItemHeader
-        class="flex-1"
-        :total-length="totalNotificationCount"
-        :current-index="activeNotificationIndex"
-        :active-notification="activeNotification"
-        @next="onClickNext"
-        @prev="onClickPrev"
-      />
-      <div
-        v-if="isConversationLoading"
-        class="flex items-center h-[calc(100%-56px)] justify-center bg-slate-25 dark:bg-slate-800"
-      >
-        <span class="my-4 spinner" />
-      </div>
-      <ConversationBox
-        v-else
-        class="h-[calc(100%-56px)]"
-        is-inbox-view
-        :inbox-id="inboxId"
-        :is-contact-panel-open="isContactPanelOpen"
-        :is-on-expanded-layout="false"
-        @contactPanelToggle="onToggleContactPanel"
-      />
-    </div>
-  </div>
-</template>

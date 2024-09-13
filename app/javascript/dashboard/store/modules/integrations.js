@@ -20,30 +20,28 @@ const state = {
   },
 };
 
+const isAValidAppIntegration = integration => {
+  return [
+    'dialogflow',
+    'dyte',
+    'google_translate',
+    'openai',
+    'linear',
+  ].includes(integration.id);
+};
 export const getters = {
-  getAppIntegrations($state) {
-    return $state.records;
-<<<<<<< HEAD
-=======
+  getIntegrations($state) {
+    return $state.records.filter(item => !isAValidAppIntegration(item));
   },
-<<<<<<< HEAD
+  getAppIntegrations($state) {
+    return $state.records.filter(item => isAValidAppIntegration(item));
+  },
   getIntegration: $state => integrationId => {
     const [integration] = $state.records.filter(
       record => record.id === integrationId
     );
     return integration || {};
->>>>>>> 8b1d98af5 (feat: Update the design for integration page (#9825))
   },
-=======
->>>>>>> 829bb842f (feat: Generate SSO URL in Chatwoot, move Captain to primary tab (#9871))
-  getIntegration:
-    $state =>
-    (integrationId, defaultValue = {}) => {
-      const [integration] = $state.records.filter(
-        record => record.id === integrationId
-      );
-      return integration || defaultValue;
-    },
   getUIFlags($state) {
     return $state.uiFlags;
   },

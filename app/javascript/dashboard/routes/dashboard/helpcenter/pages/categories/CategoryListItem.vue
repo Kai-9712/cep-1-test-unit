@@ -1,26 +1,6 @@
-<script>
-export default {
-  props: {
-    categories: {
-      type: Array,
-      default: () => [],
-    },
-  },
-
-  methods: {
-    editCategory(category) {
-      this.$emit('edit', category);
-    },
-    deleteCategory(category) {
-      this.$emit('delete', category);
-    },
-  },
-};
-</script>
-
 <template>
   <div>
-    <table class="woot-table">
+    <table>
       <thead>
         <tr>
           <th scope="col">
@@ -86,12 +66,32 @@ export default {
     </table>
     <p
       v-if="categories.length === 0"
-      class="flex justify-center mt-8 text-base text-slate-500 dark:text-slate-300"
+      class="flex justify-center text-slate-500 dark:text-slate-300 text-base mt-8"
     >
       {{ $t('HELP_CENTER.PORTAL.EDIT.CATEGORIES.TABLE.EMPTY_TEXT') }}
     </p>
   </div>
 </template>
+
+<script>
+export default {
+  props: {
+    categories: {
+      type: Array,
+      default: () => [],
+    },
+  },
+
+  methods: {
+    editCategory(category) {
+      this.$emit('edit', category);
+    },
+    deleteCategory(category) {
+      this.$emit('delete', category);
+    },
+  },
+};
+</script>
 
 <style lang="scss" scoped>
 table {

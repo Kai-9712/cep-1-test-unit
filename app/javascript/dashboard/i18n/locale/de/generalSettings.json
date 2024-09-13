@@ -88,16 +88,14 @@
       "assigned_conversation_new_message": "Neue Nachricht",
       "participating_conversation_new_message": "Neue Nachricht",
       "conversation_mention": "Erwähnung",
-      "sla_missed_first_response": "SLA verpasst",
-      "sla_missed_next_response": "SLA verpasst",
-      "sla_missed_resolution": "SLA verpasst"
+      "sla_missed_first_response": "SLA Missed",
+      "sla_missed_next_response": "SLA Missed",
+      "sla_missed_resolution": "SLA Missed"
     }
   },
   "NETWORK": {
     "NOTIFICATION": {
-      "OFFLINE": "Offline",
-      "RECONNECTING": "Verbinde neu...",
-      "RECONNECT_SUCCESS": "Wiederverbunden"
+      "OFFLINE": "Offline"
     },
     "BUTTON": {
       "REFRESH": "Neu laden"
@@ -109,7 +107,7 @@
       "GENERAL": "Generell",
       "REPORTS": "Berichte",
       "CONVERSATION": "Konversation",
-      "BULK_ACTIONS": "Massenaktionen",
+      "BULK_ACTIONS": "Bulk Actions",
       "CHANGE_ASSIGNEE": "Beauftragten ändern",
       "CHANGE_PRIORITY": "Priorität ändern",
       "CHANGE_TEAM": "Team wechseln",
@@ -117,9 +115,9 @@
       "ADD_LABEL": "Label zur Konversation hinzufügen",
       "REMOVE_LABEL": "Label aus der Konversation entfernen",
       "SETTINGS": "Einstellungen",
-      "AI_ASSIST": "AI-Assistent",
-      "APPEARANCE": "Darstellung",
-      "SNOOZE_NOTIFICATION": "Ungelesene Benachrichtigungen"
+      "AI_ASSIST": "AI Assist",
+      "APPEARANCE": "Appearance",
+      "SNOOZE_NOTIFICATION": "Snooze Notification"
     },
     "COMMANDS": {
       "GO_TO_CONVERSATION_DASHBOARD": "Zur Konversationsübersicht",
@@ -141,7 +139,7 @@
       "GO_TO_NOTIFICATIONS": "Zu Benachrichtigungen",
       "ADD_LABELS_TO_CONVERSATION": "Label zur Konversation hinzufügen",
       "ASSIGN_AN_AGENT": "Einen Agent zuweisen",
-      "AI_ASSIST": "AI-Assistent",
+      "AI_ASSIST": "AI Assist",
       "ASSIGN_PRIORITY": "Priorität zuweisen",
       "ASSIGN_A_TEAM": "Ein Team zuweisen",
       "MUTE_CONVERSATION": "Konversation stummschalten",
@@ -156,19 +154,19 @@
       "UNTIL_TOMORROW": "Bis morgen",
       "UNTIL_NEXT_MONTH": "bis zum nächsten Monat",
       "AN_HOUR_FROM_NOW": "bis in einer Stunde von jetzt an",
-      "UNTIL_CUSTOM_TIME": "individuell",
-      "CHANGE_APPEARANCE": "Aussehen ändern",
-      "LIGHT_MODE": "Hell",
-      "DARK_MODE": "Dunkel",
+      "CUSTOM": "individuell",
+      "CHANGE_APPEARANCE": "Change Appearance",
+      "LIGHT_MODE": "Light",
+      "DARK_MODE": "Dark",
       "SYSTEM_MODE": "System",
-      "SNOOZE_NOTIFICATION": "Ungelesene Benachrichtigungen"
+      "SNOOZE_NOTIFICATION": "Snooze Notification"
     }
   },
   "DASHBOARD_APPS": {
     "LOADING_MESSAGE": "Dashboard-App wird geladen..."
   },
   "COMMON": {
-    "OR": "Oder",
+    "OR": "Or",
     "CLICK_HERE": "hier klicken"
   }
 }

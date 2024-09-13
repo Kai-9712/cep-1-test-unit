@@ -1,13 +1,3 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-<script>
-<<<<<<< HEAD
-import { useVuelidate } from '@vuelidate/core';
-import { required, minLength } from '@vuelidate/validators';
-=======
-import { required, minLength } from 'vuelidate/lib/validators';
->>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
-=======
 <template>
   <form @submit.prevent="changePassword()">
     <div class="flex flex-col w-full gap-4">
@@ -15,45 +5,45 @@ import { required, minLength } from 'vuelidate/lib/validators';
         v-model="currentPassword"
         type="password"
         :styles="inputStyles"
-        :class="{ error: v$.currentPassword.$error }"
+        :class="{ error: $v.currentPassword.$error }"
         :label="$t('PROFILE_SETTINGS.FORM.CURRENT_PASSWORD.LABEL')"
         :placeholder="$t('PROFILE_SETTINGS.FORM.CURRENT_PASSWORD.PLACEHOLDER')"
         :error="`${
-          v$.currentPassword.$error
+          $v.currentPassword.$error
             ? $t('PROFILE_SETTINGS.FORM.CURRENT_PASSWORD.ERROR')
             : ''
         }`"
-        @input="v$.currentPassword.$touch"
+        @input="$v.currentPassword.$touch"
       />
 
       <woot-input
         v-model="password"
         type="password"
         :styles="inputStyles"
-        :class="{ error: v$.password.$error }"
+        :class="{ error: $v.password.$error }"
         :label="$t('PROFILE_SETTINGS.FORM.PASSWORD.LABEL')"
         :placeholder="$t('PROFILE_SETTINGS.FORM.PASSWORD.PLACEHOLDER')"
         :error="`${
-          v$.password.$error ? $t('PROFILE_SETTINGS.FORM.PASSWORD.ERROR') : ''
+          $v.password.$error ? $t('PROFILE_SETTINGS.FORM.PASSWORD.ERROR') : ''
         }`"
-        @input="v$.password.$touch"
+        @input="$v.password.$touch"
       />
 
       <woot-input
         v-model="passwordConfirmation"
         type="password"
         :styles="inputStyles"
-        :class="{ error: v$.passwordConfirmation.$error }"
+        :class="{ error: $v.passwordConfirmation.$error }"
         :label="$t('PROFILE_SETTINGS.FORM.PASSWORD_CONFIRMATION.LABEL')"
         :placeholder="
           $t('PROFILE_SETTINGS.FORM.PASSWORD_CONFIRMATION.PLACEHOLDER')
         "
         :error="`${
-          v$.passwordConfirmation.$error
+          $v.passwordConfirmation.$error
             ? $t('PROFILE_SETTINGS.FORM.PASSWORD_CONFIRMATION.ERROR')
             : ''
         }`"
-        @input="v$.passwordConfirmation.$touch"
+        @input="$v.passwordConfirmation.$touch"
       />
 
       <form-button
@@ -69,32 +59,16 @@ import { required, minLength } from 'vuelidate/lib/validators';
   </form>
 </template>
 
-=======
->>>>>>> b4b308336 (feat: Eslint rules (#9839))
 <script>
-import { useVuelidate } from '@vuelidate/core';
-import { required, minLength } from '@vuelidate/validators';
->>>>>>> ce8e1ec93 (chore: Migrate all instances of old vuelidate to new v2 syntax [CW-3274] (#9623))
-import { useAlert } from 'dashboard/composables';
+import { required, minLength } from 'vuelidate/lib/validators';
+import alertMixin from 'shared/mixins/alertMixin';
 import { parseAPIErrorResponse } from 'dashboard/store/utils/api';
 import FormButton from 'v3/components/Form/Button.vue';
-
 export default {
   components: {
     FormButton,
   },
-<<<<<<< HEAD
-<<<<<<< HEAD
-  setup() {
-    return { v$: useVuelidate() };
-  },
-=======
->>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
-=======
-  setup() {
-    return { v$: useVuelidate() };
-  },
->>>>>>> ce8e1ec93 (chore: Migrate all instances of old vuelidate to new v2 syntax [CW-3274] (#9623))
+  mixins: [alertMixin],
   data() {
     return {
       currentPassword: '',
@@ -132,25 +106,15 @@ export default {
       return (
         !this.currentPassword ||
         !this.passwordConfirmation ||
-        !this.v$.passwordConfirmation.isEqPassword
+        !this.$v.passwordConfirmation.isEqPassword
       );
     },
   },
   methods: {
     async changePassword() {
-<<<<<<< HEAD
-<<<<<<< HEAD
-      this.v$.$touch();
-      if (this.v$.$invalid) {
-=======
       this.$v.$touch();
       if (this.$v.$invalid) {
->>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
-=======
-      this.v$.$touch();
-      if (this.v$.$invalid) {
->>>>>>> ce8e1ec93 (chore: Migrate all instances of old vuelidate to new v2 syntax [CW-3274] (#9623))
-        useAlert(this.$t('PROFILE_SETTINGS.FORM.ERROR'));
+        this.showAlert(this.$t('PROFILE_SETTINGS.FORM.ERROR'));
         return;
       }
       let alertMessage = this.$t('PROFILE_SETTINGS.PASSWORD_UPDATE_SUCCESS');
@@ -165,70 +129,9 @@ export default {
           parseAPIErrorResponse(error) ||
           this.$t('RESET_PASSWORD.API.ERROR_MESSAGE');
       } finally {
-        useAlert(alertMessage);
+        this.showAlert(alertMessage);
       }
     },
   },
 };
 </script>
-
-<template>
-  <form @submit.prevent="changePassword()">
-    <div class="flex flex-col w-full gap-4">
-      <woot-input
-        v-model="currentPassword"
-        type="password"
-        :styles="inputStyles"
-        :class="{ error: v$.currentPassword.$error }"
-        :label="$t('PROFILE_SETTINGS.FORM.CURRENT_PASSWORD.LABEL')"
-        :placeholder="$t('PROFILE_SETTINGS.FORM.CURRENT_PASSWORD.PLACEHOLDER')"
-        :error="`${
-          v$.currentPassword.$error
-            ? $t('PROFILE_SETTINGS.FORM.CURRENT_PASSWORD.ERROR')
-            : ''
-        }`"
-        @input="v$.currentPassword.$touch"
-      />
-
-      <woot-input
-        v-model="password"
-        type="password"
-        :styles="inputStyles"
-        :class="{ error: v$.password.$error }"
-        :label="$t('PROFILE_SETTINGS.FORM.PASSWORD.LABEL')"
-        :placeholder="$t('PROFILE_SETTINGS.FORM.PASSWORD.PLACEHOLDER')"
-        :error="`${
-          v$.password.$error ? $t('PROFILE_SETTINGS.FORM.PASSWORD.ERROR') : ''
-        }`"
-        @input="v$.password.$touch"
-      />
-
-      <woot-input
-        v-model="passwordConfirmation"
-        type="password"
-        :styles="inputStyles"
-        :class="{ error: v$.passwordConfirmation.$error }"
-        :label="$t('PROFILE_SETTINGS.FORM.PASSWORD_CONFIRMATION.LABEL')"
-        :placeholder="
-          $t('PROFILE_SETTINGS.FORM.PASSWORD_CONFIRMATION.PLACEHOLDER')
-        "
-        :error="`${
-          v$.passwordConfirmation.$error
-            ? $t('PROFILE_SETTINGS.FORM.PASSWORD_CONFIRMATION.ERROR')
-            : ''
-        }`"
-        @input="v$.passwordConfirmation.$touch"
-      />
-
-      <FormButton
-        type="submit"
-        color-scheme="primary"
-        variant="solid"
-        size="large"
-        :disabled="isButtonDisabled"
-      >
-        {{ $t('PROFILE_SETTINGS.FORM.PASSWORD_SECTION.BTN_TEXT') }}
-      </FormButton>
-    </div>
-  </form>
-</template>

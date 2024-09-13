@@ -1,48 +1,34 @@
-<script setup>
-import router from '../../routes/index';
-const props = defineProps({
-  backUrl: {
-    type: [String, Object],
-    default: '',
-  },
-  buttonLabel: {
-    type: String,
-    default: '',
-  },
-  compact: {
-    type: Boolean,
-    default: false,
-  },
-});
-
-const goBack = () => {
-  if (props.backUrl !== '') {
-    router.push(props.backUrl);
-  } else {
-    router.go(-1);
-  }
-};
-
-const buttonStyleClass = props.compact
-  ? 'text-sm text-slate-600 dark:text-slate-300'
-  : 'text-base text-woot-500 dark:text-woot-500';
-</script>
-
 <template>
   <button
-<<<<<<< HEAD
-<<<<<<< HEAD
-    class="flex items-center p-0 font-normal cursor-pointer"
-=======
-    class="flex items-center font-normal p-0 cursor-pointer"
->>>>>>> 6694db093 (feat: Update the design for dashboard_apps (#9840))
-=======
-    class="flex items-center p-0 font-normal cursor-pointer"
->>>>>>> b4b308336 (feat: Eslint rules (#9839))
-    :class="buttonStyleClass"
+    class="header-section flex items-center text-base font-normal mr-4 ml-2 p-0 cursor-pointer text-woot-500 dark:text-woot-500"
     @click.capture="goBack"
   >
-    <fluent-icon icon="chevron-left" class="-ml-1" />
+    <fluent-icon icon="chevron-left" />
     {{ buttonLabel || $t('GENERAL_SETTINGS.BACK') }}
   </button>
 </template>
+<script>
+import router from '../../routes/index';
+
+export default {
+  props: {
+    backUrl: {
+      type: [String, Object],
+      default: '',
+    },
+    buttonLabel: {
+      type: String,
+      default: '',
+    },
+  },
+  methods: {
+    goBack() {
+      if (this.backUrl !== '') {
+        router.push(this.backUrl);
+      } else {
+        router.go(-1);
+      }
+    },
+  },
+};
+</script>

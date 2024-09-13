@@ -381,9 +381,6 @@
       },
       "SUCCESS_MESSAGE": "Kontak berhasil digabungkan",
       "ERROR_MESSAGE": "Tidak dapat menggabungkan kontak, coba lagi!"
-    },
-    "DROPDOWN_ITEM": {
-      "ID": "(ID: {identifier})"
     }
   }
 }

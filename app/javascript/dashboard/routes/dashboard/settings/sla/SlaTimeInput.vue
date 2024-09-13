@@ -1,11 +1,8 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 <template>
   <div class="flex items-center w-full gap-3">
     <woot-input
       v-model="thresholdTime"
-      :class="{ error: v$.thresholdTime.$error }"
+      :class="{ error: $v.thresholdTime.$error }"
       class="flex-grow"
       :styles="{
         borderRadius: '12px',
@@ -14,7 +11,7 @@
       }"
       :label="label"
       :placeholder="placeholder"
-      :error="thresholdTimeErrorMessage"
+      :error="getThresholdTimeErrorMessage"
       @input="onThresholdTimeChange"
     />
     <!-- the mt-7 handles the label offset -->
@@ -36,14 +33,12 @@
   </div>
 </template>
 
->>>>>>> 84c380c8c (feat: Replace SLA `validationMixin` within the component (#9804))
-=======
->>>>>>> b4b308336 (feat: Eslint rules (#9839))
 <script>
+import validationMixin from './validationMixin';
 import validations from './validations';
-import { useVuelidate } from '@vuelidate/core';
 
 export default {
+  mixins: [validationMixin],
   props: {
     threshold: {
       type: Number,
@@ -62,9 +57,6 @@ export default {
       default: '',
     },
   },
-  setup() {
-    return { v$: useVuelidate() };
-  },
   data() {
     return {
       thresholdTime: this.threshold || '',
@@ -77,29 +69,6 @@ export default {
     };
   },
   validations,
-  computed: {
-    thresholdTimeErrorMessage() {
-      let errorMessage = '';
-<<<<<<< HEAD
-<<<<<<< HEAD
-      if (this.v$.thresholdTime.$error) {
-        if (!this.v$.thresholdTime.numeric || !this.v$.thresholdTime.minValue) {
-=======
-      if (this.$v.thresholdTime.$error) {
-        if (!this.$v.thresholdTime.numeric || !this.$v.thresholdTime.minValue) {
->>>>>>> 84c380c8c (feat: Replace SLA `validationMixin` within the component (#9804))
-=======
-      if (this.v$.thresholdTime.$error) {
-        if (!this.v$.thresholdTime.numeric || !this.v$.thresholdTime.minValue) {
->>>>>>> ce8e1ec93 (chore: Migrate all instances of old vuelidate to new v2 syntax [CW-3274] (#9623))
-          errorMessage = this.$t(
-            'SLA.FORM.THRESHOLD_TIME.INVALID_FORMAT_ERROR'
-          );
-        }
-      }
-      return errorMessage;
-    },
-  },
   watch: {
     threshold: {
       immediate: true,
@@ -121,46 +90,11 @@ export default {
       this.$emit('unit', this.thresholdUnitValue);
     },
     onThresholdTimeChange() {
-      this.v$.thresholdTime.$touch();
-      const isInvalid = this.v$.thresholdTime.$invalid;
+      this.$v.thresholdTime.$touch();
+      const isInvalid = this.$v.thresholdTime.$invalid;
       this.$emit('isInValid', isInvalid);
       this.$emit('input', Number(this.thresholdTime));
     },
   },
 };
 </script>
-
-<template>
-  <div class="flex items-center w-full gap-3">
-    <woot-input
-      v-model="thresholdTime"
-      :class="{ error: v$.thresholdTime.$error }"
-      class="flex-grow"
-      :styles="{
-        borderRadius: '12px',
-        padding: '6px 12px',
-        fontSize: '14px',
-      }"
-      :label="label"
-      :placeholder="placeholder"
-      :error="thresholdTimeErrorMessage"
-      @input="onThresholdTimeChange"
-    />
-    <!-- the mt-7 handles the label offset -->
-    <div class="mt-7">
-      <select
-        v-model="thresholdUnitValue"
-        class="px-4 py-1.5 min-w-[6.5rem] h-10 text-sm font-medium border-0 bg-slate-50 rounded-xl hover:cursor-pointer pr-7 text-slate-800 dark:text-slate-300"
-        @change="onThresholdUnitChange"
-      >
-        <option
-          v-for="(option, index) in options"
-          :key="index"
-          :value="option.value"
-        >
-          {{ option.label }}
-        </option>
-      </select>
-    </div>
-  </div>
-</template>

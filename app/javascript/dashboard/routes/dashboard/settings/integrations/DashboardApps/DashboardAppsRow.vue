@@ -1,48 +1,12 @@
-<script setup>
-defineProps({
-  app: {
-    type: Object,
-    default: () => ({}),
-  },
-});
-
-defineEmits(['edit', 'delete']);
-</script>
-
 <template>
-<<<<<<< HEAD
-<<<<<<< HEAD
-  <tr class="max-w-full py-1">
-=======
-  <tr class="py-1 max-w-full">
->>>>>>> 6694db093 (feat: Update the design for dashboard_apps (#9840))
-=======
-  <tr class="max-w-full py-1">
->>>>>>> b4b308336 (feat: Eslint rules (#9839))
-    <td
-      class="py-4 pr-4 text-sm w-40 max-w-[10rem] truncate"
-      :title="app.title"
-    >
+  <tr>
+    <td class="w-40 max-w-[10rem] truncate" :title="app.title">
       {{ app.title }}
     </td>
-<<<<<<< HEAD
-<<<<<<< HEAD
-    <td class="max-w-lg py-4 pr-4 text-sm truncate" :title="app.content[0].url">
+    <td class="max-w-xs truncate" :title="app.content[0].url">
       {{ app.content[0].url }}
     </td>
-    <td class="flex gap-2 py-4 pr-4 text-sm sm:pr-0">
-=======
-    <td class="py-4 pr-4 text-sm max-w-lg truncate" :title="app.content[0].url">
-      {{ app.content[0].url }}
-    </td>
-    <td class="py-4 pr-4 text-sm flex gap-2 sm:pr-0">
->>>>>>> 6694db093 (feat: Update the design for dashboard_apps (#9840))
-=======
-    <td class="max-w-lg py-4 pr-4 text-sm truncate" :title="app.content[0].url">
-      {{ app.content[0].url }}
-    </td>
-    <td class="flex gap-2 py-4 pr-4 text-sm sm:pr-0">
->>>>>>> b4b308336 (feat: Eslint rules (#9839))
+    <td class="flex justify-end gap-1">
       <woot-button
         v-tooltip.top="
           $t('INTEGRATION_SETTINGS.DASHBOARD_APPS.LIST.EDIT_TOOLTIP')
@@ -68,3 +32,30 @@ defineEmits(['edit', 'delete']);
     </td>
   </tr>
 </template>
+
+<script>
+export default {
+  loading: {
+    type: Boolean,
+    default: false,
+  },
+  props: {
+    app: {
+      type: Object,
+      default: () => ({}),
+    },
+  },
+};
+</script>
+
+<style lang="scss" scoped>
+.dashboard-app-label-url {
+  @apply relative w-full;
+  &:before {
+    @apply invisible content-['&nbsp'];
+  }
+  span {
+    @apply absolute left-0 right-0;
+  }
+}
+</style>

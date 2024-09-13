@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 <template>
   <router-link :to="navigateTo" class="conversation-item">
     <div class="icon-wrap">
@@ -30,7 +27,7 @@
         </h5>
         <h5
           v-if="email"
-          class="overflow-hidden text-sm email text-slate-700 dark:text-slate-200 whitespace-nowrap text-ellipsis"
+          class="text-sm email text-slate-700 dark:text-slate-200 overflow-hidden whitespace-nowrap text-ellipsis"
         >
           <span class="pre-text">{{ $t('SEARCH.EMAIL') }}:</span>
           {{ email }}
@@ -41,18 +38,16 @@
   </router-link>
 </template>
 
->>>>>>> 79381b08c (feat: Move timeMixin to a helper (#9799))
-=======
->>>>>>> b4b308336 (feat: Eslint rules (#9839))
 <script>
 import { frontendURL } from 'dashboard/helper/URLHelper.js';
-import { dynamicTime } from 'shared/helpers/timeHelper';
+import timeMixin from 'dashboard/mixins/time';
 import InboxName from 'dashboard/components/widgets/InboxName.vue';
 
 export default {
   components: {
     InboxName,
   },
+  mixins: [timeMixin],
   props: {
     id: {
       type: Number,
@@ -95,51 +90,11 @@ export default {
       );
     },
     createdAtTime() {
-      return dynamicTime(this.createdAt);
+      return this.dynamicTime(this.createdAt);
     },
   },
 };
 </script>
-
-<template>
-  <router-link :to="navigateTo" class="conversation-item">
-    <div class="icon-wrap">
-      <fluent-icon icon="chat-multiple" :size="14" />
-    </div>
-    <div class="conversation-details">
-      <div class="meta-wrap">
-        <div class="flex">
-          <woot-label
-            class="conversation-id"
-            :title="`#${id}`"
-            :show-close="false"
-            small
-          />
-          <div class="inbox-name-wrap">
-            <InboxName :inbox="inbox" class="mr-2 rtl:mr-0 rtl:ml-2" />
-          </div>
-        </div>
-        <div>
-          <span class="created-at">{{ createdAtTime }}</span>
-        </div>
-      </div>
-      <div class="user-details">
-        <h5 v-if="name" class="text-sm name text-slate-800 dark:text-slate-100">
-          <span class="pre-text"> {{ $t('SEARCH.FROM') }}: </span>
-          {{ name }}
-        </h5>
-        <h5
-          v-if="email"
-          class="overflow-hidden text-sm email text-slate-700 dark:text-slate-200 whitespace-nowrap text-ellipsis"
-        >
-          <span class="pre-text">{{ $t('SEARCH.EMAIL') }}:</span>
-          {{ email }}
-        </h5>
-      </div>
-      <slot />
-    </div>
-  </router-link>
-</template>
 
 <style scoped lang="scss">
 .conversation-item {

@@ -1,35 +1,24 @@
+<template>
+  <banner
+    v-if="shouldShowBanner"
+    color-scheme="alert"
+    :banner-message="bannerMessage"
+    :action-button-label="actionButtonMessage"
+    has-action-button
+    @click="routeToBilling"
+  />
+</template>
+
 <script>
 import Banner from 'dashboard/components/ui/Banner.vue';
 import { mapGetters } from 'vuex';
-<<<<<<< HEAD
-<<<<<<< HEAD
-import { useAccount } from 'dashboard/composables/useAccount';
-=======
+import adminMixin from 'dashboard/mixins/isAdmin';
 import accountMixin from 'dashboard/mixins/account';
->>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
-=======
-import { useAccount } from 'dashboard/composables/useAccount';
->>>>>>> 66db9a0cc (feat: Rewrite `accountMixin` to a composable (#9914))
 import { differenceInDays } from 'date-fns';
 
 export default {
   components: { Banner },
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 66db9a0cc (feat: Rewrite `accountMixin` to a composable (#9914))
-  setup() {
-    const { accountId } = useAccount();
-    return {
-      accountId,
-    };
-  },
-<<<<<<< HEAD
-=======
-  mixins: [accountMixin],
->>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
-=======
->>>>>>> 66db9a0cc (feat: Rewrite `accountMixin` to a composable (#9914))
+  mixins: [adminMixin, accountMixin],
   data() {
     return { conversationMeta: {} };
   },
@@ -98,14 +87,3 @@ export default {
   },
 };
 </script>
-
-<template>
-  <Banner
-    v-if="shouldShowBanner"
-    color-scheme="alert"
-    :banner-message="bannerMessage"
-    :action-button-label="actionButtonMessage"
-    has-action-button
-    @click="routeToBilling"
-  />
-</template>

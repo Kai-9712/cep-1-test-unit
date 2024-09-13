@@ -95,9 +95,7 @@
   },
   "NETWORK": {
     "NOTIFICATION": {
-      "OFFLINE": "Hors-ligne",
-      "RECONNECTING": "Reconnecting...",
-      "RECONNECT_SUCCESS": "Reconnected"
+      "OFFLINE": "Hors-ligne"
     },
     "BUTTON": {
       "REFRESH": "Actualiser"
@@ -156,7 +154,7 @@
       "UNTIL_TOMORROW": "Jusqu'à demain",
       "UNTIL_NEXT_MONTH": "Jusqu'au mois prochain",
       "AN_HOUR_FROM_NOW": "D'ici une heure",
-      "UNTIL_CUSTOM_TIME": "Personnalisé...",
+      "CUSTOM": "Personnalisé...",
       "CHANGE_APPEARANCE": "Changer l'apparence",
       "LIGHT_MODE": "Clair",
       "DARK_MODE": "Sombre",

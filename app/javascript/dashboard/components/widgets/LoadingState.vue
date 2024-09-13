@@ -1,11 +1,3 @@
-<script>
-export default {
-  props: {
-    message: { type: String, default: '' },
-  },
-};
-</script>
-
 <template>
   <div class="flex items-center justify-center p-8">
     <h6
@@ -18,3 +10,10 @@ export default {
     </h6>
   </div>
 </template>
+<script>
+export default {
+  props: {
+    message: { type: String, default: '' },
+  },
+};
+</script>

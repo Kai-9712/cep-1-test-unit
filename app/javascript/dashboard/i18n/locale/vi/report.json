@@ -481,8 +481,7 @@
       "HEADER": "Conversation Traffic",
       "NO_CONVERSATIONS": "No conversations",
       "CONVERSATION": "%{count} conversation",
-      "CONVERSATIONS": "%{count} conversations",
-      "DOWNLOAD_REPORT": "Download report"
+      "CONVERSATIONS": "%{count} conversations"
     },
     "AGENT_CONVERSATIONS": {
       "HEADER": "Cuộc hội thoại của các tổng đài viên",
@@ -518,7 +517,7 @@
     "DOWNLOAD_SLA_REPORTS": "Download SLA reports",
     "DOWNLOAD_FAILED": "Failed to download SLA Reports",
     "DROPDOWN": {
-      "ADD_FIlTER": "Thêm bộ lọc",
+      "ADD_FIlTER": "Add filter",
       "CLEAR_ALL": "Clear all",
       "CLEAR_FILTER": "Clear filter",
       "EMPTY_LIST": "Không tìm thấy kết quả",
@@ -537,7 +536,6 @@
       "LABELS": "Nhãn",
       "TEAMS": "Nhóm"
     },
-    "WITH": "with",
     "METRICS": {
       "HIT_RATE": {
         "LABEL": "Hit Rate",

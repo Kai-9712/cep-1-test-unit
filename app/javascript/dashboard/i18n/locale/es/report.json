@@ -140,7 +140,7 @@
     ],
     "BUSINESS_HOURS": "Horarios",
     "FILTER_ACTIONS": {
-      "CLEAR_FILTER": "Limpiar filtros",
+      "CLEAR_FILTER": "Clear filter",
       "EMPTY_LIST": "No se encontraron resultados"
     }
   },
@@ -481,8 +481,7 @@
       "HEADER": "Tráfico de Conversación",
       "NO_CONVERSATIONS": "No hay conversaciones",
       "CONVERSATION": "%{count} conversación",
-      "CONVERSATIONS": "%{count} conversaciones",
-      "DOWNLOAD_REPORT": "Descargar reporte"
+      "CONVERSATIONS": "%{count} conversaciones"
     },
     "AGENT_CONVERSATIONS": {
       "HEADER": "Conversaciones por agentes",
@@ -512,20 +511,20 @@
     "SATURDAY": "Sábado"
   },
   "SLA_REPORTS": {
-    "HEADER": "Informes de SLA",
+    "HEADER": "SLA Reports",
     "NO_RECORDS": "SLA applied conversations are not available.",
     "LOADING": "Loading SLA data...",
-    "DOWNLOAD_SLA_REPORTS": "Descargar reportes de SLA",
+    "DOWNLOAD_SLA_REPORTS": "Download SLA reports",
     "DOWNLOAD_FAILED": "Failed to download SLA Reports",
     "DROPDOWN": {
       "ADD_FIlTER": "Añadir Filtro",
-      "CLEAR_ALL": "Limpiar todo",
-      "CLEAR_FILTER": "Limpiar filtros",
+      "CLEAR_ALL": "Clear all",
+      "CLEAR_FILTER": "Clear filter",
       "EMPTY_LIST": "No se encontraron resultados",
-      "NO_FILTER": "No hay filtros disponibles",
-      "SEARCH": "Buscar filtro",
+      "NO_FILTER": "No filters available",
+      "SEARCH": "Search filter",
       "INPUT_PLACEHOLDER": {
-        "SLA": "Nombre de SLA",
+        "SLA": "SLA name",
         "AGENTS": "Nombre del agente",
         "INBOXES": "Nombre de la bandeja de entrada",
         "LABELS": "Nombre de la etiqueta",
@@ -537,7 +536,6 @@
       "LABELS": "Etiqueta",
       "TEAMS": "Equipo"
     },
-    "WITH": "con",
     "METRICS": {
       "HIT_RATE": {
         "LABEL": "Hit Rate",
@@ -548,17 +546,17 @@
         "TOOLTIP": "Total SLA misses in a certain period"
       },
       "NO_OF_CONVERSATIONS": {
-        "LABEL": "Número de conversaciones",
+        "LABEL": "Number of Conversations",
         "TOOLTIP": "Total number of conversations with SLA"
       }
     },
     "TABLE": {
       "HEADER": {
-        "POLICY": "Política",
+        "POLICY": "Policy",
         "CONVERSATION": "Conversación",
         "AGENT": "Agente"
       },
-      "VIEW_DETAILS": "Ver detalles"
+      "VIEW_DETAILS": "View Details"
     }
   }
 }

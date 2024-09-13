@@ -381,9 +381,6 @@
       },
       "SUCCESS_MESSAGE": "Kontakt összevonása sikeres",
       "ERROR_MESSAGE": "Nem sikerült a kontaktot összevonni, próbáld újra!"
-    },
-    "DROPDOWN_ITEM": {
-      "ID": "(ID: {identifier})"
     }
   }
 }

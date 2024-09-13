@@ -1,14 +1,3 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-<script>
-import Modal from 'dashboard/components/Modal.vue';
-import { useVuelidate } from '@vuelidate/core';
-import { useAlert } from 'dashboard/composables';
-import { required } from '@vuelidate/validators';
-import allLocales from 'shared/constants/locales.js';
-import { PORTALS_EVENTS } from '../../../../helper/AnalyticsHelper/events';
-
-=======
 <!-- eslint-disable vue/no-mutating-props -->
 <template>
   <modal :show.sync="show" :on-close="onClose">
@@ -18,7 +7,7 @@ import { PORTALS_EVENTS } from '../../../../helper/AnalyticsHelper/events';
     />
     <form class="w-full" @submit.prevent="onCreate">
       <div class="w-full">
-        <label :class="{ error: v$.selectedLocale.$error }">
+        <label :class="{ error: $v.selectedLocale.$error }">
           {{ $t('HELP_CENTER.PORTAL.ADD_LOCALE.LOCALE.LABEL') }}
           <select v-model="selectedLocale">
             <option
@@ -29,13 +18,13 @@ import { PORTALS_EVENTS } from '../../../../helper/AnalyticsHelper/events';
               {{ locale.name }}-{{ locale.code }}
             </option>
           </select>
-          <span v-if="v$.selectedLocale.$error" class="message">
+          <span v-if="$v.selectedLocale.$error" class="message">
             {{ $t('HELP_CENTER.PORTAL.ADD_LOCALE.LOCALE.ERROR') }}
           </span>
         </label>
 
         <div class="w-full">
-          <div class="flex flex-row justify-end w-full gap-2 px-0 py-2">
+          <div class="flex flex-row justify-end gap-2 py-2 px-0 w-full">
             <woot-button class="button clear" @click.prevent="onClose">
               {{ $t('HELP_CENTER.PORTAL.ADD_LOCALE.BUTTONS.CANCEL') }}
             </woot-button>
@@ -49,25 +38,17 @@ import { PORTALS_EVENTS } from '../../../../helper/AnalyticsHelper/events';
   </modal>
 </template>
 
-=======
->>>>>>> b4b308336 (feat: Eslint rules (#9839))
 <script>
 import Modal from 'dashboard/components/Modal.vue';
-import { useVuelidate } from '@vuelidate/core';
-import { useAlert } from 'dashboard/composables';
-import { required } from '@vuelidate/validators';
+import alertMixin from 'shared/mixins/alertMixin';
+import { required } from 'vuelidate/lib/validators';
 import allLocales from 'shared/constants/locales.js';
 import { PORTALS_EVENTS } from '../../../../helper/AnalyticsHelper/events';
-<<<<<<< HEAD
-import Modal from 'dashboard/components/Modal.vue';
->>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
-=======
-
->>>>>>> ce8e1ec93 (chore: Migrate all instances of old vuelidate to new v2 syntax [CW-3274] (#9623))
 export default {
   components: {
     Modal,
   },
+  mixins: [alertMixin],
   props: {
     show: {
       type: Boolean,
@@ -77,9 +58,6 @@ export default {
       type: Object,
       default: () => ({}),
     },
-  },
-  setup() {
-    return { v$: useVuelidate() };
   },
   data() {
     return {
@@ -116,8 +94,8 @@ export default {
   },
   methods: {
     async onCreate() {
-      this.v$.$touch();
-      if (this.v$.$invalid) {
+      this.$v.$touch();
+      if (this.$v.$invalid) {
         return;
       }
       const updatedLocales = this.addedLocales;
@@ -142,7 +120,7 @@ export default {
           error?.message ||
           this.$t('HELP_CENTER.PORTAL.ADD_LOCALE.API.ERROR_MESSAGE');
       } finally {
-        useAlert(this.alertMessage);
+        this.showAlert(this.alertMessage);
         this.isUpdating = false;
       }
     },
@@ -152,47 +130,6 @@ export default {
   },
 };
 </script>
-
-<!-- eslint-disable vue/no-mutating-props -->
-<template>
-  <Modal :show.sync="show" :on-close="onClose">
-    <woot-modal-header
-      :header-title="$t('HELP_CENTER.PORTAL.ADD_LOCALE.TITLE')"
-      :header-content="$t('HELP_CENTER.PORTAL.ADD_LOCALE.SUB_TITLE')"
-    />
-    <form class="w-full" @submit.prevent="onCreate">
-      <div class="w-full">
-        <label :class="{ error: v$.selectedLocale.$error }">
-          {{ $t('HELP_CENTER.PORTAL.ADD_LOCALE.LOCALE.LABEL') }}
-          <select v-model="selectedLocale">
-            <option
-              v-for="locale in locales"
-              :key="locale.name"
-              :value="locale.id"
-            >
-              {{ locale.name }}-{{ locale.code }}
-            </option>
-          </select>
-          <span v-if="v$.selectedLocale.$error" class="message">
-            {{ $t('HELP_CENTER.PORTAL.ADD_LOCALE.LOCALE.ERROR') }}
-          </span>
-        </label>
-
-        <div class="w-full">
-          <div class="flex flex-row justify-end w-full gap-2 px-0 py-2">
-            <woot-button class="button clear" @click.prevent="onClose">
-              {{ $t('HELP_CENTER.PORTAL.ADD_LOCALE.BUTTONS.CANCEL') }}
-            </woot-button>
-            <woot-button>
-              {{ $t('HELP_CENTER.PORTAL.ADD_LOCALE.BUTTONS.CREATE') }}
-            </woot-button>
-          </div>
-        </div>
-      </div>
-    </form>
-  </Modal>
-</template>
-
 <style scoped lang="scss">
 .input-container::v-deep {
   margin: 0 0 var(--space-normal);

@@ -1,10 +1,18 @@
-<script>
-import Spinner from 'shared/components/Spinner.vue';
+<template>
+  <button :type="type" class="button nice" :class="variant" @click="onClick">
+    <fluent-icon
+      v-if="!isLoading && icon"
+      class="icon"
+      :class="buttonIconClass"
+      :icon="icon"
+    />
+    <spinner v-if="isLoading" />
+    <slot />
+  </button>
+</template>
 
+<script>
 export default {
-  components: {
-    Spinner,
-  },
   props: {
     isLoading: {
       type: Boolean,
@@ -34,16 +42,3 @@ export default {
   },
 };
 </script>
-
-<template>
-  <button :type="type" class="button nice" :class="variant" @click="onClick">
-    <fluent-icon
-      v-if="!isLoading && icon"
-      class="icon"
-      :class="buttonIconClass"
-      :icon="icon"
-    />
-    <Spinner v-if="isLoading" />
-    <slot />
-  </button>
-</template>

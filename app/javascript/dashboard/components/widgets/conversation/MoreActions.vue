@@ -1,55 +1,5 @@
-<script>
-import { mapGetters } from 'vuex';
-import { useAlert } from 'dashboard/composables';
-import EmailTranscriptModal from './EmailTranscriptModal.vue';
-import ResolveAction from '../../buttons/ResolveAction.vue';
-import {
-  CMD_MUTE_CONVERSATION,
-  CMD_SEND_TRANSCRIPT,
-  CMD_UNMUTE_CONVERSATION,
-} from 'dashboard/helper/commandbar/events';
-
-export default {
-  components: {
-    EmailTranscriptModal,
-    ResolveAction,
-  },
-  data() {
-    return {
-      showEmailActionsModal: false,
-    };
-  },
-  computed: {
-    ...mapGetters({ currentChat: 'getSelectedChat' }),
-  },
-  mounted() {
-    this.$emitter.on(CMD_MUTE_CONVERSATION, this.mute);
-    this.$emitter.on(CMD_UNMUTE_CONVERSATION, this.unmute);
-    this.$emitter.on(CMD_SEND_TRANSCRIPT, this.toggleEmailActionsModal);
-  },
-  destroyed() {
-    this.$emitter.off(CMD_MUTE_CONVERSATION, this.mute);
-    this.$emitter.off(CMD_UNMUTE_CONVERSATION, this.unmute);
-    this.$emitter.off(CMD_SEND_TRANSCRIPT, this.toggleEmailActionsModal);
-  },
-  methods: {
-    mute() {
-      this.$store.dispatch('muteConversation', this.currentChat.id);
-      useAlert(this.$t('CONTACT_PANEL.MUTED_SUCCESS'));
-    },
-    unmute() {
-      this.$store.dispatch('unmuteConversation', this.currentChat.id);
-      useAlert(this.$t('CONTACT_PANEL.UNMUTED_SUCCESS'));
-    },
-    toggleEmailActionsModal() {
-      this.showEmailActionsModal = !this.showEmailActionsModal;
-    },
-  },
-};
-</script>
-
 <template>
-  <div class="relative flex items-center gap-2 actions--container">
+  <div class="flex actions--container relative items-center gap-2">
     <woot-button
       v-if="!currentChat.muted"
       v-tooltip="$t('CONTACT_PANEL.MUTE_CONTACT')"
@@ -73,11 +23,11 @@ export default {
       icon="share"
       @click="toggleEmailActionsModal"
     />
-    <ResolveAction
+    <resolve-action
       :conversation-id="currentChat.id"
       :status="currentChat.status"
     />
-    <EmailTranscriptModal
+    <email-transcript-modal
       v-if="showEmailActionsModal"
       :show="showEmailActionsModal"
       :current-chat="currentChat"
@@ -85,13 +35,9 @@ export default {
     />
   </div>
 </template>
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-=======
 <script>
 import { mapGetters } from 'vuex';
-import { useAlert } from 'dashboard/composables';
+import alertMixin from 'shared/mixins/alertMixin';
 import EmailTranscriptModal from './EmailTranscriptModal.vue';
 import ResolveAction from '../../buttons/ResolveAction.vue';
 import {
@@ -105,6 +51,7 @@ export default {
     EmailTranscriptModal,
     ResolveAction,
   },
+  mixins: [alertMixin],
   data() {
     return {
       showEmailActionsModal: false,
@@ -126,11 +73,11 @@ export default {
   methods: {
     mute() {
       this.$store.dispatch('muteConversation', this.currentChat.id);
-      useAlert(this.$t('CONTACT_PANEL.MUTED_SUCCESS'));
+      this.showAlert(this.$t('CONTACT_PANEL.MUTED_SUCCESS'));
     },
     unmute() {
       this.$store.dispatch('unmuteConversation', this.currentChat.id);
-      useAlert(this.$t('CONTACT_PANEL.UNMUTED_SUCCESS'));
+      this.showAlert(this.$t('CONTACT_PANEL.UNMUTED_SUCCESS'));
     },
     toggleEmailActionsModal() {
       this.showEmailActionsModal = !this.showEmailActionsModal;
@@ -138,10 +85,6 @@ export default {
   },
 };
 </script>
->>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
-=======
-
->>>>>>> b4b308336 (feat: Eslint rules (#9839))
 <style scoped lang="scss">
 .more--button {
   @apply items-center flex ml-2 rtl:ml-0 rtl:mr-2;

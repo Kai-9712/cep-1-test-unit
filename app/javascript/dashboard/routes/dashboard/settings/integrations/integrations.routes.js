@@ -1,62 +1,14 @@
 import { frontendURL } from '../../../../helper/URLHelper';
-const SettingsWrapper = () => import('../SettingsWrapper.vue');
-const IntegrationHooks = () => import('./IntegrationHooks.vue');
-const Index = () => import('./Index.vue');
+
+const SettingsContent = () => import('../Wrapper.vue');
 const Webhook = () => import('./Webhooks/Index.vue');
 const DashboardApps = () => import('./DashboardApps/Index.vue');
+const ShowIntegration = () => import('./ShowIntegration.vue');
 const Slack = () => import('./Slack.vue');
-const SettingsContent = () => import('../Wrapper.vue');
+const Index = () => import('./Index.vue');
 
 export default {
   routes: [
-    {
-      path: frontendURL('accounts/:accountId/settings/integrations'),
-      component: SettingsWrapper,
-      props: {},
-      children: [
-        {
-          path: '',
-          name: 'settings_applications',
-          component: Index,
-          meta: {
-            permissions: ['administrator'],
-          },
-        },
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 6694db093 (feat: Update the design for dashboard_apps (#9840))
-        {
-          path: 'dashboard_apps',
-          component: DashboardApps,
-          name: 'settings_integrations_dashboard_apps',
-          meta: {
-            permissions: ['administrator'],
-          },
-        },
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-        {
-          path: 'webhook',
-          component: Webhook,
-          name: 'settings_integrations_webhook',
-          meta: {
-            permissions: ['administrator'],
-          },
-        },
->>>>>>> f087461ab (feat: Update the design for the webhook management page (#10050))
-      ],
-    },
-=======
-      ],
-    },
-
->>>>>>> 8b1d98af5 (feat: Update the design for integration page (#9825))
-=======
-      ],
-    },
->>>>>>> 6694db093 (feat: Update the design for dashboard_apps (#9840))
     {
       path: frontendURL('accounts/:accountId/settings/integrations'),
       component: SettingsContent,
@@ -75,7 +27,14 @@ export default {
       },
       children: [
         {
-<<<<<<< HEAD
+          path: '',
+          name: 'settings_integrations',
+          component: Index,
+          meta: {
+            permissions: ['administrator'],
+          },
+        },
+        {
           path: 'webhook',
           component: Webhook,
           name: 'settings_integrations_webhook',
@@ -84,10 +43,7 @@ export default {
           },
         },
         {
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-          path: 'dashboard_apps',
+          path: 'dashboard-apps',
           component: DashboardApps,
           name: 'settings_integrations_dashboard_apps',
           meta: {
@@ -95,11 +51,6 @@ export default {
           },
         },
         {
->>>>>>> 39d20b197 (chore: Update the integration icons, logic for enabled/active attributes for the integration (#9828))
-=======
->>>>>>> 6694db093 (feat: Update the design for dashboard_apps (#9840))
-=======
->>>>>>> f087461ab (feat: Update the design for the webhook management page (#10050))
           path: 'slack',
           name: 'settings_integrations_slack',
           component: Slack,
@@ -110,14 +61,17 @@ export default {
         },
         {
           path: ':integration_id',
-          name: 'settings_applications_integration',
-          component: IntegrationHooks,
+          name: 'settings_integrations_integration',
+          component: ShowIntegration,
           meta: {
             permissions: ['administrator'],
           },
-          props: route => ({
-            integrationId: route.params.integration_id,
-          }),
+          props: route => {
+            return {
+              integrationId: route.params.integration_id,
+              code: route.query.code,
+            };
+          },
         },
       ],
     },

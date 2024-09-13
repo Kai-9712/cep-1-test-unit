@@ -1,3 +1,10 @@
+<template>
+  <dyte-video-call
+    v-if="showDyteIntegration"
+    :message-id="messageId"
+    :meeting-data="contentAttributes.data"
+  />
+</template>
 <script>
 import DyteVideoCall from './integrations/Dyte.vue';
 import inboxMixin from 'shared/mixins/inboxMixin';
@@ -30,11 +37,3 @@ export default {
   },
 };
 </script>
-
-<template>
-  <DyteVideoCall
-    v-if="showDyteIntegration"
-    :message-id="messageId"
-    :meeting-data="contentAttributes.data"
-  />
-</template>

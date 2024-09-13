@@ -1,32 +1,3 @@
-<script>
-export default {
-  inject: ['v$'],
-  props: {
-    macroName: {
-      type: String,
-      default: '',
-    },
-    macroVisibility: {
-      type: String,
-      default: 'global',
-    },
-  },
-  methods: {
-    isActive(key) {
-      return this.macroVisibility === key
-        ? 'bg-woot-25 dark:bg-slate-900 border-woot-200 dark:border-woot-700'
-        : 'bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-600';
-    },
-    onUpdateName(value) {
-      this.$emit('update:name', value);
-    },
-    onUpdateVisibility(value) {
-      this.$emit('update:visibility', value);
-    },
-  },
-};
-</script>
-
 <template>
   <div
     class="p-3 bg-white dark:bg-slate-900 h-[calc(100vh-3.5rem)] flex flex-col border-l border-slate-50 dark:border-slate-800/50"
@@ -36,8 +7,8 @@ export default {
         :value="macroName"
         :label="$t('MACROS.ADD.FORM.NAME.LABEL')"
         :placeholder="$t('MACROS.ADD.FORM.NAME.PLACEHOLDER')"
-        :error="v$.macro.name.$error ? $t('MACROS.ADD.FORM.NAME.ERROR') : null"
-        :class="{ error: v$.macro.name.$error }"
+        :error="$v.macro.name.$error ? $t('MACROS.ADD.FORM.NAME.ERROR') : null"
+        :class="{ error: $v.macro.name.$error }"
         @input="onUpdateName($event)"
       />
     </div>
@@ -113,12 +84,9 @@ export default {
   </div>
 </template>
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 <script>
 export default {
-  inject: ['v$'],
+  inject: ['$v'],
   props: {
     macroName: {
       type: String,
@@ -145,9 +113,6 @@ export default {
 };
 </script>
 
->>>>>>> ce8e1ec93 (chore: Migrate all instances of old vuelidate to new v2 syntax [CW-3274] (#9623))
-=======
->>>>>>> b4b308336 (feat: Eslint rules (#9839))
 <style scoped lang="scss">
 ::v-deep input[type='text'] {
   @apply mb-0;

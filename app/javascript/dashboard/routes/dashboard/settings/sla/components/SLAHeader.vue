@@ -7,16 +7,14 @@ defineProps({
     default: true,
   },
 });
-
-defineEmits(['click']);
 </script>
-
 <template>
-  <BaseSettingsHeader
+  <base-settings-header
     :title="$t('SLA.HEADER')"
     :description="$t('SLA.DESCRIPTION')"
     :link-text="$t('SLA.LEARN_MORE')"
-    feature-name="sla"
+    href="/"
+    icon-name="document-list-clock"
   >
     <template v-if="showActions" #actions>
       <woot-button
@@ -28,5 +26,5 @@ defineEmits(['click']);
         {{ $t('SLA.ADD_ACTION') }}
       </woot-button>
     </template>
-  </BaseSettingsHeader>
+  </base-settings-header>
 </template>

@@ -1,14 +1,3 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-<script>
-import { mapGetters } from 'vuex';
-<<<<<<< HEAD
-import { useVuelidate } from '@vuelidate/core';
-import { minValue } from '@vuelidate/validators';
-=======
-import { minValue } from 'vuelidate/lib/validators';
->>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
-=======
 <template>
   <div>
     <settings-section
@@ -28,7 +17,7 @@ import { minValue } from 'vuelidate/lib/validators';
         selected-label
         :select-label="$t('FORMS.MULTISELECT.ENTER_TO_SELECT')"
         :deselect-label="$t('FORMS.MULTISELECT.ENTER_TO_REMOVE')"
-        @select="v$.selectedAgents.$touch"
+        @select="$v.selectedAgents.$touch"
       />
 
       <woot-submit-button
@@ -67,10 +56,10 @@ import { minValue } from 'vuelidate/lib/validators';
         <woot-input
           v-model.trim="maxAssignmentLimit"
           type="number"
-          :class="{ error: v$.maxAssignmentLimit.$error }"
+          :class="{ error: $v.maxAssignmentLimit.$error }"
           :error="maxAssignmentLimitErrors"
           :label="$t('INBOX_MGMT.AUTO_ASSIGNMENT.MAX_ASSIGNMENT_LIMIT')"
-          @blur="v$.maxAssignmentLimit.$touch"
+          @blur="$v.maxAssignmentLimit.$touch"
         />
 
         <p class="pb-1 text-sm not-italic text-slate-600 dark:text-slate-400">
@@ -79,7 +68,7 @@ import { minValue } from 'vuelidate/lib/validators';
 
         <woot-submit-button
           :button-text="$t('INBOX_MGMT.SETTINGS_POPUP.UPDATE')"
-          :disabled="v$.maxAssignmentLimit.$invalid"
+          :disabled="$v.maxAssignmentLimit.$invalid"
           @click="updateInbox"
         />
       </div>
@@ -87,31 +76,23 @@ import { minValue } from 'vuelidate/lib/validators';
   </div>
 </template>
 
-=======
->>>>>>> b4b308336 (feat: Eslint rules (#9839))
 <script>
 import { mapGetters } from 'vuex';
-import { useVuelidate } from '@vuelidate/core';
-import { minValue } from '@vuelidate/validators';
->>>>>>> ce8e1ec93 (chore: Migrate all instances of old vuelidate to new v2 syntax [CW-3274] (#9623))
-import { useAlert } from 'dashboard/composables';
-import { useConfig } from 'dashboard/composables/useConfig';
+import { minValue } from 'vuelidate/lib/validators';
+import alertMixin from 'shared/mixins/alertMixin';
+import configMixin from 'shared/mixins/configMixin';
 import SettingsSection from '../../../../../components/SettingsSection.vue';
 
 export default {
   components: {
     SettingsSection,
   },
+  mixins: [alertMixin, configMixin],
   props: {
     inbox: {
       type: Object,
       default: () => ({}),
     },
-  },
-  setup() {
-    const { isEnterprise } = useConfig();
-
-    return { v$: useVuelidate(), isEnterprise };
   },
   data() {
     return {
@@ -126,7 +107,7 @@ export default {
       agentList: 'agents/getAgents',
     }),
     maxAssignmentLimitErrors() {
-      if (this.v$.maxAssignmentLimit.$error) {
+      if (this.$v.maxAssignmentLimit.$error) {
         return this.$t(
           'INBOX_MGMT.AUTO_ASSIGNMENT.MAX_ASSIGNMENT_LIMIT_RANGE_ERROR'
         );
@@ -173,9 +154,9 @@ export default {
           inboxId: this.inbox.id,
           agentList,
         });
-        useAlert(this.$t('AGENT_MGMT.EDIT.API.SUCCESS_MESSAGE'));
+        this.showAlert(this.$t('AGENT_MGMT.EDIT.API.SUCCESS_MESSAGE'));
       } catch (error) {
-        useAlert(this.$t('AGENT_MGMT.EDIT.API.ERROR_MESSAGE'));
+        this.showAlert(this.$t('AGENT_MGMT.EDIT.API.ERROR_MESSAGE'));
       }
       this.isAgentListUpdating = false;
     },
@@ -190,9 +171,9 @@ export default {
           },
         };
         await this.$store.dispatch('inboxes/updateInbox', payload);
-        useAlert(this.$t('INBOX_MGMT.EDIT.API.SUCCESS_MESSAGE'));
+        this.showAlert(this.$t('INBOX_MGMT.EDIT.API.SUCCESS_MESSAGE'));
       } catch (error) {
-        useAlert(this.$t('INBOX_MGMT.EDIT.API.SUCCESS_MESSAGE'));
+        this.showAlert(this.$t('INBOX_MGMT.EDIT.API.SUCCESS_MESSAGE'));
       }
     },
   },
@@ -208,84 +189,6 @@ export default {
   },
 };
 </script>
-
-<template>
-  <div>
-    <SettingsSection
-      :title="$t('INBOX_MGMT.SETTINGS_POPUP.INBOX_AGENTS')"
-      :sub-title="$t('INBOX_MGMT.SETTINGS_POPUP.INBOX_AGENTS_SUB_TEXT')"
-    >
-      <multiselect
-        v-model="selectedAgents"
-        :options="agentList"
-        track-by="id"
-        label="name"
-        multiple
-        :close-on-select="false"
-        :clear-on-select="false"
-        hide-selected
-        placeholder="Pick some"
-        selected-label
-        :select-label="$t('FORMS.MULTISELECT.ENTER_TO_SELECT')"
-        :deselect-label="$t('FORMS.MULTISELECT.ENTER_TO_REMOVE')"
-        @select="v$.selectedAgents.$touch"
-      />
-
-      <woot-submit-button
-        :button-text="$t('INBOX_MGMT.SETTINGS_POPUP.UPDATE')"
-        :loading="isAgentListUpdating"
-        @click="updateAgents"
-      />
-    </SettingsSection>
-
-    <SettingsSection
-      :title="$t('INBOX_MGMT.SETTINGS_POPUP.AGENT_ASSIGNMENT')"
-      :sub-title="$t('INBOX_MGMT.SETTINGS_POPUP.AGENT_ASSIGNMENT_SUB_TEXT')"
-    >
-      <label class="w-3/4 settings-item">
-        <div class="flex items-center gap-2">
-          <input
-            id="enableAutoAssignment"
-            v-model="enableAutoAssignment"
-            type="checkbox"
-            @change="handleEnableAutoAssignment"
-          />
-          <label for="enableAutoAssignment">
-            {{ $t('INBOX_MGMT.SETTINGS_POPUP.AUTO_ASSIGNMENT') }}
-          </label>
-        </div>
-
-        <p class="pb-1 text-sm not-italic text-slate-600 dark:text-slate-400">
-          {{ $t('INBOX_MGMT.SETTINGS_POPUP.AUTO_ASSIGNMENT_SUB_TEXT') }}
-        </p>
-      </label>
-
-      <div
-        v-if="enableAutoAssignment && isEnterprise"
-        class="max-assignment-container"
-      >
-        <woot-input
-          v-model.trim="maxAssignmentLimit"
-          type="number"
-          :class="{ error: v$.maxAssignmentLimit.$error }"
-          :error="maxAssignmentLimitErrors"
-          :label="$t('INBOX_MGMT.AUTO_ASSIGNMENT.MAX_ASSIGNMENT_LIMIT')"
-          @blur="v$.maxAssignmentLimit.$touch"
-        />
-
-        <p class="pb-1 text-sm not-italic text-slate-600 dark:text-slate-400">
-          {{ $t('INBOX_MGMT.AUTO_ASSIGNMENT.MAX_ASSIGNMENT_LIMIT_SUB_TEXT') }}
-        </p>
-
-        <woot-submit-button
-          :button-text="$t('INBOX_MGMT.SETTINGS_POPUP.UPDATE')"
-          :disabled="v$.maxAssignmentLimit.$invalid"
-          @click="updateInbox"
-        />
-      </div>
-    </SettingsSection>
-  </div>
-</template>
 
 <style scoped lang="scss">
 @import '~dashboard/assets/scss/variables';

@@ -1,17 +1,3 @@
-<script>
-export default {
-  props: {
-    value: { type: Boolean, default: false },
-    size: { type: String, default: '' },
-  },
-  methods: {
-    onClick() {
-      this.$emit('input', !this.value);
-    },
-  },
-};
-</script>
-
 <template>
   <button
     type="button"
@@ -25,6 +11,19 @@ export default {
   </button>
 </template>
 
+<script>
+export default {
+  props: {
+    value: { type: Boolean, default: false },
+    size: { type: String, default: '' },
+  },
+  methods: {
+    onClick() {
+      this.$emit('input', !this.value);
+    },
+  },
+};
+</script>
 <style lang="scss" scoped>
 .toggle-button {
   @apply bg-slate-200 dark:bg-slate-600;

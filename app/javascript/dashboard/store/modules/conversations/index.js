@@ -10,7 +10,6 @@ import { emitter } from 'shared/helpers/mitt';
 
 const state = {
   allConversations: [],
-  attachments: {},
   listLoadingStatus: true,
   chatStatusFilter: wootConstants.STATUS_TYPE.OPEN,
   chatSortFilter: wootConstants.SORT_BY_TYPE.LATEST,
@@ -49,6 +48,7 @@ export const mutations = {
           allMessagesLoaded: existingConversation.allMessagesLoaded,
           messages: existingConversation.messages,
           dataFetched: existingConversation.dataFetched,
+          attachments: existingConversation.attachments,
         };
       }
     });
@@ -78,10 +78,10 @@ export const mutations = {
     }
   },
   [types.SET_ALL_ATTACHMENTS](_state, { id, data }) {
-    const attachments = _state.attachments[id] || [];
-
-    attachments.push(...data);
-    _state.attachments[id] = [...attachments];
+    const [chat] = _state.allConversations.filter(c => c.id === id);
+    if (!chat) return;
+    Vue.set(chat, 'attachments', []);
+    chat.attachments.push(...data);
   },
   [types.SET_MISSING_MESSAGES](_state, { id, data }) {
     const [chat] = _state.allConversations.filter(c => c.id === id);
@@ -144,50 +144,42 @@ export const mutations = {
     Vue.set(chat, 'muted', false);
   },
 
-  [types.ADD_CONVERSATION_ATTACHMENTS](_state, message) {
-    // early return if the message has not been sent, or has no attachments
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> c344f2b9c (fix: Handle the case where message has no attachments (#9902))
-    if (
-      message.status !== MESSAGE_STATUS.SENT ||
-      !message.attachments?.length
-    ) {
-<<<<<<< HEAD
-=======
-    if (message.status !== MESSAGE_STATUS.SENT || !message.attachments.length) {
->>>>>>> e393bcf12 (fix: Update the logic to handle attachments in a conversation (#9784))
-=======
->>>>>>> c344f2b9c (fix: Handle the case where message has no attachments (#9902))
-      return;
-    }
-
-    const id = message.conversation_id;
-    const existingAttachments = _state.attachments[id] || [];
-
-    const attachmentsToAdd = message.attachments.filter(attachment => {
-      // if the attachment is not already in the store, add it
-      // this is to prevent duplicates
-      return !existingAttachments.some(
-        existingAttachment => existingAttachment.id === attachment.id
-      );
+  [types.ADD_CONVERSATION_ATTACHMENTS]({ allConversations }, message) {
+    const { conversation_id: conversationId } = message;
+    const [chat] = getSelectedChatConversation({
+      allConversations,
+      selectedChatId: conversationId,
     });
 
-    // replace the attachments in the store
-    _state.attachments[id] = [...existingAttachments, ...attachmentsToAdd];
+    if (!chat) return;
+
+    const isMessageSent =
+      message.status === MESSAGE_STATUS.SENT && message.attachments;
+    if (isMessageSent) {
+      message.attachments.forEach(attachment => {
+        if (!chat.attachments.some(a => a.id === attachment.id)) {
+          chat.attachments.push(attachment);
+        }
+      });
+    }
   },
 
-  [types.DELETE_CONVERSATION_ATTACHMENTS](_state, message) {
-    if (message.status !== MESSAGE_STATUS.SENT) return;
-
-    const { conversation_id: id } = message;
-    const existingAttachments = _state.attachments[id] || [];
-    if (!existingAttachments.length) return;
-
-    _state.attachments[id] = existingAttachments.filter(attachment => {
-      return attachment.message_id !== message.id;
+  [types.DELETE_CONVERSATION_ATTACHMENTS]({ allConversations }, message) {
+    const { conversation_id: conversationId } = message;
+    const [chat] = getSelectedChatConversation({
+      allConversations,
+      selectedChatId: conversationId,
     });
+
+    if (!chat) return;
+
+    const isMessageSent = message.status === MESSAGE_STATUS.SENT;
+    if (isMessageSent) {
+      const attachmentIndex = chat.attachments.findIndex(
+        a => a.message_id === message.id
+      );
+      if (attachmentIndex !== -1) chat.attachments.splice(attachmentIndex, 1);
+    }
   },
 
   [types.ADD_MESSAGE]({ allConversations, selectedChatId }, message) {

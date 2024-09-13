@@ -1,3 +1,14 @@
+<template>
+  <span class="inline-flex items-center gap-1">
+    <img
+      v-tooltip="botTypeConfig[botType].label"
+      class="agent-bot-type--thumbnail"
+      :src="botTypeConfig[botType].thumbnail"
+      :alt="botTypeConfig[botType].label"
+    />
+    <span>{{ botTypeConfig[botType].label }}</span>
+  </span>
+</template>
 <script>
 export default {
   props: {
@@ -22,19 +33,6 @@ export default {
   },
 };
 </script>
-
-<template>
-  <span class="inline-flex items-center gap-1">
-    <img
-      v-tooltip="botTypeConfig[botType].label"
-      class="agent-bot-type--thumbnail"
-      :src="botTypeConfig[botType].thumbnail"
-      :alt="botTypeConfig[botType].label"
-    />
-    <span>{{ botTypeConfig[botType].label }}</span>
-  </span>
-</template>
-
 <style scoped>
 .agent-bot-type--thumbnail {
   width: auto;

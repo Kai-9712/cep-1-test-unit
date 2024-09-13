@@ -381,9 +381,6 @@
       },
       "SUCCESS_MESSAGE": "Контакт успішно об'єднано",
       "ERROR_MESSAGE": "Не вдалося об'єднати контакти, спробуйте ще раз!"
-    },
-    "DROPDOWN_ITEM": {
-      "ID": "(ID: {identifier})"
     }
   }
 }

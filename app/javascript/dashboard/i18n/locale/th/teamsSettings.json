@@ -2,13 +2,10 @@
   "TEAMS_SETTINGS": {
     "NEW_TEAM": "สร้างทีมใหม่",
     "HEADER": "ทีม",
-    "LOADING": "Fetching teams",
-    "DESCRIPTION": "Teams allow you to organize agents into groups based on their responsibilities. An agent can belong to multiple teams. When working collaboratively, you can assign conversations to specific teams.",
-    "LEARN_MORE": "Learn more about teams",
+    "SIDEBAR_TXT": "<p><b>ทีม</b></p> <p>คุณสามารถจัดกลุ่มให้กับพนักงานตามความรับผิดชอบที่พวกเขาได้รับ <br /> พนักงานหนึ่งคนสามารถเข้าร่วมได้หลายทีม มอบหมายการสนทนาให้กับทีมเมื่อต้องทำงานร่วมกัน </p>",
     "LIST": {
       "404": "ยังไม่มีทีมที่ถูกสร้างในบัญชีนี้",
-      "EDIT_TEAM": "แก้ไขทีม",
-      "NONE": "ไม่มี"
+      "EDIT_TEAM": "แก้ไขทีม"
     },
     "CREATE_FLOW": {
       "CREATE": {
@@ -100,7 +97,7 @@
         "ERROR_MESSAGE": "ไม่สามารถลบทีมได้ โปรดลองใหม่อีกครั้ง"
       },
       "CONFIRM": {
-        "TITLE": "Are you sure you want to delete the team?",
+        "TITLE": "คุณแน่ใจว่าต้องการลบ %{teamName} หรือไม่",
         "PLACE_HOLDER": "โปรดพิมพ์ {teamName} เพื่อยืนยัน",
         "MESSAGE": "การลบทีมจะยกเลิกการมอบหมายการสนทนาที่ทีมนี้รับผิดชอบไปด้วย",
         "YES": "ลบ ",

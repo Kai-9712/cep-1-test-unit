@@ -1,3 +1,16 @@
+<template>
+  <textarea
+    ref="textarea"
+    :placeholder="placeholder"
+    :rows="rows"
+    :value="value"
+    @input="onInput"
+    @focus="onFocus"
+    @keyup="onKeyup"
+    @blur="onBlur"
+  />
+</template>
+
 <script>
 import {
   appendSignature,
@@ -29,7 +42,7 @@ export default {
       type: Number,
       default: 2,
     },
-    // add this as a prop, so that we won't have to add useUISettings
+    // add this as a prop, so that we won't have to include uiSettingsMixin
     sendWithSignature: {
       type: Boolean,
       default: false,
@@ -44,10 +57,10 @@ export default {
     return {
       typingIndicator: createTypingIndicator(
         () => {
-          this.$emit('typingOn');
+          this.$emit('typing-on');
         },
         () => {
-          this.$emit('typingOff');
+          this.$emit('typing-off');
         },
         TYPING_INDICATOR_IDLE_TIME
       ),
@@ -149,16 +162,3 @@ export default {
   },
 };
 </script>
-
-<template>
-  <textarea
-    ref="textarea"
-    :placeholder="placeholder"
-    :rows="rows"
-    :value="value"
-    @input="onInput"
-    @focus="onFocus"
-    @keyup="onKeyup"
-    @blur="onBlur"
-  />
-</template>

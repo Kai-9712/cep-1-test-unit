@@ -1,14 +1,9 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-<script>
-import { mapGetters } from 'vuex';
-=======
 <template>
   <div
     class="border border-slate-25 overflow-x-auto dark:border-slate-800/60 bg-white dark:bg-slate-900 h-full p-6 w-full max-w-full md:w-3/4 md:max-w-[75%] flex-shrink-0 flex-grow-0"
   >
     <form
-      class="flex flex-wrap mx-0 overflow-x-auto"
+      class="mx-0 flex flex-wrap overflow-x-auto"
       @submit.prevent="addAgents"
     >
       <div class="w-full">
@@ -19,7 +14,7 @@ import { mapGetters } from 'vuex';
       </div>
 
       <div class="w-full">
-        <div v-if="v$.selectedAgents.$error">
+        <div v-if="$v.selectedAgents.$error">
           <p class="error-message">
             {{ $t('TEAMS_SETTINGS.ADD.AGENT_VALIDATION_ERROR') }}
           </p>
@@ -40,24 +35,12 @@ import { mapGetters } from 'vuex';
   </div>
 </template>
 
-=======
->>>>>>> b4b308336 (feat: Eslint rules (#9839))
 <script>
 import { mapGetters } from 'vuex';
-import router from '../../../../index';
-import { useAlert } from 'dashboard/composables';
-import { useVuelidate } from '@vuelidate/core';
-
 import Spinner from 'shared/components/Spinner.vue';
-<<<<<<< HEAD
->>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
-import router from '../../../../index';
-import { useAlert } from 'dashboard/composables';
-import { useVuelidate } from '@vuelidate/core';
+import alertMixin from 'shared/mixins/alertMixin';
 
-import Spinner from 'shared/components/Spinner.vue';
-=======
->>>>>>> ce8e1ec93 (chore: Migrate all instances of old vuelidate to new v2 syntax [CW-3274] (#9623))
+import router from '../../../../index';
 import PageHeader from '../../SettingsSubPageHeader.vue';
 import AgentSelector from '../AgentSelector.vue';
 
@@ -67,9 +50,7 @@ export default {
     PageHeader,
     AgentSelector,
   },
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
+  mixins: [alertMixin],
 
   props: {
     team: {
@@ -77,9 +58,6 @@ export default {
       default: () => {},
     },
   },
->>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
-=======
->>>>>>> b4b308336 (feat: Eslint rules (#9839))
   validations: {
     selectedAgents: {
       isEmpty() {
@@ -87,9 +65,7 @@ export default {
       },
     },
   },
-  setup() {
-    return { v$: useVuelidate() };
-  },
+
   data() {
     return {
       selectedAgents: [],
@@ -139,7 +115,7 @@ export default {
 
   methods: {
     updateSelectedAgents(newAgentList) {
-      this.v$.selectedAgents.$touch();
+      this.$v.selectedAgents.$touch();
       this.selectedAgents = [...newAgentList];
     },
     async addAgents() {
@@ -160,47 +136,10 @@ export default {
         });
         this.$store.dispatch('teams/get');
       } catch (error) {
-        useAlert(error.message);
+        this.showAlert(error.message);
       }
       this.isCreating = false;
     },
   },
 };
 </script>
-
-<template>
-  <div
-    class="border border-slate-25 overflow-x-auto dark:border-slate-800/60 bg-white dark:bg-slate-900 h-full p-6 w-full max-w-full md:w-3/4 md:max-w-[75%] flex-shrink-0 flex-grow-0"
-  >
-    <form
-      class="flex flex-wrap mx-0 overflow-x-auto"
-      @submit.prevent="addAgents"
-    >
-      <div class="w-full">
-        <PageHeader
-          :header-title="headerTitle"
-          :header-content="$t('TEAMS_SETTINGS.EDIT_FLOW.AGENTS.DESC')"
-        />
-      </div>
-
-      <div class="w-full">
-        <div v-if="v$.selectedAgents.$error">
-          <p class="error-message">
-            {{ $t('TEAMS_SETTINGS.ADD.AGENT_VALIDATION_ERROR') }}
-          </p>
-        </div>
-        <AgentSelector
-          v-if="showAgentsList"
-          :agent-list="agentList"
-          :selected-agents="selectedAgents"
-          :update-selected-agents="updateSelectedAgents"
-          :is-working="isCreating"
-          :submit-button-text="
-            $t('TEAMS_SETTINGS.EDIT_FLOW.AGENTS.BUTTON_TEXT')
-          "
-        />
-        <Spinner v-else />
-      </div>
-    </form>
-  </div>
-</template>

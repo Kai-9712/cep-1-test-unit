@@ -381,9 +381,6 @@
       },
       "SUCCESS_MESSAGE": "Contatto unito con successo",
       "ERROR_MESSAGE": "Impossibile unire i contatti, riprova!"
-    },
-    "DROPDOWN_ITEM": {
-      "ID": "(ID: {identifier})"
     }
   }
 }

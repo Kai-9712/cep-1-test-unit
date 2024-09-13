@@ -9,7 +9,7 @@
       <div class="search-input">
         <fluent-icon icon="search" size="14px" class="search--icon" />
         <span
-          class="overflow-hidden text-ellipsis whitespace-nowrap search-placeholder"
+          class="text-ellipsis overflow-hidden whitespace-nowrap search-placeholder"
         >
           {{ $t('CONVERSATION.SEARCH_MESSAGES') }}
         </span>
@@ -18,6 +18,20 @@
   </div>
 </template>
 
+<script>
+export default {
+  props: {
+    tabs: {
+      type: Array,
+      default: () => [],
+    },
+  },
+  data() {
+    return {};
+  },
+  methods: {},
+};
+</script>
 <style lang="scss" scoped>
 .search-input-box {
   @apply p-2;

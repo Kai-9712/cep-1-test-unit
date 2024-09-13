@@ -1,15 +1,3 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-<script>
-<<<<<<< HEAD
-=======
-import globalConfigMixin from 'shared/mixins/globalConfigMixin';
-import uiSettingsMixin, {
-  isEditorHotKeyEnabled,
-} from 'dashboard/mixins/uiSettings';
-import { useAlert } from 'dashboard/composables';
->>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
-=======
 <template>
   <div class="grid py-16 px-5 font-inter mx-auto gap-16 sm:max-w-[720px]">
     <div class="flex flex-col gap-6">
@@ -59,7 +47,7 @@ import { useAlert } from 'dashboard/composables';
             :description="hotKey.description"
             :light-image="hotKey.lightImage"
             :dark-image="hotKey.darkImage"
-            :active="isEditorHotKeyEnabled(hotKey.key)"
+            :active="isEditorHotKeyEnabled(uiSettings, hotKey.key)"
             @click="toggleHotKey(hotKey.key)"
           />
         </button>
@@ -92,16 +80,16 @@ import { useAlert } from 'dashboard/composables';
     </form-section>
   </div>
 </template>
-=======
->>>>>>> b4b308336 (feat: Eslint rules (#9839))
 <script>
->>>>>>> fb99ba7b4 (feat: Rewrite `uiSettings` mixin to a composable (#9819))
+import globalConfigMixin from 'shared/mixins/globalConfigMixin';
+import uiSettingsMixin, {
+  isEditorHotKeyEnabled,
+} from 'dashboard/mixins/uiSettings';
+import alertMixin from 'shared/mixins/alertMixin';
 import { mapGetters } from 'vuex';
-import { useAlert } from 'dashboard/composables';
-import { useUISettings } from 'dashboard/composables/useUISettings';
 import { clearCookiesOnLogout } from 'dashboard/store/utils/api.js';
 import { copyTextToClipboard } from 'shared/helpers/clipboard';
-import globalConfigMixin from 'shared/mixins/globalConfigMixin';
+
 import UserProfilePicture from './UserProfilePicture.vue';
 import UserBasicDetails from './UserBasicDetails.vue';
 import MessageSignature from './MessageSignature.vue';
@@ -124,27 +112,7 @@ export default {
     AudioNotifications,
     AccessToken,
   },
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> fb99ba7b4 (feat: Rewrite `uiSettings` mixin to a composable (#9819))
-  mixins: [globalConfigMixin],
-  setup() {
-    const { uiSettings, updateUISettings, isEditorHotKeyEnabled } =
-      useUISettings();
-
-    return {
-      uiSettings,
-      updateUISettings,
-      isEditorHotKeyEnabled,
-    };
-  },
-<<<<<<< HEAD
-=======
-  mixins: [globalConfigMixin, uiSettingsMixin],
->>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
-=======
->>>>>>> fb99ba7b4 (feat: Rewrite `uiSettings` mixin to a composable (#9819))
+  mixins: [alertMixin, globalConfigMixin, uiSettingsMixin],
   data() {
     return {
       avatarFile: '',
@@ -200,6 +168,7 @@ export default {
       this.displayName = this.currentUser.display_name;
       this.messageSignature = this.currentUser.message_signature;
     },
+    isEditorHotKeyEnabled,
     async dispatchUpdate(payload, successMessage, errorMessage) {
       let alertMessage = '';
       try {
@@ -214,7 +183,7 @@ export default {
 
         return false; // return the value so that the status can be known
       } finally {
-        useAlert(alertMessage);
+        this.showAlert(alertMessage);
       }
     },
     async updateProfile(userAttributes) {
@@ -261,9 +230,9 @@ export default {
         await this.$store.dispatch('deleteAvatar');
         this.avatarUrl = '';
         this.avatarFile = '';
-        useAlert(this.$t('PROFILE_SETTINGS.AVATAR_DELETE_SUCCESS'));
+        this.showAlert(this.$t('PROFILE_SETTINGS.AVATAR_DELETE_SUCCESS'));
       } catch (error) {
-        useAlert(this.$t('PROFILE_SETTINGS.AVATAR_DELETE_FAILED'));
+        this.showAlert(this.$t('PROFILE_SETTINGS.AVATAR_DELETE_FAILED'));
       }
     },
     toggleHotKey(key) {
@@ -271,109 +240,14 @@ export default {
         hotKey.key === key ? { ...hotKey, active: !hotKey.active } : hotKey
       );
       this.updateUISettings({ editor_message_key: key });
-      useAlert(this.$t('PROFILE_SETTINGS.FORM.SEND_MESSAGE.UPDATE_SUCCESS'));
+      this.showAlert(
+        this.$t('PROFILE_SETTINGS.FORM.SEND_MESSAGE.UPDATE_SUCCESS')
+      );
     },
     async onCopyToken(value) {
       await copyTextToClipboard(value);
-      useAlert(this.$t('COMPONENTS.CODE.COPY_SUCCESSFUL'));
+      this.showAlert(this.$t('COMPONENTS.CODE.COPY_SUCCESSFUL'));
     },
   },
 };
 </script>
-
-<template>
-  <div class="grid py-16 px-5 font-inter mx-auto gap-16 sm:max-w-[720px]">
-    <div class="flex flex-col gap-6">
-      <h2 class="text-2xl font-medium text-ash-900">
-        {{ $t('PROFILE_SETTINGS.TITLE') }}
-      </h2>
-      <UserProfilePicture
-        :src="avatarUrl"
-        :name="name"
-        size="72px"
-        @change="updateProfilePicture"
-        @delete="deleteProfilePicture"
-      />
-      <UserBasicDetails
-        :name="name"
-        :display-name="displayName"
-        :email="email"
-        :email-enabled="!globalConfig.disableUserProfileUpdate"
-        @updateUser="updateProfile"
-      />
-    </div>
-
-    <FormSection
-      :title="$t('PROFILE_SETTINGS.FORM.MESSAGE_SIGNATURE_SECTION.TITLE')"
-      :description="$t('PROFILE_SETTINGS.FORM.MESSAGE_SIGNATURE_SECTION.NOTE')"
-    >
-      <MessageSignature
-        :message-signature="messageSignature"
-        @updateSignature="updateSignature"
-      />
-    </FormSection>
-    <FormSection
-      :title="$t('PROFILE_SETTINGS.FORM.SEND_MESSAGE.TITLE')"
-      :description="$t('PROFILE_SETTINGS.FORM.SEND_MESSAGE.NOTE')"
-    >
-      <div
-        class="flex flex-col justify-between w-full gap-5 sm:gap-4 sm:flex-row"
-      >
-        <button
-          v-for="hotKey in hotKeys"
-          :key="hotKey.key"
-          class="px-0 reset-base"
-        >
-          <HotKeyCard
-            :key="hotKey.title"
-            :title="hotKey.title"
-            :description="hotKey.description"
-            :light-image="hotKey.lightImage"
-            :dark-image="hotKey.darkImage"
-            :active="isEditorHotKeyEnabled(hotKey.key)"
-            @click="toggleHotKey(hotKey.key)"
-          />
-        </button>
-      </div>
-    </FormSection>
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> ae938b215 (fix: Disable the password section is the admin has disabled user profile update (#9910))
-    <FormSection
-      v-if="!globalConfig.disableUserProfileUpdate"
-      :title="$t('PROFILE_SETTINGS.FORM.PASSWORD_SECTION.TITLE')"
-    >
-      <ChangePassword />
-<<<<<<< HEAD
-=======
-    <FormSection :title="$t('PROFILE_SETTINGS.FORM.PASSWORD_SECTION.TITLE')">
-      <ChangePassword v-if="!globalConfig.disableUserProfileUpdate" />
->>>>>>> b4b308336 (feat: Eslint rules (#9839))
-=======
->>>>>>> ae938b215 (fix: Disable the password section is the admin has disabled user profile update (#9910))
-    </FormSection>
-    <FormSection
-      :title="$t('PROFILE_SETTINGS.FORM.AUDIO_NOTIFICATIONS_SECTION.TITLE')"
-      :description="
-        $t('PROFILE_SETTINGS.FORM.AUDIO_NOTIFICATIONS_SECTION.NOTE')
-      "
-    >
-      <AudioNotifications />
-    </FormSection>
-    <FormSection :title="$t('PROFILE_SETTINGS.FORM.NOTIFICATIONS.TITLE')">
-      <NotificationPreferences />
-    </FormSection>
-    <FormSection
-      :title="$t('PROFILE_SETTINGS.FORM.ACCESS_TOKEN.TITLE')"
-      :description="
-        useInstallationName(
-          $t('PROFILE_SETTINGS.FORM.ACCESS_TOKEN.NOTE'),
-          globalConfig.installationName
-        )
-      "
-    >
-      <AccessToken :value="currentUser.access_token" @onCopy="onCopyToken" />
-    </FormSection>
-  </div>
-</template>

@@ -1,35 +1,17 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-<script>
-/* global FB */
-import InboxReconnectionRequired from '../components/InboxReconnectionRequired';
-import { useAlert } from 'dashboard/composables';
-
-import { loadScript } from 'dashboard/helper/DOMHelpers';
-=======
 <template>
-  <inbox-reconnection-required class="mx-8 mt-5" @reauthorize="startLogin" />
+  <inbox-reconnection-required class="mx-8 mt-5" @reauthorize="tryFBlogin" />
 </template>
 
-=======
->>>>>>> b4b308336 (feat: Eslint rules (#9839))
 <script>
 /* global FB */
 import InboxReconnectionRequired from '../components/InboxReconnectionRequired';
-import { useAlert } from 'dashboard/composables';
-
-import { loadScript } from 'dashboard/helper/DOMHelpers';
-<<<<<<< HEAD
 import alertMixin from 'shared/mixins/alertMixin';
->>>>>>> cb0642564 (feat: add promise based loader for FB script (#9780))
-=======
->>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
-import * as Sentry from '@sentry/browser';
 
 export default {
   components: {
     InboxReconnectionRequired,
   },
+  mixins: [alertMixin],
   props: {
     inbox: {
       type: Object,
@@ -42,60 +24,38 @@ export default {
     },
   },
   mounted() {
-    window.fbAsyncInit = this.runFBInit;
+    this.initFB();
+    this.loadFBsdk();
   },
   methods: {
-    runFBInit() {
-      FB.init({
-        appId: window.chatwootConfig.fbAppId,
-        xfbml: true,
-        version: window.chatwootConfig.fbApiVersion,
-        status: true,
-      });
-      window.fbSDKLoaded = true;
-      FB.AppEvents.logPageView();
-    },
-
-    async loadFBsdk() {
-      return loadScript('https://connect.facebook.net/en_US/sdk.js', {
-        id: 'facebook-jssdk',
-      });
-    },
-
-    async startLogin() {
-      this.hasLoginStarted = true;
-      try {
-        // this will load the SDK in a promise, and resolve it when the sdk is loaded
-        // in case the SDK is already present, it will resolve immediately
-        await this.loadFBsdk();
-        this.runFBInit(); // run init anyway, `tryFBlogin` won't wait for `fbAsyncInit` otherwise.
-        this.tryFBlogin(); // make an attempt to login
-      } catch (error) {
-        if (error.name === 'ScriptLoaderError') {
-          // if the error was related to script loading, we show a toast
-<<<<<<< HEAD
-<<<<<<< HEAD
-          useAlert(this.$t('INBOX_MGMT.DETAILS.ERROR_FB_LOADING'));
-        } else {
-          // if the error was anything else, we capture it and show a toast
-          Sentry.captureException(error);
-          useAlert(this.$t('INBOX_MGMT.DETAILS.ERROR_FB_AUTH'));
-=======
-          this.showAlert(this.$t('INBOX_MGMT.DETAILS.ERROR_FB_LOADING'));
-        } else {
-          // if the error was anything else, we capture it and show a toast
-          Sentry.captureException(error);
-          this.showAlert(this.$t('INBOX_MGMT.DETAILS.ERROR_FB_AUTH'));
->>>>>>> cb0642564 (feat: add promise based loader for FB script (#9780))
-=======
-          useAlert(this.$t('INBOX_MGMT.DETAILS.ERROR_FB_LOADING'));
-        } else {
-          // if the error was anything else, we capture it and show a toast
-          Sentry.captureException(error);
-          useAlert(this.$t('INBOX_MGMT.DETAILS.ERROR_FB_AUTH'));
->>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
-        }
+    initFB() {
+      if (window.fbSDKLoaded === undefined) {
+        window.fbAsyncInit = () => {
+          FB.init({
+            appId: window.chatwootConfig.fbAppId,
+            xfbml: true,
+            version: window.chatwootConfig.fbApiVersion,
+            status: true,
+          });
+          window.fbSDKLoaded = true;
+          FB.AppEvents.logPageView();
+        };
       }
+    },
+
+    loadFBsdk() {
+      ((d, s, id) => {
+        let js;
+        // eslint-disable-next-line
+        const fjs = (js = d.getElementsByTagName(s)[0]);
+        if (d.getElementById(id)) {
+          return;
+        }
+        js = d.createElement(s);
+        js.id = id;
+        js.src = 'https://connect.facebook.net/en_US/sdk.js';
+        fjs.parentNode.insertBefore(js, fjs);
+      })(document, 'script', 'facebook-jssdk');
     },
 
     tryFBlogin() {
@@ -105,11 +65,11 @@ export default {
             this.reauthorizeFBPage(response.authResponse.accessToken);
           } else if (response.status === 'not_authorized') {
             // The person is logged into Facebook, but not your app.
-            useAlert(this.$t('INBOX_MGMT.DETAILS.ERROR_FB_AUTH'));
+            this.showAlert(this.$t('INBOX_MGMT.DETAILS.ERROR_FB_AUTH'));
           } else {
             // The person is not logged into Facebook, so we're not sure if
             // they are logged into this app or not.
-            useAlert(this.$t('INBOX_MGMT.DETAILS.ERROR_FB_AUTH'));
+            this.showAlert(this.$t('INBOX_MGMT.DETAILS.ERROR_FB_AUTH'));
           }
         },
         {
@@ -125,18 +85,18 @@ export default {
           omniauthToken,
           inboxId: this.inboxId,
         });
-        useAlert(this.$t('INBOX_MGMT.FACEBOOK_REAUTHORIZE.MESSAGE_SUCCESS'));
+        this.showAlert(
+          this.$t('INBOX_MGMT.FACEBOOK_REAUTHORIZE.MESSAGE_SUCCESS')
+        );
       } catch (error) {
-        useAlert(this.$t('INBOX_MGMT.FACEBOOK_REAUTHORIZE.MESSAGE_ERROR'));
+        this.showAlert(
+          this.$t('INBOX_MGMT.FACEBOOK_REAUTHORIZE.MESSAGE_ERROR')
+        );
       }
     },
   },
 };
 </script>
-
-<template>
-  <InboxReconnectionRequired class="mx-8 mt-5" @reauthorize="startLogin" />
-</template>
 
 <style lang="scss" scoped>
 @import '~dashboard/assets/scss/variables';

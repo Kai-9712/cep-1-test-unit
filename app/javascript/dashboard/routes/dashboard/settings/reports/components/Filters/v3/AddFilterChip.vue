@@ -33,8 +33,6 @@ defineProps({
   },
 });
 
-const emit = defineEmits(['toggleDropdown', 'addFilter', 'closeDropdown']);
-
 const hoveredItemId = ref(null);
 
 const showSubMenu = id => {
@@ -47,6 +45,7 @@ const hideSubMenu = () => {
 
 const isHovered = id => hoveredItemId.value === id;
 
+const emit = defineEmits(['toggleDropdown', 'addFilter', 'closeDropdown']);
 const toggleDropdown = () => emit('toggleDropdown');
 const addFilter = item => {
   emit('addFilter', item);
@@ -59,19 +58,19 @@ const closeDropdown = () => {
 </script>
 
 <template>
-  <FilterButton :button-text="name" left-icon="filter" @click="toggleDropdown">
+  <filter-button :button-text="name" left-icon="filter" @click="toggleDropdown">
     <!-- Dropdown with search and sub-dropdown -->
     <template v-if="showMenu" #dropdown>
-      <FilterListDropdown
+      <filter-list-dropdown
         v-on-clickaway="closeDropdown"
         class="left-0 md:right-0 top-10"
       >
         <template #listItem>
-          <FilterDropdownEmptyState
+          <filter-dropdown-empty-state
             v-if="!menuOption.length"
             :message="emptyStateMessage"
           />
-          <FilterListItemButton
+          <filter-list-item-button
             v-for="item in menuOption"
             :key="item.id"
             :button-text="item.name"
@@ -81,7 +80,7 @@ const closeDropdown = () => {
           >
             <!-- Submenu with search and clear button  -->
             <template v-if="item.options && isHovered(item.id)" #dropdown>
-              <FilterListDropdown
+              <filter-list-dropdown
                 :list-items="item.options"
                 :input-placeholder="
                   $t(`${placeholderI18nKey}.${item.type.toUpperCase()}`)
@@ -91,9 +90,9 @@ const closeDropdown = () => {
                 @click="addFilter"
               />
             </template>
-          </FilterListItemButton>
+          </filter-list-item-button>
         </template>
-      </FilterListDropdown>
+      </filter-list-dropdown>
     </template>
-  </FilterButton>
+  </filter-button>
 </template>

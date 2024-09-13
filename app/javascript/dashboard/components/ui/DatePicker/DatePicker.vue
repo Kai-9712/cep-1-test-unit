@@ -31,7 +31,6 @@ import CalendarMonth from './components/CalendarMonth.vue';
 import CalendarWeek from './components/CalendarWeek.vue';
 import CalendarFooter from './components/CalendarFooter.vue';
 
-const emit = defineEmits(['dateRangeChanged']);
 const { LAST_7_DAYS, LAST_30_DAYS, CUSTOM_RANGE } = DATE_RANGE_TYPES;
 const { START_CALENDAR, END_CALENDAR } = CALENDAR_TYPES;
 const { WEEK, MONTH, YEAR } = CALENDAR_PERIODS;
@@ -54,6 +53,8 @@ const hoveredEndDate = ref(null);
 
 const manualStartDate = ref(selectedStartDate.value);
 const manualEndDate = ref(selectedEndDate.value);
+
+const emit = defineEmits(['change']);
 
 // Watcher will set the start and end dates based on the selected range
 watch(selectedRange, newRange => {
@@ -222,7 +223,7 @@ const emitDateRange = () => {
     >
       <CalendarDateRange
         :selected-range="selectedRange"
-        @setRange="setDateRange"
+        @set-range="setDateRange"
       />
       <div
         class="flex flex-col w-[680px] ltr:border-l rtl:border-r border-slate-50 dark:border-slate-700/50"
@@ -264,15 +265,15 @@ const emitDateRange = () => {
                   :calendar-type="calendar"
                   :start-current-date="startCurrentDate"
                   :end-current-date="endCurrentDate"
-                  @selectYear="openCalendar($event, calendar, YEAR)"
+                  @select-year="openCalendar($event, calendar, YEAR)"
                 />
                 <CalendarMonth
                   v-else-if="calendarViews[calendar] === MONTH"
                   :calendar-type="calendar"
                   :start-current-date="startCurrentDate"
                   :end-current-date="endCurrentDate"
-                  @selectMonth="openCalendar($event, calendar)"
-                  @setView="setViewMode"
+                  @select-month="openCalendar($event, calendar)"
+                  @set-view="setViewMode"
                   @prev="moveCalendar(calendar, 'prev', YEAR)"
                   @next="moveCalendar(calendar, 'next', YEAR)"
                 />
@@ -286,9 +287,9 @@ const emitDateRange = () => {
                   :selected-end-date="selectedEndDate"
                   :selecting-end-date="selectingEndDate"
                   :hovered-end-date="hoveredEndDate"
-                  @updateHoveredEndDate="hoveredEndDate = $event"
-                  @selectDate="selectDate"
-                  @setView="setViewMode"
+                  @update-hovered-end-date="hoveredEndDate = $event"
+                  @select-date="selectDate"
+                  @set-view="setViewMode"
                   @prev="moveCalendar(calendar, 'prev')"
                   @next="moveCalendar(calendar, 'next')"
                 />

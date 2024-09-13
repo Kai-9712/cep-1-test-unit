@@ -6,7 +6,6 @@ defineProps({
   },
 });
 </script>
-
 <template>
   <div class="relative group w-[inherit] whitespace-normal z-20">
     <fluent-icon

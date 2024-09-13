@@ -1,5 +1,30 @@
+<template>
+  <div class="chat-bubble-wrap">
+    <button
+      class="chat-bubble agent"
+      :class="$dm('bg-white', 'dark:bg-slate-50')"
+      @click="onClickMessage"
+    >
+      <div v-if="showSender" class="row--agent-block">
+        <thumbnail
+          :src="avatarUrl"
+          size="20px"
+          :username="agentName"
+          :status="availabilityStatus"
+        />
+        <span v-dompurify-html="agentName" class="agent--name" />
+        <span v-dompurify-html="companyName" class="company--name" />
+      </div>
+      <div
+        v-dompurify-html="formatMessage(message, false)"
+        class="message-content"
+      />
+    </button>
+  </div>
+</template>
+
 <script>
-import { useMessageFormatter } from 'shared/composables/useMessageFormatter';
+import messageFormatterMixin from 'shared/mixins/messageFormatterMixin';
 import Thumbnail from 'dashboard/components/widgets/Thumbnail.vue';
 import configMixin from '../mixins/configMixin';
 import { isEmptyObject } from 'widget/helpers/utils';
@@ -7,11 +32,11 @@ import {
   ON_CAMPAIGN_MESSAGE_CLICK,
   ON_UNREAD_MESSAGE_CLICK,
 } from '../constants/widgetBusEvents';
-import { useDarkMode } from 'widget/composables/useDarkMode';
+import darkModeMixin from 'widget/mixins/darkModeMixin';
 export default {
   name: 'UnreadMessage',
   components: { Thumbnail },
-  mixins: [configMixin],
+  mixins: [messageFormatterMixin, configMixin, darkModeMixin],
   props: {
     message: {
       type: String,
@@ -29,18 +54,6 @@ export default {
       type: Number,
       default: null,
     },
-  },
-  setup() {
-    const { formatMessage, getPlainText, truncateMessage, highlightContent } =
-      useMessageFormatter();
-    const { getThemeClass } = useDarkMode();
-    return {
-      formatMessage,
-      getPlainText,
-      truncateMessage,
-      highlightContent,
-      getThemeClass,
-    };
   },
   computed: {
     companyName() {
@@ -92,32 +105,6 @@ export default {
   },
 };
 </script>
-
-<template>
-  <div class="chat-bubble-wrap">
-    <button
-      class="chat-bubble agent"
-      :class="getThemeClass('bg-white', 'dark:bg-slate-50')"
-      @click="onClickMessage"
-    >
-      <div v-if="showSender" class="row--agent-block">
-        <Thumbnail
-          :src="avatarUrl"
-          size="20px"
-          :username="agentName"
-          :status="availabilityStatus"
-        />
-        <span v-dompurify-html="agentName" class="agent--name" />
-        <span v-dompurify-html="companyName" class="company--name" />
-      </div>
-      <div
-        v-dompurify-html="formatMessage(message, false)"
-        class="message-content"
-      />
-    </button>
-  </div>
-</template>
-
 <style lang="scss" scoped>
 @import '~widget/assets/scss/variables.scss';
 .chat-bubble {

@@ -38,18 +38,7 @@ describe('#validateAuthenticateRoutePermission', () => {
             getCurrentUser: {
               account_id: 1,
               id: 1,
-<<<<<<< HEAD
               accounts: [{ id: 1, role: 'agent', status: 'active' }],
-=======
-              accounts: [
-                {
-                  permissions: ['agent'],
-                  id: 1,
-                  role: 'agent',
-                  status: 'active',
-                },
-              ],
->>>>>>> 77b718c22 (fix: Remove user.permissions, resolve it from accounts (#9990))
             },
           };
           validateAuthenticateRoutePermission(to, next, { getters });
@@ -66,18 +55,7 @@ describe('#validateAuthenticateRoutePermission', () => {
             getCurrentUser: {
               account_id: 1,
               id: 1,
-<<<<<<< HEAD
               accounts: [{ id: 1, role: 'agent', status: 'active' }],
-=======
-              accounts: [
-                {
-                  id: 1,
-                  role: 'administrator',
-                  permissions: ['administrator'],
-                  status: 'active',
-                },
-              ],
->>>>>>> 77b718c22 (fix: Remove user.permissions, resolve it from accounts (#9990))
             },
           };
           validateAuthenticateRoutePermission(to, next, { getters });

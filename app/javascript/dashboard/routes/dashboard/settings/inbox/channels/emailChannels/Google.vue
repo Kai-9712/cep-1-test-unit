@@ -6,7 +6,6 @@ defineComponent({
   name: 'GoogleOAuthChannel',
 });
 </script>
-
 <template>
   <OAuthChannel
     provider="google"

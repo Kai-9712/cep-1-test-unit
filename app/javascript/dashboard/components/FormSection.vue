@@ -1,16 +1,3 @@
-<script setup>
-defineProps({
-  title: {
-    type: String,
-    default: '',
-  },
-  description: {
-    type: String,
-    default: '',
-  },
-});
-</script>
-
 <template>
   <div class="flex flex-col items-start w-full gap-6">
     <div class="flex flex-col w-full gap-4">
@@ -29,3 +16,16 @@ defineProps({
     </div>
   </div>
 </template>
+
+<script setup>
+defineProps({
+  title: {
+    type: String,
+    default: '',
+  },
+  description: {
+    type: String,
+    default: '',
+  },
+});
+</script>

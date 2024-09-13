@@ -381,9 +381,6 @@
       },
       "SUCCESS_MESSAGE": "Tengiliður sameinaður",
       "ERROR_MESSAGE": "Tókst ekki að sameina tengiliði, reyndu aftur!"
-    },
-    "DROPDOWN_ITEM": {
-      "ID": "(ID: {identifier})"
     }
   }
 }

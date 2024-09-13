@@ -1,27 +1,143 @@
+<template>
+  <div class="bottom-box" :class="wrapClass">
+    <div class="left-wrap">
+      <woot-button
+        v-tooltip.top-end="$t('CONVERSATION.REPLYBOX.TIP_EMOJI_ICON')"
+        :title="$t('CONVERSATION.REPLYBOX.TIP_EMOJI_ICON')"
+        icon="emoji"
+        emoji="😊"
+        color-scheme="secondary"
+        variant="smooth"
+        size="small"
+        @click="toggleEmojiPicker"
+      />
+      <file-upload
+        ref="upload"
+        v-tooltip.top-end="$t('CONVERSATION.REPLYBOX.TIP_ATTACH_ICON')"
+        input-id="conversationAttachment"
+        :size="4096 * 4096"
+        :accept="allowedFileTypes"
+        :multiple="enableMultipleFileUpload"
+        :drop="enableDragAndDrop"
+        :drop-directory="false"
+        :data="{
+          direct_upload_url: '/rails/active_storage/direct_uploads',
+          direct_upload: true,
+        }"
+        @input-file="onFileUpload"
+      >
+        <woot-button
+          v-if="showAttachButton"
+          class-names="button--upload"
+          :title="$t('CONVERSATION.REPLYBOX.TIP_ATTACH_ICON')"
+          icon="attach"
+          emoji="📎"
+          color-scheme="secondary"
+          variant="smooth"
+          size="small"
+        />
+      </file-upload>
+      <woot-button
+        v-if="showAudioRecorderButton"
+        v-tooltip.top-end="$t('CONVERSATION.REPLYBOX.TIP_AUDIORECORDER_ICON')"
+        :icon="!isRecordingAudio ? 'microphone' : 'microphone-off'"
+        emoji="🎤"
+        :color-scheme="!isRecordingAudio ? 'secondary' : 'alert'"
+        variant="smooth"
+        size="small"
+        @click="toggleAudioRecorder"
+      />
+      <woot-button
+        v-if="showEditorToggle"
+        v-tooltip.top-end="$t('CONVERSATION.REPLYBOX.TIP_FORMAT_ICON')"
+        icon="quote"
+        emoji="🖊️"
+        color-scheme="secondary"
+        variant="smooth"
+        size="small"
+        @click="$emit('toggle-editor')"
+      />
+      <woot-button
+        v-if="showAudioPlayStopButton"
+        :icon="audioRecorderPlayStopIcon"
+        emoji="🎤"
+        color-scheme="secondary"
+        variant="smooth"
+        size="small"
+        @click="toggleAudioRecorderPlayPause"
+      >
+        <span>{{ recordingAudioDurationText }}</span>
+      </woot-button>
+      <woot-button
+        v-if="showMessageSignatureButton"
+        v-tooltip.top-end="signatureToggleTooltip"
+        icon="signature"
+        color-scheme="secondary"
+        variant="smooth"
+        size="small"
+        :title="signatureToggleTooltip"
+        @click="toggleMessageSignature"
+      />
+      <woot-button
+        v-if="hasWhatsappTemplates"
+        v-tooltip.top-end="'Whatsapp Templates'"
+        icon="whatsapp"
+        color-scheme="secondary"
+        variant="smooth"
+        size="small"
+        :title="'Whatsapp Templates'"
+        @click="$emit('selectWhatsappTemplate')"
+      />
+      <video-call-button
+        v-if="(isAWebWidgetInbox || isAPIInbox) && !isOnPrivateNote"
+        :conversation-id="conversationId"
+      />
+      <AIAssistanceButton
+        :conversation-id="conversationId"
+        :is-private-note="isOnPrivateNote"
+        :message="message"
+        @replace-text="replaceText"
+      />
+      <transition name="modal-fade">
+        <div
+          v-show="$refs.upload && $refs.upload.dropActive"
+          class="fixed top-0 bottom-0 left-0 right-0 z-20 flex flex-col items-center justify-center w-full h-full gap-2 text-slate-900 dark:text-slate-50 bg-modal-backdrop-light dark:bg-modal-backdrop-dark"
+        >
+          <fluent-icon icon="cloud-backup" size="40" />
+          <h4 class="text-2xl break-words text-slate-900 dark:text-slate-50">
+            {{ $t('CONVERSATION.REPLYBOX.DRAG_DROP') }}
+          </h4>
+        </div>
+      </transition>
+      <woot-button
+        v-if="enableInsertArticleInReply"
+        v-tooltip.top-end="$t('HELP_CENTER.ARTICLE_SEARCH.OPEN_ARTICLE_SEARCH')"
+        icon="document-text-link"
+        color-scheme="secondary"
+        variant="smooth"
+        size="small"
+        :title="$t('HELP_CENTER.ARTICLE_SEARCH.OPEN_ARTICLE_SEARCH')"
+        @click="toggleInsertArticle"
+      />
+    </div>
+    <div class="right-wrap">
+      <woot-button
+        size="small"
+        :class-names="buttonClass"
+        :is-disabled="isSendDisabled"
+        @click="onSend"
+      >
+        {{ sendButtonText }}
+      </woot-button>
+    </div>
+  </div>
+</template>
+
 <script>
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-import { ref, watchEffect, computed } from 'vue';
-=======
->>>>>>> dadd572f9 (refactor: `useKeyboardEvents` composable  (#9959))
-import { useUISettings } from 'dashboard/composables/useUISettings';
-import { useKeyboardEvents } from 'dashboard/composables/useKeyboardEvents';
 import FileUpload from 'vue-upload-component';
 import * as ActiveStorage from 'activestorage';
-=======
-=======
-import { ref, watchEffect, computed } from 'vue';
->>>>>>> 89acbd8d0 (feat: Replace the use of `keyboardEventListener` mixin to a composable (Part -2) (#9892))
-import { useUISettings } from 'dashboard/composables/useUISettings';
-import { useKeyboardEvents } from 'dashboard/composables/useKeyboardEvents';
-import FileUpload from 'vue-upload-component';
-import * as ActiveStorage from 'activestorage';
-<<<<<<< HEAD
 import keyboardEventListenerMixins from 'shared/mixins/keyboardEventListenerMixins';
->>>>>>> fb99ba7b4 (feat: Rewrite `uiSettings` mixin to a composable (#9819))
-=======
->>>>>>> 89acbd8d0 (feat: Replace the use of `keyboardEventListener` mixin to a composable (Part -2) (#9892))
+import uiSettingsMixin from 'dashboard/mixins/uiSettings';
 import inboxMixin from 'shared/mixins/inboxMixin';
 import { FEATURE_FLAGS } from 'dashboard/featureFlags';
 import {
@@ -37,15 +153,7 @@ import { mapGetters } from 'vuex';
 export default {
   name: 'ReplyBottomPanel',
   components: { FileUpload, VideoCallButton, AIAssistanceButton },
-<<<<<<< HEAD
-<<<<<<< HEAD
-  mixins: [inboxMixin],
-=======
-  mixins: [keyboardEventListenerMixins, inboxMixin],
->>>>>>> fb99ba7b4 (feat: Rewrite `uiSettings` mixin to a composable (#9819))
-=======
-  mixins: [inboxMixin],
->>>>>>> 89acbd8d0 (feat: Replace the use of `keyboardEventListener` mixin to a composable (Part -2) (#9892))
+  mixins: [keyboardEventListenerMixins, uiSettingsMixin, inboxMixin],
   props: {
     mode: {
       type: String,
@@ -63,9 +171,6 @@ export default {
       type: String,
       default: '',
     },
-    // inbox prop is used in /mixins/inboxMixin,
-    // remove this props when refactoring to composable if not needed
-    // eslint-disable-next-line vue/no-unused-properties
     inbox: {
       type: Object,
       default: () => ({}),
@@ -81,6 +186,10 @@ export default {
     onFileUpload: {
       type: Function,
       default: () => {},
+    },
+    showEmojiPicker: {
+      type: Boolean,
+      default: false,
     },
     toggleEmojiPicker: {
       type: Function,
@@ -139,76 +248,10 @@ export default {
       required: true,
     },
   },
-  setup() {
-    const { setSignatureFlagForInbox, fetchSignatureFlagFromUISettings } =
-      useUISettings();
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 89acbd8d0 (feat: Replace the use of `keyboardEventListener` mixin to a composable (Part -2) (#9892))
-=======
-
-<<<<<<< HEAD
->>>>>>> 207933ed7 (fix: TypeError cannot read properties of undefined (reading '$el') (#9951))
-    const uploadRef = ref(null);
-    // TODO: This is really hacky, we need to replace the file picker component with
-    // a custom one, where the logic and the component markup is isolated.
-    // Once we have the custom component, we can remove the hacky logic below.
-    const uploadRefElem = computed(() => uploadRef.value?.$el);
-
-=======
->>>>>>> dadd572f9 (refactor: `useKeyboardEvents` composable  (#9959))
-    const keyboardEvents = {
-      'Alt+KeyA': {
-        action: () => {
-          // TODO: This is really hacky, we need to replace the file picker component with
-          // a custom one, where the logic and the component markup is isolated.
-          // Once we have the custom component, we can remove the hacky logic below.
-
-          const uploadTriggerButton = document.querySelector(
-            '#conversationAttachment'
-          );
-          uploadTriggerButton.click();
-        },
-        allowOnFocusedInput: true,
-      },
-    };
-
-<<<<<<< HEAD
-    watchEffect(() => {
-      useKeyboardEvents(keyboardEvents, uploadRefElem);
-    });
-<<<<<<< HEAD
-=======
->>>>>>> fb99ba7b4 (feat: Rewrite `uiSettings` mixin to a composable (#9819))
-=======
->>>>>>> 89acbd8d0 (feat: Replace the use of `keyboardEventListener` mixin to a composable (Part -2) (#9892))
-=======
-    useKeyboardEvents(keyboardEvents);
->>>>>>> dadd572f9 (refactor: `useKeyboardEvents` composable  (#9959))
-
-    return {
-      setSignatureFlagForInbox,
-      fetchSignatureFlagFromUISettings,
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-      uploadRef,
-=======
->>>>>>> fb99ba7b4 (feat: Rewrite `uiSettings` mixin to a composable (#9819))
-=======
-      uploadRef,
->>>>>>> 89acbd8d0 (feat: Replace the use of `keyboardEventListener` mixin to a composable (Part -2) (#9892))
-=======
->>>>>>> dadd572f9 (refactor: `useKeyboardEvents` composable  (#9959))
-    };
-  },
   computed: {
     ...mapGetters({
       accountId: 'getCurrentAccountId',
       isFeatureEnabledonAccount: 'accounts/isFeatureEnabledonAccount',
-      uiFlags: 'integrations/getUIFlags',
     }),
     isNote() {
       return this.mode === REPLY_EDITOR_MODES.NOTE;
@@ -277,7 +320,7 @@ export default {
     },
     sendWithSignature() {
       // channelType is sourced from inboxMixin
-      return this.fetchSignatureFlagFromUISettings(this.channelType);
+      return this.fetchSignatureFlagFromUiSettings(this.channelType);
     },
     signatureToggleTooltip() {
       return this.sendWithSignature
@@ -291,188 +334,33 @@ export default {
       );
       return isFeatEnabled && this.portalSlug;
     },
-    isFetchingAppIntegrations() {
-      return this.uiFlags.isFetching;
-    },
   },
   mounted() {
     ActiveStorage.start();
   },
   methods: {
+    getKeyboardEvents() {
+      return {
+        'Alt+KeyA': {
+          action: () => {
+            this.$refs.upload.$children[1].$el.click();
+          },
+          allowOnFocusedInput: true,
+        },
+      };
+    },
     toggleMessageSignature() {
       this.setSignatureFlagForInbox(this.channelType, !this.sendWithSignature);
     },
     replaceText(text) {
-      this.$emit('replaceText', text);
+      this.$emit('replace-text', text);
     },
     toggleInsertArticle() {
-      this.$emit('toggleInsertArticle');
+      this.$emit('toggle-insert-article');
     },
   },
 };
 </script>
-
-<template>
-  <div class="bottom-box" :class="wrapClass">
-    <div class="left-wrap">
-      <woot-button
-        v-tooltip.top-end="$t('CONVERSATION.REPLYBOX.TIP_EMOJI_ICON')"
-        :title="$t('CONVERSATION.REPLYBOX.TIP_EMOJI_ICON')"
-        icon="emoji"
-        emoji="😊"
-        color-scheme="secondary"
-        variant="smooth"
-        size="small"
-        @click="toggleEmojiPicker"
-      />
-      <FileUpload
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-        ref="uploadRef"
-=======
-        ref="upload"
->>>>>>> b4b308336 (feat: Eslint rules (#9839))
-=======
-        ref="uploadRef"
->>>>>>> 89acbd8d0 (feat: Replace the use of `keyboardEventListener` mixin to a composable (Part -2) (#9892))
-=======
->>>>>>> dadd572f9 (refactor: `useKeyboardEvents` composable  (#9959))
-        v-tooltip.top-end="$t('CONVERSATION.REPLYBOX.TIP_ATTACH_ICON')"
-        input-id="conversationAttachment"
-        :size="4096 * 4096"
-        :accept="allowedFileTypes"
-        :multiple="enableMultipleFileUpload"
-        :drop="enableDragAndDrop"
-        :drop-directory="false"
-        :data="{
-          direct_upload_url: '/rails/active_storage/direct_uploads',
-          direct_upload: true,
-        }"
-        @input-file="onFileUpload"
-      >
-        <woot-button
-          v-if="showAttachButton"
-          class-names="button--upload"
-          :title="$t('CONVERSATION.REPLYBOX.TIP_ATTACH_ICON')"
-          icon="attach"
-          emoji="📎"
-          color-scheme="secondary"
-          variant="smooth"
-          size="small"
-        />
-      </FileUpload>
-      <woot-button
-        v-if="showAudioRecorderButton"
-        v-tooltip.top-end="$t('CONVERSATION.REPLYBOX.TIP_AUDIORECORDER_ICON')"
-        :icon="!isRecordingAudio ? 'microphone' : 'microphone-off'"
-        emoji="🎤"
-        :color-scheme="!isRecordingAudio ? 'secondary' : 'alert'"
-        variant="smooth"
-        size="small"
-        @click="toggleAudioRecorder"
-      />
-      <woot-button
-        v-if="showEditorToggle"
-        v-tooltip.top-end="$t('CONVERSATION.REPLYBOX.TIP_FORMAT_ICON')"
-        icon="quote"
-        emoji="🖊️"
-        color-scheme="secondary"
-        variant="smooth"
-        size="small"
-        @click="$emit('toggleEditor')"
-      />
-      <woot-button
-        v-if="showAudioPlayStopButton"
-        :icon="audioRecorderPlayStopIcon"
-        emoji="🎤"
-        color-scheme="secondary"
-        variant="smooth"
-        size="small"
-        @click="toggleAudioRecorderPlayPause"
-      >
-        <span>{{ recordingAudioDurationText }}</span>
-      </woot-button>
-      <woot-button
-        v-if="showMessageSignatureButton"
-        v-tooltip.top-end="signatureToggleTooltip"
-        icon="signature"
-        color-scheme="secondary"
-        variant="smooth"
-        size="small"
-        :title="signatureToggleTooltip"
-        @click="toggleMessageSignature"
-      />
-      <woot-button
-        v-if="hasWhatsappTemplates"
-        v-tooltip.top-end="$t('CONVERSATION.FOOTER.WHATSAPP_TEMPLATES')"
-        icon="whatsapp"
-        color-scheme="secondary"
-        variant="smooth"
-        size="small"
-        :title="$t('CONVERSATION.FOOTER.WHATSAPP_TEMPLATES')"
-        @click="$emit('selectWhatsappTemplate')"
-      />
-      <VideoCallButton
-        v-if="(isAWebWidgetInbox || isAPIInbox) && !isOnPrivateNote"
-        :conversation-id="conversationId"
-      />
-      <AIAssistanceButton
-<<<<<<< HEAD
-<<<<<<< HEAD
-        v-if="!isFetchingAppIntegrations"
-=======
->>>>>>> b4b308336 (feat: Eslint rules (#9839))
-=======
-        v-if="!isFetchingAppIntegrations"
->>>>>>> 89acbd8d0 (feat: Replace the use of `keyboardEventListener` mixin to a composable (Part -2) (#9892))
-        :conversation-id="conversationId"
-        :is-private-note="isOnPrivateNote"
-        :message="message"
-        @replaceText="replaceText"
-      />
-      <transition name="modal-fade">
-        <div
-<<<<<<< HEAD
-<<<<<<< HEAD
-          v-show="$refs.uploadRef && $refs.uploadRef.dropActive"
-=======
-          v-show="$refs.upload && $refs.upload.dropActive"
->>>>>>> b4b308336 (feat: Eslint rules (#9839))
-=======
-          v-show="$refs.uploadRef && $refs.uploadRef.dropActive"
->>>>>>> 89acbd8d0 (feat: Replace the use of `keyboardEventListener` mixin to a composable (Part -2) (#9892))
-          class="fixed top-0 bottom-0 left-0 right-0 z-20 flex flex-col items-center justify-center w-full h-full gap-2 text-slate-900 dark:text-slate-50 bg-modal-backdrop-light dark:bg-modal-backdrop-dark"
-        >
-          <fluent-icon icon="cloud-backup" size="40" />
-          <h4 class="text-2xl break-words text-slate-900 dark:text-slate-50">
-            {{ $t('CONVERSATION.REPLYBOX.DRAG_DROP') }}
-          </h4>
-        </div>
-      </transition>
-      <woot-button
-        v-if="enableInsertArticleInReply"
-        v-tooltip.top-end="$t('HELP_CENTER.ARTICLE_SEARCH.OPEN_ARTICLE_SEARCH')"
-        icon="document-text-link"
-        color-scheme="secondary"
-        variant="smooth"
-        size="small"
-        :title="$t('HELP_CENTER.ARTICLE_SEARCH.OPEN_ARTICLE_SEARCH')"
-        @click="toggleInsertArticle"
-      />
-    </div>
-    <div class="right-wrap">
-      <woot-button
-        size="small"
-        :class-names="buttonClass"
-        :is-disabled="isSendDisabled"
-        @click="onSend"
-      >
-        {{ sendButtonText }}
-      </woot-button>
-    </div>
-  </div>
-</template>
 
 <style lang="scss" scoped>
 .bottom-box {

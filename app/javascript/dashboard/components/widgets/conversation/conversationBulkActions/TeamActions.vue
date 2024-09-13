@@ -1,34 +1,3 @@
-<script>
-import { mapGetters } from 'vuex';
-export default {
-  data() {
-    return {
-      query: '',
-      selectedteams: [],
-    };
-  },
-  computed: {
-    ...mapGetters({ teams: 'teams/getTeams' }),
-    filteredTeams() {
-      return [
-        { name: 'None', id: 0 },
-        ...this.teams.filter(team =>
-          team.name.toLowerCase().includes(this.query.toLowerCase())
-        ),
-      ];
-    },
-  },
-  methods: {
-    assignTeam(key) {
-      this.$emit('assignTeam', key);
-    },
-    onClose() {
-      this.$emit('close');
-    },
-  },
-};
-</script>
-
 <template>
   <div v-on-clickaway="onClose" class="bulk-action__teams">
     <div class="triangle">
@@ -36,7 +5,7 @@ export default {
         <path d="M20 12l-8-8-12 12" fill-rule="evenodd" stroke-width="1px" />
       </svg>
     </div>
-    <div class="flex items-center justify-between header">
+    <div class="header flex items-center justify-between">
       <span>{{ $t('BULK_ACTION.TEAMS.TEAM_SELECT_LABEL') }}</span>
       <woot-button
         size="tiny"
@@ -51,13 +20,14 @@ export default {
         <ul>
           <li class="search-container">
             <div
-              class="flex items-center justify-between h-8 gap-2 agent-list-search"
+              class="agent-list-search h-8 flex justify-between items-center gap-2"
             >
               <fluent-icon icon="search" class="search-icon" size="16" />
               <input
+                ref="search"
                 v-model="query"
                 type="search"
-                :placeholder="$t('BULK_ACTION.SEARCH_INPUT_PLACEHOLDER')"
+                placeholder="Search"
                 class="agent--search_input"
               />
             </div>
@@ -87,6 +57,37 @@ export default {
     </div>
   </div>
 </template>
+
+<script>
+import { mapGetters } from 'vuex';
+export default {
+  data() {
+    return {
+      query: '',
+      selectedteams: [],
+    };
+  },
+  computed: {
+    ...mapGetters({ teams: 'teams/getTeams' }),
+    filteredTeams() {
+      return [
+        { name: 'None', id: 0 },
+        ...this.teams.filter(team =>
+          team.name.toLowerCase().includes(this.query.toLowerCase())
+        ),
+      ];
+    },
+  },
+  methods: {
+    assignTeam(key) {
+      this.$emit('assign-team', key);
+    },
+    onClose() {
+      this.$emit('close');
+    },
+  },
+};
+</script>
 
 <style scoped lang="scss">
 .bulk-action__teams {

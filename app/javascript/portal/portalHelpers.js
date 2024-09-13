@@ -33,7 +33,7 @@ export const openExternalLinksInNewTab = () => {
   const isOnArticlePage =
     isSameHost && document.querySelector('#cw-article-content') !== null;
 
-  document.addEventListener('click', event => {
+  document.addEventListener('click', function (event) {
     if (!isOnArticlePage) return;
 
     // Some of the links come wrapped in strong tag through prosemirror

@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 <template>
   <woot-dropdown-menu>
     <woot-dropdown-header :title="$t('SIDEBAR.SET_AVAILABILITY_TITLE')" />
@@ -21,7 +18,7 @@
       </woot-button>
     </woot-dropdown-item>
     <woot-dropdown-divider />
-    <woot-dropdown-item class="flex items-center justify-between p-2 m-0">
+    <woot-dropdown-item class="m-0 flex items-center justify-between p-2">
       <div class="flex items-center">
         <fluent-icon
           v-tooltip.right-start="$t('SIDEBAR.SET_AUTO_OFFLINE.INFO_TEXT')"
@@ -31,7 +28,7 @@
         />
 
         <span
-          class="mx-1 my-0 text-xs font-medium text-slate-600 dark:text-slate-100"
+          class="my-0 mx-1 text-xs font-medium text-slate-600 dark:text-slate-100"
         >
           {{ $t('SIDEBAR.SET_AUTO_OFFLINE.TEXT') }}
         </span>
@@ -39,7 +36,7 @@
 
       <woot-switch
         size="small"
-        class="mx-1 mt-px mb-0"
+        class="mt-px mx-1 mb-0"
         :value="currentUserAutoOffline"
         @input="updateAutoOffline"
       />
@@ -48,12 +45,9 @@
   </woot-dropdown-menu>
 </template>
 
->>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
-=======
->>>>>>> b4b308336 (feat: Eslint rules (#9839))
 <script>
 import { mapGetters } from 'vuex';
-import { useAlert } from 'dashboard/composables';
+import alertMixin from 'shared/mixins/alertMixin';
 import WootDropdownItem from 'shared/components/ui/dropdown/DropdownItem.vue';
 import WootDropdownMenu from 'shared/components/ui/dropdown/DropdownMenu.vue';
 import WootDropdownHeader from 'shared/components/ui/dropdown/DropdownHeader.vue';
@@ -71,6 +65,9 @@ export default {
     WootDropdownItem,
     AvailabilityStatusBadge,
   },
+
+  mixins: [alertMixin],
+
   data() {
     return {
       isStatusMenuOpened: false,
@@ -132,7 +129,7 @@ export default {
           account_id: this.currentAccountId,
         });
       } catch (error) {
-        useAlert(
+        this.showAlert(
           this.$t('PROFILE_SETTINGS.FORM.AVAILABILITY.SET_AVAILABILITY_ERROR')
         );
       } finally {
@@ -142,50 +139,3 @@ export default {
   },
 };
 </script>
-
-<template>
-  <WootDropdownMenu>
-    <WootDropdownHeader :title="$t('SIDEBAR.SET_AVAILABILITY_TITLE')" />
-    <WootDropdownItem
-      v-for="status in availabilityStatuses"
-      :key="status.value"
-      class="flex items-baseline"
-    >
-      <woot-button
-        size="small"
-        :color-scheme="status.disabled ? '' : 'secondary'"
-        :variant="status.disabled ? 'smooth' : 'clear'"
-        class-names="status-change--dropdown-button"
-        @click="changeAvailabilityStatus(status.value)"
-      >
-        <AvailabilityStatusBadge :status="status.value" />
-        {{ status.label }}
-      </woot-button>
-    </WootDropdownItem>
-    <WootDropdownDivider />
-    <WootDropdownItem class="flex items-center justify-between p-2 m-0">
-      <div class="flex items-center">
-        <fluent-icon
-          v-tooltip.right-start="$t('SIDEBAR.SET_AUTO_OFFLINE.INFO_TEXT')"
-          icon="info"
-          size="14"
-          class="mt-px"
-        />
-
-        <span
-          class="mx-1 my-0 text-xs font-medium text-slate-600 dark:text-slate-100"
-        >
-          {{ $t('SIDEBAR.SET_AUTO_OFFLINE.TEXT') }}
-        </span>
-      </div>
-
-      <woot-switch
-        size="small"
-        class="mx-1 mt-px mb-0"
-        :value="currentUserAutoOffline"
-        @input="updateAutoOffline"
-      />
-    </WootDropdownItem>
-    <WootDropdownDivider />
-  </WootDropdownMenu>
-</template>

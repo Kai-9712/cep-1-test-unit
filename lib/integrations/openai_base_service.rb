@@ -42,26 +42,13 @@ class Integrations::OpenaiBaseService
     return nil unless event_is_cacheable?
     return nil if cache_key.blank?
 
-    deserialize_cached_value(Redis::Alfred.get(cache_key))
-  end
-
-  def deserialize_cached_value(value)
-    return nil if value.blank?
-
-    JSON.parse(value, symbolize_names: true)
-  rescue JSON::ParserError
-    # If json parse failed, returning the value as is will fail too
-    # since we access the keys as symbols down the line
-    # So it's best to return nil
-    nil
+    Redis::Alfred.get(cache_key)
   end
 
   def save_to_cache(response)
     return nil unless event_is_cacheable?
 
-    # Serialize to JSON
-    # This makes parsing easy when response is a hash
-    Redis::Alfred.setex(cache_key, response.to_json)
+    Redis::Alfred.setex(cache_key, response)
   end
 
   def conversation
@@ -90,12 +77,8 @@ class Integrations::OpenaiBaseService
     response = HTTParty.post(API_URL, headers: headers, body: body)
     Rails.logger.info("OpenAI API response: #{response.body}")
 
-    return { error: response.parsed_response, error_code: response.code } unless response.success?
-
     choices = JSON.parse(response.body)['choices']
 
-    return { message: choices.first['message']['content'] } if choices.present?
-
-    { message: nil }
+    choices.present? ? choices.first['message']['content'] : nil
   end
 end

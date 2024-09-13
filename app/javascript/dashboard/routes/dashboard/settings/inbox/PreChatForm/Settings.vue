@@ -1,9 +1,6 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 <template>
-  <div class="mx-8 my-2 text-base">
-    <div class="mx-0 mt-6 mb-3">
+  <div class="my-2 mx-8 text-base">
+    <div class="mt-6 mx-0 mb-3">
       {{ $t('INBOX_MGMT.PRE_CHAT_FORM.DESCRIPTION') }}
     </div>
     <form class="flex flex-col" @submit.prevent="updateInbox">
@@ -33,7 +30,7 @@
         </div>
         <div class="w-[70%] mt-4">
           <label>{{ $t('INBOX_MGMT.PRE_CHAT_FORM.SET_FIELDS') }}</label>
-          <table class="table w-full table-striped woot-table">
+          <table class="table table-striped w-full">
             <thead class="thead-dark">
               <tr>
                 <th scope="col" />
@@ -69,7 +66,7 @@
           </table>
         </div>
       </div>
-      <div class="w-auto my-4">
+      <div class="my-4 w-auto">
         <woot-submit-button
           :button-text="
             $t('INBOX_MGMT.SETTINGS_POPUP.UPDATE_PRE_CHAT_FORM_SETTINGS')
@@ -80,12 +77,9 @@
     </form>
   </div>
 </template>
->>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
-=======
->>>>>>> b4b308336 (feat: Eslint rules (#9839))
 <script>
 import { mapGetters } from 'vuex';
-import { useAlert } from 'dashboard/composables';
+import alertMixin from 'shared/mixins/alertMixin';
 import PreChatFields from './PreChatFields.vue';
 import { getPreChatFields, standardFieldKeys } from 'dashboard/helper/preChat';
 import WootMessageEditor from 'dashboard/components/widgets/WootWriter/Editor.vue';
@@ -94,6 +88,7 @@ export default {
     PreChatFields,
     WootMessageEditor,
   },
+  mixins: [alertMixin],
   props: {
     inbox: {
       type: Object,
@@ -168,95 +163,14 @@ export default {
           },
         };
         await this.$store.dispatch('inboxes/updateInbox', payload);
-        useAlert(this.$t('INBOX_MGMT.EDIT.API.SUCCESS_MESSAGE'));
+        this.showAlert(this.$t('INBOX_MGMT.EDIT.API.SUCCESS_MESSAGE'));
       } catch (error) {
-        useAlert(this.$t('INBOX_MGMT.EDIT.API.SUCCESS_MESSAGE'));
+        this.showAlert(this.$t('INBOX_MGMT.EDIT.API.SUCCESS_MESSAGE'));
       }
     },
   },
 };
 </script>
-
-<template>
-  <div class="mx-8 my-2 text-base">
-    <div class="mx-0 mt-6 mb-3">
-      {{ $t('INBOX_MGMT.PRE_CHAT_FORM.DESCRIPTION') }}
-    </div>
-    <form class="flex flex-col" @submit.prevent="updateInbox">
-      <label class="w-1/4">
-        {{ $t('INBOX_MGMT.PRE_CHAT_FORM.ENABLE.LABEL') }}
-        <select v-model="preChatFormEnabled">
-          <option :value="true">
-            {{ $t('INBOX_MGMT.PRE_CHAT_FORM.ENABLE.OPTIONS.ENABLED') }}
-          </option>
-          <option :value="false">
-            {{ $t('INBOX_MGMT.PRE_CHAT_FORM.ENABLE.OPTIONS.DISABLED') }}
-          </option>
-        </select>
-      </label>
-      <div v-if="preChatFormEnabled">
-        <div class="w-[70%]">
-          <label>
-            {{ $t('INBOX_MGMT.PRE_CHAT_FORM.PRE_CHAT_MESSAGE.LABEL') }}
-          </label>
-          <WootMessageEditor
-            v-model="preChatMessage"
-            class="message-editor"
-            :placeholder="
-              $t('INBOX_MGMT.PRE_CHAT_FORM.PRE_CHAT_MESSAGE.PLACEHOLDER')
-            "
-          />
-        </div>
-        <div class="w-[70%] mt-4">
-          <label>{{ $t('INBOX_MGMT.PRE_CHAT_FORM.SET_FIELDS') }}</label>
-          <table class="table w-full table-striped woot-table">
-            <thead class="thead-dark">
-              <tr>
-                <th scope="col" />
-                <th scope="col" />
-                <th scope="col">
-                  {{ $t('INBOX_MGMT.PRE_CHAT_FORM.SET_FIELDS_HEADER.KEY') }}
-                </th>
-                <th scope="col">
-                  {{ $t('INBOX_MGMT.PRE_CHAT_FORM.SET_FIELDS_HEADER.TYPE') }}
-                </th>
-                <th scope="col">
-                  {{
-                    $t('INBOX_MGMT.PRE_CHAT_FORM.SET_FIELDS_HEADER.REQUIRED')
-                  }}
-                </th>
-                <th scope="col">
-                  {{ $t('INBOX_MGMT.PRE_CHAT_FORM.SET_FIELDS_HEADER.LABEL') }}
-                </th>
-                <th scope="col">
-                  {{
-                    $t(
-                      'INBOX_MGMT.PRE_CHAT_FORM.SET_FIELDS_HEADER.PLACE_HOLDER'
-                    )
-                  }}
-                </th>
-              </tr>
-            </thead>
-            <PreChatFields
-              :pre-chat-fields="preChatFields"
-              @update="handlePreChatFieldOptions"
-              @dragEnd="changePreChatFieldFieldsOrder"
-            />
-          </table>
-        </div>
-      </div>
-      <div class="w-auto my-4">
-        <woot-submit-button
-          :button-text="
-            $t('INBOX_MGMT.SETTINGS_POPUP.UPDATE_PRE_CHAT_FORM_SETTINGS')
-          "
-          :loading="uiFlags.isUpdating"
-        />
-      </div>
-    </form>
-  </div>
-</template>
-
 <style scoped lang="scss">
 .message-editor {
   @apply px-3;

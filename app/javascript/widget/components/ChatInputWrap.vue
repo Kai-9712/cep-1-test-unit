@@ -1,3 +1,52 @@
+<template>
+  <div
+    class="chat-message--input is-focused"
+    :class="$dm('bg-white ', 'dark:bg-slate-600')"
+    @keydown.esc="hideEmojiPicker"
+  >
+    <resizable-text-area
+      id="chat-input"
+      ref="chatInput"
+      v-model="userInput"
+      :rows="1"
+      :aria-label="$t('CHAT_PLACEHOLDER')"
+      :placeholder="$t('CHAT_PLACEHOLDER')"
+      class="form-input user-message-input is-focused"
+      :class="inputColor"
+      @typing-off="onTypingOff"
+      @typing-on="onTypingOn"
+      @focus="onFocus"
+      @blur="onBlur"
+    />
+    <div class="button-wrap">
+      <chat-attachment-button
+        v-if="showAttachment"
+        :class="$dm('text-black-900', 'dark:text-slate-100')"
+        :on-attach="onSendAttachment"
+      />
+      <button
+        v-if="hasEmojiPickerEnabled"
+        class="flex items-center justify-center icon-button"
+        aria-label="Emoji picker"
+        @click="toggleEmojiPicker"
+      >
+        <fluent-icon icon="emoji" :class="emojiIconColor" />
+      </button>
+      <emoji-input
+        v-if="showEmojiPicker"
+        v-on-clickaway="hideEmojiPicker"
+        :on-click="emojiOnClick"
+        @keydown.esc="hideEmojiPicker"
+      />
+      <chat-send-button
+        v-if="showSendButton"
+        :on-click="handleButtonClick"
+        :color="widgetColor"
+      />
+    </div>
+  </div>
+</template>
+
 <script>
 import { mapGetters } from 'vuex';
 
@@ -6,7 +55,7 @@ import ChatSendButton from 'widget/components/ChatSendButton.vue';
 import configMixin from '../mixins/configMixin';
 import FluentIcon from 'shared/components/FluentIcon/Index.vue';
 import ResizableTextArea from 'shared/components/ResizableTextArea.vue';
-import { useDarkMode } from 'widget/composables/useDarkMode';
+import darkModeMixin from 'widget/mixins/darkModeMixin.js';
 
 const EmojiInput = () => import('shared/components/emoji/EmojiInput');
 
@@ -19,7 +68,7 @@ export default {
     FluentIcon,
     ResizableTextArea,
   },
-  mixins: [configMixin],
+  mixins: [configMixin, darkModeMixin],
   props: {
     onSendMessage: {
       type: Function,
@@ -30,10 +79,7 @@ export default {
       default: () => {},
     },
   },
-  setup() {
-    const { getThemeClass } = useDarkMode();
-    return { getThemeClass };
-  },
+
   data() {
     return {
       userInput: '',
@@ -54,16 +100,13 @@ export default {
       return this.userInput.length > 0;
     },
     inputColor() {
-      return `${this.getThemeClass('bg-white', 'dark:bg-slate-600')}
-        ${this.getThemeClass('text-black-900', 'dark:text-slate-50')}`;
+      return `${this.$dm('bg-white', 'dark:bg-slate-600')}
+        ${this.$dm('text-black-900', 'dark:text-slate-50')}`;
     },
     emojiIconColor() {
       return this.showEmojiPicker
-        ? `text-woot-500 ${this.getThemeClass(
-            'text-black-900',
-            'dark:text-slate-100'
-          )}`
-        : `${this.getThemeClass('text-black-900', 'dark:text-slate-100')}`;
+        ? `text-woot-500 ${this.$dm('text-black-900', 'dark:text-slate-100')}`
+        : `${this.$dm('text-black-900', 'dark:text-slate-100')}`;
     },
   },
   watch: {
@@ -130,55 +173,6 @@ export default {
   },
 };
 </script>
-
-<template>
-  <div
-    class="chat-message--input is-focused"
-    :class="getThemeClass('bg-white ', 'dark:bg-slate-600')"
-    @keydown.esc="hideEmojiPicker"
-  >
-    <ResizableTextArea
-      id="chat-input"
-      ref="chatInput"
-      v-model="userInput"
-      :rows="1"
-      :aria-label="$t('CHAT_PLACEHOLDER')"
-      :placeholder="$t('CHAT_PLACEHOLDER')"
-      class="form-input user-message-input is-focused"
-      :class="inputColor"
-      @typingOff="onTypingOff"
-      @typingOn="onTypingOn"
-      @focus="onFocus"
-      @blur="onBlur"
-    />
-    <div class="button-wrap">
-      <ChatAttachmentButton
-        v-if="showAttachment"
-        :class="getThemeClass('text-black-900', 'dark:text-slate-100')"
-        :on-attach="onSendAttachment"
-      />
-      <button
-        v-if="hasEmojiPickerEnabled"
-        class="flex items-center justify-center icon-button"
-        :aria-label="$t('EMOJI.ARIA_LABEL')"
-        @click="toggleEmojiPicker"
-      >
-        <FluentIcon icon="emoji" :class="emojiIconColor" />
-      </button>
-      <EmojiInput
-        v-if="showEmojiPicker"
-        v-on-clickaway="hideEmojiPicker"
-        :on-click="emojiOnClick"
-        @keydown.esc="hideEmojiPicker"
-      />
-      <ChatSendButton
-        v-if="showSendButton"
-        :on-click="handleButtonClick"
-        :color="widgetColor"
-      />
-    </div>
-  </div>
-</template>
 
 <style scoped lang="scss">
 @import '~widget/assets/scss/variables.scss';

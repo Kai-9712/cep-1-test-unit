@@ -1,13 +1,10 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 <template>
-  <div class="w-full max-w-full px-4 py-2">
-    <div class="flex items-center justify-between h-12 mx-0 mt-0 mb-2">
+  <div class="py-2 px-4 w-full max-w-full">
+    <div class="flex justify-between items-center mt-0 mb-2 mx-0 h-12">
       <div class="flex items-center">
         <woot-sidemenu-icon />
         <h1
-          class="mx-2 my-0 text-2xl font-medium text-slate-800 dark:text-slate-100"
+          class="my-0 mx-2 text-2xl text-slate-800 dark:text-slate-100 font-medium"
         >
           {{ $t('HELP_CENTER.PORTAL.HEADER') }}
         </h1>
@@ -32,7 +29,7 @@
       />
       <div
         v-if="isFetching"
-        class="flex items-center justify-center p-40 text-base"
+        class="items-center flex text-base justify-center p-40"
       >
         <spinner />
         <span>{{ $t('HELP_CENTER.PORTAL.LOADING_MESSAGE') }}</span>
@@ -55,11 +52,9 @@
   </div>
 </template>
 
->>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
-=======
->>>>>>> b4b308336 (feat: Eslint rules (#9839))
 <script>
 import { mapGetters } from 'vuex';
+import alertMixin from 'shared/mixins/alertMixin';
 import PortalListItem from '../../components/PortalListItem.vue';
 import Spinner from 'shared/components/Spinner.vue';
 import EmptyState from 'dashboard/components/widgets/EmptyState.vue';
@@ -73,6 +68,7 @@ export default {
     Spinner,
     AddLocale,
   },
+  mixins: [alertMixin],
   data() {
     return {
       isAddLocaleModalOpen: false,
@@ -82,6 +78,7 @@ export default {
   computed: {
     ...mapGetters({
       portals: 'portals/allPortals',
+      meta: 'portals/getMeta',
       isFetching: 'portals/isFetchingPortals',
     }),
     portalStatus() {
@@ -109,57 +106,3 @@ export default {
   },
 };
 </script>
-
-<template>
-  <div class="w-full max-w-full px-4 py-2">
-    <div class="flex items-center justify-between h-12 mx-0 mt-0 mb-2">
-      <div class="flex items-center">
-        <woot-sidemenu-icon />
-        <h1
-          class="mx-2 my-0 text-2xl font-medium text-slate-800 dark:text-slate-100"
-        >
-          {{ $t('HELP_CENTER.PORTAL.HEADER') }}
-        </h1>
-      </div>
-      <woot-button
-        color-scheme="primary"
-        icon="add"
-        size="small"
-        @click="addPortal"
-      >
-        {{ $t('HELP_CENTER.PORTAL.NEW_BUTTON') }}
-      </woot-button>
-    </div>
-    <div class="h-[90vh] overflow-y-scroll">
-      <PortalListItem
-        v-for="portal in portals"
-        :key="portal.id"
-        :portal="portal"
-        :status="portalStatus"
-        @addLocale="addLocale"
-        @openSite="openPortal"
-      />
-      <div
-        v-if="isFetching"
-        class="flex items-center justify-center p-40 text-base"
-      >
-        <Spinner />
-        <span>{{ $t('HELP_CENTER.PORTAL.LOADING_MESSAGE') }}</span>
-      </div>
-      <EmptyState
-        v-else-if="shouldShowEmptyState"
-        :title="$t('HELP_CENTER.PORTAL.NO_PORTALS_MESSAGE')"
-      />
-    </div>
-    <woot-modal
-      :show.sync="isAddLocaleModalOpen"
-      :on-close="closeAddLocaleModal"
-    >
-      <AddLocale
-        :show="isAddLocaleModalOpen"
-        :portal="selectedPortal"
-        @cancel="closeAddLocaleModal"
-      />
-    </woot-modal>
-  </div>
-</template>

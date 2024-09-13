@@ -15,7 +15,7 @@
     "FILTER_ALL": "الكل",
     "ASSIGNEE_TYPE_TABS": {
       "me": "محادثاتي",
-      "unassigned": "غير معيّن",
+      "unassigned": "غير مسند",
       "all": "الكل"
     },
     "CHAT_STATUS_FILTER_ITEMS": {
@@ -23,13 +23,13 @@
         "TEXT": "فتح"
       },
       "resolved": {
-        "TEXT": "تم حلها"
+        "TEXT": "مغلقة"
       },
       "pending": {
         "TEXT": "معلق"
       },
       "snoozed": {
-        "TEXT": "مؤجلة"
+        "TEXT": "غفوة"
       },
       "all": {
         "TEXT": "الكل"
@@ -47,56 +47,34 @@
         "OLDEST": "تم إنشاؤها في:"
       },
       "LAST_ACTIVITY": {
-        "NOT_ACTIVE": "آخر نشاط:",
-        "ACTIVE": "آخر نشاط"
+        "NOT_ACTIVE": "النشاط الأخير:",
+        "ACTIVE": "النشاط الأخير"
       }
     },
     "SORT_ORDER_ITEMS": {
       "last_activity_at_asc": {
-        "TEXT": "آخر نشاط: الأقدم أولا"
+        "TEXT": "اخر نشاط: آلأقدم أولا"
       },
       "last_activity_at_desc": {
-        "TEXT": "آخر نشاط: الأحدث أولا"
+        "TEXT": "اخر نشاط: الأحدث أولا"
       },
       "created_at_desc": {
-<<<<<<< HEAD
-<<<<<<< HEAD
-        "TEXT": "وقت الإنشاء: الأحدث أولاً"
+        "TEXT": "Created at: Newest first"
       },
       "created_at_asc": {
-        "TEXT": "وقت الإنشاء: الأقدم أولاً"
-=======
-        "TEXT": "تم إنشاؤها في: الأحدث أولاً"
-      },
-      "created_at_asc": {
-        "TEXT": "تم إنشاؤها في: أقدم أولاً"
->>>>>>> 027a540bb (chore: Update translations from Crowdin (#9835))
-=======
-        "TEXT": "وقت الإنشاء: الأحدث أولاً"
-      },
-      "created_at_asc": {
-        "TEXT": "وقت الإنشاء: الأقدم أولاً"
->>>>>>> a196e2358 (chore: Update translations (#9845))
+        "TEXT": "Created at: Oldest first"
       },
       "priority_desc": {
-        "TEXT": "الأولوية: الأعلى أولا"
+        "TEXT": "Priority: Highest first"
       },
       "priority_asc": {
-        "TEXT": "الأولوية: الأقل أولاً"
+        "TEXT": "Priority: Lowest first"
       },
       "waiting_since_asc": {
-        "TEXT": "الرد المعلق: الأطول أولا"
+        "TEXT": "Pending Response: Longest first"
       },
       "waiting_since_desc": {
-<<<<<<< HEAD
-<<<<<<< HEAD
-        "TEXT": "الرد المعلق: الأقصر أولاً"
-=======
-        "TEXT": "الرد المعلق: أقصر أولاً"
->>>>>>> 027a540bb (chore: Update translations from Crowdin (#9835))
-=======
-        "TEXT": "الرد المعلق: الأقصر أولاً"
->>>>>>> a196e2358 (chore: Update translations (#9845))
+        "TEXT": "Pending Response: Shortest first"
       }
     },
     "ATTACHMENTS": {
@@ -124,15 +102,15 @@
       "DROPDOWN_TITLE": "ترتيب حسب",
       "ITEMS": {
         "LATEST": {
-          "NAME": "آخر نشاط في",
-          "LABEL": "آخر نشاط"
+          "NAME": "النشاط الأخير في",
+          "LABEL": "النشاط الأخير"
         },
         "CREATED_AT": {
           "NAME": "تم إنشاؤها في",
           "LABEL": "تم إنشاؤها في"
         },
         "LAST_USER_MESSAGE_AT": {
-          "NAME": "آخر رسالة للمستخدم في",
+          "NAME": "Last user message at",
           "LABEL": "أخر رسالة"
         }
       }
@@ -141,13 +119,13 @@
     "VIEW_TWEET_IN_TWITTER": "عرض التغريدة في تويتر",
     "REPLY_TO_TWEET": "الرد على هذه التغريدة",
     "LINK_TO_STORY": "الذهاب إلى قصة الإنستقرام",
-    "SENT": "تم الإرسال بنجاح",
+    "SENT": "Sent successfully",
     "READ": "تمت القراءة بنجاح",
     "DELIVERED": "تم الإرسال بنجاح",
     "NO_MESSAGES": "لا توجد رسائل",
     "NO_CONTENT": "لم يتم العثور على محتوى",
-    "HIDE_QUOTED_TEXT": "إخفاء النص المقتبس",
-    "SHOW_QUOTED_TEXT": "إظهار النص المقتبس",
-    "MESSAGE_READ": "قراءة"
+    "HIDE_QUOTED_TEXT": "Hide Quoted Text",
+    "SHOW_QUOTED_TEXT": "Show Quoted Text",
+    "MESSAGE_READ": "قرائة"
   }
 }

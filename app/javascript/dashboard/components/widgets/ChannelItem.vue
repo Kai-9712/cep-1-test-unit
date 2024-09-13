@@ -1,3 +1,11 @@
+<template>
+  <channel-selector
+    :class="{ inactive: !isActive }"
+    :title="channel.name"
+    :src="getChannelThumbnail()"
+    @click="onItemClick"
+  />
+</template>
 <script>
 import ChannelSelector from '../ChannelSelector.vue';
 export default {
@@ -51,18 +59,9 @@ export default {
     },
     onItemClick() {
       if (this.isActive) {
-        this.$emit('channelItemClick', this.channel.key);
+        this.$emit('channel-item-click', this.channel.key);
       }
     },
   },
 };
 </script>
-
-<template>
-  <ChannelSelector
-    :class="{ inactive: !isActive }"
-    :title="channel.name"
-    :src="getChannelThumbnail()"
-    @click="onItemClick"
-  />
-</template>

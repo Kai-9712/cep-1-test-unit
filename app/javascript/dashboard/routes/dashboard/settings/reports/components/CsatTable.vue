@@ -1,29 +1,40 @@
+<template>
+  <div class="csat--table-container">
+    <ve-table
+      max-height="calc(100vh - 21.875rem)"
+      :fixed-header="true"
+      :border-around="true"
+      :columns="columns"
+      :table-data="tableData"
+    />
+    <div v-show="!tableData.length" class="csat--empty-records">
+      {{ $t('CSAT_REPORTS.NO_RECORDS') }}
+    </div>
+    <div v-if="metrics.totalResponseCount" class="table-pagination">
+      <ve-pagination
+        :total="metrics.totalResponseCount"
+        :page-index="pageIndex"
+        :page-size="25"
+        :page-size-option="[25]"
+        @on-page-number-change="onPageNumberChange"
+      />
+    </div>
+  </div>
+</template>
 <script>
 import { VeTable, VePagination } from 'vue-easytable';
 import UserAvatarWithName from 'dashboard/components/widgets/UserAvatarWithName.vue';
 import { CSAT_RATINGS } from 'shared/constants/messages';
 import { mapGetters } from 'vuex';
-import { messageStamp, dynamicTime } from 'shared/helpers/timeHelper';
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
+import timeMixin from 'dashboard/mixins/time';
 import rtlMixin from 'shared/mixins/rtlMixin';
->>>>>>> 79381b08c (feat: Move timeMixin to a helper (#9799))
-=======
->>>>>>> 452096f4b (feat: Replace `rtlMixin` to a composable (#9924))
 
 export default {
   components: {
     VeTable,
     VePagination,
   },
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-  mixins: [rtlMixin],
->>>>>>> 79381b08c (feat: Move timeMixin to a helper (#9799))
-=======
->>>>>>> 452096f4b (feat: Replace `rtlMixin` to a composable (#9924))
+  mixins: [timeMixin, rtlMixin],
   props: {
     pageIndex: {
       type: Number,
@@ -32,14 +43,7 @@ export default {
   },
   computed: {
     ...mapGetters({
-<<<<<<< HEAD
-<<<<<<< HEAD
-      isRTL: 'accounts/isRTL',
-=======
->>>>>>> b4b308336 (feat: Eslint rules (#9839))
-=======
-      isRTL: 'accounts/isRTL',
->>>>>>> 452096f4b (feat: Replace `rtlMixin` to a composable (#9924))
+      uiFlags: 'csat/getUIFlags',
       csatResponses: 'csat/getCSATResponses',
       metrics: 'csat/getMetrics',
     }),
@@ -49,7 +53,7 @@ export default {
           field: 'contact',
           key: 'contact',
           title: this.$t('CSAT_REPORTS.TABLE.HEADER.CONTACT_NAME'),
-          align: this.isRTL ? 'right' : 'left',
+          align: this.isRTLView ? 'right' : 'left',
           width: 200,
           renderBodyCell: ({ row }) => {
             if (row.contact) {
@@ -68,7 +72,7 @@ export default {
           field: 'assignedAgent',
           key: 'assignedAgent',
           title: this.$t('CSAT_REPORTS.TABLE.HEADER.AGENT_NAME'),
-          align: this.isRTL ? 'right' : 'left',
+          align: this.isRTLView ? 'right' : 'left',
           width: 200,
           renderBodyCell: ({ row }) => {
             if (row.assignedAgent) {
@@ -98,14 +102,14 @@ export default {
           field: 'feedbackText',
           key: 'feedbackText',
           title: this.$t('CSAT_REPORTS.TABLE.HEADER.FEEDBACK_TEXT'),
-          align: this.isRTL ? 'right' : 'left',
+          align: this.isRTLView ? 'right' : 'left',
           width: 400,
         },
         {
           field: 'conversationId',
           key: 'conversationId',
           title: '',
-          align: this.isRTL ? 'right' : 'left',
+          align: this.isRTLView ? 'right' : 'left',
           width: 100,
           renderBodyCell: ({ row }) => {
             const routerParams = {
@@ -133,43 +137,18 @@ export default {
         rating: response.rating,
         feedbackText: response.feedback_message || '---',
         conversationId: response.conversation_id,
-        createdAgo: dynamicTime(response.created_at),
-        createdAt: messageStamp(response.created_at, 'LLL d yyyy, h:mm a'),
+        createdAgo: this.dynamicTime(response.created_at),
+        createdAt: this.messageStamp(response.created_at, 'LLL d yyyy, h:mm a'),
       }));
     },
   },
   methods: {
     onPageNumberChange(pageIndex) {
-      this.$emit('pageChange', pageIndex);
+      this.$emit('page-change', pageIndex);
     },
   },
 };
 </script>
-
-<template>
-  <div class="csat--table-container">
-    <VeTable
-      max-height="calc(100vh - 21.875rem)"
-      fixed-header
-      border-around
-      :columns="columns"
-      :table-data="tableData"
-    />
-    <div v-show="!tableData.length" class="csat--empty-records">
-      {{ $t('CSAT_REPORTS.NO_RECORDS') }}
-    </div>
-    <div v-if="metrics.totalResponseCount" class="table-pagination">
-      <VePagination
-        :total="metrics.totalResponseCount"
-        :page-index="pageIndex"
-        :page-size="25"
-        :page-size-option="[25]"
-        @on-page-number-change="onPageNumberChange"
-      />
-    </div>
-  </div>
-</template>
-
 <style lang="scss" scoped>
 .csat--table-container {
   display: flex;

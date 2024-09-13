@@ -1,3 +1,7 @@
+<template>
+  <grouped-avatars :users="users" />
+</template>
+
 <script>
 import GroupedAvatars from 'widget/components/GroupedAvatars.vue';
 
@@ -21,7 +25,3 @@ export default {
   },
 };
 </script>
-
-<template>
-  <GroupedAvatars :users="users" />
-</template>

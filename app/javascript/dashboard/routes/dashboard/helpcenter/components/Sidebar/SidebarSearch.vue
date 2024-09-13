@@ -1,3 +1,17 @@
+<template>
+  <div class="search-input--wrap">
+    <div class="search-icon--wrap">
+      <fluent-icon icon="search" size="18" class="search-icon" />
+    </div>
+    <input
+      v-model="searchValue"
+      class="search-input"
+      :placeholder="$t('HELP_CENTER.SIDEBAR.SEARCH.PLACEHOLDER')"
+      @input="onSearch"
+    />
+  </div>
+</template>
+
 <script>
 export default {
   data() {
@@ -12,20 +26,6 @@ export default {
   },
 };
 </script>
-
-<template>
-  <div class="search-input--wrap">
-    <div class="search-icon--wrap">
-      <fluent-icon icon="search" size="18" class="search-icon" />
-    </div>
-    <input
-      v-model="searchValue"
-      class="search-input"
-      :placeholder="$t('HELP_CENTER.SIDEBAR.SEARCH.PLACEHOLDER')"
-      @input="onSearch"
-    />
-  </div>
-</template>
 
 <style lang="scss" scoped>
 .search-input--wrap {

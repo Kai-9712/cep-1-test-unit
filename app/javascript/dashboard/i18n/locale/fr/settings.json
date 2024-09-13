@@ -239,7 +239,6 @@
     "REPORTS": "Rapports",
     "SETTINGS": "Paramètres",
     "CONTACTS": "Contacts",
-    "CAPTAIN": "Captain",
     "HOME": "Accueil",
     "AGENTS": "Agents",
     "AGENT_BOTS": "Bots",
@@ -279,7 +278,7 @@
     "SLA": "SLA",
     "BETA": "Bêta",
     "REPORTS_OVERVIEW": "Vue d'ensemble",
-    "REAUTHORIZE": "Your inbox connection has expired, please reconnect\n to continue receiving and sending messages",
+    "FACEBOOK_REAUTHORIZE": "Votre connexion Facebook a expiré, veuillez reconnecter votre page Facebook pour continuer les services",
     "HELP_CENTER": {
       "TITLE": "Centre d'aide",
       "ALL_ARTICLES": "Tous les articles",

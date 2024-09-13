@@ -381,9 +381,6 @@
       },
       "SUCCESS_MESSAGE": "Contato mesclado com sucesso",
       "ERROR_MESSAGE": "Não foi possível mesclar contatos, tente novamente!"
-    },
-    "DROPDOWN_ITEM": {
-      "ID": "(ID: {identifier})"
     }
   }
 }

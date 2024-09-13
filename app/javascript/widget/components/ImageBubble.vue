@@ -1,21 +1,3 @@
-<script>
-export default {
-  props: {
-    url: { type: String, default: '' },
-    thumb: { type: String, default: '' },
-    readableTime: { type: String, default: '' },
-  },
-  methods: {
-    onImgError() {
-      this.$emit('error');
-    },
-    onClick() {
-      this.$emit('click');
-    },
-  },
-};
-</script>
-
 <template>
   <a
     :href="url"
@@ -35,6 +17,23 @@ export default {
   </a>
 </template>
 
+<script>
+export default {
+  props: {
+    url: { type: String, default: '' },
+    thumb: { type: String, default: '' },
+    readableTime: { type: String, default: '' },
+  },
+  methods: {
+    onImgError() {
+      this.$emit('error');
+    },
+    onClick() {
+      this.$emit('click');
+    },
+  },
+};
+</script>
 <style lang="scss" scoped>
 @import '~widget/assets/scss/variables.scss';
 

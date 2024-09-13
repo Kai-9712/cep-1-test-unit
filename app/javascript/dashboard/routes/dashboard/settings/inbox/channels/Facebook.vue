@@ -1,22 +1,15 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 <template>
   <div
     class="border border-slate-25 dark:border-slate-800/60 bg-white dark:bg-slate-900 h-full p-6 w-full max-w-full md:w-3/4 md:max-w-[75%] flex-shrink-0 flex-grow-0"
   >
-    <div
-      v-if="!hasLoginStarted"
-      class="flex flex-col items-center justify-center h-full text-center"
-    >
+    <div v-if="!hasLoginStarted" class="login-init h-full">
       <a href="#" @click="startLogin()">
         <img
-          class="w-auto h-10"
           src="~dashboard/assets/images/channels/facebook_login.png"
           alt="Facebook-logo"
         />
       </a>
-      <p class="py-6">
+      <p>
         {{
           useInstallationName(
             $t('INBOX_MGMT.ADD.FB.HELP'),
@@ -36,7 +29,7 @@
       <loading-state v-else-if="showLoader" :message="emptyStateMessage" />
       <form
         v-else
-        class="flex flex-wrap mx-0"
+        class="mx-0 flex flex-wrap"
         @submit.prevent="createChannel()"
       >
         <div class="w-full">
@@ -52,7 +45,7 @@
         </div>
         <div class="w-3/5">
           <div class="w-full">
-            <div class="input-wrap" :class="{ error: v$.selectedPage.$error }">
+            <div class="input-wrap" :class="{ error: $v.selectedPage.$error }">
               {{ $t('INBOX_MGMT.ADD.FB.CHOOSE_PAGE') }}
               <multiselect
                 v-model.trim="selectedPage"
@@ -67,21 +60,21 @@
                 selected-label
                 @select="setPageName"
               />
-              <span v-if="v$.selectedPage.$error" class="message">
+              <span v-if="$v.selectedPage.$error" class="message">
                 {{ $t('INBOX_MGMT.ADD.FB.CHOOSE_PLACEHOLDER') }}
               </span>
             </div>
           </div>
           <div class="w-full">
-            <label :class="{ error: v$.pageName.$error }">
+            <label :class="{ error: $v.pageName.$error }">
               {{ $t('INBOX_MGMT.ADD.FB.INBOX_NAME') }}
               <input
                 v-model.trim="pageName"
                 type="text"
                 :placeholder="$t('INBOX_MGMT.ADD.FB.PICK_NAME')"
-                @input="v$.pageName.$touch"
+                @input="$v.pageName.$touch"
               />
-              <span v-if="v$.pageName.$error" class="message">
+              <span v-if="$v.pageName.$error" class="message">
                 {{ $t('INBOX_MGMT.ADD.FB.ADD_NAME') }}
               </span>
             </label>
@@ -94,79 +87,24 @@
     </div>
   </div>
 </template>
->>>>>>> cb0642564 (feat: add promise based loader for FB script (#9780))
-=======
->>>>>>> b4b308336 (feat: Eslint rules (#9839))
 <script>
 /* eslint-env browser */
 /* global FB */
-<<<<<<< HEAD
-<<<<<<< HEAD
-import { useVuelidate } from '@vuelidate/core';
-import { useAlert } from 'dashboard/composables';
-import { useAccount } from 'dashboard/composables/useAccount';
-import { required } from '@vuelidate/validators';
-=======
-import { useAlert } from 'dashboard/composables';
 import { required } from 'vuelidate/lib/validators';
->>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
-=======
-import { useVuelidate } from '@vuelidate/core';
-import { useAlert } from 'dashboard/composables';
-import { useAccount } from 'dashboard/composables/useAccount';
-import { required } from '@vuelidate/validators';
->>>>>>> ce8e1ec93 (chore: Migrate all instances of old vuelidate to new v2 syntax [CW-3274] (#9623))
 import LoadingState from 'dashboard/components/widgets/LoadingState.vue';
 import { mapGetters } from 'vuex';
 import ChannelApi from '../../../../../api/channels';
 import PageHeader from '../../SettingsSubPageHeader.vue';
 import router from '../../../../index';
 import globalConfigMixin from 'shared/mixins/globalConfigMixin';
-<<<<<<< HEAD
-
-import { loadScript } from 'dashboard/helper/DOMHelpers';
-import * as Sentry from '@sentry/browser';
-=======
->>>>>>> 66db9a0cc (feat: Rewrite `accountMixin` to a composable (#9914))
-
-import { loadScript } from 'dashboard/helper/DOMHelpers';
-import * as Sentry from '@sentry/browser';
+import accountMixin from '../../../../../mixins/account';
 
 export default {
   components: {
     LoadingState,
     PageHeader,
   },
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-  mixins: [globalConfigMixin],
-  setup() {
-    const { accountId } = useAccount();
-    return {
-      accountId,
-      v$: useVuelidate(),
-    };
-  },
-=======
-  mixins: [globalConfigMixin, accountMixin, alertMixin],
->>>>>>> cb0642564 (feat: add promise based loader for FB script (#9780))
-=======
   mixins: [globalConfigMixin, accountMixin],
-<<<<<<< HEAD
->>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
-=======
-=======
-  mixins: [globalConfigMixin],
->>>>>>> 66db9a0cc (feat: Rewrite `accountMixin` to a composable (#9914))
-  setup() {
-    const { accountId } = useAccount();
-    return {
-      accountId,
-      v$: useVuelidate(),
-    };
-  },
->>>>>>> ce8e1ec93 (chore: Migrate all instances of old vuelidate to new v2 syntax [CW-3274] (#9623))
   data() {
     return {
       isCreating: false,
@@ -204,53 +142,28 @@ export default {
       return this.pageList.filter(item => !item.exists);
     },
     ...mapGetters({
+      currentUser: 'getCurrentUser',
       globalConfig: 'globalConfig/get',
     }),
   },
 
+  created() {
+    this.initFB();
+    this.loadFBsdk();
+  },
+
   mounted() {
-    window.fbAsyncInit = this.runFBInit;
+    this.initFB();
   },
 
   methods: {
-    async startLogin() {
+    startLogin() {
       this.hasLoginStarted = true;
-      try {
-        // this will load the SDK in a promise, and resolve it when the sdk is loaded
-        // in case the SDK is already present, it will resolve immediately
-        await this.loadFBsdk();
-        this.runFBInit(); // run init anyway, `tryFBlogin` won't wait for `fbAsyncInit` otherwise.
-        this.tryFBlogin(); // make an attempt to login
-      } catch (error) {
-        if (error.name === 'ScriptLoaderError') {
-          // if the error was related to script loading, we show a toast
-<<<<<<< HEAD
-<<<<<<< HEAD
-          useAlert(this.$t('INBOX_MGMT.DETAILS.ERROR_FB_LOADING'));
-        } else {
-          // if the error was anything else, we capture it and show a toast
-          Sentry.captureException(error);
-          useAlert(this.$t('INBOX_MGMT.DETAILS.ERROR_FB_AUTH'));
-=======
-          this.showAlert(this.$t('INBOX_MGMT.DETAILS.ERROR_FB_LOADING'));
-        } else {
-          // if the error was anything else, we capture it and show a toast
-          Sentry.captureException(error);
-          this.showAlert(this.$t('INBOX_MGMT.DETAILS.ERROR_FB_AUTH'));
->>>>>>> cb0642564 (feat: add promise based loader for FB script (#9780))
-=======
-          useAlert(this.$t('INBOX_MGMT.DETAILS.ERROR_FB_LOADING'));
-        } else {
-          // if the error was anything else, we capture it and show a toast
-          Sentry.captureException(error);
-          useAlert(this.$t('INBOX_MGMT.DETAILS.ERROR_FB_AUTH'));
->>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
-        }
-      }
+      this.tryFBlogin();
     },
 
     setPageName({ name }) {
-      this.v$.selectedPage.$touch();
+      this.$v.selectedPage.$touch();
       this.pageName = name;
     },
 
@@ -260,21 +173,34 @@ export default {
       }
     },
 
-    runFBInit() {
-      FB.init({
-        appId: window.chatwootConfig.fbAppId,
-        xfbml: true,
-        version: window.chatwootConfig.fbApiVersion,
-        status: true,
-      });
-      window.fbSDKLoaded = true;
-      FB.AppEvents.logPageView();
+    initFB() {
+      if (window.fbSDKLoaded === undefined) {
+        window.fbAsyncInit = () => {
+          FB.init({
+            appId: window.chatwootConfig.fbAppId,
+            xfbml: true,
+            version: window.chatwootConfig.fbApiVersion,
+            status: true,
+          });
+          window.fbSDKLoaded = true;
+          FB.AppEvents.logPageView();
+        };
+      }
     },
 
-    async loadFBsdk() {
-      return loadScript('https://connect.facebook.net/en_US/sdk.js', {
-        id: 'facebook-jssdk',
-      });
+    loadFBsdk() {
+      ((d, s, id) => {
+        let js;
+        // eslint-disable-next-line
+        const fjs = (js = d.getElementsByTagName(s)[0]);
+        if (d.getElementById(id)) {
+          return;
+        }
+        js = d.createElement(s);
+        js.id = id;
+        js.src = '//connect.facebook.net/en_US/sdk.js';
+        fjs.parentNode.insertBefore(js, fjs);
+      })(document, 'script', 'facebook-jssdk');
     },
 
     tryFBlogin() {
@@ -339,8 +265,8 @@ export default {
     },
 
     createChannel() {
-      this.v$.$touch();
-      if (!this.v$.$error) {
+      this.$v.$touch();
+      if (!this.$v.$error) {
         this.emptyStateMessage = this.$t('INBOX_MGMT.DETAILS.CREATING_CHANNEL');
         this.isCreating = true;
         this.$store
@@ -359,106 +285,16 @@ export default {
   },
 };
 </script>
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> b4b308336 (feat: Eslint rules (#9839))
+<style scoped lang="scss">
+.login-init {
+  @apply pt-[30%] text-center;
 
-<template>
-  <div
-    class="border border-slate-25 dark:border-slate-800/60 bg-white dark:bg-slate-900 h-full p-6 w-full max-w-full md:w-3/4 md:max-w-[75%] flex-shrink-0 flex-grow-0"
-  >
-    <div
-      v-if="!hasLoginStarted"
-      class="flex flex-col items-center justify-center h-full text-center"
-    >
-      <a href="#" @click="startLogin()">
-        <img
-          class="w-auto h-10"
-          src="~dashboard/assets/images/channels/facebook_login.png"
-          alt="Facebook-logo"
-        />
-      </a>
-      <p class="py-6">
-        {{
-          useInstallationName(
-            $t('INBOX_MGMT.ADD.FB.HELP'),
-            globalConfig.installationName
-          )
-        }}
-      </p>
-    </div>
-    <div v-else>
-      <div v-if="hasError" class="max-w-lg mx-auto text-center">
-        <h5>{{ errorStateMessage }}</h5>
-        <p
-          v-if="errorStateDescription"
-          v-dompurify-html="errorStateDescription"
-        />
-      </div>
-      <LoadingState v-else-if="showLoader" :message="emptyStateMessage" />
-      <form
-        v-else
-        class="flex flex-wrap mx-0"
-        @submit.prevent="createChannel()"
-      >
-        <div class="w-full">
-          <PageHeader
-            :header-title="$t('INBOX_MGMT.ADD.DETAILS.TITLE')"
-            :header-content="
-              useInstallationName(
-                $t('INBOX_MGMT.ADD.DETAILS.DESC'),
-                globalConfig.installationName
-              )
-            "
-          />
-        </div>
-        <div class="w-3/5">
-          <div class="w-full">
-            <div class="input-wrap" :class="{ error: v$.selectedPage.$error }">
-              {{ $t('INBOX_MGMT.ADD.FB.CHOOSE_PAGE') }}
-              <multiselect
-                v-model.trim="selectedPage"
-                close-on-select
-                allow-empty
-                :options="getSelectablePages"
-                track-by="id"
-                label="name"
-                :select-label="$t('FORMS.MULTISELECT.ENTER_TO_SELECT')"
-                :deselect-label="$t('FORMS.MULTISELECT.ENTER_TO_REMOVE')"
-                :placeholder="$t('INBOX_MGMT.ADD.FB.PICK_A_VALUE')"
-                selected-label
-                @select="setPageName"
-              />
-              <span v-if="v$.selectedPage.$error" class="message">
-                {{ $t('INBOX_MGMT.ADD.FB.CHOOSE_PLACEHOLDER') }}
-              </span>
-            </div>
-          </div>
-          <div class="w-full">
-            <label :class="{ error: v$.pageName.$error }">
-              {{ $t('INBOX_MGMT.ADD.FB.INBOX_NAME') }}
-              <input
-                v-model.trim="pageName"
-                type="text"
-                :placeholder="$t('INBOX_MGMT.ADD.FB.PICK_NAME')"
-                @input="v$.pageName.$touch"
-              />
-              <span v-if="v$.pageName.$error" class="message">
-                {{ $t('INBOX_MGMT.ADD.FB.ADD_NAME') }}
-              </span>
-            </label>
-          </div>
-          <div class="w-full text-right">
-            <input type="submit" value="Create Inbox" class="button" />
-          </div>
-        </div>
-      </form>
-    </div>
-  </div>
-</template>
-<<<<<<< HEAD
-=======
->>>>>>> cb0642564 (feat: add promise based loader for FB script (#9780))
-=======
->>>>>>> b4b308336 (feat: Eslint rules (#9839))
+  p {
+    @apply p-6;
+  }
+
+  > a > img {
+    @apply w-60;
+  }
+}
+</style>

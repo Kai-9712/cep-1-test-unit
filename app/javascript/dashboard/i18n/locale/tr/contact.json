@@ -381,9 +381,6 @@
       },
       "SUCCESS_MESSAGE": "Kişi başarıyla birleştirildi",
       "ERROR_MESSAGE": "Kişiler birleştirilemedi, tekrar deneyin!"
-    },
-    "DROPDOWN_ITEM": {
-      "ID": "(ID: {identifier})"
     }
   }
 }

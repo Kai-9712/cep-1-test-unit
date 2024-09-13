@@ -1,3 +1,16 @@
+<template>
+  <bubble-image
+    v-if="!hasImgStoryError"
+    :url="storyUrl"
+    @error="onImageLoadError"
+  />
+  <bubble-video
+    v-else-if="!hasVideoStoryError"
+    :url="storyUrl"
+    @error="onVideoLoadError"
+  />
+  <instagram-story-error-place-holder v-else />
+</template>
 <script>
 import BubbleImage from './Image.vue';
 import BubbleVideo from './Video.vue';
@@ -36,17 +49,3 @@ export default {
   },
 };
 </script>
-
-<template>
-  <BubbleImage
-    v-if="!hasImgStoryError"
-    :url="storyUrl"
-    @error="onImageLoadError"
-  />
-  <BubbleVideo
-    v-else-if="!hasVideoStoryError"
-    :url="storyUrl"
-    @error="onVideoLoadError"
-  />
-  <InstagramStoryErrorPlaceHolder v-else />
-</template>

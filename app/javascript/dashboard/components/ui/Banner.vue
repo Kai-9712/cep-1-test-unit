@@ -1,3 +1,45 @@
+<template>
+  <div
+    class="flex items-center justify-center h-12 gap-4 px-4 py-3 text-xs text-white banner dark:text-white"
+    :class="bannerClasses"
+  >
+    <span class="banner-message">
+      {{ bannerMessage }}
+      <a
+        v-if="hrefLink"
+        :href="hrefLink"
+        rel="noopener noreferrer nofollow"
+        target="_blank"
+      >
+        {{ hrefLinkText }}
+      </a>
+    </span>
+    <div class="actions">
+      <woot-button
+        v-if="hasActionButton"
+        size="tiny"
+        :icon="actionButtonIcon"
+        :variant="actionButtonVariant"
+        color-scheme="primary"
+        class-names="banner-action__button"
+        @click="onClick"
+      >
+        {{ actionButtonLabel }}
+      </woot-button>
+      <woot-button
+        v-if="hasCloseButton"
+        size="tiny"
+        :color-scheme="colorScheme"
+        icon="dismiss-circle"
+        class-names="banner-action__button"
+        @click="onClickClose"
+      >
+        {{ $t('GENERAL_SETTINGS.DISMISS') }}
+      </woot-button>
+    </div>
+  </div>
+</template>
+
 <script>
 export default {
   props: {
@@ -58,48 +100,6 @@ export default {
   },
 };
 </script>
-
-<template>
-  <div
-    class="flex items-center justify-center h-12 gap-4 px-4 py-3 text-xs text-white banner dark:text-white"
-    :class="bannerClasses"
-  >
-    <span class="banner-message">
-      {{ bannerMessage }}
-      <a
-        v-if="hrefLink"
-        :href="hrefLink"
-        rel="noopener noreferrer nofollow"
-        target="_blank"
-      >
-        {{ hrefLinkText }}
-      </a>
-    </span>
-    <div class="actions">
-      <woot-button
-        v-if="hasActionButton"
-        size="tiny"
-        :icon="actionButtonIcon"
-        :variant="actionButtonVariant"
-        color-scheme="primary"
-        class-names="banner-action__button"
-        @click="onClick"
-      >
-        {{ actionButtonLabel }}
-      </woot-button>
-      <woot-button
-        v-if="hasCloseButton"
-        size="tiny"
-        :color-scheme="colorScheme"
-        icon="dismiss-circle"
-        class-names="banner-action__button"
-        @click="onClickClose"
-      >
-        {{ $t('GENERAL_SETTINGS.DISMISS') }}
-      </woot-button>
-    </div>
-  </div>
-</template>
 
 <style lang="scss" scoped>
 .banner {

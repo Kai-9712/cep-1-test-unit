@@ -21,16 +21,16 @@ const props = defineProps({
   },
 });
 
-const emit = defineEmits([
-  'addFolders',
-  'deleteFolders',
-  'resetFilters',
-  'basicFilterChange',
-  'filtersModal',
+const emits = defineEmits([
+  'add-folders',
+  'delete-folders',
+  'reset-filters',
+  'basic-filter-change',
+  'filters-modal',
 ]);
 
 const onBasicFilterChange = (value, type) => {
-  emit('basicFilterChange', value, type);
+  emits('basic-filter-change', value, type);
 };
 
 const hasAppliedFiltersOrActiveFolders = computed(() => {
@@ -68,7 +68,7 @@ const hasAppliedFiltersOrActiveFolders = computed(() => {
           variant="smooth"
           color-scheme="secondary"
           icon="save"
-          @click="emit('addFolders')"
+          @click="emits('add-folders')"
         />
         <woot-button
           v-tooltip.top-end="$t('FILTER.CLEAR_BUTTON_LABEL')"
@@ -76,7 +76,7 @@ const hasAppliedFiltersOrActiveFolders = computed(() => {
           variant="smooth"
           color-scheme="alert"
           icon="dismiss-circle"
-          @click="emit('resetFilters')"
+          @click="emits('reset-filters')"
         />
       </div>
       <div v-if="hasActiveFolders">
@@ -86,7 +86,7 @@ const hasAppliedFiltersOrActiveFolders = computed(() => {
           variant="smooth"
           color-scheme="secondary"
           icon="edit"
-          @click="emit('filtersModal')"
+          @click="emits('filters-modal')"
         />
         <woot-button
           v-tooltip.top-end="$t('FILTER.CUSTOM_VIEWS.DELETE.DELETE_BUTTON')"
@@ -94,7 +94,7 @@ const hasAppliedFiltersOrActiveFolders = computed(() => {
           variant="smooth"
           color-scheme="alert"
           icon="delete"
-          @click="emit('deleteFolders')"
+          @click="emits('delete-folders')"
         />
       </div>
       <woot-button
@@ -104,9 +104,9 @@ const hasAppliedFiltersOrActiveFolders = computed(() => {
         color-scheme="secondary"
         icon="filter"
         size="tiny"
-        @click="emit('filtersModal')"
+        @click="emits('filters-modal')"
       />
-      <ConversationBasicFilter
+      <conversation-basic-filter
         v-if="!hasAppliedFiltersOrActiveFolders"
         @changeFilter="onBasicFilterChange"
       />

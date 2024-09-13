@@ -1,14 +1,3 @@
-<script>
-export default {
-  props: {
-    label: {
-      type: String,
-      default: '',
-    },
-  },
-};
-</script>
-
 <template>
   <div class="relative my-4 section-separator">
     <div class="absolute inset-0 flex items-center" aria-hidden="true">
@@ -23,3 +12,13 @@ export default {
     </div>
   </div>
 </template>
+<script>
+export default {
+  props: {
+    label: {
+      type: String,
+      default: '',
+    },
+  },
+};
+</script>

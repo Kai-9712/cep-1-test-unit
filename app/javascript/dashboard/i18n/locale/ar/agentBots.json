@@ -1,100 +1,73 @@
 {
   "AGENT_BOTS": {
-<<<<<<< HEAD
-<<<<<<< HEAD
-    "HEADER": "الروبوتات",
-    "LOADING_EDITOR": "جار جلب المحرر...",
-    "HEADER_BTN_TXT": "إضافة إعدادات الروبوت",
-    "SIDEBAR_TXT": "<p><b>الروبوتات</b> <p>الروبوتات هي مثل الأعضاء الأكثر روعة في فريقك. يمكنهم التعامل مع الأمور الصغيرة، حتى تتمكن من التركيز على الأمور التي تهمك. جربهم.</p> <p> يمكنك إدارة الروبوتات الخاصة بك من هذه الصفحة أو إنشاء روبوتات جديدة باستخدام زر 'إضافة تكوين روبوت'.</p> <p> افتح <a href=\"https://www.chatwoot.com/hc/chatwoot-user-guide-cloud-version/articles/1677497472-how-to-use-agent-bots\" target=\"blank\">دليل البوتات</a> في علامة تبويب أخرى للحصول على مساعدة.</p>",
+    "HEADER": "Bots",
+    "LOADING_EDITOR": "Loading editor...",
+    "HEADER_BTN_TXT": "Add bot configuration",
+    "SIDEBAR_TXT": "<p><b>Agent Bots</b> <p>Agent Bots are like the most fabulous members of your team. They can handle the small stuff, so you can focus on the stuff that matters. Give them a try.</p> <p> You can manage your bots from this page or create new ones using the 'Add bot configuraton' button.</p> <p> Open the <a href=\"https://www.chatwoot.com/hc/chatwoot-user-guide-cloud-version/articles/1677497472-how-to-use-agent-bots\" target=\"blank\">Agent bots handbook</a> in another tab for a helping hand.</p>",
     "CSML_BOT_EDITOR": {
       "NAME": {
-        "LABEL": "اسم الروبوت",
-        "PLACEHOLDER": "قم بتسمية الروبوت الخاص بك.",
-        "ERROR": "اسم الروبوت مطلوب."
+        "LABEL": "Bot name",
+        "PLACEHOLDER": "Name your bot.",
+        "ERROR": "Bot name is required."
       },
       "DESCRIPTION": {
-        "LABEL": "وصف الروبوت",
-        "PLACEHOLDER": "ماذا يفعل هذا الروبوت؟"
-=======
-    "HEADER": "البوتات",
-    "LOADING_EDITOR": "جارٍ تحميل المحرر...",
-    "HEADER_BTN_TXT": "إضافة تكوين بوت",
-=======
-    "HEADER": "الروبوتات",
-    "LOADING_EDITOR": "جار جلب المحرر...",
-    "HEADER_BTN_TXT": "إضافة إعدادات الروبوت",
->>>>>>> a196e2358 (chore: Update translations (#9845))
-    "SIDEBAR_TXT": "<p><b>البوتات</b> <p>البوتات هي مثل الأعضاء الأكثر روعة في فريقك. يمكنهم التعامل مع الأمور الصغيرة، حتى تتمكن من التركيز على الأمور التي تهمك. جربهم.</p> <p> يمكنك إدارة البوتات الخاصة بك من هذه الصفحة أو إنشاء بوتات جديدة باستخدام زر 'إضافة تكوين بوت'.</p> <p> افتح <a href=\"https://www.chatwoot.com/hc/chatwoot-user-guide-cloud-version/articles/1677497472-how-to-use-agent-bots\" target=\"blank\">دليل البوتات</a> في علامة تبويب أخرى للحصول على مساعدة.</p>",
-    "CSML_BOT_EDITOR": {
-      "NAME": {
-        "LABEL": "اسم الروبوت",
-        "PLACEHOLDER": "قم بتسمية الروبوت الخاص بك.",
-        "ERROR": "اسم الروبوت مطلوب."
-      },
-      "DESCRIPTION": {
-<<<<<<< HEAD
-        "LABEL": "وصف البوت",
-        "PLACEHOLDER": "ماذا يفعل هذا البوت؟"
->>>>>>> 027a540bb (chore: Update translations from Crowdin (#9835))
-=======
-        "LABEL": "وصف الروبوت",
-        "PLACEHOLDER": "ماذا يفعل هذا الروبوت؟"
->>>>>>> a196e2358 (chore: Update translations (#9845))
+        "LABEL": "Bot description",
+        "PLACEHOLDER": "What does this bot do?"
       },
       "BOT_CONFIG": {
-        "ERROR": "يرجى إدخال تكوين بوت CSML الخاص بك أعلاه.",
-        "API_ERROR": "تكوين CSML الخاص بك غير صالح. يرجى إصلاحه والمحاولة مرة أخرى."
+        "ERROR": "Please enter your CSML bot configuration above.",
+        "API_ERROR": "Your CSML configuration is invalid. Please fix it and try again."
       },
-      "SUBMIT": "التحقق والحفظ"
+      "SUBMIT": "Validate and save"
     },
     "BOT_CONFIGURATION": {
-      "TITLE": "اختر الروبوت",
-      "DESC": "قم بتعيين روبوت لصندوق الوارد الخاص بك. يمكنهم التعامل مع المحادثات الأولية ونقلها إلى وكيل مباشر عند الضرورة.",
+      "TITLE": "Select an agent bot",
+      "DESC": "Assign an Agent Bot to your inbox. They can handle initial conversations and transfer them to a live agent when necessary.",
       "SUBMIT": "تحديث",
-      "DISCONNECT": "قطع اتصال الروبوت",
-      "SUCCESS_MESSAGE": "تم تحديث الروبوت بنجاح.",
-      "DISCONNECTED_SUCCESS_MESSAGE": "تم فصل الروبوت بنجاح.",
-      "ERROR_MESSAGE": "تعذر تحديث الروبوت. يرجى المحاولة مرة أخرى.",
-      "DISCONNECTED_ERROR_MESSAGE": "تعذر فصل الروبوت. يرجى المحاولة مرة أخرى.",
-      "SELECT_PLACEHOLDER": "اختر الروبوت"
+      "DISCONNECT": "Disconnect bot",
+      "SUCCESS_MESSAGE": "Successfully updated the agent bot.",
+      "DISCONNECTED_SUCCESS_MESSAGE": "Successfully disconnected the agent bot.",
+      "ERROR_MESSAGE": "Could not update the agent bot. Please try again.",
+      "DISCONNECTED_ERROR_MESSAGE": "Could not disconnect the agent bot. Please try again.",
+      "SELECT_PLACEHOLDER": "Select bot"
     },
     "ADD": {
-      "TITLE": "تكوين روبوت جديد",
+      "TITLE": "Configure new bot",
       "CANCEL_BUTTON_TEXT": "إلغاء",
       "API": {
-        "SUCCESS_MESSAGE": "تمت إضافة الروبوت بنجاح.",
-        "ERROR_MESSAGE": "تعذر إضافة الروبوت. يرجى المحاولة مرة أخرى لاحقًا."
+        "SUCCESS_MESSAGE": "Bot added successfully.",
+        "ERROR_MESSAGE": "Could not add bot. Please try again later."
       }
     },
     "LIST": {
-      "404": "لم يتم العثور على أي روبوتات. يمكنك إنشاء الروبوت بالنقر على زر 'تكوين روبوت جديد' ↗",
-      "LOADING": "جار جلب الروبوتات...",
-      "TYPE": "نوع الروبوت"
+      "404": "No bots found. You can create a bot by clicking the 'Configure new bot' button ↗",
+      "LOADING": "Fetching bots...",
+      "TYPE": "Bot type"
     },
     "DELETE": {
       "BUTTON_TEXT": "حذف",
-      "TITLE": "حذف الروبوت",
+      "TITLE": "Delete bot",
       "SUBMIT": "حذف",
       "CANCEL_BUTTON_TEXT": "إلغاء",
-      "DESCRIPTION": "هل أنت متأكد أنك تريد حذف هذا الروبوت؟ هذا الإجراء لا يمكن التراجع عنه.",
+      "DESCRIPTION": "Are you sure you want to delete this bot? This action is irreversible.",
       "API": {
-        "SUCCESS_MESSAGE": "تم حذف الروبوت بنجاح.",
-        "ERROR_MESSAGE": "تعذر حذف الروبوت. يرجى المحاولة مرة أخرى."
+        "SUCCESS_MESSAGE": "Bot deleted successfully.",
+        "ERROR_MESSAGE": "Could not delete bot. Please try again."
       }
     },
     "EDIT": {
       "BUTTON_TEXT": "تعديل",
-      "LOADING": "جار جلب الروبوتات...",
-      "TITLE": "تعديل الروبوت",
+      "LOADING": "Fetching bots...",
+      "TITLE": "Edit bot",
       "CANCEL_BUTTON_TEXT": "إلغاء",
       "API": {
-        "SUCCESS_MESSAGE": "تم تحديث الروبوت بنجاح.",
-        "ERROR_MESSAGE": "تعذر تحديث الروبوت. يرجى المحاولة مرة أخرى."
+        "SUCCESS_MESSAGE": "Bot updated successfully.",
+        "ERROR_MESSAGE": "Could not update bot. Please try again."
       }
     },
     "TYPES": {
-      "WEBHOOK": "روبوت الـWebhook",
-      "CSML": "بوت CSML"
+      "WEBHOOK": "Webhook bot",
+      "CSML": "CSML bot"
     }
   }
 }

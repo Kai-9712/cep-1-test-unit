@@ -1,3 +1,13 @@
+<template>
+  <div
+    class="fixed outline-none z-[9999] cursor-pointer"
+    :style="style"
+    tabindex="0"
+    @blur="$emit('close')"
+  >
+    <slot />
+  </div>
+</template>
 <script>
 export default {
   props: {
@@ -30,14 +40,3 @@ export default {
   },
 };
 </script>
-
-<template>
-  <div
-    class="fixed outline-none z-[9999] cursor-pointer"
-    :style="style"
-    tabindex="0"
-    @blur="$emit('close')"
-  >
-    <slot />
-  </div>
-</template>

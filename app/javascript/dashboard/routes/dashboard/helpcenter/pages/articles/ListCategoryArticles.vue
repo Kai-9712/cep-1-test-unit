@@ -1,4 +1,3 @@
-<!-- Unused file deprecated -->
 <template>
-  <div>{{ 'Component to list articles in a category in a portal' }}</div>
+  <div>Component to list articles in a category in a portal</div>
 </template>

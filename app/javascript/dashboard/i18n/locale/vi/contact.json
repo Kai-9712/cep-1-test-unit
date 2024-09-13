@@ -381,9 +381,6 @@
       },
       "SUCCESS_MESSAGE": "Liên hệ được gộp thành công",
       "ERROR_MESSAGE": "Không thể hợp nhất liên lạc, thử lại!"
-    },
-    "DROPDOWN_ITEM": {
-      "ID": "(ID: {identifier})"
     }
   }
 }

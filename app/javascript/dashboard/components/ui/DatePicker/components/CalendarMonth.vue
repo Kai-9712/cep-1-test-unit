@@ -18,7 +18,6 @@ const props = defineProps({
   endCurrentDate: Date,
 });
 
-const emit = defineEmits(['selectMonth', 'prev', 'next', 'setView']);
 const { START_CALENDAR } = CALENDAR_TYPES;
 const { MONTH, YEAR } = CALENDAR_PERIODS;
 
@@ -34,8 +33,10 @@ const activeMonthIndex = computed(() => {
   return getMonth(date);
 });
 
+const emit = defineEmits(['select-month', 'prev', 'next', 'set-view']);
+
 const setViewMode = (type, mode) => {
-  emit('setView', type, mode);
+  emit('set-view', type, mode);
 };
 
 const onClickPrev = () => {
@@ -47,7 +48,7 @@ const onClickNext = () => {
 };
 
 const selectMonth = index => {
-  emit('selectMonth', index);
+  emit('select-month', index);
 };
 </script>
 
@@ -62,7 +63,7 @@ const selectMonth = index => {
           MONTH
         )
       "
-      @setView="setViewMode"
+      @set-view="setViewMode"
       @prev="onClickPrev"
       @next="onClickNext"
     />

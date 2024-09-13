@@ -1,9 +1,6 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 <template>
   <div
-    class="flex flex-wrap flex-grow-0 w-full h-full max-w-full min-h-0 ml-auto mr-auto app-wrapper dark:text-slate-300"
+    class="app-wrapper h-full flex-grow-0 min-h-0 w-full max-w-full ml-auto mr-auto flex flex-wrap dark:text-slate-300"
   >
     <sidebar
       :route="currentRoute"
@@ -14,7 +11,7 @@
       @close-key-shortcut-modal="closeKeyShortcutModal"
       @show-add-label-popup="showAddLabelPopup"
     />
-    <section class="flex flex-1 h-full min-h-0 px-0 overflow-hidden">
+    <section class="flex h-full min-h-0 overflow-hidden flex-1 px-0">
       <router-view />
       <command-bar />
       <account-selector
@@ -42,9 +39,6 @@
   </div>
 </template>
 
->>>>>>> fb99ba7b4 (feat: Rewrite `uiSettings` mixin to a composable (#9819))
-=======
->>>>>>> b4b308336 (feat: Eslint rules (#9839))
 <script>
 import Sidebar from '../../components/layout/Sidebar.vue';
 import CommandBar from './commands/commandbar.vue';
@@ -54,7 +48,7 @@ import AddAccountModal from 'dashboard/components/layout/sidebarComponents/AddAc
 import AccountSelector from 'dashboard/components/layout/sidebarComponents/AccountSelector.vue';
 import AddLabelModal from 'dashboard/routes/dashboard/settings/labels/AddLabel.vue';
 import NotificationPanel from 'dashboard/routes/dashboard/notifications/components/NotificationPanel.vue';
-import { useUISettings } from 'dashboard/composables/useUISettings';
+import uiSettingsMixin from 'dashboard/mixins/uiSettings';
 import wootConstants from 'dashboard/constants/globals';
 
 export default {
@@ -67,14 +61,7 @@ export default {
     AddLabelModal,
     NotificationPanel,
   },
-  setup() {
-    const { uiSettings, updateUISettings } = useUISettings();
-
-    return {
-      uiSettings,
-      updateUISettings,
-    };
-  },
+  mixins: [uiSettingsMixin],
   data() {
     return {
       showAccountModal: false,
@@ -187,44 +174,3 @@ export default {
   },
 };
 </script>
-
-<template>
-  <div
-    class="flex flex-wrap flex-grow-0 w-full h-full max-w-full min-h-0 ml-auto mr-auto app-wrapper dark:text-slate-300"
-  >
-    <Sidebar
-      :route="currentRoute"
-      :show-secondary-sidebar="isSidebarOpen"
-      @openNotificationPanel="openNotificationPanel"
-      @toggleAccountModal="toggleAccountModal"
-      @openKeyShortcutModal="toggleKeyShortcutModal"
-      @closeKeyShortcutModal="closeKeyShortcutModal"
-      @showAddLabelPopup="showAddLabelPopup"
-    />
-    <section class="flex flex-1 h-full min-h-0 px-0 overflow-hidden">
-      <router-view />
-      <CommandBar />
-      <AccountSelector
-        :show-account-modal="showAccountModal"
-        @closeAccountModal="toggleAccountModal"
-        @showCreateAccountModal="openCreateAccountModal"
-      />
-      <AddAccountModal
-        :show="showCreateAccountModal"
-        @closeAccountCreateModal="closeCreateAccountModal"
-      />
-      <WootKeyShortcutModal
-        :show.sync="showShortcutModal"
-        @close="closeKeyShortcutModal"
-        @clickaway="closeKeyShortcutModal"
-      />
-      <NotificationPanel
-        v-if="isNotificationPanel"
-        @close="closeNotificationPanel"
-      />
-      <woot-modal :show.sync="showAddLabelModal" :on-close="hideAddLabelPopup">
-        <AddLabelModal @close="hideAddLabelPopup" />
-      </woot-modal>
-    </section>
-  </div>
-</template>

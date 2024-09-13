@@ -1,42 +1,5 @@
-<script setup>
-import { computed } from 'vue';
-import FormSelect from 'v3/components/Form/Select.vue';
-
-const props = defineProps({
-  value: {
-    type: String,
-    required: true,
-    validator: value => ['ding', 'bell'].includes(value),
-  },
-  label: {
-    type: String,
-    default: '',
-  },
-});
-
-const emit = defineEmits(['change']);
-
-const alertTones = computed(() => [
-  {
-    value: 'ding',
-    label: 'Ding',
-  },
-  {
-    value: 'bell',
-    label: 'Bell',
-  },
-]);
-
-const selectedValue = computed({
-  get: () => props.value,
-  set: value => {
-    emit('change', value);
-  },
-});
-</script>
-
 <template>
-  <FormSelect
+  <form-select
     v-model="selectedValue"
     name="alertTone"
     spacing="compact"
@@ -53,5 +16,41 @@ const selectedValue = computed({
     >
       {{ tone.label }}
     </option>
-  </FormSelect>
+  </form-select>
 </template>
+<script setup>
+import { computed } from 'vue';
+import FormSelect from 'v3/components/Form/Select.vue';
+
+const props = defineProps({
+  value: {
+    type: String,
+    required: true,
+    validator: value => ['ding', 'bell'].includes(value),
+  },
+  label: {
+    type: String,
+    default: '',
+  },
+});
+
+const alertTones = computed(() => [
+  {
+    value: 'ding',
+    label: 'Ding',
+  },
+  {
+    value: 'bell',
+    label: 'Bell',
+  },
+]);
+
+const emit = defineEmits(['change']);
+
+const selectedValue = computed({
+  get: () => props.value,
+  set: value => {
+    emit('change', value);
+  },
+});
+</script>

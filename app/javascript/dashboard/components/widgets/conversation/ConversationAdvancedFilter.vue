@@ -1,12 +1,3 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-<script>
-import { useAlert } from 'dashboard/composables';
-<<<<<<< HEAD
-=======
-import { required, requiredIf } from 'vuelidate/lib/validators';
->>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
-=======
 <template>
   <div>
     <woot-modal-header :header-title="filterModalHeaderTitle">
@@ -21,7 +12,7 @@ import { required, requiredIf } from 'vuelidate/lib/validators';
           <input
             v-model="activeFolderNewName"
             type="text"
-            class="bg-white folder-input border-slate-75 dark:border-slate-600 dark:bg-slate-900 text-slate-900 dark:text-slate-100"
+            class="folder-input border-slate-75 dark:border-slate-600 bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100"
           />
           <span v-if="!activeFolderNewName" class="message">
             {{ $t('FILTER.EMPTY_VALUE_ERROR') }}
@@ -32,7 +23,7 @@ import { required, requiredIf } from 'vuelidate/lib/validators';
         </label>
       </div>
       <div
-        class="p-4 mb-4 border border-solid rounded-lg bg-slate-25 dark:bg-slate-900 border-slate-50 dark:border-slate-700/50"
+        class="p-4 rounded-lg bg-slate-25 dark:bg-slate-900 border border-solid border-slate-50 dark:border-slate-700/50 mb-4"
       >
         <filter-input-box
           v-for="(filter, i) in appliedFilters"
@@ -50,7 +41,7 @@ import { required, requiredIf } from 'vuelidate/lib/validators';
           :show-query-operator="i !== appliedFilters.length - 1"
           :show-user-input="showUserInput(appliedFilters[i].filter_operator)"
           :grouped-filters="true"
-          :error-message="validationErrors[`filter_${i}`]"
+          :v="$v.appliedFilters.$each[i]"
           @resetFilter="resetFilter(i, appliedFilters[i])"
           @removeFilter="removeFilter(i)"
         />
@@ -67,7 +58,7 @@ import { required, requiredIf } from 'vuelidate/lib/validators';
         </div>
       </div>
       <div class="w-full">
-        <div class="flex flex-row justify-end w-full gap-2 px-0 py-2">
+        <div class="flex flex-row justify-end gap-2 py-2 px-0 w-full">
           <woot-button class="button clear" @click.prevent="onClose">
             {{ $t('FILTER.CANCEL_BUTTON_LABEL') }}
           </woot-button>
@@ -87,25 +78,23 @@ import { required, requiredIf } from 'vuelidate/lib/validators';
   </div>
 </template>
 
-=======
->>>>>>> b4b308336 (feat: Eslint rules (#9839))
 <script>
-import { useAlert } from 'dashboard/composables';
->>>>>>> ce8e1ec93 (chore: Migrate all instances of old vuelidate to new v2 syntax [CW-3274] (#9623))
+import alertMixin from 'shared/mixins/alertMixin';
+import { required, requiredIf } from 'vuelidate/lib/validators';
 import FilterInputBox from '../FilterInput/Index.vue';
 import languages from './advancedFilterItems/languages';
 import countries from 'shared/constants/countries.js';
 import { mapGetters } from 'vuex';
 import { filterAttributeGroups } from './advancedFilterItems';
-import { useFilter } from 'shared/composables/useFilter';
+import filterMixin from 'shared/mixins/filterMixin';
 import * as OPERATORS from 'dashboard/components/widgets/FilterInput/FilterOperatorTypes.js';
 import { CONVERSATION_EVENTS } from '../../../helper/AnalyticsHelper/events';
-import { validateConversationOrContactFilters } from 'dashboard/helper/validations.js';
 
 export default {
   components: {
     FilterInputBox,
   },
+  mixins: [alertMixin, filterMixin],
   props: {
     onClose: {
       type: Function,
@@ -128,14 +117,26 @@ export default {
       default: false,
     },
   },
-  setup() {
-    const { setFilterAttributes } = useFilter({
-      filteri18nKey: 'FILTER',
-      attributeModel: 'conversation_attribute',
-    });
-    return {
-      setFilterAttributes,
-    };
+  validations: {
+    appliedFilters: {
+      required,
+      $each: {
+        values: {
+          ensureBetween0to999(value, prop) {
+            if (prop.filter_operator === 'days_before') {
+              return parseInt(value, 10) > 0 && parseInt(value, 10) < 999;
+            }
+            return true;
+          },
+          required: requiredIf(prop => {
+            return !(
+              prop.filter_operator === 'is_present' ||
+              prop.filter_operator === 'is_not_present'
+            );
+          }),
+        },
+      },
+    },
   },
   data() {
     return {
@@ -148,7 +149,6 @@ export default {
       allCustomAttributes: [],
       attributeModel: 'conversation_attribute',
       filtersFori18n: 'FILTER',
-      validationErrors: {},
     };
   },
   computed: {
@@ -167,11 +167,7 @@ export default {
     },
   },
   mounted() {
-    const { filterGroups, filterTypes } = this.setFilterAttributes();
-
-    this.filterTypes = [...this.filterTypes, ...filterTypes];
-    this.filterGroups = filterGroups;
-
+    this.setFilterAttributes();
     this.$store.dispatch('campaigns/get');
     if (this.getAppliedConversationFilters.length) {
       this.appliedFilters = [];
@@ -345,29 +341,26 @@ export default {
     },
     removeFilter(index) {
       if (this.appliedFilters.length <= 1) {
-        useAlert(this.$t('FILTER.FILTER_DELETE_ERROR'));
+        this.showAlert(this.$t('FILTER.FILTER_DELETE_ERROR'));
       } else {
         this.appliedFilters.splice(index, 1);
       }
     },
     submitFilterQuery() {
-      this.validationErrors = validateConversationOrContactFilters(
-        this.appliedFilters
+      this.$v.$touch();
+      if (this.$v.$invalid) return;
+      this.$store.dispatch(
+        'setConversationFilters',
+        JSON.parse(JSON.stringify(this.appliedFilters))
       );
-      if (Object.keys(this.validationErrors).length === 0) {
-        this.$store.dispatch(
-          'setConversationFilters',
-          JSON.parse(JSON.stringify(this.appliedFilters))
-        );
-        this.$emit('applyFilter', this.appliedFilters);
-        this.$track(CONVERSATION_EVENTS.APPLY_FILTER, {
-          applied_filters: this.appliedFilters.map(filter => ({
-            key: filter.attribute_key,
-            operator: filter.filter_operator,
-            query_operator: filter.query_operator,
-          })),
-        });
-      }
+      this.$emit('applyFilter', this.appliedFilters);
+      this.$track(CONVERSATION_EVENTS.APPLY_FILTER, {
+        applied_filters: this.appliedFilters.map(filter => ({
+          key: filter.attribute_key,
+          operator: filter.filter_operator,
+          query_operator: filter.query_operator,
+        })),
+      });
     },
     updateSavedCustomViews() {
       this.$emit('updateFolder', this.appliedFilters, this.activeFolderNewName);
@@ -386,91 +379,6 @@ export default {
   },
 };
 </script>
-
-<template>
-  <div>
-    <woot-modal-header :header-title="filterModalHeaderTitle">
-      <p class="text-slate-600 dark:text-slate-200">
-        {{ filterModalSubTitle }}
-      </p>
-    </woot-modal-header>
-    <div class="p-8">
-      <div v-if="isFolderView">
-        <label class="input-label" :class="{ error: !activeFolderNewName }">
-          {{ $t('FILTER.FOLDER_LABEL') }}
-          <input
-            v-model="activeFolderNewName"
-            type="text"
-            class="bg-white folder-input border-slate-75 dark:border-slate-600 dark:bg-slate-900 text-slate-900 dark:text-slate-100"
-          />
-          <span v-if="!activeFolderNewName" class="message">
-            {{ $t('FILTER.EMPTY_VALUE_ERROR') }}
-          </span>
-        </label>
-        <label class="mb-1">
-          {{ $t('FILTER.FOLDER_QUERY_LABEL') }}
-        </label>
-      </div>
-      <div
-        class="p-4 mb-4 border border-solid rounded-lg bg-slate-25 dark:bg-slate-900 border-slate-50 dark:border-slate-700/50"
-      >
-        <FilterInputBox
-          v-for="(filter, i) in appliedFilters"
-          :key="i"
-          v-model="appliedFilters[i]"
-          :filter-groups="filterGroups"
-          :input-type="
-            getInputType(
-              appliedFilters[i].attribute_key,
-              appliedFilters[i].filter_operator
-            )
-          "
-          :operators="getOperators(appliedFilters[i].attribute_key)"
-          :dropdown-values="getDropdownValues(appliedFilters[i].attribute_key)"
-          :show-query-operator="i !== appliedFilters.length - 1"
-          :show-user-input="showUserInput(appliedFilters[i].filter_operator)"
-          grouped-filters
-          :error-message="
-            validationErrors[`filter_${i}`]
-              ? $t(`CONTACTS_FILTER.ERRORS.VALUE_REQUIRED`)
-              : ''
-          "
-          @resetFilter="resetFilter(i, appliedFilters[i])"
-          @removeFilter="removeFilter(i)"
-        />
-        <div class="mt-4">
-          <woot-button
-            icon="add"
-            color-scheme="success"
-            variant="smooth"
-            size="small"
-            @click="appendNewFilter"
-          >
-            {{ $t('FILTER.ADD_NEW_FILTER') }}
-          </woot-button>
-        </div>
-      </div>
-      <div class="w-full">
-        <div class="flex flex-row justify-end w-full gap-2 px-0 py-2">
-          <woot-button class="button clear" @click.prevent="onClose">
-            {{ $t('FILTER.CANCEL_BUTTON_LABEL') }}
-          </woot-button>
-          <woot-button
-            v-if="isFolderView"
-            :disabled="!activeFolderNewName"
-            @click="updateSavedCustomViews"
-          >
-            {{ $t('FILTER.UPDATE_BUTTON_LABEL') }}
-          </woot-button>
-          <woot-button v-else @click="submitFilterQuery">
-            {{ $t('FILTER.SUBMIT_BUTTON_LABEL') }}
-          </woot-button>
-        </div>
-      </div>
-    </div>
-  </div>
-</template>
-
 <style lang="scss" scoped>
 .folder-input {
   @apply w-[50%];

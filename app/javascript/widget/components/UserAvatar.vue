@@ -1,3 +1,6 @@
+<template>
+  <div class="user-avatar" :class="size" :style="getBgImage" />
+</template>
 <script>
 /**
  * Thumbnail Component
@@ -23,10 +26,6 @@ export default {
   },
 };
 </script>
-
-<template>
-  <div class="user-avatar" :class="size" :style="getBgImage" />
-</template>
 
 <style scoped lang="scss">
 @import '~widget/assets/scss/variables.scss';

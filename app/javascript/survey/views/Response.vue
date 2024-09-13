@@ -1,25 +1,22 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 <template>
   <div
     v-if="isLoading"
-    class="flex items-center justify-center flex-1 h-full bg-black-25"
+    class="flex flex-1 items-center h-full bg-black-25 justify-center"
   >
     <spinner size="" />
   </div>
   <div
     v-else
-    class="flex items-center justify-center w-full h-full overflow-auto bg-slate-50"
+    class="w-full h-full flex overflow-auto bg-slate-50 items-center justify-center"
   >
     <div
-      class="flex flex-col w-full h-full bg-white rounded-lg shadow-lg lg:w-2/5 lg:h-auto"
+      class="flex bg-white shadow-lg rounded-lg flex-col w-full lg:w-2/5 h-full lg:h-auto"
     >
-      <div class="w-full px-12 pt-12 pb-6 m-auto my-0">
-        <img v-if="logo" :src="logo" alt="Chatwoot logo" class="mb-6 logo" />
+      <div class="w-full my-0 m-auto px-12 pt-12 pb-6">
+        <img v-if="logo" :src="logo" alt="Chatwoot logo" class="logo mb-6" />
         <p
           v-if="!isRatingSubmitted"
-          class="mb-8 text-lg leading-relaxed text-black-700"
+          class="text-black-700 text-lg leading-relaxed mb-8"
         >
           {{ $t('SURVEY.DESCRIPTION', { inboxName }) }}
         </p>
@@ -31,7 +28,7 @@
         />
         <label
           v-if="!isRatingSubmitted"
-          class="mb-4 text-base font-medium text-black-800"
+          class="text-base font-medium text-black-800 mb-4"
         >
           {{ $t('SURVEY.RATING.LABEL') }}
         </label>
@@ -54,17 +51,15 @@
   </div>
 </template>
 
->>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
-=======
->>>>>>> b4b308336 (feat: Eslint rules (#9839))
 <script>
-import { useAlert } from 'dashboard/composables';
 import Branding from 'shared/components/Branding.vue';
 import Spinner from 'shared/components/Spinner.vue';
 import Rating from 'survey/components/Rating.vue';
 import Feedback from 'survey/components/Feedback.vue';
 import Banner from 'survey/components/Banner.vue';
+import configMixin from 'shared/mixins/configMixin';
 import { getSurveyDetails, updateSurvey } from 'survey/api/survey';
+import alertMixin from 'shared/mixins/alertMixin';
 
 export default {
   name: 'Response',
@@ -75,23 +70,14 @@ export default {
     Banner,
     Feedback,
   },
-<<<<<<< HEAD
-  mixins: [configMixin],
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
+  mixins: [alertMixin, configMixin],
   props: {
     showHomePage: {
       type: Boolean,
       default: false,
     },
   },
->>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
-=======
->>>>>>> b4b308336 (feat: Eslint rules (#9839))
 
-=======
->>>>>>> dd8abe975 (feat: Rewrite `configMixin` to a composable (#9921))
   data() {
     return {
       surveyDetails: null,
@@ -190,7 +176,6 @@ export default {
       } catch (error) {
         const errorMessage = error?.response?.data?.error;
         this.errorMessage = errorMessage || this.$t('SURVEY.API.ERROR_MESSAGE');
-        useAlert(this.errorMessage);
       } finally {
         this.isUpdating = false;
       }
@@ -201,59 +186,6 @@ export default {
   },
 };
 </script>
-
-<template>
-  <div
-    v-if="isLoading"
-    class="flex items-center justify-center flex-1 h-full bg-black-25"
-  >
-    <Spinner size="" />
-  </div>
-  <div
-    v-else
-    class="flex items-center justify-center w-full h-full overflow-auto bg-slate-50"
-  >
-    <div
-      class="flex flex-col w-full h-full bg-white rounded-lg shadow-lg lg:w-2/5 lg:h-auto"
-    >
-      <div class="w-full px-12 pt-12 pb-6 m-auto my-0">
-        <img v-if="logo" :src="logo" alt="Chatwoot logo" class="mb-6 logo" />
-        <p
-          v-if="!isRatingSubmitted"
-          class="mb-8 text-lg leading-relaxed text-black-700"
-        >
-          {{ $t('SURVEY.DESCRIPTION', { inboxName }) }}
-        </p>
-        <Banner
-          v-if="shouldShowBanner"
-          :show-success="shouldShowSuccessMesage"
-          :show-error="shouldShowErrorMesage"
-          :message="message"
-        />
-        <label
-          v-if="!isRatingSubmitted"
-          class="mb-4 text-base font-medium text-black-800"
-        >
-          {{ $t('SURVEY.RATING.LABEL') }}
-        </label>
-        <Rating
-          :selected-rating="selectedRating"
-          @selectRating="selectRating"
-        />
-        <Feedback
-          v-if="enableFeedbackForm"
-          :is-updating="isUpdating"
-          :is-button-disabled="isButtonDisabled"
-          :selected-rating="selectedRating"
-          @sendFeedback="sendFeedback"
-        />
-      </div>
-      <div class="mb-3">
-        <Branding />
-      </div>
-    </div>
-  </div>
-</template>
 
 <style scoped lang="scss">
 @import '~widget/assets/scss/variables.scss';

@@ -10,7 +10,6 @@ defineProps({
   },
 });
 </script>
-
 <template>
   <div
     class="flex flex-row items-start w-full h-full gap-1 sm:items-end sm:px-6 sm:py-2 sm:gap-2 sm:flex-col"

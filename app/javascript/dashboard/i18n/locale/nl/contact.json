@@ -381,9 +381,6 @@
       },
       "SUCCESS_MESSAGE": "Contact succesvol samengevoegd",
       "ERROR_MESSAGE": "Contacten zijn niet samengevoegd, probeer het opnieuw!"
-    },
-    "DROPDOWN_ITEM": {
-      "ID": "(ID: {identifier})"
     }
   }
 }

@@ -1,10 +1,3 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-<script>
-import { useVuelidate } from '@vuelidate/core';
-import { useAlert } from 'dashboard/composables';
-import { required, minLength } from '@vuelidate/validators';
-=======
 <!-- eslint-disable vue/no-mutating-props -->
 <template>
   <woot-modal :show.sync="show" :on-close="onClose">
@@ -14,7 +7,7 @@ import { required, minLength } from '@vuelidate/validators';
     />
     <form class="w-full" @submit.prevent="onUpdate">
       <div class="w-full">
-        <div class="flex flex-row w-full mx-0 mt-0 mb-4">
+        <div class="flex flex-row w-full mt-0 mx-0 mb-4">
           <div class="w-[50%]">
             <label>
               <span>{{ $t('HELP_CENTER.CATEGORY.EDIT.PORTAL') }}</span>
@@ -32,7 +25,7 @@ import { required, minLength } from '@vuelidate/validators';
           :label="$t('HELP_CENTER.CATEGORY.EDIT.NAME.LABEL')"
           :placeholder="$t('HELP_CENTER.CATEGORY.EDIT.NAME.PLACEHOLDER')"
           :help-text="$t('HELP_CENTER.CATEGORY.EDIT.NAME.HELP_TEXT')"
-          :has-error="v$.name.$error"
+          :has-error="$v.name.$error"
           :error-message="$t('HELP_CENTER.CATEGORY.ADD.NAME.ERROR')"
           :existing-name="category.name"
           :saved-icon="category.icon"
@@ -41,13 +34,13 @@ import { required, minLength } from '@vuelidate/validators';
         />
         <woot-input
           v-model.trim="slug"
-          :class="{ error: v$.slug.$error }"
+          :class="{ error: $v.slug.$error }"
           class="w-full"
           :error="slugError"
           :label="$t('HELP_CENTER.CATEGORY.EDIT.SLUG.LABEL')"
           :placeholder="$t('HELP_CENTER.CATEGORY.EDIT.SLUG.PLACEHOLDER')"
           :help-text="$t('HELP_CENTER.CATEGORY.EDIT.SLUG.HELP_TEXT')"
-          @input="v$.slug.$touch"
+          @input="$v.slug.$touch"
         />
         <label>
           {{ $t('HELP_CENTER.CATEGORY.EDIT.DESCRIPTION.LABEL') }}
@@ -61,7 +54,7 @@ import { required, minLength } from '@vuelidate/validators';
           />
         </label>
         <div class="w-full">
-          <div class="flex flex-row justify-end w-full gap-2 px-0 py-2">
+          <div class="flex flex-row justify-end gap-2 py-2 px-0 w-full">
             <woot-button class="button clear" @click.prevent="onClose">
               {{ $t('HELP_CENTER.CATEGORY.EDIT.BUTTONS.CANCEL') }}
             </woot-button>
@@ -75,23 +68,16 @@ import { required, minLength } from '@vuelidate/validators';
   </woot-modal>
 </template>
 
-=======
->>>>>>> b4b308336 (feat: Eslint rules (#9839))
 <script>
-import { useVuelidate } from '@vuelidate/core';
-import { useAlert } from 'dashboard/composables';
-<<<<<<< HEAD
+import alertMixin from 'shared/mixins/alertMixin';
 import { required, minLength } from 'vuelidate/lib/validators';
->>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
-=======
-import { required, minLength } from '@vuelidate/validators';
->>>>>>> ce8e1ec93 (chore: Migrate all instances of old vuelidate to new v2 syntax [CW-3274] (#9623))
 import { convertToCategorySlug } from 'dashboard/helper/commons.js';
 import { PORTALS_EVENTS } from '../../../../../helper/AnalyticsHelper/events';
 import CategoryNameIconInput from './NameEmojiInput.vue';
 
 export default {
   components: { CategoryNameIconInput },
+  mixins: [alertMixin],
   props: {
     show: {
       type: Boolean,
@@ -114,9 +100,6 @@ export default {
       default: '',
     },
   },
-  setup() {
-    return { v$: useVuelidate() };
-  },
   data() {
     return {
       id: this.category.id,
@@ -137,7 +120,7 @@ export default {
   },
   computed: {
     slugError() {
-      if (this.v$.slug.$error) {
+      if (this.$v.slug.$error) {
         return this.$t('HELP_CENTER.CATEGORY.ADD.SLUG.ERROR');
       }
       return '';
@@ -176,8 +159,8 @@ export default {
         slug,
         description,
       };
-      this.v$.$touch();
-      if (this.v$.$invalid) {
+      this.$v.$touch();
+      if (this.$v.$invalid) {
         return;
       }
       try {
@@ -197,83 +180,12 @@ export default {
           errorMessage ||
           this.$t('HELP_CENTER.CATEGORY.EDIT.API.ERROR_MESSAGE');
       } finally {
-        useAlert(this.alertMessage);
+        this.showAlert(this.alertMessage);
       }
     },
   },
 };
 </script>
-
-<!-- eslint-disable vue/no-mutating-props -->
-<template>
-  <woot-modal :show.sync="show" :on-close="onClose">
-    <woot-modal-header
-      :header-title="$t('HELP_CENTER.CATEGORY.EDIT.TITLE')"
-      :header-content="$t('HELP_CENTER.CATEGORY.EDIT.SUB_TITLE')"
-    />
-    <form class="w-full" @submit.prevent="onUpdate">
-      <div class="w-full">
-        <div class="flex flex-row w-full mx-0 mt-0 mb-4">
-          <div class="w-[50%]">
-            <label>
-              <span>{{ $t('HELP_CENTER.CATEGORY.EDIT.PORTAL') }}</span>
-              <p class="text-slate-600 dark:text-slate-400">{{ portalName }}</p>
-            </label>
-          </div>
-          <div class="w-[50%]">
-            <label>
-              <span>{{ $t('HELP_CENTER.CATEGORY.EDIT.LOCALE') }}</span>
-              <p class="text-slate-600 dark:text-slate-400">{{ locale }}</p>
-            </label>
-          </div>
-        </div>
-        <CategoryNameIconInput
-          :label="$t('HELP_CENTER.CATEGORY.EDIT.NAME.LABEL')"
-          :placeholder="$t('HELP_CENTER.CATEGORY.EDIT.NAME.PLACEHOLDER')"
-          :help-text="$t('HELP_CENTER.CATEGORY.EDIT.NAME.HELP_TEXT')"
-          :has-error="v$.name.$error"
-          :error-message="$t('HELP_CENTER.CATEGORY.ADD.NAME.ERROR')"
-          :existing-name="category.name"
-          :saved-icon="category.icon"
-          @nameChange="changeName"
-          @iconChange="onClickInsertEmoji"
-        />
-        <woot-input
-          v-model.trim="slug"
-          :class="{ error: v$.slug.$error }"
-          class="w-full"
-          :error="slugError"
-          :label="$t('HELP_CENTER.CATEGORY.EDIT.SLUG.LABEL')"
-          :placeholder="$t('HELP_CENTER.CATEGORY.EDIT.SLUG.PLACEHOLDER')"
-          :help-text="$t('HELP_CENTER.CATEGORY.EDIT.SLUG.HELP_TEXT')"
-          @input="v$.slug.$touch"
-        />
-        <label>
-          {{ $t('HELP_CENTER.CATEGORY.EDIT.DESCRIPTION.LABEL') }}
-          <textarea
-            v-model="description"
-            rows="3"
-            type="text"
-            :placeholder="
-              $t('HELP_CENTER.CATEGORY.EDIT.DESCRIPTION.PLACEHOLDER')
-            "
-          />
-        </label>
-        <div class="w-full">
-          <div class="flex flex-row justify-end w-full gap-2 px-0 py-2">
-            <woot-button class="button clear" @click.prevent="onClose">
-              {{ $t('HELP_CENTER.CATEGORY.EDIT.BUTTONS.CANCEL') }}
-            </woot-button>
-            <woot-button @click="editCategory">
-              {{ $t('HELP_CENTER.CATEGORY.EDIT.BUTTONS.CREATE') }}
-            </woot-button>
-          </div>
-        </div>
-      </div>
-    </form>
-  </woot-modal>
-</template>
-
 <style scoped lang="scss">
 .article-info {
   width: 100%;

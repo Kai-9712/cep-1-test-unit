@@ -481,7 +481,6 @@
           "DESCRIPTION": "API'larımızı kullanarak portali başsız bir CMS olarak üçüncü taraf ön yüz çerçeveleriyle kullanın."
         }
       }
-    },
-    "LOADING": "Loading..."
+    }
   }
 }

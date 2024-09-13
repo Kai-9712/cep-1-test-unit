@@ -1,15 +1,5 @@
 <script setup>
-import CustomBrandPolicyWrapper from 'dashboard/components/CustomBrandPolicyWrapper.vue';
-import { getHelpUrlForFeature } from '../../../../helper/featureHelper';
-<<<<<<< HEAD
-<<<<<<< HEAD
-import BackButton from '../../../../components/widgets/BackButton.vue';
-=======
->>>>>>> 8b1d98af5 (feat: Update the design for integration page (#9825))
-=======
-import BackButton from '../../../../components/widgets/BackButton.vue';
->>>>>>> 6694db093 (feat: Update the design for dashboard_apps (#9840))
-const props = defineProps({
+defineProps({
   title: {
     type: String,
     required: true,
@@ -20,32 +10,17 @@ const props = defineProps({
   },
   iconName: {
     type: String,
+    required: true,
+  },
+  href: {
+    type: String,
     default: '',
   },
   linkText: {
     type: String,
     default: '',
   },
-  featureName: {
-    type: String,
-    default: '',
-  },
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 6694db093 (feat: Update the design for dashboard_apps (#9840))
-  backButtonLabel: {
-    type: String,
-    default: '',
-  },
-<<<<<<< HEAD
-=======
->>>>>>> 8b1d98af5 (feat: Update the design for integration page (#9825))
-=======
->>>>>>> 6694db093 (feat: Update the design for dashboard_apps (#9840))
 });
-
-const helpURL = getHelpUrlForFeature(props.featureName);
 
 const openInNewTab = url => {
   if (!url) return;
@@ -54,26 +29,12 @@ const openInNewTab = url => {
 </script>
 
 <template>
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 6694db093 (feat: Update the design for dashboard_apps (#9840))
-  <div class="flex flex-col items-start w-full gap-2 pt-4">
-    <BackButton
-      v-if="backButtonLabel"
-      compact
-      :button-label="backButtonLabel"
-    />
-<<<<<<< HEAD
-=======
-  <div class="flex flex-col items-start w-full gap-3 pt-4">
->>>>>>> 8b1d98af5 (feat: Update the design for integration page (#9825))
-=======
->>>>>>> 6694db093 (feat: Update the design for dashboard_apps (#9840))
+  <div class="flex flex-col items-start w-full gap-4">
+    <!-- Header section with icon, title and action button -->
     <div class="flex items-center justify-between w-full gap-4">
+      <!-- Icon and title container -->
       <div class="flex items-center gap-3">
         <div
-          v-if="iconName"
           class="flex items-center w-10 h-10 p-1 rounded-full bg-woot-25/60 dark:bg-woot-900/60"
         >
           <div
@@ -88,7 +49,7 @@ const openInNewTab = url => {
           </div>
         </div>
         <h1
-          class="text-2xl font-semibold font-interDisplay tracking-[0.3px] text-slate-900 dark:text-slate-25"
+          class="text-2xl font-medium tracking-[-1.5%] text-slate-900 dark:text-slate-25"
         >
           {{ title }}
         </h1>
@@ -98,79 +59,44 @@ const openInNewTab = url => {
         <slot name="actions" />
       </div>
     </div>
-    <div class="flex flex-col gap-3 text-slate-600 dark:text-slate-300 w-full">
+    <!-- Description and optional link -->
+    <div
+      class="flex flex-col gap-2 text-slate-600 dark:text-slate-300 max-w-[721px] w-full"
+    >
       <p
-<<<<<<< HEAD
-<<<<<<< HEAD
-        class="mb-0 text-base font-normal line-clamp-5 sm:line-clamp-none max-w-3xl tracking-[-0.1px]"
-=======
-        class="mb-0 text-base font-normal line-clamp-5 sm:line-clamp-none max-w-3xl"
->>>>>>> 8b1d98af5 (feat: Update the design for integration page (#9825))
-=======
-        class="mb-0 text-base font-normal line-clamp-5 sm:line-clamp-none max-w-3xl tracking-[-0.1px]"
->>>>>>> 6694db093 (feat: Update the design for dashboard_apps (#9840))
+        class="mb-0 text-sm font-normal tracking-[0.5%] line-clamp-5 sm:line-clamp-none"
       >
         <slot name="description">{{ description }}</slot>
       </p>
-      <CustomBrandPolicyWrapper :show-on-custom-branded-instance="false">
-        <a
-          v-if="helpURL && linkText"
-          :href="helpURL"
-          target="_blank"
-          rel="noopener noreferrer"
-<<<<<<< HEAD
-<<<<<<< HEAD
-          class="sm:inline-flex hidden gap-1 w-fit items-center text-woot-500 dark:text-woot-500 text-sm font-medium hover:underline"
-=======
-          class="sm:inline-flex hidden tracking-[-0.6%] gap-1 w-fit items-center text-woot-500 dark:text-woot-500 text-sm font-medium tracking=[-0.6%] hover:underline"
->>>>>>> 8b1d98af5 (feat: Update the design for integration page (#9825))
-=======
-          class="sm:inline-flex hidden gap-1 w-fit items-center text-woot-500 dark:text-woot-500 text-sm font-medium hover:underline"
->>>>>>> 6694db093 (feat: Update the design for dashboard_apps (#9840))
-        >
-          {{ linkText }}
-          <fluent-icon
-            size="16"
-            icon="chevron-right"
-            type="outline"
-            class="flex-shrink-0 text-woot-500 dark:text-woot-500"
-          />
-        </a>
-      </CustomBrandPolicyWrapper>
+      <!-- Conditional link -->
+      <a
+        v-if="href && linkText"
+        :href="href"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="sm:inline-flex hidden tracking-[-0.6%] gap-1 w-fit items-center text-woot-500 dark:text-woot-500 text-sm font-medium tracking=[-0.6%] hover:underline"
+      >
+        {{ linkText }}
+        <fluent-icon
+          size="16"
+          icon="chevron-right"
+          type="outline"
+          class="flex-shrink-0 text-woot-500 dark:text-woot-500"
+        />
+      </a>
     </div>
-<<<<<<< HEAD
-<<<<<<< HEAD
-    <div
-      class="flex items-start justify-start w-full gap-3 sm:hidden flex-wrap"
-    >
-=======
+    <!-- Mobile view for actions and link -->
     <div class="flex items-start justify-start w-full gap-3 sm:hidden">
->>>>>>> 8b1d98af5 (feat: Update the design for integration page (#9825))
-=======
-    <div
-      class="flex items-start justify-start w-full gap-3 sm:hidden flex-wrap"
-    >
->>>>>>> 6694db093 (feat: Update the design for dashboard_apps (#9840))
       <slot name="actions" />
-      <CustomBrandPolicyWrapper :show-on-custom-branded-instance="false">
-        <woot-button
-          v-if="helpURL && linkText"
-          color-scheme="secondary"
-          icon="arrow-outwards"
-<<<<<<< HEAD
-<<<<<<< HEAD
-          class="flex-row-reverse rounded-md min-w-0 !bg-slate-50 !text-slate-900 dark:!text-white dark:!bg-slate-800"
-=======
-          class="flex-row-reverse rounded-xl min-w-0 !bg-slate-50 !text-slate-900 dark:!text-white dark:!bg-slate-800"
->>>>>>> 8b1d98af5 (feat: Update the design for integration page (#9825))
-=======
-          class="flex-row-reverse rounded-md min-w-0 !bg-slate-50 !text-slate-900 dark:!text-white dark:!bg-slate-800"
->>>>>>> 6694db093 (feat: Update the design for dashboard_apps (#9840))
-          @click="openInNewTab(helpURL)"
-        >
-          {{ linkText }}
-        </woot-button>
-      </CustomBrandPolicyWrapper>
+      <woot-button
+        v-if="href && linkText"
+        color-scheme="secondary"
+        icon="arrow-outwards"
+        class="flex-row-reverse rounded-xl min-w-0 !bg-slate-50 !text-slate-900 dark:!text-white dark:!bg-slate-800"
+        @click="openInNewTab(href)"
+      >
+        {{ linkText }}
+      </woot-button>
     </div>
   </div>
 </template>

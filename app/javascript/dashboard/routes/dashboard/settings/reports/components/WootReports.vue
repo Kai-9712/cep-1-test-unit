@@ -1,8 +1,5 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 <template>
-  <div class="flex-1 p-4 overflow-auto">
+  <div class="flex-1 overflow-auto p-4">
     <woot-button
       color-scheme="success"
       class-names="button--fixed-top"
@@ -26,14 +23,11 @@
   </div>
 </template>
 
->>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
-=======
->>>>>>> b4b308336 (feat: Eslint rules (#9839))
 <script>
-import { useAlert } from 'dashboard/composables';
 import ReportFilters from './ReportFilters.vue';
 import ReportContainer from '../ReportContainer.vue';
 import { GROUP_BY_FILTER } from '../constants';
+import reportMixin from '../../../../../mixins/reportMixin';
 import { generateFileName } from '../../../../../helper/downloadHelper';
 import { REPORTS_EVENTS } from '../../../../../helper/AnalyticsHelper/events';
 
@@ -52,6 +46,7 @@ export default {
     ReportFilters,
     ReportContainer,
   },
+  mixins: [reportMixin],
   props: {
     type: {
       type: String,
@@ -126,7 +121,7 @@ export default {
             businessHours,
           });
         } catch {
-          useAlert(this.$t('REPORT.DATA_FETCHING_FAILED'));
+          this.showAlert(this.$t('REPORT.DATA_FETCHING_FAILED'));
         }
       });
     },
@@ -208,28 +203,3 @@ export default {
   },
 };
 </script>
-
-<template>
-  <div class="flex-1 p-4 overflow-auto">
-    <woot-button
-      color-scheme="success"
-      class-names="button--fixed-top"
-      icon="arrow-download"
-      @click="downloadReports"
-    >
-      {{ downloadButtonLabel }}
-    </woot-button>
-    <ReportFilters
-      v-if="filterItemsList"
-      :type="type"
-      :filter-items-list="filterItemsList"
-      :group-by-filter-items-list="groupByfilterItemsList"
-      :selected-group-by-filter="selectedGroupByFilter"
-      @dateRangeChange="onDateRangeChange"
-      @filterChange="onFilterChange"
-      @groupByFilterChange="onGroupByFilterChange"
-      @businessHoursToggle="onBusinessHoursToggle"
-    />
-    <ReportContainer v-if="filterItemsList.length" :group-by="groupBy" />
-  </div>
-</template>

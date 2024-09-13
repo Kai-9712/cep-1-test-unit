@@ -1,9 +1,24 @@
+<template>
+  <woot-button
+    v-if="isVideoIntegrationEnabled"
+    v-tooltip.top-end="
+      $t('INTEGRATION_SETTINGS.DYTE.START_VIDEO_CALL_HELP_TEXT')
+    "
+    icon="video"
+    :is-loading="isLoading"
+    color-scheme="secondary"
+    variant="smooth"
+    size="small"
+    @click="onClick"
+  />
+</template>
 <script>
 import { mapGetters } from 'vuex';
 import DyteAPI from 'dashboard/api/integrations/dyte';
-import { useAlert } from 'dashboard/composables';
+import alertMixin from 'shared/mixins/alertMixin';
 
 export default {
+  mixins: [alertMixin],
   props: {
     conversationId: {
       type: Number,
@@ -32,7 +47,7 @@ export default {
       try {
         await DyteAPI.createAMeeting(this.conversationId);
       } catch (error) {
-        useAlert(this.$t('INTEGRATION_SETTINGS.DYTE.CREATE_ERROR'));
+        this.showAlert(this.$t('INTEGRATION_SETTINGS.DYTE.CREATE_ERROR'));
       } finally {
         this.isLoading = false;
       }
@@ -40,18 +55,3 @@ export default {
   },
 };
 </script>
-
-<template>
-  <woot-button
-    v-if="isVideoIntegrationEnabled"
-    v-tooltip.top-end="
-      $t('INTEGRATION_SETTINGS.DYTE.START_VIDEO_CALL_HELP_TEXT')
-    "
-    icon="video"
-    :is-loading="isLoading"
-    color-scheme="secondary"
-    variant="smooth"
-    size="small"
-    @click="onClick"
-  />
-</template>

@@ -56,7 +56,7 @@ class Integrations::Hook < ApplicationRecord
     when 'openai'
       Integrations::Openai::ProcessorService.new(hook: self, event: event).perform if app_id == 'openai'
     else
-      { error: 'No processor found' }
+      'No processor found'
     end
   end
 

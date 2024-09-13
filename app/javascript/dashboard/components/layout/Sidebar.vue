@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
 <template>
   <aside class="flex h-full">
     <primary-sidebar
@@ -30,44 +28,24 @@
   </aside>
 </template>
 
-=======
->>>>>>> b4b308336 (feat: Eslint rules (#9839))
-=======
->>>>>>> b4b308336 (feat: Eslint rules (#9839))
 <script>
 import { mapGetters } from 'vuex';
+import adminMixin from '../../mixins/isAdmin';
 import { getSidebarItems } from './config/default-sidebar';
-<<<<<<< HEAD
-<<<<<<< HEAD
-import { useKeyboardEvents } from 'dashboard/composables/useKeyboardEvents';
-import { useRoute, useRouter } from 'dashboard/composables/route';
-=======
->>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
-=======
-import { useKeyboardEvents } from 'dashboard/composables/useKeyboardEvents';
-import { useRoute, useRouter } from 'dashboard/composables/route';
->>>>>>> e0b67bb55 (feat: Rewrite `keyboardEventListener` mixin to a composable (#9831))
+import alertMixin from 'shared/mixins/alertMixin';
 
 import PrimarySidebar from './sidebarComponents/Primary.vue';
 import SecondarySidebar from './sidebarComponents/Secondary.vue';
-import { routesWithPermissions } from '../../routes';
-import {
-  getUserPermissions,
-  hasPermissions,
-} from '../../helper/permissionsHelper';
+import keyboardEventListenerMixins from 'shared/mixins/keyboardEventListenerMixins';
+import router, { routesWithPermissions } from '../../routes';
+import { hasPermissions } from '../../helper/permissionsHelper';
 
 export default {
   components: {
     PrimarySidebar,
     SecondarySidebar,
   },
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-  mixins: [keyboardEventListenerMixins],
->>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
-=======
->>>>>>> e0b67bb55 (feat: Rewrite `keyboardEventListener` mixin to a composable (#9831))
+  mixins: [adminMixin, alertMixin, keyboardEventListenerMixins],
   props: {
     showSecondarySidebar: {
       type: Boolean,
@@ -77,50 +55,6 @@ export default {
       type: String,
       default: '',
     },
-  },
-  setup(props, { emit }) {
-    const route = useRoute();
-    const router = useRouter();
-
-    const toggleKeyShortcutModal = () => {
-      emit('openKeyShortcutModal');
-    };
-    const closeKeyShortcutModal = () => {
-      emit('closeKeyShortcutModal');
-    };
-    const isCurrentRouteSameAsNavigation = routeName => {
-      return route.name === routeName;
-    };
-    const navigateToRoute = routeName => {
-      if (!isCurrentRouteSameAsNavigation(routeName)) {
-        router.push({ name: routeName });
-      }
-    };
-    const keyboardEvents = {
-      '$mod+Slash': {
-        action: toggleKeyShortcutModal,
-      },
-      '$mod+Escape': {
-        action: closeKeyShortcutModal,
-      },
-      'Alt+KeyC': {
-        action: () => navigateToRoute('home'),
-      },
-      'Alt+KeyV': {
-        action: () => navigateToRoute('contacts_dashboard'),
-      },
-      'Alt+KeyR': {
-        action: () => navigateToRoute('account_overview_reports'),
-      },
-      'Alt+KeyS': {
-        action: () => navigateToRoute('agent_list'),
-      },
-    };
-    useKeyboardEvents(keyboardEvents);
-
-    return {
-      toggleKeyShortcutModal,
-    };
   },
   data() {
     return {
@@ -132,6 +66,7 @@ export default {
   computed: {
     ...mapGetters({
       accountId: 'getCurrentAccountId',
+      currentRole: 'getCurrentRole',
       currentUser: 'getCurrentUser',
       globalConfig: 'globalConfig/get',
       inboxes: 'inboxes/getInboxes',
@@ -165,10 +100,7 @@ export default {
       return getSidebarItems(this.accountId);
     },
     primaryMenuItems() {
-      const userPermissions = getUserPermissions(
-        this.currentUser,
-        this.accountId
-      );
+      const userPermissions = this.currentUser.permissions;
       const menuItems = this.sideMenuConfig.primaryMenu;
       return menuItems.filter(menuItem => {
         const isAvailableForTheUser = hasPermissions(
@@ -233,14 +165,11 @@ export default {
         this.$store.dispatch('customViews/get', this.activeCustomView);
       }
     },
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
     toggleKeyShortcutModal() {
-      this.$emit('openKeyShortcutModal');
+      this.$emit('open-key-shortcut-modal');
     },
     closeKeyShortcutModal() {
-      this.$emit('closeKeyShortcutModal');
+      this.$emit('close-key-shortcut-modal');
     },
     getKeyboardEvents() {
       return {
@@ -268,63 +197,18 @@ export default {
     isCurrentRouteSameAsNavigation(routeName) {
       return this.$route.name === routeName;
     },
->>>>>>> b4b308336 (feat: Eslint rules (#9839))
-=======
->>>>>>> e0b67bb55 (feat: Rewrite `keyboardEventListener` mixin to a composable (#9831))
     toggleSupportChatWindow() {
       window.$chatwoot.toggle();
     },
     toggleAccountModal() {
-      this.$emit('toggleAccountModal');
+      this.$emit('toggle-account-modal');
     },
     showAddLabelPopup() {
-      this.$emit('showAddLabelPopup');
+      this.$emit('show-add-label-popup');
     },
     openNotificationPanel() {
-      this.$emit('openNotificationPanel');
+      this.$emit('open-notification-panel');
     },
   },
 };
 </script>
-
-<template>
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-  <aside ref="sidebarRef" class="flex h-full">
-=======
-  <aside class="flex h-full">
->>>>>>> b4b308336 (feat: Eslint rules (#9839))
-=======
-  <aside ref="sidebarRef" class="flex h-full">
->>>>>>> e0b67bb55 (feat: Rewrite `keyboardEventListener` mixin to a composable (#9831))
-=======
-  <aside class="flex h-full">
->>>>>>> dadd572f9 (refactor: `useKeyboardEvents` composable  (#9959))
-    <PrimarySidebar
-      :logo-source="globalConfig.logoThumbnail"
-      :installation-name="globalConfig.installationName"
-      :is-a-custom-branded-instance="isACustomBrandedInstance"
-      :account-id="accountId"
-      :menu-items="primaryMenuItems"
-      :active-menu-item="activePrimaryMenu.key"
-      @toggleAccounts="toggleAccountModal"
-      @openKeyShortcutModal="toggleKeyShortcutModal"
-      @openNotificationPanel="openNotificationPanel"
-    />
-    <SecondarySidebar
-      v-if="showSecondarySidebar"
-      :class="sidebarClassName"
-      :account-id="accountId"
-      :inboxes="inboxes"
-      :labels="labels"
-      :teams="teams"
-      :custom-views="customViews"
-      :menu-config="activeSecondaryMenu"
-      :current-user="currentUser"
-      :is-on-chatwoot-cloud="isOnChatwootCloud"
-      @addLabel="showAddLabelPopup"
-      @toggleAccounts="toggleAccountModal"
-    />
-  </aside>
-</template>

@@ -1,30 +1,3 @@
-<script setup>
-import { computed } from 'vue';
-import { ALERT_EVENTS } from './constants';
-
-const props = defineProps({
-  label: {
-    type: String,
-    default: '',
-  },
-  value: {
-    type: String,
-    default: 'all',
-  },
-});
-
-const emit = defineEmits(['update']);
-
-const alertEvents = ALERT_EVENTS;
-
-const selectedValue = computed({
-  get: () => props.value,
-  set: value => {
-    emit('update', value);
-  },
-});
-</script>
-
 <template>
   <div>
     <label
@@ -64,3 +37,30 @@ const selectedValue = computed({
     </div>
   </div>
 </template>
+
+<script setup>
+import { computed } from 'vue';
+import { ALERT_EVENTS } from './constants';
+
+const props = defineProps({
+  label: {
+    type: String,
+    default: '',
+  },
+  value: {
+    type: String,
+    default: 'all',
+  },
+});
+
+const alertEvents = ALERT_EVENTS;
+
+const emit = defineEmits(['update']);
+
+const selectedValue = computed({
+  get: () => props.value,
+  set: value => {
+    emit('update', value);
+  },
+});
+</script>

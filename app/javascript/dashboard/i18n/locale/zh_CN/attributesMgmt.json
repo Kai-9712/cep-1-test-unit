@@ -41,20 +41,20 @@
           "IN_VALID": "无效键"
         },
         "REGEX_PATTERN": {
-          "LABEL": "正则表达式模式",
-          "PLACEHOLDER": "请输入自定义属性的正则表达式模式。（可选）"
+          "LABEL": "Regex Pattern",
+          "PLACEHOLDER": "Please enter custom attribute regex pattern. (Optional)"
         },
         "REGEX_CUE": {
-          "LABEL": "正则表达式提示",
-          "PLACEHOLDER": "请输入正则表达式模式提示。（可选）"
+          "LABEL": "Regex Cue",
+          "PLACEHOLDER": "Please enter regex pattern hint. (Optional)"
         },
         "ENABLE_REGEX": {
-          "LABEL": "启用正则表达式验证"
+          "LABEL": "Enable regex validation"
         }
       },
       "API": {
         "SUCCESS_MESSAGE": "自定义属性添加成功!",
-        "ERROR_MESSAGE": "无法创建自定义属性，请稍后再试。"
+        "ERROR_MESSAGE": "Could not create a Custom Attribute. Please try again later."
       }
     },
     "DELETE": {
@@ -106,15 +106,15 @@
         "NOT_FOUND": "没有配置自定义属性"
       },
       "REGEX_PATTERN": {
-        "LABEL": "正则表达式模式",
-        "PLACEHOLDER": "请输入自定义属性的正则表达式模式。（可选）"
+        "LABEL": "Regex Pattern",
+        "PLACEHOLDER": "Please enter custom attribute regex pattern. (Optional)"
       },
       "REGEX_CUE": {
-        "LABEL": "正则表达式提示",
-        "PLACEHOLDER": "请输入正则表达式模式提示。（可选）"
+        "LABEL": "Regex Cue",
+        "PLACEHOLDER": "Please enter regex pattern hint. (Optional)"
       },
       "ENABLE_REGEX": {
-        "LABEL": "启用正则表达式验证"
+        "LABEL": "Enable regex validation"
       }
     }
   }

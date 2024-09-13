@@ -1,10 +1,20 @@
+<template>
+  <label-selector
+    :all-labels="allLabels"
+    :saved-labels="savedLabels"
+    @add="addItem"
+    @remove="removeItem"
+  />
+</template>
+
 <script>
 import { mapGetters } from 'vuex';
-import { useAlert } from 'dashboard/composables';
 import LabelSelector from 'dashboard/components/widgets/LabelSelector.vue';
+import alertMixin from 'shared/mixins/alertMixin';
 
 export default {
   components: { LabelSelector },
+  mixins: [alertMixin],
   props: {
     contactId: {
       type: [String, Number],
@@ -23,6 +33,7 @@ export default {
     },
 
     ...mapGetters({
+      labelUiFlags: 'contactLabels/getUIFlags',
       allLabels: 'labels/getLabels',
     }),
   },
@@ -48,7 +59,7 @@ export default {
           labels: selectedLabels,
         });
       } catch (error) {
-        useAlert(this.$t('CONTACT_PANEL.LABELS.CONTACT.ERROR'));
+        this.showAlert(this.$t('CONTACT_PANEL.LABELS.CONTACT.ERROR'));
       }
     },
 
@@ -75,11 +86,4 @@ export default {
 };
 </script>
 
-<template>
-  <LabelSelector
-    :all-labels="allLabels"
-    :saved-labels="savedLabels"
-    @add="addItem"
-    @remove="removeItem"
-  />
-</template>
+<style></style>

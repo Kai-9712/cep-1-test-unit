@@ -1,13 +1,3 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-<script>
-<<<<<<< HEAD
-import { useVuelidate } from '@vuelidate/core';
-import { required, minLength } from '@vuelidate/validators';
-=======
-import { required, minLength } from 'vuelidate/lib/validators';
->>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
-=======
 <template>
   <woot-modal :show.sync="show" :on-close="onClose">
     <woot-modal-header :header-title="$t('FILTER.CUSTOM_VIEWS.ADD.TITLE')" />
@@ -18,11 +8,11 @@ import { required, minLength } from 'vuelidate/lib/validators';
           :label="$t('FILTER.CUSTOM_VIEWS.ADD.LABEL')"
           type="text"
           :error="
-            v$.name.$error ? $t('FILTER.CUSTOM_VIEWS.ADD.ERROR_MESSAGE') : ''
+            $v.name.$error ? $t('FILTER.CUSTOM_VIEWS.ADD.ERROR_MESSAGE') : ''
           "
-          :class="{ error: v$.name.$error }"
+          :class="{ error: $v.name.$error }"
           :placeholder="$t('FILTER.CUSTOM_VIEWS.ADD.PLACEHOLDER')"
-          @blur="v$.name.$touch"
+          @blur="$v.name.$touch"
         />
 
         <div class="flex flex-row justify-end gap-2 py-2 px-0 w-full">
@@ -38,16 +28,13 @@ import { required, minLength } from 'vuelidate/lib/validators';
   </woot-modal>
 </template>
 
-=======
->>>>>>> b4b308336 (feat: Eslint rules (#9839))
 <script>
-import { useVuelidate } from '@vuelidate/core';
-import { required, minLength } from '@vuelidate/validators';
->>>>>>> ce8e1ec93 (chore: Migrate all instances of old vuelidate to new v2 syntax [CW-3274] (#9623))
-import { useAlert } from 'dashboard/composables';
+import { required, minLength } from 'vuelidate/lib/validators';
+import alertMixin from 'shared/mixins/alertMixin';
 import { CONTACTS_EVENTS } from '../../../helper/AnalyticsHelper/events';
 
 export default {
+  mixins: [alertMixin],
   props: {
     filterType: {
       type: Number,
@@ -62,9 +49,7 @@ export default {
       default: () => {},
     },
   },
-  setup() {
-    return { v$: useVuelidate() };
-  },
+
   data() {
     return {
       show: true,
@@ -74,7 +59,7 @@ export default {
 
   computed: {
     isButtonDisabled() {
-      return this.v$.name.$invalid;
+      return this.$v.name.$invalid;
     },
   },
 
@@ -90,8 +75,8 @@ export default {
       this.$emit('close');
     },
     async saveCustomViews() {
-      this.v$.$touch();
-      if (this.v$.$invalid) {
+      this.$v.$touch();
+      if (this.$v.$invalid) {
         return;
       }
       try {
@@ -116,40 +101,10 @@ export default {
             ? errorMessage
             : this.$t('FILTER.CUSTOM_VIEWS.ADD.API_SEGMENTS.ERROR_MESSAGE');
       } finally {
-        useAlert(this.alertMessage);
+        this.showAlert(this.alertMessage);
       }
       this.openLastSavedItem();
     },
   },
 };
 </script>
-
-<template>
-  <woot-modal :show.sync="show" :on-close="onClose">
-    <woot-modal-header :header-title="$t('FILTER.CUSTOM_VIEWS.ADD.TITLE')" />
-    <form class="w-full" @submit.prevent="saveCustomViews">
-      <div class="w-full">
-        <woot-input
-          v-model="name"
-          :label="$t('FILTER.CUSTOM_VIEWS.ADD.LABEL')"
-          type="text"
-          :error="
-            v$.name.$error ? $t('FILTER.CUSTOM_VIEWS.ADD.ERROR_MESSAGE') : ''
-          "
-          :class="{ error: v$.name.$error }"
-          :placeholder="$t('FILTER.CUSTOM_VIEWS.ADD.PLACEHOLDER')"
-          @blur="v$.name.$touch"
-        />
-
-        <div class="flex flex-row justify-end gap-2 py-2 px-0 w-full">
-          <woot-button :disabled="isButtonDisabled">
-            {{ $t('FILTER.CUSTOM_VIEWS.ADD.SAVE_BUTTON') }}
-          </woot-button>
-          <woot-button variant="clear" @click.prevent="onClose">
-            {{ $t('FILTER.CUSTOM_VIEWS.ADD.CANCEL_BUTTON') }}
-          </woot-button>
-        </div>
-      </div>
-    </form>
-  </woot-modal>
-</template>

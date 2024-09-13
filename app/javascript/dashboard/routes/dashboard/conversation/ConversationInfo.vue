@@ -70,46 +70,35 @@ const staticElements = computed(() =>
     },
   ].filter(attribute => !!attribute.content.value)
 );
-
-const evenClass = [
-  '[&>*:nth-child(odd)]:!bg-white [&>*:nth-child(even)]:!bg-slate-25',
-  'dark:[&>*:nth-child(odd)]:!bg-slate-900 dark:[&>*:nth-child(even)]:!bg-slate-800/50',
-];
 </script>
 
 <template>
   <div class="conversation--details">
-    <div :class="evenClass">
-      <ContactDetailsItem
-        v-for="element in staticElements"
-        :key="element.title"
-        :title="$t(element.title)"
-        :value="element.content.value"
-        class="border-b border-solid border-slate-50 dark:border-slate-700/50"
+    <ContactDetailsItem
+      v-for="element in staticElements"
+      :key="element.title"
+      :title="$t(element.title)"
+      :value="element.content.value"
+      class="conversation--attribute"
+    >
+      <a
+        v-if="element.type === 'link'"
+        :href="referer"
+        rel="noopener noreferrer nofollow"
+        target="_blank"
+        class="text-woot-400 dark:text-woot-600"
       >
-        <a
-          v-if="element.type === 'link'"
-          :href="referer"
-          rel="noopener noreferrer nofollow"
-          target="_blank"
-          class="text-woot-400 dark:text-woot-600"
-        >
-          {{ referer }}
-        </a>
-      </ContactDetailsItem>
-    </div>
+        {{ referer }}
+      </a>
+    </ContactDetailsItem>
     <CustomAttributes
-      :start-at="staticElements.length % 2 === 0 ? 'even' : 'odd'"
+      :class="staticElements.length % 2 === 0 ? 'even' : 'odd'"
       attribute-class="conversation--attribute"
       attribute-from="conversation_panel"
       attribute-type="conversation_attribute"
     />
   </div>
 </template>
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-
 <style scoped lang="scss">
 .conversation--attribute {
   @apply border-slate-50 dark:border-slate-700/50 border-b border-solid;
@@ -118,6 +107,3 @@ const evenClass = [
   }
 }
 </style>
->>>>>>> b4b308336 (feat: Eslint rules (#9839))
-=======
->>>>>>> b1da3dc7c (feat: Replace `attributeMixin` within the component (#9919))

@@ -95,9 +95,7 @@
   },
   "NETWORK": {
     "NOTIFICATION": {
-      "OFFLINE": "Offline",
-      "RECONNECTING": "Reconnecting...",
-      "RECONNECT_SUCCESS": "Reconnected"
+      "OFFLINE": "Offline"
     },
     "BUTTON": {
       "REFRESH": "Segarkan"
@@ -156,7 +154,7 @@
       "UNTIL_TOMORROW": "Hingga besok",
       "UNTIL_NEXT_MONTH": "Hingga bulan depan",
       "AN_HOUR_FROM_NOW": "Hingga satu jam dari sekarang",
-      "UNTIL_CUSTOM_TIME": "Kustom...",
+      "CUSTOM": "Kustom...",
       "CHANGE_APPEARANCE": "Change Appearance",
       "LIGHT_MODE": "Light",
       "DARK_MODE": "Dark",

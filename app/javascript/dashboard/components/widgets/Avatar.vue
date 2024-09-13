@@ -1,3 +1,9 @@
+<template>
+  <div class="avatar-container" :style="style" aria-hidden="true">
+    <slot>{{ userInitial }}</slot>
+  </div>
+</template>
+
 <script>
 export default {
   name: 'Avatar',
@@ -31,12 +37,6 @@ export default {
   },
 };
 </script>
-
-<template>
-  <div class="avatar-container" :style="style" aria-hidden="true">
-    <slot>{{ userInitial }}</slot>
-  </div>
-</template>
 
 <style scoped>
 @tailwind components;

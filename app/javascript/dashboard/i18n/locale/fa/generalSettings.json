@@ -95,9 +95,7 @@
   },
   "NETWORK": {
     "NOTIFICATION": {
-      "OFFLINE": "آفلاین",
-      "RECONNECTING": "Reconnecting...",
-      "RECONNECT_SUCCESS": "Reconnected"
+      "OFFLINE": "آفلاین"
     },
     "BUTTON": {
       "REFRESH": "تازه کردن"
@@ -156,7 +154,7 @@
       "UNTIL_TOMORROW": "تا فردا",
       "UNTIL_NEXT_MONTH": "تا ماه آینده",
       "AN_HOUR_FROM_NOW": "از حالا تا یک ساعت دیگر",
-      "UNTIL_CUSTOM_TIME": "سفارشی...",
+      "CUSTOM": "سفارشی...",
       "CHANGE_APPEARANCE": "تغییر ظاهر",
       "LIGHT_MODE": "روشن",
       "DARK_MODE": "تیره",

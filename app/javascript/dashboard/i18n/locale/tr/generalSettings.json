@@ -95,9 +95,7 @@
   },
   "NETWORK": {
     "NOTIFICATION": {
-      "OFFLINE": "Çevrimdışı",
-      "RECONNECTING": "Reconnecting...",
-      "RECONNECT_SUCCESS": "Reconnected"
+      "OFFLINE": "Çevrimdışı"
     },
     "BUTTON": {
       "REFRESH": "Yenile"
@@ -156,7 +154,7 @@
       "UNTIL_TOMORROW": "Yarına kadar",
       "UNTIL_NEXT_MONTH": "Bir sonraki aya kadar",
       "AN_HOUR_FROM_NOW": "Bir saat sonra kadar",
-      "UNTIL_CUSTOM_TIME": "Özel...",
+      "CUSTOM": "Özel...",
       "CHANGE_APPEARANCE": "Görünümü Değiştir",
       "LIGHT_MODE": "Açık Mod",
       "DARK_MODE": "Koyu Mod",

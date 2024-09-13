@@ -1,52 +1,40 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-<script>
-import { useAlert } from 'dashboard/composables';
-import FormButton from 'v3/components/Form/Button.vue';
-<<<<<<< HEAD
-import { useVuelidate } from '@vuelidate/core';
-import { required, minLength, email } from '@vuelidate/validators';
-=======
-import { required, minLength, email } from 'vuelidate/lib/validators';
->>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
-=======
 <template>
   <form class="flex flex-col gap-4" @submit.prevent="updateUser('profile')">
     <woot-input
       v-model="userName"
       :styles="inputStyles"
-      :class="{ error: v$.userName.$error }"
+      :class="{ error: $v.userName.$error }"
       :label="$t('PROFILE_SETTINGS.FORM.NAME.LABEL')"
       :placeholder="$t('PROFILE_SETTINGS.FORM.NAME.PLACEHOLDER')"
       :error="`${
-        v$.userName.$error ? $t('PROFILE_SETTINGS.FORM.NAME.ERROR') : ''
+        $v.userName.$error ? $t('PROFILE_SETTINGS.FORM.NAME.ERROR') : ''
       }`"
-      @input="v$.userName.$touch"
+      @input="$v.userName.$touch"
     />
     <woot-input
       v-model="userDisplayName"
       :styles="inputStyles"
-      :class="{ error: v$.userDisplayName.$error }"
+      :class="{ error: $v.userDisplayName.$error }"
       :label="$t('PROFILE_SETTINGS.FORM.DISPLAY_NAME.LABEL')"
       :placeholder="$t('PROFILE_SETTINGS.FORM.DISPLAY_NAME.PLACEHOLDER')"
       :error="`${
-        v$.userDisplayName.$error
+        $v.userDisplayName.$error
           ? $t('PROFILE_SETTINGS.FORM.DISPLAY_NAME.ERROR')
           : ''
       }`"
-      @input="v$.userDisplayName.$touch"
+      @input="$v.userDisplayName.$touch"
     />
     <woot-input
       v-if="emailEnabled"
       v-model="userEmail"
       :styles="inputStyles"
-      :class="{ error: v$.userEmail.$error }"
+      :class="{ error: $v.userEmail.$error }"
       :label="$t('PROFILE_SETTINGS.FORM.EMAIL.LABEL')"
       :placeholder="$t('PROFILE_SETTINGS.FORM.EMAIL.PLACEHOLDER')"
       :error="`${
-        v$.userEmail.$error ? $t('PROFILE_SETTINGS.FORM.EMAIL.ERROR') : ''
+        $v.userEmail.$error ? $t('PROFILE_SETTINGS.FORM.EMAIL.ERROR') : ''
       }`"
-      @input="v$.userEmail.$touch"
+      @input="$v.userEmail.$touch"
     />
     <form-button
       type="submit"
@@ -58,18 +46,15 @@ import { required, minLength, email } from 'vuelidate/lib/validators';
     </form-button>
   </form>
 </template>
-=======
->>>>>>> b4b308336 (feat: Eslint rules (#9839))
 <script>
-import { useAlert } from 'dashboard/composables';
 import FormButton from 'v3/components/Form/Button.vue';
-import { useVuelidate } from '@vuelidate/core';
-import { required, minLength, email } from '@vuelidate/validators';
->>>>>>> ce8e1ec93 (chore: Migrate all instances of old vuelidate to new v2 syntax [CW-3274] (#9623))
+import { required, minLength, email } from 'vuelidate/lib/validators';
+import alertMixin from 'shared/mixins/alertMixin';
 export default {
   components: {
     FormButton,
   },
+  mixins: [alertMixin],
   props: {
     name: {
       type: String,
@@ -87,9 +72,6 @@ export default {
       type: Boolean,
       default: false,
     },
-  },
-  setup() {
-    return { v$: useVuelidate() };
   },
   data() {
     return {
@@ -137,22 +119,12 @@ export default {
   },
   methods: {
     async updateUser() {
-<<<<<<< HEAD
-<<<<<<< HEAD
-      this.v$.$touch();
-      if (this.v$.$invalid) {
-=======
       this.$v.$touch();
       if (this.$v.$invalid) {
->>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
-=======
-      this.v$.$touch();
-      if (this.v$.$invalid) {
->>>>>>> ce8e1ec93 (chore: Migrate all instances of old vuelidate to new v2 syntax [CW-3274] (#9623))
-        useAlert(this.$t('PROFILE_SETTINGS.FORM.ERROR'));
+        this.showAlert(this.$t('PROFILE_SETTINGS.FORM.ERROR'));
         return;
       }
-      this.$emit('updateUser', {
+      this.$emit('update-user', {
         name: this.userName,
         displayName: this.userDisplayName,
         email: this.userEmail,
@@ -161,52 +133,3 @@ export default {
   },
 };
 </script>
-
-<template>
-  <form class="flex flex-col gap-4" @submit.prevent="updateUser('profile')">
-    <woot-input
-      v-model="userName"
-      :styles="inputStyles"
-      :class="{ error: v$.userName.$error }"
-      :label="$t('PROFILE_SETTINGS.FORM.NAME.LABEL')"
-      :placeholder="$t('PROFILE_SETTINGS.FORM.NAME.PLACEHOLDER')"
-      :error="`${
-        v$.userName.$error ? $t('PROFILE_SETTINGS.FORM.NAME.ERROR') : ''
-      }`"
-      @input="v$.userName.$touch"
-    />
-    <woot-input
-      v-model="userDisplayName"
-      :styles="inputStyles"
-      :class="{ error: v$.userDisplayName.$error }"
-      :label="$t('PROFILE_SETTINGS.FORM.DISPLAY_NAME.LABEL')"
-      :placeholder="$t('PROFILE_SETTINGS.FORM.DISPLAY_NAME.PLACEHOLDER')"
-      :error="`${
-        v$.userDisplayName.$error
-          ? $t('PROFILE_SETTINGS.FORM.DISPLAY_NAME.ERROR')
-          : ''
-      }`"
-      @input="v$.userDisplayName.$touch"
-    />
-    <woot-input
-      v-if="emailEnabled"
-      v-model="userEmail"
-      :styles="inputStyles"
-      :class="{ error: v$.userEmail.$error }"
-      :label="$t('PROFILE_SETTINGS.FORM.EMAIL.LABEL')"
-      :placeholder="$t('PROFILE_SETTINGS.FORM.EMAIL.PLACEHOLDER')"
-      :error="`${
-        v$.userEmail.$error ? $t('PROFILE_SETTINGS.FORM.EMAIL.ERROR') : ''
-      }`"
-      @input="v$.userEmail.$touch"
-    />
-    <FormButton
-      type="submit"
-      color-scheme="primary"
-      variant="solid"
-      size="large"
-    >
-      {{ $t('PROFILE_SETTINGS.BTN_TEXT') }}
-    </FormButton>
-  </form>
-</template>

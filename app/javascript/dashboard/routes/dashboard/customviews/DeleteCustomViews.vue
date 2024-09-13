@@ -1,7 +1,25 @@
+<!-- eslint-disable vue/no-mutating-props -->
+<template>
+  <div>
+    <woot-delete-modal
+      v-if="showDeletePopup"
+      :show.sync="showDeletePopup"
+      :on-close="closeDeletePopup"
+      :on-confirm="deleteSavedCustomViews"
+      :title="$t('FILTER.CUSTOM_VIEWS.DELETE.MODAL.CONFIRM.TITLE')"
+      :message="$t('FILTER.CUSTOM_VIEWS.DELETE.MODAL.CONFIRM.MESSAGE')"
+      :message-value="deleteMessage"
+      :confirm-text="deleteConfirmText"
+      :reject-text="deleteRejectText"
+    />
+  </div>
+</template>
+
 <script>
-import { useAlert } from 'dashboard/composables';
+import alertMixin from 'shared/mixins/alertMixin';
 import { CONTACTS_EVENTS } from '../../../helper/AnalyticsHelper/events';
 export default {
+  mixins: [alertMixin],
   props: {
     showDeletePopup: {
       type: Boolean,
@@ -61,7 +79,7 @@ export default {
         const filterType = this.activeCustomViews;
         await this.$store.dispatch('customViews/delete', { id, filterType });
         this.closeDeletePopup();
-        useAlert(
+        this.showAlert(
           this.activeFilterType === 0
             ? this.$t('FILTER.CUSTOM_VIEWS.DELETE.API_FOLDERS.SUCCESS_MESSAGE')
             : this.$t('FILTER.CUSTOM_VIEWS.DELETE.API_SEGMENTS.SUCCESS_MESSAGE')
@@ -76,7 +94,7 @@ export default {
             : this.$t(
                 'FILTER.CUSTOM_VIEWS.DELETE.API_SEGMENTS.SUCCESS_MESSAGE'
               );
-        useAlert(errorMessage);
+        this.showAlert(errorMessage);
       }
       this.openLastItemAfterDelete();
     },
@@ -86,20 +104,3 @@ export default {
   },
 };
 </script>
-
-<!-- eslint-disable vue/no-mutating-props -->
-<template>
-  <div>
-    <woot-delete-modal
-      v-if="showDeletePopup"
-      :show.sync="showDeletePopup"
-      :on-close="closeDeletePopup"
-      :on-confirm="deleteSavedCustomViews"
-      :title="$t('FILTER.CUSTOM_VIEWS.DELETE.MODAL.CONFIRM.TITLE')"
-      :message="$t('FILTER.CUSTOM_VIEWS.DELETE.MODAL.CONFIRM.MESSAGE')"
-      :message-value="deleteMessage"
-      :confirm-text="deleteConfirmText"
-      :reject-text="deleteRejectText"
-    />
-  </div>
-</template>

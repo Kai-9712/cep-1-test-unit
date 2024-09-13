@@ -12,8 +12,6 @@ const props = defineProps({
   },
 });
 
-const emit = defineEmits(['open']);
-
 const formatDateRange = computed(() => {
   const startDate = props.selectedStartDate;
   const endDate = props.selectedEndDate;
@@ -40,6 +38,8 @@ const formatDateRange = computed(() => {
 const activeDateRange = computed(
   () => dateRanges.find(range => range.value === props.selectedRange).label
 );
+
+const emit = defineEmits(['open']);
 
 const openDatePicker = () => {
   emit('open');

@@ -1,9 +1,8 @@
 <script setup>
-import { computed } from 'vue';
 import UserAvatarWithName from 'dashboard/components/widgets/UserAvatarWithName.vue';
 import CardLabels from 'dashboard/components/widgets/conversation/conversationCardComponents/CardLabels.vue';
 import SLAViewDetails from './SLAViewDetails.vue';
-const props = defineProps({
+defineProps({
   slaName: {
     type: String,
     required: true,
@@ -21,17 +20,11 @@ const props = defineProps({
     default: () => [],
   },
 });
-
-const conversationLabels = computed(() => {
-  return props.conversation.labels
-    ? props.conversation.labels.split(',').map(item => item.trim())
-    : [];
-});
 </script>
 
 <template>
   <div
-    class="grid items-center content-center w-full h-16 grid-cols-12 gap-4 px-6 py-0 bg-white border-b last:border-b-0 last:rounded-b-xl border-slate-75 dark:border-slate-800/50 dark:bg-slate-900"
+    class="grid content-center items-center h-16 grid-cols-12 gap-4 px-6 py-0 w-full bg-white border-b last:border-b-0 last:rounded-b-xl border-slate-75 dark:border-slate-800/50 dark:bg-slate-900"
   >
     <div
       class="flex items-center gap-2 col-span-6 px-0 py-2 text-sm tracking-[0.5] text-slate-700 dark:text-slate-100 rtl:text-right"
@@ -39,16 +32,14 @@ const conversationLabels = computed(() => {
       <span class="text-slate-700 dark:text-slate-200">
         {{ `#${conversationId} ` }}
       </span>
-      <span class="text-slate-600 dark:text-slate-300">
-        {{ $t('SLA_REPORTS.WITH') }}
-      </span>
-      <span class="capitalize truncate text-slate-700 dark:text-slate-200">{{
+      <span class="text-slate-600 dark:text-slate-300">with </span>
+      <span class="text-slate-700 dark:text-slate-200 capitalize truncate">{{
         conversation.contact.name
       }}</span>
-      <CardLabels
+      <card-labels
         class="w-[80%]"
         :conversation-id="conversationId"
-        :conversation-labels="conversationLabels"
+        :conversation-labels="conversation.labels"
       />
     </div>
     <div
@@ -56,8 +47,8 @@ const conversationLabels = computed(() => {
     >
       {{ slaName }}
     </div>
-    <div class="flex items-center col-span-2 gap-2">
-      <UserAvatarWithName
+    <div class="flex items-center gap-2 col-span-2">
+      <user-avatar-with-name
         v-if="conversation.assignee"
         :user="conversation.assignee"
       />

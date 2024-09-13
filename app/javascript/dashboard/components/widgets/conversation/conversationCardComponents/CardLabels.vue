@@ -1,64 +1,56 @@
+<template>
+  <div
+    v-if="activeLabels.length || $slots.before"
+    ref="labelContainer"
+    v-resize="computeVisibleLabelPosition"
+  >
+    <div
+      class="flex items-end flex-shrink min-w-0 gap-y-1"
+      :class="{ 'h-auto overflow-visible flex-row flex-wrap': showAllLabels }"
+    >
+      <slot name="before" />
+      <woot-label
+        v-for="(label, index) in activeLabels"
+        :key="label.id"
+        :title="label.title"
+        :description="label.description"
+        :color="label.color"
+        variant="smooth"
+        class="!mb-0 max-w-[calc(100%-0.5rem)]"
+        small
+        :class="{ hidden: !showAllLabels && index > labelPosition }"
+      />
+      <woot-button
+        v-if="showExpandLabelButton"
+        :title="
+          showAllLabels
+            ? $t('CONVERSATION.CARD.HIDE_LABELS')
+            : $t('CONVERSATION.CARD.SHOW_LABELS')
+        "
+        class="sticky right-0 flex-shrink-0 mr-6 show-more--button rtl:rotate-180"
+        color-scheme="secondary"
+        variant="hollow"
+        :icon="showAllLabels ? 'chevron-left' : 'chevron-right'"
+        size="tiny"
+        @click="onShowLabels"
+      />
+    </div>
+  </div>
+</template>
 <script>
-import { computed } from 'vue';
-import { useMapGetter } from 'dashboard/composables/store';
-
+import conversationLabelMixin from 'dashboard/mixins/conversation/labelMixin';
 export default {
+  mixins: [conversationLabelMixin],
   props: {
-<<<<<<< HEAD
-<<<<<<< HEAD
-    conversationLabels: {
-      type: Array,
-      required: true,
-    },
-  },
-  setup(props) {
-    const accountLabels = useMapGetter('labels/getLabels');
-
-    const activeLabels = computed(() => {
-      return accountLabels.value.filter(({ title }) =>
-        props.conversationLabels.includes(title)
-      );
-    });
-
-    return {
-      activeLabels,
-    };
-=======
-    // conversationId prop is used in /conversation/labelMixin,
-    // remove this props when refactoring to composable if not needed
-    // eslint-disable-next-line vue/no-unused-properties
     conversationId: {
       type: Number,
       required: true,
     },
-    // conversationLabels prop is used in /conversation/labelMixin,
-    // remove this props when refactoring to composable if not needed
-    // eslint-disable-next-line vue/no-unused-properties
     conversationLabels: {
       type: String,
       required: false,
       default: '',
     },
->>>>>>> b4b308336 (feat: Eslint rules (#9839))
-=======
-    conversationLabels: {
-      type: Array,
-      required: true,
-    },
-  },
-  setup(props) {
-    const accountLabels = useMapGetter('labels/getLabels');
-
-    const activeLabels = computed(() => {
-      return props.conversationLabels.map(label =>
-        accountLabels.value.find(l => l.title === label)
-      );
-    });
-
-    return {
-      activeLabels,
-    };
->>>>>>> 4c6572c2c (feat: Rewrite `conversation/labelMixin` to a composable (#9936))
   },
   data() {
     return {
@@ -107,46 +99,6 @@ export default {
   },
 };
 </script>
-
-<template>
-  <div
-    v-if="activeLabels.length || $slots.before"
-    ref="labelContainer"
-    v-resize="computeVisibleLabelPosition"
-  >
-    <div
-      class="flex items-end flex-shrink min-w-0 gap-y-1"
-      :class="{ 'h-auto overflow-visible flex-row flex-wrap': showAllLabels }"
-    >
-      <slot name="before" />
-      <woot-label
-        v-for="(label, index) in activeLabels"
-        :key="label ? label.id : index"
-        :title="label.title"
-        :description="label.description"
-        :color="label.color"
-        variant="smooth"
-        class="!mb-0 max-w-[calc(100%-0.5rem)]"
-        small
-        :class="{ hidden: !showAllLabels && index > labelPosition }"
-      />
-      <woot-button
-        v-if="showExpandLabelButton"
-        :title="
-          showAllLabels
-            ? $t('CONVERSATION.CARD.HIDE_LABELS')
-            : $t('CONVERSATION.CARD.SHOW_LABELS')
-        "
-        class="sticky right-0 flex-shrink-0 mr-6 show-more--button rtl:rotate-180"
-        color-scheme="secondary"
-        variant="hollow"
-        :icon="showAllLabels ? 'chevron-left' : 'chevron-right'"
-        size="tiny"
-        @click="onShowLabels"
-      />
-    </div>
-  </div>
-</template>
 
 <style lang="scss" scoped>
 .show-more--button {

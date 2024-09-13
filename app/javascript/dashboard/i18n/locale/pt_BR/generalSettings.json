@@ -95,9 +95,7 @@
   },
   "NETWORK": {
     "NOTIFICATION": {
-      "OFFLINE": "Desconectado",
-      "RECONNECTING": "Reconectando...",
-      "RECONNECT_SUCCESS": "Reconectado"
+      "OFFLINE": "Desconectado"
     },
     "BUTTON": {
       "REFRESH": "Atualizar"
@@ -109,7 +107,7 @@
       "GENERAL": "Geral",
       "REPORTS": "Relatórios",
       "CONVERSATION": "Conversas",
-      "BULK_ACTIONS": "Ações em massa",
+      "BULK_ACTIONS": "Bulk Actions",
       "CHANGE_ASSIGNEE": "Alterar Responsável",
       "CHANGE_PRIORITY": "Alterar Prioridade",
       "CHANGE_TEAM": "Alterar a Equipe",
@@ -156,7 +154,7 @@
       "UNTIL_TOMORROW": "Até amanhã",
       "UNTIL_NEXT_MONTH": "Até o próximo mês",
       "AN_HOUR_FROM_NOW": "Até daqui a uma hora",
-      "UNTIL_CUSTOM_TIME": "Personalizar...",
+      "CUSTOM": "Personalizar...",
       "CHANGE_APPEARANCE": "Alterar Tema",
       "LIGHT_MODE": "Claro",
       "DARK_MODE": "Escuro",

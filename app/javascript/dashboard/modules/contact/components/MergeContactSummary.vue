@@ -1,18 +1,3 @@
-<script>
-export default {
-  props: {
-    primaryContactName: {
-      type: String,
-      default: '',
-    },
-    parentContactName: {
-      type: String,
-      default: '',
-    },
-  },
-};
-</script>
-
 <template>
   <div
     v-if="parentContactName"
@@ -46,3 +31,18 @@ export default {
     </ul>
   </div>
 </template>
+
+<script>
+export default {
+  props: {
+    primaryContactName: {
+      type: String,
+      default: '',
+    },
+    parentContactName: {
+      type: String,
+      default: '',
+    },
+  },
+};
+</script>

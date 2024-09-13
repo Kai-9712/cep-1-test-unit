@@ -1,11 +1,3 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-<script>
-import { mapGetters } from 'vuex';
-import { useVuelidate } from '@vuelidate/core';
-import { useAlert } from 'dashboard/composables';
-import { required } from '@vuelidate/validators';
-=======
 <template>
   <div
     class="border border-slate-25 dark:border-slate-800/60 bg-white dark:bg-slate-900 h-full p-6 w-full max-w-full md:w-3/4 md:max-w-[75%] flex-shrink-0 flex-grow-0"
@@ -14,9 +6,9 @@ import { required } from '@vuelidate/validators';
       :header-title="$t('INBOX_MGMT.ADD.TELEGRAM_CHANNEL.TITLE')"
       :header-content="$t('INBOX_MGMT.ADD.TELEGRAM_CHANNEL.DESC')"
     />
-    <form class="flex flex-wrap mx-0" @submit.prevent="createChannel()">
+    <form class="mx-0 flex flex-wrap" @submit.prevent="createChannel()">
       <div class="w-[65%] flex-shrink-0 flex-grow-0 max-w-[65%]">
-        <label :class="{ error: v$.botToken.$error }">
+        <label :class="{ error: $v.botToken.$error }">
           {{ $t('INBOX_MGMT.ADD.TELEGRAM_CHANNEL.BOT_TOKEN.LABEL') }}
           <input
             v-model.trim="botToken"
@@ -24,7 +16,7 @@ import { required } from '@vuelidate/validators';
             :placeholder="
               $t('INBOX_MGMT.ADD.TELEGRAM_CHANNEL.BOT_TOKEN.PLACEHOLDER')
             "
-            @blur="v$.botToken.$touch"
+            @blur="$v.botToken.$touch"
           />
         </label>
         <p class="help-text">
@@ -42,18 +34,10 @@ import { required } from '@vuelidate/validators';
   </div>
 </template>
 
-=======
->>>>>>> b4b308336 (feat: Eslint rules (#9839))
 <script>
 import { mapGetters } from 'vuex';
-import { useVuelidate } from '@vuelidate/core';
-import { useAlert } from 'dashboard/composables';
-<<<<<<< HEAD
+import alertMixin from 'shared/mixins/alertMixin';
 import { required } from 'vuelidate/lib/validators';
->>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
-=======
-import { required } from '@vuelidate/validators';
->>>>>>> ce8e1ec93 (chore: Migrate all instances of old vuelidate to new v2 syntax [CW-3274] (#9623))
 import router from '../../../../index';
 import PageHeader from '../../SettingsSubPageHeader.vue';
 
@@ -61,18 +45,7 @@ export default {
   components: {
     PageHeader,
   },
-<<<<<<< HEAD
-<<<<<<< HEAD
-  setup() {
-    return { v$: useVuelidate() };
-  },
-=======
->>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
-=======
-  setup() {
-    return { v$: useVuelidate() };
-  },
->>>>>>> ce8e1ec93 (chore: Migrate all instances of old vuelidate to new v2 syntax [CW-3274] (#9623))
+  mixins: [alertMixin],
   data() {
     return {
       botToken: '',
@@ -88,8 +61,8 @@ export default {
   },
   methods: {
     async createChannel() {
-      this.v$.$touch();
-      if (this.v$.$invalid) {
+      this.$v.$touch();
+      if (this.$v.$invalid) {
         return;
       }
 
@@ -112,7 +85,7 @@ export default {
           },
         });
       } catch (error) {
-        useAlert(
+        this.showAlert(
           error.message ||
             this.$t('INBOX_MGMT.ADD.TELEGRAM_CHANNEL.API.ERROR_MESSAGE')
         );
@@ -121,39 +94,3 @@ export default {
   },
 };
 </script>
-
-<template>
-  <div
-    class="border border-slate-25 dark:border-slate-800/60 bg-white dark:bg-slate-900 h-full p-6 w-full max-w-full md:w-3/4 md:max-w-[75%] flex-shrink-0 flex-grow-0"
-  >
-    <PageHeader
-      :header-title="$t('INBOX_MGMT.ADD.TELEGRAM_CHANNEL.TITLE')"
-      :header-content="$t('INBOX_MGMT.ADD.TELEGRAM_CHANNEL.DESC')"
-    />
-    <form class="flex flex-wrap mx-0" @submit.prevent="createChannel()">
-      <div class="w-[65%] flex-shrink-0 flex-grow-0 max-w-[65%]">
-        <label :class="{ error: v$.botToken.$error }">
-          {{ $t('INBOX_MGMT.ADD.TELEGRAM_CHANNEL.BOT_TOKEN.LABEL') }}
-          <input
-            v-model.trim="botToken"
-            type="text"
-            :placeholder="
-              $t('INBOX_MGMT.ADD.TELEGRAM_CHANNEL.BOT_TOKEN.PLACEHOLDER')
-            "
-            @blur="v$.botToken.$touch"
-          />
-        </label>
-        <p class="help-text">
-          {{ $t('INBOX_MGMT.ADD.TELEGRAM_CHANNEL.BOT_TOKEN.SUBTITLE') }}
-        </p>
-      </div>
-
-      <div class="w-full">
-        <woot-submit-button
-          :loading="uiFlags.isCreating"
-          :button-text="$t('INBOX_MGMT.ADD.TELEGRAM_CHANNEL.SUBMIT_BUTTON')"
-        />
-      </div>
-    </form>
-  </div>
-</template>

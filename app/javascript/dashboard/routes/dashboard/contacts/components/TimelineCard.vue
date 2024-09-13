@@ -1,7 +1,37 @@
-<!-- Unused file deprecated -->
+<template>
+  <div class="timeline-card-wrap">
+    <div class="icon-chatbox">
+      <i class="ion-chatboxes" />
+    </div>
+    <div class="card-wrap">
+      <div class="header">
+        <div class="text-wrap">
+          <h6 class="text-sm">
+            {{ eventType }}
+          </h6>
+          <span class="event-path">on {{ eventPath }}</span>
+        </div>
+        <div class="date-wrap">
+          <span>{{ readableTime }}</span>
+        </div>
+      </div>
+      <div class="comment-wrap">
+        <p class="comment">
+          {{ eventBody }}
+        </p>
+      </div>
+    </div>
+    <div class="icon-more" @click="onClick">
+      <i class="ion-android-more-vertical" />
+    </div>
+  </div>
+</template>
+
 <script>
-import { dynamicTime } from 'shared/helpers/timeHelper';
+import timeMixin from 'dashboard/mixins/time';
 export default {
+  mixins: [timeMixin],
+
   props: {
     eventType: {
       type: String,
@@ -23,7 +53,7 @@ export default {
 
   computed: {
     readableTime() {
-      return dynamicTime(this.timeStamp);
+      return this.dynamicTime(this.timeStamp);
     },
   },
 
@@ -34,35 +64,6 @@ export default {
   },
 };
 </script>
-
-<template>
-  <div class="timeline-card-wrap">
-    <div class="icon-chatbox">
-      <i class="ion-chatboxes" />
-    </div>
-    <div class="card-wrap">
-      <div class="header">
-        <div class="text-wrap">
-          <h6 class="text-sm">
-            {{ eventType }}
-          </h6>
-          <span class="event-path">{{ 'on' }} {{ eventPath }}</span>
-        </div>
-        <div class="date-wrap">
-          <span>{{ readableTime }}</span>
-        </div>
-      </div>
-      <div class="comment-wrap">
-        <p class="comment">
-          {{ eventBody }}
-        </p>
-      </div>
-    </div>
-    <div class="icon-more" @click="onClick">
-      <i class="ion-android-more-vertical" />
-    </div>
-  </div>
-</template>
 
 <style lang="scss" scoped>
 .timeline-card-wrap {

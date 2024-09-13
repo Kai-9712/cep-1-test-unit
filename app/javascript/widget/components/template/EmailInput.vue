@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 <template>
   <div>
     <form
@@ -13,12 +10,12 @@
         class="form-input"
         :placeholder="$t('EMAIL_PLACEHOLDER')"
         :class="inputHasError"
-        @input="v$.email.$touch"
+        @input="$v.email.$touch"
         @keydown.enter="onSubmit"
       />
       <button
         class="button small"
-        :disabled="v$.email.$invalid"
+        :disabled="$v.email.$invalid"
         :style="{
           background: widgetColor,
           borderColor: widgetColor,
@@ -32,24 +29,21 @@
   </div>
 </template>
 
->>>>>>> ce8e1ec93 (chore: Migrate all instances of old vuelidate to new v2 syntax [CW-3274] (#9623))
-=======
->>>>>>> b4b308336 (feat: Eslint rules (#9839))
 <script>
 import { mapGetters } from 'vuex';
-import { useVuelidate } from '@vuelidate/core';
-import { required, email } from '@vuelidate/validators';
+import { required, email } from 'vuelidate/lib/validators';
 import { getContrastingTextColor } from '@chatwoot/utils';
 
 import FluentIcon from 'shared/components/FluentIcon/Index.vue';
 import Spinner from 'shared/components/Spinner.vue';
-import { useDarkMode } from 'widget/composables/useDarkMode';
+import darkModeMixin from 'widget/mixins/darkModeMixin.js';
 
 export default {
   components: {
     FluentIcon,
     Spinner,
   },
+  mixins: [darkModeMixin],
   props: {
     messageId: {
       type: Number,
@@ -59,10 +53,6 @@ export default {
       type: Object,
       default: () => {},
     },
-  },
-  setup() {
-    const { getThemeClass } = useDarkMode();
-    return { v$: useVuelidate(), getThemeClass };
   },
   data() {
     return {
@@ -84,12 +74,12 @@ export default {
       );
     },
     inputColor() {
-      return `${this.getThemeClass('bg-white', 'dark:bg-slate-600')}
-        ${this.getThemeClass('text-black-900', 'dark:text-slate-50')}
-        ${this.getThemeClass('border-black-200', 'dark:border-black-500')}`;
+      return `${this.$dm('bg-white', 'dark:bg-slate-600')}
+        ${this.$dm('text-black-900', 'dark:text-slate-50')}
+        ${this.$dm('border-black-200', 'dark:border-black-500')}`;
     },
     inputHasError() {
-      return this.v$.email.$error
+      return this.$v.email.$error
         ? `${this.inputColor} error`
         : `${this.inputColor}`;
     },
@@ -102,7 +92,7 @@ export default {
   },
   methods: {
     async onSubmit() {
-      if (this.v$.$invalid) {
+      if (this.$v.$invalid) {
         return;
       }
       this.isUpdating = true;
@@ -120,37 +110,6 @@ export default {
   },
 };
 </script>
-
-<template>
-  <div>
-    <form
-      v-if="!hasSubmitted"
-      class="email-input-group"
-      @submit.prevent="onSubmit"
-    >
-      <input
-        v-model.trim="email"
-        class="form-input"
-        :placeholder="$t('EMAIL_PLACEHOLDER')"
-        :class="inputHasError"
-        @input="v$.email.$touch"
-        @keydown.enter="onSubmit"
-      />
-      <button
-        class="button small"
-        :disabled="v$.email.$invalid"
-        :style="{
-          background: widgetColor,
-          borderColor: widgetColor,
-          color: textColor,
-        }"
-      >
-        <FluentIcon v-if="!isUpdating" icon="chevron-right" />
-        <Spinner v-else class="mx-2" />
-      </button>
-    </form>
-  </div>
-</template>
 
 <style lang="scss" scoped>
 @import '~widget/assets/scss/variables.scss';

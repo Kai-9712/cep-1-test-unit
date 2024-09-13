@@ -31,22 +31,22 @@ const props = defineProps({
 });
 
 const emit = defineEmits([
-  'updateHoveredEndDate',
-  'selectDate',
+  'update-hovered-end-date',
+  'select-date',
   'prev',
   'next',
-  'setView',
+  'set-view',
 ]);
 
 const { START_CALENDAR } = CALENDAR_TYPES;
 const { MONTH } = CALENDAR_PERIODS;
 
 const emitHoveredEndDate = day => {
-  emit('updateHoveredEndDate', day);
+  emit('update-hovered-end-date', day);
 };
 
 const emitSelectDate = day => {
-  emit('selectDate', day);
+  emit('select-date', day);
 };
 const onClickPrev = () => {
   emit('prev');
@@ -57,7 +57,7 @@ const onClickNext = () => {
 };
 
 const setViewMode = (type, mode) => {
-  emit('setView', type, mode);
+  emit('set-view', type, mode);
 };
 
 const weeks = calendarType => {
@@ -139,7 +139,7 @@ const dayClasses = day => ({
       "
       @prev="onClickPrev"
       @next="onClickNext"
-      @setView="setViewMode"
+      @set-view="setViewMode"
     />
     <CalendarWeekLabel />
     <div

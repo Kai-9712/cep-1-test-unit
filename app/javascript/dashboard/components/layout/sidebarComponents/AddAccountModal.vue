@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 <template>
   <woot-modal
     :show="show"
@@ -22,13 +19,13 @@
 
       <form class="flex flex-col w-full" @submit.prevent="addAccount">
         <div class="w-full">
-          <label :class="{ error: v$.accountName.$error }">
+          <label :class="{ error: $v.accountName.$error }">
             {{ $t('CREATE_ACCOUNT.FORM.NAME.LABEL') }}
             <input
               v-model.trim="accountName"
               type="text"
               :placeholder="$t('CREATE_ACCOUNT.FORM.NAME.PLACEHOLDER')"
-              @input="v$.accountName.$touch"
+              @input="$v.accountName.$touch"
             />
           </label>
         </div>
@@ -36,8 +33,8 @@
           <div class="w-full">
             <woot-submit-button
               :disabled="
-                v$.accountName.$invalid ||
-                v$.accountName.$invalid ||
+                $v.accountName.$invalid ||
+                $v.accountName.$invalid ||
                 uiFlags.isCreating
               "
               :button-text="$t('CREATE_ACCOUNT.FORM.SUBMIT')"
@@ -51,16 +48,13 @@
   </woot-modal>
 </template>
 
->>>>>>> ce8e1ec93 (chore: Migrate all instances of old vuelidate to new v2 syntax [CW-3274] (#9623))
-=======
->>>>>>> b4b308336 (feat: Eslint rules (#9839))
 <script>
-import { useVuelidate } from '@vuelidate/core';
-import { required, minLength } from '@vuelidate/validators';
+import { required, minLength } from 'vuelidate/lib/validators';
 import { mapGetters } from 'vuex';
-import { useAlert } from 'dashboard/composables';
+import alertMixin from 'shared/mixins/alertMixin';
 
 export default {
+  mixins: [alertMixin],
   props: {
     show: {
       type: Boolean,
@@ -70,9 +64,6 @@ export default {
       type: Boolean,
       default: true,
     },
-  },
-  setup() {
-    return { v$: useVuelidate() };
   },
   data() {
     return {
@@ -96,72 +87,17 @@ export default {
         const account_id = await this.$store.dispatch('accounts/create', {
           account_name: this.accountName,
         });
-<<<<<<< HEAD
-<<<<<<< HEAD
-        this.$emit('closeAccountCreateModal');
-=======
         this.$emit('close-account-create-modal');
->>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
-=======
-        this.$emit('closeAccountCreateModal');
->>>>>>> b4b308336 (feat: Eslint rules (#9839))
-        useAlert(this.$t('CREATE_ACCOUNT.API.SUCCESS_MESSAGE'));
+        this.showAlert(this.$t('CREATE_ACCOUNT.API.SUCCESS_MESSAGE'));
         window.location = `/app/accounts/${account_id}/dashboard`;
       } catch (error) {
         if (error.response.status === 422) {
-          useAlert(this.$t('CREATE_ACCOUNT.API.EXIST_MESSAGE'));
+          this.showAlert(this.$t('CREATE_ACCOUNT.API.EXIST_MESSAGE'));
         } else {
-          useAlert(this.$t('CREATE_ACCOUNT.API.ERROR_MESSAGE'));
+          this.showAlert(this.$t('CREATE_ACCOUNT.API.ERROR_MESSAGE'));
         }
       }
     },
   },
 };
 </script>
-
-<template>
-  <woot-modal :show="show" :on-close="() => $emit('closeAccountCreateModal')">
-    <div class="flex flex-col h-auto overflow-auto">
-      <woot-modal-header
-        :header-title="$t('CREATE_ACCOUNT.NEW_ACCOUNT')"
-        :header-content="$t('CREATE_ACCOUNT.SELECTOR_SUBTITLE')"
-      />
-      <div v-if="!hasAccounts" class="mx-8 mt-6 mb-0 text-sm">
-        <div class="flex items-center rounded-md alert">
-          <div class="ml-1 mr-3">
-            <fluent-icon icon="warning" />
-          </div>
-          {{ $t('CREATE_ACCOUNT.NO_ACCOUNT_WARNING') }}
-        </div>
-      </div>
-
-      <form class="flex flex-col w-full" @submit.prevent="addAccount">
-        <div class="w-full">
-          <label :class="{ error: v$.accountName.$error }">
-            {{ $t('CREATE_ACCOUNT.FORM.NAME.LABEL') }}
-            <input
-              v-model.trim="accountName"
-              type="text"
-              :placeholder="$t('CREATE_ACCOUNT.FORM.NAME.PLACEHOLDER')"
-              @input="v$.accountName.$touch"
-            />
-          </label>
-        </div>
-        <div class="w-full">
-          <div class="w-full">
-            <woot-submit-button
-              :disabled="
-                v$.accountName.$invalid ||
-                v$.accountName.$invalid ||
-                uiFlags.isCreating
-              "
-              :button-text="$t('CREATE_ACCOUNT.FORM.SUBMIT')"
-              :loading="uiFlags.isCreating"
-              button-class="large expanded"
-            />
-          </div>
-        </div>
-      </form>
-    </div>
-  </woot-modal>
-</template>

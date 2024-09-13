@@ -1,3 +1,6 @@
+<template>
+  <span class="spinner" :class="`${size} ${colorSchemeClasses}`" />
+</template>
 <script>
 export default {
   props: {
@@ -29,11 +32,6 @@ export default {
   },
 };
 </script>
-
-<template>
-  <span class="spinner" :class="`${size} ${colorSchemeClasses}`" />
-</template>
-
 <style scoped lang="scss">
 @import '~widget/assets/scss/variables';
 

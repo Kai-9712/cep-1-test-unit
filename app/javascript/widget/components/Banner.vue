@@ -1,3 +1,11 @@
+<template>
+  <div v-if="showBannerMessage" :class="`banner ${bannerType}`">
+    <span>
+      {{ bannerMessage }}
+    </span>
+  </div>
+</template>
+
 <script>
 import { BUS_EVENTS } from 'shared/constants/busEvents';
 import { emitter } from 'shared/helpers/mitt';
@@ -22,14 +30,6 @@ export default {
   },
 };
 </script>
-
-<template>
-  <div v-if="showBannerMessage" :class="`banner ${bannerType}`">
-    <span>
-      {{ bannerMessage }}
-    </span>
-  </div>
-</template>
 
 <style scoped lang="scss">
 @import '~widget/assets/scss/variables.scss';

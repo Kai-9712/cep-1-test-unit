@@ -1,3 +1,8 @@
+<template>
+  <div class="flex flex-1 overflow-auto">
+    <pre-chat-form :options="preChatFormOptions" @submit="onSubmit" />
+  </div>
+</template>
 <script>
 import PreChatForm from '../components/PreChat/Form.vue';
 import configMixin from '../mixins/configMixin';
@@ -57,9 +62,3 @@ export default {
   },
 };
 </script>
-
-<template>
-  <div class="flex flex-1 overflow-auto">
-    <PreChatForm :options="preChatFormOptions" @submit="onSubmit" />
-  </div>
-</template>

@@ -1,41 +1,3 @@
-<script>
-import PortalSwitch from './PortalSwitch.vue';
-export default {
-  components: {
-    PortalSwitch,
-  },
-  props: {
-    portals: {
-      type: Array,
-      default: () => [],
-    },
-    activePortalSlug: {
-      type: String,
-      default: '',
-    },
-    activeLocale: {
-      type: String,
-      default: '',
-    },
-  },
-
-  methods: {
-    closePortalPopover() {
-      this.$emit('closePopover');
-    },
-    openPortalPage() {
-      this.closePortalPopover();
-      this.$router.push({
-        name: 'list_all_portals',
-      });
-    },
-    fetchPortalAndItsCategories() {
-      this.$emit('fetchPortal');
-    },
-  },
-};
-</script>
-
 <template>
   <div
     v-on-clickaway="closePortalPopover"
@@ -65,21 +27,59 @@ export default {
           />
         </div>
       </div>
-      <p class="mt-2 text-xs text-slate-600 dark:text-slate-300">
+      <p class="text-xs text-slate-600 dark:text-slate-300 mt-2">
         {{ $t('HELP_CENTER.PORTAL.POPOVER.SUBTITLE') }}
       </p>
     </header>
     <div>
-      <PortalSwitch
+      <portal-switch
         v-for="portal in portals"
         :key="portal.id"
         :portal="portal"
         :active-portal-slug="activePortalSlug"
         :active-locale="activeLocale"
         :active="portal.slug === activePortalSlug"
-        @openPortalPage="closePortalPopover"
-        @fetchPortal="fetchPortalAndItsCategories"
+        @open-portal-page="closePortalPopover"
+        @fetch-portal="fetchPortalAndItsCategories"
       />
     </div>
   </div>
 </template>
+
+<script>
+import PortalSwitch from './PortalSwitch.vue';
+export default {
+  components: {
+    PortalSwitch,
+  },
+  props: {
+    portals: {
+      type: Array,
+      default: () => [],
+    },
+    activePortalSlug: {
+      type: String,
+      default: '',
+    },
+    activeLocale: {
+      type: String,
+      default: '',
+    },
+  },
+
+  methods: {
+    closePortalPopover() {
+      this.$emit('close-popover');
+    },
+    openPortalPage() {
+      this.closePortalPopover();
+      this.$router.push({
+        name: 'list_all_portals',
+      });
+    },
+    fetchPortalAndItsCategories() {
+      this.$emit('fetch-portal');
+    },
+  },
+};
+</script>

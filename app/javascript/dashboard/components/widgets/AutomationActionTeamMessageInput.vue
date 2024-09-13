@@ -1,3 +1,30 @@
+<template>
+  <div>
+    <div class="multiselect-wrap--small">
+      <multiselect
+        v-model="selectedTeams"
+        track-by="id"
+        label="name"
+        :placeholder="$t('AUTOMATION.ACTION.TEAM_DROPDOWN_PLACEHOLDER')"
+        :multiple="true"
+        selected-label
+        :select-label="$t('FORMS.MULTISELECT.ENTER_TO_SELECT')"
+        deselect-label=""
+        :max-height="160"
+        :options="teams"
+        :allow-empty="false"
+        @input="updateValue"
+      />
+      <textarea
+        v-model="message"
+        rows="4"
+        :placeholder="$t('AUTOMATION.ACTION.TEAM_MESSAGE_INPUT_PLACEHOLDER')"
+        @input="updateValue"
+      />
+    </div>
+  </div>
+</template>
+
 <script>
 export default {
   // The value types are dynamic, hence prop validation removed to work with our action schema
@@ -24,33 +51,6 @@ export default {
   },
 };
 </script>
-
-<template>
-  <div>
-    <div class="multiselect-wrap--small">
-      <multiselect
-        v-model="selectedTeams"
-        track-by="id"
-        label="name"
-        :placeholder="$t('AUTOMATION.ACTION.TEAM_DROPDOWN_PLACEHOLDER')"
-        multiple
-        selected-label
-        :select-label="$t('FORMS.MULTISELECT.ENTER_TO_SELECT')"
-        deselect-label=""
-        :max-height="160"
-        :options="teams"
-        :allow-empty="false"
-        @input="updateValue"
-      />
-      <textarea
-        v-model="message"
-        rows="4"
-        :placeholder="$t('AUTOMATION.ACTION.TEAM_MESSAGE_INPUT_PLACEHOLDER')"
-        @input="updateValue"
-      />
-    </div>
-  </div>
-</template>
 
 <style scoped>
 .multiselect {

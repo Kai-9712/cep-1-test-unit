@@ -1,3 +1,25 @@
+<template>
+  <woot-dropdown-item>
+    <div class="item-wrap">
+      <woot-button variant="clear" @click="onClick">
+        <div class="button-wrap">
+          <div class="name-label-wrap">
+            <div
+              v-if="color"
+              class="label-color--display"
+              :style="{ backgroundColor: color }"
+            />
+            <span class="label-text" :title="title">{{ title }}</span>
+          </div>
+          <div>
+            <i v-if="selected" class="icon ion-checkmark-round" />
+          </div>
+        </div>
+      </woot-button>
+    </div>
+  </woot-dropdown-item>
+</template>
+
 <script>
 export default {
   props: {
@@ -22,28 +44,6 @@ export default {
   },
 };
 </script>
-
-<template>
-  <woot-dropdown-item>
-    <div class="item-wrap">
-      <woot-button variant="clear" @click="onClick">
-        <div class="button-wrap">
-          <div class="name-label-wrap">
-            <div
-              v-if="color"
-              class="label-color--display"
-              :style="{ backgroundColor: color }"
-            />
-            <span class="label-text" :title="title">{{ title }}</span>
-          </div>
-          <div>
-            <i v-if="selected" class="icon ion-checkmark-round" />
-          </div>
-        </div>
-      </woot-button>
-    </div>
-  </woot-dropdown-item>
-</template>
 
 <style lang="scss" scoped>
 .item-wrap {

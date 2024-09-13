@@ -239,7 +239,6 @@
     "REPORTS": "Αναφορές",
     "SETTINGS": "Ρυθμίσεις",
     "CONTACTS": "Επαφές",
-    "CAPTAIN": "Captain",
     "HOME": "Αρχική",
     "AGENTS": "Πράκτορες",
     "AGENT_BOTS": "Bots",
@@ -279,7 +278,7 @@
     "SLA": "SLA",
     "BETA": "Beta",
     "REPORTS_OVERVIEW": "Επισκόπηση",
-    "REAUTHORIZE": "Your inbox connection has expired, please reconnect\n to continue receiving and sending messages",
+    "FACEBOOK_REAUTHORIZE": "Η σύνδεση Facebook έχει λήξει, παρακαλώ ξανασυνδεθείτε στο Facebook για να συνεχίσετε",
     "HELP_CENTER": {
       "TITLE": "Help Center",
       "ALL_ARTICLES": "Όλα Τα Άρθρα",

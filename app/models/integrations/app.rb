@@ -34,24 +34,10 @@ class Integrations::App
     end
   end
 
-  def active?(account)
+  def active?
     case params[:id]
     when 'slack'
       ENV['SLACK_CLIENT_SECRET'].present?
-    when 'linear'
-<<<<<<< HEAD
-<<<<<<< HEAD
-      account.feature_enabled?('linear_integration')
-    when 'captain'
-      account.feature_enabled?('captain_integration') && ENV['CAPTAIN_API_URL'].present?
-=======
-      Current.account.feature_enabled?('linear_integration')
->>>>>>> 39d20b197 (chore: Update the integration icons, logic for enabled/active attributes for the integration (#9828))
-=======
-      account.feature_enabled?('linear_integration')
-    when 'captain'
-      account.feature_enabled?('captain_integration') && ENV['CAPTAIN_API_URL'].present?
->>>>>>> 0331815cc (feat: Integration with Captain (alpha) (#9834))
     else
       true
     end
@@ -59,20 +45,10 @@ class Integrations::App
 
   def enabled?(account)
     case params[:id]
-    when 'webhook'
-      account.webhooks.exists?
-<<<<<<< HEAD
-<<<<<<< HEAD
-    when 'dashboard_apps'
-      account.dashboard_apps.exists?
-=======
->>>>>>> 39d20b197 (chore: Update the integration icons, logic for enabled/active attributes for the integration (#9828))
-=======
-    when 'dashboard_apps'
-      account.dashboard_apps.exists?
->>>>>>> 8b1d98af5 (feat: Update the design for integration page (#9825))
-    else
+    when 'slack'
       account.hooks.exists?(app_id: id)
+    else
+      true
     end
   end
 

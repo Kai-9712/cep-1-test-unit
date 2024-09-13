@@ -1,33 +1,3 @@
-<script>
-import 'highlight.js/styles/default.css';
-import { copyTextToClipboard } from 'shared/helpers/clipboard';
-import { useAlert } from 'dashboard/composables';
-
-export default {
-  props: {
-    value: {
-      type: String,
-      default: '',
-    },
-  },
-  data() {
-    return {
-      masked: true,
-    };
-  },
-  methods: {
-    async onCopy(e) {
-      e.preventDefault();
-      await copyTextToClipboard(this.value);
-      useAlert(this.$t('COMPONENTS.CODE.COPY_SUCCESSFUL'));
-    },
-    toggleMasked() {
-      this.masked = !this.masked;
-    },
-  },
-};
-</script>
-
 <template>
   <div class="text--container">
     <woot-button size="small" class="button--text" @click="onCopy">
@@ -45,15 +15,13 @@ export default {
   </div>
 </template>
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 <script>
 import 'highlight.js/styles/default.css';
 import { copyTextToClipboard } from 'shared/helpers/clipboard';
-import { useAlert } from 'dashboard/composables';
+import alertMixin from 'shared/mixins/alertMixin';
 
 export default {
+  mixins: [alertMixin],
   props: {
     value: {
       type: String,
@@ -69,7 +37,7 @@ export default {
     async onCopy(e) {
       e.preventDefault();
       await copyTextToClipboard(this.value);
-      useAlert(this.$t('COMPONENTS.CODE.COPY_SUCCESSFUL'));
+      this.showAlert(this.$t('COMPONENTS.CODE.COPY_SUCCESSFUL'));
     },
     toggleMasked() {
       this.masked = !this.masked;
@@ -78,9 +46,6 @@ export default {
 };
 </script>
 
->>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
-=======
->>>>>>> b4b308336 (feat: Eslint rules (#9839))
 <style lang="scss" scoped>
 .text--container {
   position: relative;

@@ -1,27 +1,3 @@
-<script setup>
-import { ref, computed } from 'vue';
-import FormButton from 'v3/components/Form/Button.vue';
-const props = defineProps({
-  value: {
-    type: String,
-    default: '',
-  },
-});
-const emit = defineEmits(['onCopy']);
-const inputType = ref('password');
-const toggleMasked = () => {
-  inputType.value = inputType.value === 'password' ? 'text' : 'password';
-};
-
-const maskIcon = computed(() => {
-  return inputType.value === 'password' ? 'eye-hide' : 'eye-show';
-});
-
-const onClick = () => {
-  emit('onCopy', props.value);
-};
-</script>
-
 <template>
   <div class="flex flex-row justify-between gap-4">
     <woot-input
@@ -45,7 +21,7 @@ const onClick = () => {
         </button>
       </template>
     </woot-input>
-    <FormButton
+    <form-button
       type="submit"
       size="large"
       icon="text-copy"
@@ -54,6 +30,29 @@ const onClick = () => {
       @click="onClick"
     >
       {{ $t('PROFILE_SETTINGS.FORM.ACCESS_TOKEN.COPY') }}
-    </FormButton>
+    </form-button>
   </div>
 </template>
+<script setup>
+import { ref, computed } from 'vue';
+import FormButton from 'v3/components/Form/Button.vue';
+const props = defineProps({
+  value: {
+    type: String,
+    default: '',
+  },
+});
+const emit = defineEmits(['on-copy']);
+const inputType = ref('password');
+const toggleMasked = () => {
+  inputType.value = inputType.value === 'password' ? 'text' : 'password';
+};
+
+const maskIcon = computed(() => {
+  return inputType.value === 'password' ? 'eye-hide' : 'eye-show';
+});
+
+const onClick = () => {
+  emit('on-copy', props.value);
+};
+</script>

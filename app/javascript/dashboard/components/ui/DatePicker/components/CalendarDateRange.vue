@@ -8,10 +8,10 @@ defineProps({
   },
 });
 
-const emit = defineEmits(['setRange']);
+const emit = defineEmits(['set-range']);
 
 const setDateRange = range => {
-  emit('setRange', range);
+  emit('set-range', range);
 };
 </script>
 

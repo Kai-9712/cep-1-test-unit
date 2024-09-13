@@ -1,23 +1,20 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 <template>
   <form class="flex flex-col w-full" @submit.prevent="onSubmit">
     <div class="w-full">
-      <label :class="{ error: v$.url.$error }">
+      <label :class="{ error: $v.url.$error }">
         {{ $t('INTEGRATION_SETTINGS.WEBHOOK.FORM.END_POINT.LABEL') }}
         <input
           v-model.trim="url"
           type="text"
           name="url"
           :placeholder="webhookURLInputPlaceholder"
-          @input="v$.url.$touch"
+          @input="$v.url.$touch"
         />
-        <span v-if="v$.url.$error" class="message">
+        <span v-if="$v.url.$error" class="message">
           {{ $t('INTEGRATION_SETTINGS.WEBHOOK.FORM.END_POINT.ERROR') }}
         </span>
       </label>
-      <label :class="{ error: v$.url.$error }" class="mb-2">
+      <label :class="{ error: $v.url.$error }" class="mb-2">
         {{ $t('INTEGRATION_SETTINGS.WEBHOOK.FORM.SUBSCRIPTIONS.LABEL') }}
       </label>
       <div class="flex flex-col gap-2.5 mb-4">
@@ -44,7 +41,7 @@
     <div class="flex flex-row justify-end gap-2 py-2 px-0 w-full">
       <div class="w-full">
         <woot-button
-          :disabled="v$.$invalid || isSubmitting"
+          :disabled="$v.$invalid || isSubmitting"
           :is-loading="isSubmitting"
         >
           {{ submitLabel }}
@@ -57,14 +54,10 @@
   </form>
 </template>
 
->>>>>>> ce8e1ec93 (chore: Migrate all instances of old vuelidate to new v2 syntax [CW-3274] (#9623))
-=======
->>>>>>> b4b308336 (feat: Eslint rules (#9839))
 <script>
-import { useVuelidate } from '@vuelidate/core';
-import { required, url, minLength } from '@vuelidate/validators';
+import { required, url, minLength } from 'vuelidate/lib/validators';
+import webhookMixin from './webhookMixin';
 import wootConstants from 'dashboard/constants/globals';
-import { getEventNamei18n } from './webhookHelper';
 
 const { EXAMPLE_WEBHOOK_URL } = wootConstants;
 
@@ -80,6 +73,7 @@ const SUPPORTED_WEBHOOK_EVENTS = [
 ];
 
 export default {
+  mixins: [webhookMixin],
   props: {
     value: {
       type: Object,
@@ -93,9 +87,6 @@ export default {
       type: String,
       required: true,
     },
-  },
-  setup() {
-    return { v$: useVuelidate() };
   },
   validations: {
     url: {
@@ -131,63 +122,11 @@ export default {
         subscriptions: this.subscriptions,
       });
     },
-    getEventNamei18n,
   },
 };
 </script>
-
-<template>
-  <form class="flex flex-col w-full" @submit.prevent="onSubmit">
-    <div class="w-full">
-      <label :class="{ error: v$.url.$error }">
-        {{ $t('INTEGRATION_SETTINGS.WEBHOOK.FORM.END_POINT.LABEL') }}
-        <input
-          v-model.trim="url"
-          type="text"
-          name="url"
-          :placeholder="webhookURLInputPlaceholder"
-          @input="v$.url.$touch"
-        />
-        <span v-if="v$.url.$error" class="message">
-          {{ $t('INTEGRATION_SETTINGS.WEBHOOK.FORM.END_POINT.ERROR') }}
-        </span>
-      </label>
-      <label :class="{ error: v$.url.$error }" class="mb-2">
-        {{ $t('INTEGRATION_SETTINGS.WEBHOOK.FORM.SUBSCRIPTIONS.LABEL') }}
-      </label>
-      <div class="flex flex-col gap-2.5 mb-4">
-        <div
-          v-for="event in supportedWebhookEvents"
-          :key="event"
-          class="flex items-center"
-        >
-          <input
-            :id="event"
-            v-model="subscriptions"
-            type="checkbox"
-            :value="event"
-            name="subscriptions"
-            class="mr-2"
-          />
-          <label :for="event" class="text-sm">
-            {{ `${$t(getEventNamei18n(event))} (${event})` }}
-          </label>
-        </div>
-      </div>
-    </div>
-
-    <div class="flex flex-row justify-end gap-2 py-2 px-0 w-full">
-      <div class="w-full">
-        <woot-button
-          :disabled="v$.$invalid || isSubmitting"
-          :is-loading="isSubmitting"
-        >
-          {{ submitLabel }}
-        </woot-button>
-        <woot-button class="button clear" @click.prevent="$emit('cancel')">
-          {{ $t('INTEGRATION_SETTINGS.WEBHOOK.FORM.CANCEL') }}
-        </woot-button>
-      </div>
-    </div>
-  </form>
-</template>
+<style lang="scss" scoped>
+.checkbox {
+  @apply mr-2;
+}
+</style>

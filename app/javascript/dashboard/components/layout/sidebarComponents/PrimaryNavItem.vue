@@ -1,34 +1,3 @@
-<script>
-export default {
-  props: {
-    to: {
-      type: String,
-      default: '',
-    },
-    name: {
-      type: String,
-      default: '',
-    },
-    icon: {
-      type: String,
-      default: '',
-    },
-    count: {
-      type: String,
-      default: '',
-    },
-    isChildMenuActive: {
-      type: Boolean,
-      default: false,
-    },
-    openInNewPage: {
-      type: Boolean,
-      default: false,
-    },
-  },
-};
-</script>
-
 <template>
   <router-link v-slot="{ href, isActive, navigate }" :to="to" custom>
     <a
@@ -59,3 +28,33 @@ export default {
     </a>
   </router-link>
 </template>
+<script>
+export default {
+  props: {
+    to: {
+      type: String,
+      default: '',
+    },
+    name: {
+      type: String,
+      default: '',
+    },
+    icon: {
+      type: String,
+      default: '',
+    },
+    count: {
+      type: String,
+      default: '',
+    },
+    isChildMenuActive: {
+      type: Boolean,
+      default: false,
+    },
+    openInNewPage: {
+      type: Boolean,
+      default: false,
+    },
+  },
+};
+</script>

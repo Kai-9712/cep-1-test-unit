@@ -1,39 +1,58 @@
+<template>
+  <section class="h-full w-full flex flex-col bg-slate-25">
+    <PlaygroundHeader
+      :response-source-name="componentData.responseSourceName"
+      :response-source-path="componentData.responseSourcePath"
+    />
+    <div ref="chatContainer" class="flex-1 overflow-auto px-8 py-4">
+      <div
+        v-for="message in messages"
+        :id="`message-${message.id}`"
+        :key="message.id"
+      >
+        <UserMessage
+          v-if="message.type === 'User'"
+          :message="formatMessage(message.content)"
+        />
+        <BotMessage v-else :message="formatMessage(message.content)" />
+      </div>
+      <TypingIndicator v-if="isWaiting" />
+    </div>
+    <div class="w-full px-8 py-6">
+      <textarea
+        ref="messageInput"
+        v-model="messageContent"
+        :rows="4"
+        class="resize-none block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border !outline-2 border-slate-100 focus:ring-woot-500 focus:border-woot-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-woot-500 dark:focus:border-woot-500"
+        placeholder="Type a message... [CMD/CTRL + Enter to send]"
+        autofocus
+        autocomplete="off"
+      />
+    </div>
+  </section>
+</template>
+
 <script>
-<<<<<<< HEAD
 import messageFormatterMixin from 'shared/mixins/messageFormatterMixin';
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 import keyboardEventListenerMixins from 'shared/mixins/keyboardEventListenerMixins';
->>>>>>> b4b308336 (feat: Eslint rules (#9839))
-=======
->>>>>>> 74bbbd25b (feat: Replace the use of `keyboardEventListener` mixin to a composable (Part -3) (#9897))
-=======
-import { useMessageFormatter } from 'shared/composables/useMessageFormatter';
->>>>>>> f82ec3b88 (chore: Repalce message formatter mixin with useMessageFormatter [CW-3470] (#9986))
-import PlaygroundHeader from '../../components/playground/Header.vue';
+import Header from '../../components/playground/Header.vue';
 import UserMessage from '../../components/playground/UserMessage.vue';
 import BotMessage from '../../components/playground/BotMessage.vue';
 import TypingIndicator from '../../components/playground/TypingIndicator.vue';
 
 export default {
   components: {
-    PlaygroundHeader,
+    PlaygroundHeader: Header,
     UserMessage,
     BotMessage,
     TypingIndicator,
   },
+  mixins: [messageFormatterMixin, keyboardEventListenerMixins],
   props: {
     componentData: {
       type: Object,
       default: () => ({}),
     },
-  },
-  setup() {
-    const { formatMessage } = useMessageFormatter();
-    return {
-      formatMessage,
-    };
   },
   data() {
     return { messages: [], messageContent: '', isWaiting: false };
@@ -50,6 +69,16 @@ export default {
     this.focusInput();
   },
   methods: {
+    getKeyboardEvents() {
+      return {
+        '$mod+Enter': {
+          action: () => {
+            this.onMessageSend();
+          },
+          allowOnFocusedInput: true,
+        },
+      };
+    },
     focusInput() {
       this.$refs.messageInput.focus();
     },
@@ -108,47 +137,3 @@ export default {
   },
 };
 </script>
-
-<template>
-  <section class="flex flex-col w-full h-full bg-slate-25">
-    <PlaygroundHeader
-      :response-source-name="componentData.responseSourceName"
-      :response-source-path="componentData.responseSourcePath"
-    />
-    <div class="flex-1 px-8 py-4 overflow-auto">
-      <div
-        v-for="message in messages"
-        :id="`message-${message.id}`"
-        :key="message.id"
-      >
-        <UserMessage
-          v-if="message.type === 'User'"
-          :message="formatMessage(message.content)"
-        />
-        <BotMessage v-else :message="formatMessage(message.content)" />
-      </div>
-      <TypingIndicator v-if="isWaiting" />
-    </div>
-    <div class="w-full px-8 py-6">
-      <textarea
-        ref="messageInput"
-        v-model="messageContent"
-        :rows="4"
-        class="resize-none block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border !outline-2 border-slate-100 focus:ring-woot-500 focus:border-woot-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-woot-500 dark:focus:border-woot-500"
-        placeholder="Type a message... [CMD/CTRL + Enter to send]"
-        autofocus
-        autocomplete="off"
-<<<<<<< HEAD
-<<<<<<< HEAD
-        @keydown.meta.enter="onMessageSend"
-        @keydown.ctrl.enter="onMessageSend"
-=======
->>>>>>> b4b308336 (feat: Eslint rules (#9839))
-=======
-        @keydown.meta.enter="onMessageSend"
-        @keydown.ctrl.enter="onMessageSend"
->>>>>>> 74bbbd25b (feat: Replace the use of `keyboardEventListener` mixin to a composable (Part -3) (#9897))
-      />
-    </div>
-  </section>
-</template>

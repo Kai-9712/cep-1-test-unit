@@ -4,6 +4,13 @@ import UserAvatarWithName from 'dashboard/components/widgets/UserAvatarWithName.
 import IssueHeader from './IssueHeader.vue';
 import { computed } from 'vue';
 
+const priorityMap = {
+  1: 'Urgent',
+  2: 'High',
+  3: 'Medium',
+  4: 'Low',
+};
+
 const props = defineProps({
   issue: {
     type: Object,
@@ -15,14 +22,7 @@ const props = defineProps({
   },
 });
 
-const emit = defineEmits(['unlinkIssue']);
-
-const priorityMap = {
-  1: 'Urgent',
-  2: 'High',
-  3: 'Medium',
-  4: 'Low',
-};
+const emit = defineEmits(['unlink-issue']);
 
 const formattedDate = computed(() => {
   const { createdAt } = props.issue;
@@ -50,7 +50,7 @@ const priorityLabel = computed(() => {
 });
 
 const unlinkIssue = () => {
-  emit('unlinkIssue', props.linkId);
+  emit('unlink-issue', props.linkId);
 };
 </script>
 
@@ -59,11 +59,11 @@ const unlinkIssue = () => {
     class="absolute flex flex-col items-start bg-white dark:bg-slate-800 z-50 px-4 py-3 border border-solid border-ash-200 w-[384px] rounded-xl gap-4 max-h-96 overflow-auto"
   >
     <div class="flex flex-col w-full">
-      <IssueHeader
+      <issue-header
         :identifier="issue.identifier"
         :link-id="linkId"
         :issue-url="issue.url"
-        @unlinkIssue="unlinkIssue"
+        @unlink-issue="unlinkIssue"
       />
 
       <span class="mt-2 text-sm font-medium text-ash-900">
@@ -77,7 +77,7 @@ const unlinkIssue = () => {
       </span>
     </div>
     <div class="flex flex-row items-center h-6 gap-2">
-      <UserAvatarWithName v-if="assignee" :user="assignee" class="py-1" />
+      <user-avatar-with-name v-if="assignee" :user="assignee" class="py-1" />
       <div v-if="assignee" class="w-px h-3 bg-ash-200" />
       <div class="flex items-center gap-1 py-1">
         <fluent-icon

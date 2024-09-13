@@ -52,10 +52,6 @@ class DashboardAudioNotificationHelper {
   };
 
   executeRecurringNotification = () => {
-    if (!window.WOOT || !window.WOOT.$store) {
-      this.clearSetTimeout();
-      return;
-    }
     const mineConversation = window.WOOT.$store.getters.getMineChats({
       assigneeType: 'me',
       status: 'open',

@@ -1,25 +1,3 @@
-<script>
-import FluentIcon from 'shared/components/FluentIcon/Index.vue';
-
-export default {
-  components: { FluentIcon },
-  props: {
-    title: {
-      type: String,
-      default: 'Continue your chat',
-    },
-    content: {
-      type: String,
-      default: 'Chat with us',
-    },
-    unreadCount: {
-      type: Number,
-      default: 0,
-    },
-  },
-};
-</script>
-
 <template>
   <button
     type="button"
@@ -29,7 +7,7 @@ export default {
     <div
       class="w-10 h-10 rounded-md bg-slate-75 dark:bg-slate-700 text-lg flex items-center justify-center flex-shrink-0"
     >
-      <FluentIcon
+      <fluent-icon
         icon="chat"
         size="16"
         class="text-slate-600 dark:text-slate-400"
@@ -55,7 +33,29 @@ export default {
       </p>
     </div>
     <div class="w-8 h-10 flex items-center justify-center">
-      <FluentIcon icon="chevron-right" />
+      <fluent-icon icon="chevron-right" />
     </div>
   </button>
 </template>
+
+<script>
+import FluentIcon from 'shared/components/FluentIcon/Index.vue';
+
+export default {
+  components: { FluentIcon },
+  props: {
+    title: {
+      type: String,
+      default: 'Continue your chat',
+    },
+    content: {
+      type: String,
+      default: 'Chat with us',
+    },
+    unreadCount: {
+      type: Number,
+      default: 0,
+    },
+  },
+};
+</script>

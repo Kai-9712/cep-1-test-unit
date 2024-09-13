@@ -9,6 +9,7 @@ import { getQuantileIntervals } from '@chatwoot/utils';
 import { groupHeatmapByDay } from 'helpers/ReportsDataHelper';
 import { useI18n } from 'dashboard/composables/useI18n';
 
+const { t } = useI18n();
 const props = defineProps({
   heatData: {
     type: Array,
@@ -19,7 +20,7 @@ const props = defineProps({
     default: false,
   },
 });
-const { t } = useI18n();
+
 const processedData = computed(() => {
   return groupHeatmapByDay(props.heatData);
 });

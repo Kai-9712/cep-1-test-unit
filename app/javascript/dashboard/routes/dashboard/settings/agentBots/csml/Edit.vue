@@ -1,27 +1,24 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 <template>
   <csml-bot-editor
     v-if="agentBot.id"
     :agent-bot="agentBot"
     @submit="updateBot"
   />
-  <div v-else class="flex flex-col h-auto overflow-auto no-padding">
+  <div v-else class="h-auto overflow-auto flex flex-col no-padding">
     <spinner />
   </div>
 </template>
->>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
-=======
->>>>>>> b4b308336 (feat: Eslint rules (#9839))
 <script>
-import { useAlert } from 'dashboard/composables';
 import Spinner from 'shared/components/Spinner.vue';
 import CsmlBotEditor from '../components/CSMLBotEditor.vue';
+import alertMixin from 'shared/mixins/alertMixin';
 
+import { mapGetters } from 'vuex';
 export default {
   components: { Spinner, CsmlBotEditor },
+  mixins: [alertMixin],
   computed: {
+    ...mapGetters({ uiFlags: 'agentBots/uiFlags' }),
     agentBot() {
       return this.$store.getters['agentBots/getBot'](this.$route.params.botId);
     },
@@ -39,18 +36,13 @@ export default {
           bot_type: 'csml',
           bot_config: { csml_content: bot.csmlContent },
         });
-        useAlert(this.$t('AGENT_BOTS.EDIT.API.SUCCESS_MESSAGE'));
+        this.showAlert(this.$t('AGENT_BOTS.EDIT.API.SUCCESS_MESSAGE'));
       } catch (error) {
-        useAlert(this.$t('AGENT_BOTS.CSML_BOT_EDITOR.BOT_CONFIG.API_ERROR'));
+        this.showAlert(
+          this.$t('AGENT_BOTS.CSML_BOT_EDITOR.BOT_CONFIG.API_ERROR')
+        );
       }
     },
   },
 };
 </script>
-
-<template>
-  <CsmlBotEditor v-if="agentBot.id" :agent-bot="agentBot" @submit="updateBot" />
-  <div v-else class="flex flex-col h-auto overflow-auto no-padding">
-    <Spinner />
-  </div>
-</template>

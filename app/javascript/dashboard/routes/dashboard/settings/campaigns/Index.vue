@@ -1,5 +1,22 @@
+<template>
+  <div class="flex-1 overflow-auto p-4">
+    <woot-button
+      color-scheme="success"
+      class-names="button--fixed-top"
+      icon="add-circle"
+      @click="openAddPopup"
+    >
+      {{ buttonText }}
+    </woot-button>
+    <campaign />
+    <woot-modal :show.sync="showAddPopup" :on-close="hideAddPopup">
+      <add-campaign @on-close="hideAddPopup" />
+    </woot-modal>
+  </div>
+</template>
+
 <script>
-import { useCampaign } from 'shared/composables/useCampaign';
+import campaignMixin from 'shared/mixins/campaignMixin';
 import Campaign from './Campaign.vue';
 import AddCampaign from './AddCampaign.vue';
 
@@ -8,10 +25,7 @@ export default {
     Campaign,
     AddCampaign,
   },
-  setup() {
-    const { isOngoingType } = useCampaign();
-    return { isOngoingType };
-  },
+  mixins: [campaignMixin],
   data() {
     return { showAddPopup: false };
   },
@@ -36,20 +50,3 @@ export default {
   },
 };
 </script>
-
-<template>
-  <div class="flex-1 p-4 overflow-auto">
-    <woot-button
-      color-scheme="success"
-      class-names="button--fixed-top"
-      icon="add-circle"
-      @click="openAddPopup"
-    >
-      {{ buttonText }}
-    </woot-button>
-    <Campaign />
-    <woot-modal :show.sync="showAddPopup" :on-close="hideAddPopup">
-      <AddCampaign @onClose="hideAddPopup" />
-    </woot-modal>
-  </div>
-</template>

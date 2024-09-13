@@ -1,29 +1,3 @@
-<script setup>
-import { inject } from 'vue';
-const props = defineProps({
-  identifier: {
-    type: String,
-    required: true,
-  },
-  issueUrl: {
-    type: String,
-    required: true,
-  },
-});
-
-const emit = defineEmits(['unlinkIssue']);
-
-const isUnlinking = inject('isUnlinking');
-
-const unlinkIssue = () => {
-  emit('unlinkIssue');
-};
-
-const openIssue = () => {
-  window.open(props.issueUrl, '_blank');
-};
-</script>
-
 <template>
   <div class="flex flex-row justify-between">
     <div
@@ -64,3 +38,29 @@ const openIssue = () => {
     </div>
   </div>
 </template>
+
+<script setup>
+import { inject } from 'vue';
+const props = defineProps({
+  identifier: {
+    type: String,
+    required: true,
+  },
+  issueUrl: {
+    type: String,
+    required: true,
+  },
+});
+
+const isUnlinking = inject('isUnlinking');
+
+const emit = defineEmits(['unlink-issue']);
+
+const unlinkIssue = () => {
+  emit('unlink-issue');
+};
+
+const openIssue = () => {
+  window.open(props.issueUrl, '_blank');
+};
+</script>

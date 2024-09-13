@@ -1,17 +1,23 @@
+<template>
+  <div
+    class="date--separator"
+    :class="$dm('text-slate-700', 'dark:text-slate-200')"
+  >
+    {{ formattedDate }}
+  </div>
+</template>
+
 <script>
 import { formatDate } from 'shared/helpers/DateHelper';
-import { useDarkMode } from 'widget/composables/useDarkMode';
+import darkModeMixin from 'widget/mixins/darkModeMixin.js';
 
 export default {
+  mixins: [darkModeMixin],
   props: {
     date: {
       type: String,
       required: true,
     },
-  },
-  setup() {
-    const { getThemeClass } = useDarkMode();
-    return { getThemeClass };
   },
   computed: {
     formattedDate() {
@@ -24,15 +30,6 @@ export default {
   },
 };
 </script>
-
-<template>
-  <div
-    class="date--separator"
-    :class="getThemeClass('text-slate-700', 'dark:text-slate-200')"
-  >
-    {{ formattedDate }}
-  </div>
-</template>
 
 <style lang="scss" scoped>
 @import '~widget/assets/scss/variables';

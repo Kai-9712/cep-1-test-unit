@@ -1,29 +1,17 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 <template>
   <div
-    class="flex items-center justify-center w-full text-slate-600 dark:text-slate-200"
+    class="text-slate-600 dark:text-slate-200 flex items-center justify-center w-full"
   >
     Loading...
   </div>
 </template>
 
->>>>>>> fb99ba7b4 (feat: Rewrite `uiSettings` mixin to a composable (#9819))
-=======
->>>>>>> b4b308336 (feat: Eslint rules (#9839))
 <script>
+import uiSettingsMixin from 'dashboard/mixins/uiSettings';
 import { mapGetters } from 'vuex';
-import { useUISettings } from 'dashboard/composables/useUISettings';
 
 export default {
-  setup() {
-    const { uiSettings } = useUISettings();
-
-    return {
-      uiSettings,
-    };
-  },
+  mixins: [uiSettingsMixin],
   computed: {
     ...mapGetters({ portals: 'portals/allPortals' }),
   },
@@ -72,11 +60,3 @@ export default {
   },
 };
 </script>
-
-<template>
-  <div
-    class="flex items-center justify-center w-full text-slate-600 dark:text-slate-200"
-  >
-    {{ $t('HELP_CENTER.LOADING') }}
-  </div>
-</template>

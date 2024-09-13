@@ -481,8 +481,7 @@
       "HEADER": "Beszélgetés forgalom",
       "NO_CONVERSATIONS": "Nincsennek beszélgetések",
       "CONVERSATION": "Beszélgetése százaléka",
-      "CONVERSATIONS": "Beszélgetések százalékai",
-      "DOWNLOAD_REPORT": "Download report"
+      "CONVERSATIONS": "Beszélgetések százalékai"
     },
     "AGENT_CONVERSATIONS": {
       "HEADER": "Ügynökök által kezelt beszélgetések",
@@ -537,7 +536,6 @@
       "LABELS": "Cimke",
       "TEAMS": "Csapat"
     },
-    "WITH": "with",
     "METRICS": {
       "HIT_RATE": {
         "LABEL": "Hit Rate",

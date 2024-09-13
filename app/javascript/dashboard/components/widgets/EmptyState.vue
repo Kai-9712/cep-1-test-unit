@@ -1,12 +1,3 @@
-<script>
-export default {
-  props: {
-    title: { type: String, default: '' },
-    message: { type: String, default: '' },
-  },
-};
-</script>
-
 <template>
   <div class="empty-state py-16 px-1 ml-0 mr-0">
     <h3
@@ -24,3 +15,12 @@ export default {
     <slot />
   </div>
 </template>
+
+<script>
+export default {
+  props: {
+    title: { type: String, default: '' },
+    message: { type: String, default: '' },
+  },
+};
+</script>

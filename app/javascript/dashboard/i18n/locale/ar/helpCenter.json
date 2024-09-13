@@ -18,10 +18,10 @@
         "ARCHIVED": "المقالات المؤرشفة"
       },
       "LOCALE_SELECT": {
-        "TITLE": "حدد اللغة",
-        "PLACEHOLDER": "حدد اللغة",
-        "NO_RESULT": "لا توجد لغات",
-        "SEARCH_PLACEHOLDER": "البحث عن اللغة"
+        "TITLE": "Select locale",
+        "PLACEHOLDER": "Select locale",
+        "NO_RESULT": "No locale found",
+        "SEARCH_PLACEHOLDER": "Search locale"
       }
     },
     "EDIT_HEADER": {
@@ -39,11 +39,11 @@
       "IMAGE_UPLOAD": {
         "TITLE": "رفع صورة",
         "UPLOADING": "جاري الرفع...",
-        "SUCCESS": "تم رفع الصورة بنجاح",
-        "ERROR": "حدث خطأ أثناء رفع الصورة",
-        "ERROR_FILE_SIZE": "حجم الصورة يجب أن يكون أقل من {size}MB",
-        "ERROR_FILE_FORMAT": "تنسيق الصورة يجب أن يكون jpg أو jpeg أو png",
-        "ERROR_FILE_DIMENSIONS": "ينبغي أن تكون أبعاد الصورة أقل من 2000 × 2000"
+        "SUCCESS": "Image uploaded successfully",
+        "ERROR": "Error while uploading image",
+        "ERROR_FILE_SIZE": "Image size should be less than {size}MB",
+        "ERROR_FILE_FORMAT": "Image format should be jpg, jpeg or png",
+        "ERROR_FILE_DIMENSIONS": "Image dimensions should be less than 2000 x 2000"
       }
     },
     "ARTICLE_SETTINGS": {
@@ -149,102 +149,102 @@
           "NO": "No, keep portal",
           "API": {
             "DELETE_SUCCESS": "Portal deleted successfully",
-            "DELETE_ERROR": "حدث خطأ أثناء حذف البوابة"
+            "DELETE_ERROR": "Error while deleting portal"
           }
         }
       },
       "EDIT": {
-        "HEADER_TEXT": "تعديل البوابة",
+        "HEADER_TEXT": "Edit portal",
         "TABS": {
           "BASIC_SETTINGS": {
-            "TITLE": "المعلومات الأساسية"
+            "TITLE": "Basic information"
           },
           "CUSTOMIZATION_SETTINGS": {
-            "TITLE": "تخصيص البوابة"
+            "TITLE": "Portal customization"
           },
           "CATEGORY_SETTINGS": {
-            "TITLE": "الفئات"
+            "TITLE": "Categories"
           },
           "LOCALE_SETTINGS": {
-            "TITLE": "اللغات"
+            "TITLE": "Locales"
           }
         },
         "CATEGORIES": {
-          "TITLE": "الفئات في",
-          "NEW_CATEGORY": "فئة جديدة",
+          "TITLE": "Categories in",
+          "NEW_CATEGORY": "New category",
           "TABLE": {
             "NAME": "الاسم",
             "DESCRIPTION": "الوصف",
-            "LOCALE": "اللغة",
-            "ARTICLE_COUNT": "عدد المقالات",
+            "LOCALE": "Locale",
+            "ARTICLE_COUNT": "No. of articles",
             "ACTION_BUTTON": {
-              "EDIT": "تعديل الفئة",
-              "DELETE": "حذف الفئة"
+              "EDIT": "Edit category",
+              "DELETE": "Delete category"
             },
-            "EMPTY_TEXT": "لم يتم العثور على الفئات"
+            "EMPTY_TEXT": "لم يتم العثور على فئات"
           }
         },
         "EDIT_BASIC_INFO": {
-          "BUTTON_TEXT": "تحديث الإعدادات الأساسية"
+          "BUTTON_TEXT": "Update basic settings"
         }
       },
       "ADD": {
         "CREATE_FLOW": [
           {
-            "title": "معلومات مركز المساعدة",
+            "title": "Help center information",
             "route": "new_portal_information",
-            "body": "معلومات أساسية عن البوابة",
-            "CREATE_BASIC_SETTING_BUTTON": "إنشاء إعدادات البوابة الأساسية"
+            "body": "Basic information about portal",
+            "CREATE_BASIC_SETTING_BUTTON": "Create portal basic settings"
           },
           {
-            "title": "تخصيص مركز المساعدة",
+            "title": "Help center customization",
             "route": "portal_customization",
-            "body": "تخصيص البوابة",
-            "UPDATE_PORTAL_BUTTON": "تحديث إعدادات البوابة"
+            "body": "Customize portal",
+            "UPDATE_PORTAL_BUTTON": "Update portal settings"
           },
           {
-            "title": "تم! 🎉",
+            "title": "Voila! 🎉",
             "route": "portal_finish",
-            "body": "أنت جاهز!",
+            "body": "You're all set!",
             "FINISH": "إنهاء"
           }
         ],
         "CREATE_FLOW_PAGE": {
           "BACK_BUTTON": "العودة",
           "BASIC_SETTINGS_PAGE": {
-            "HEADER": "إنشاء بوابة",
-            "TITLE": "معلومات مركز المساعدة",
-            "CREATE_BASIC_SETTING_BUTTON": "إنشاء إعدادات البوابة الأساسية"
+            "HEADER": "Create Portal",
+            "TITLE": "Help center information",
+            "CREATE_BASIC_SETTING_BUTTON": "Create portal basic settings"
           },
           "CUSTOMIZATION_PAGE": {
-            "HEADER": "تخصيص البوابة",
-            "TITLE": "تخصيص مركز المساعدة",
-            "UPDATE_PORTAL_BUTTON": "تحديث إعدادات البوابة"
+            "HEADER": "Portal customisation",
+            "TITLE": "Help center customization",
+            "UPDATE_PORTAL_BUTTON": "Update portal settings"
           },
           "FINISH_PAGE": {
-            "TITLE": "تم!🎉 أنت جاهز!",
-            "MESSAGE": "يمكنك الآن رؤية هذه البوابة في صفحة جميع البوابات.",
-            "FINISH": "الذهاب إلى صفحة جميع البوابات"
+            "TITLE": "Voila!🎉 You're all set up!",
+            "MESSAGE": "You can now see this created portal on your all portals page.",
+            "FINISH": "Go to all portals page"
           }
         },
         "LOGO": {
-          "LABEL": "الشعار",
-          "UPLOAD_BUTTON": "رفع الشعار",
-          "HELP_TEXT": "سيتم عرض هذا الشعار على رأس البوابة.",
-          "IMAGE_UPLOAD_SUCCESS": "تم رفع الشعار بنجاح",
-          "IMAGE_UPLOAD_ERROR": "تم حذف الشعار بنجاح",
-          "IMAGE_DELETE_ERROR": "حدث خطأ أثناء حذف الشعار"
+          "LABEL": "Logo",
+          "UPLOAD_BUTTON": "Upload logo",
+          "HELP_TEXT": "This logo will be displayed on the portal header.",
+          "IMAGE_UPLOAD_SUCCESS": "Logo uploaded successfully",
+          "IMAGE_UPLOAD_ERROR": "Logo deleted successfully",
+          "IMAGE_DELETE_ERROR": "Error while deleting logo"
         },
         "NAME": {
           "LABEL": "الاسم",
-          "PLACEHOLDER": "اسم البوابة",
-          "HELP_TEXT": "الاسم سيتم مشاهدتة من جميع زوار الصفحة.",
+          "PLACEHOLDER": "Portal name",
+          "HELP_TEXT": "الاسم سيتم مشاهدتة من جميع من جميع زوار الصفحة.",
           "ERROR": "الاسم مطلوب"
         },
         "SLUG": {
-          "LABEL": "الإسم المختصر",
-          "PLACEHOLDER": "الإسم المختصر لرابط البوابة",
-          "ERROR": "الإسم المختصر مطلوب"
+          "LABEL": "وصف مختصر",
+          "PLACEHOLDER": "وصف مختصر لرابط البوابة",
+          "ERROR": "الوصف مطلوب"
         },
         "DOMAIN": {
           "LABEL": "نطاق مخصص",
@@ -352,7 +352,7 @@
       "MODAL": {
         "CONFIRM": {
           "TITLE": "تأكيد الحذف",
-          "MESSAGE": "هل أنت متأكد من حذف المقالة؟",
+          "MESSAGE": "Are you sure to delete the article?",
           "YES": "نعم، احذف",
           "NO": "لا، احتفظ به"
         }
@@ -456,7 +456,7 @@
       "BACK_RESULTS": "Back to results"
     },
     "UPGRADE_PAGE": {
-      "TITLE": "مركز المساعدة",
+      "TITLE": "Help Center",
       "DESCRIPTION": "Create user-friendly self-service portals. Help your users to access the articles and get support 24/7. Upgrade your subscription to enable this feature.",
       "SELF_HOSTED_DESCRIPTION": "Create user-friendly self-service portals. Help your users to access the articles and get support 24/7. Please contact your administrator to enable this feature.",
       "BUTTON": {
@@ -481,7 +481,6 @@
           "DESCRIPTION": "Use the portal as a headless CMS with third party front-end frameworks using our APIs."
         }
       }
-    },
-    "LOADING": "Loading..."
+    }
   }
 }

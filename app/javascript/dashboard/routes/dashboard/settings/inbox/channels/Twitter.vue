@@ -1,30 +1,3 @@
-<script>
-import { useAlert } from 'dashboard/composables';
-import twitterClient from '../../../../../api/channel/twitterClient';
-
-export default {
-  data() {
-    return { isRequestingAuthorization: false };
-  },
-  methods: {
-    async requestAuthorization() {
-      try {
-        this.isRequestingAuthorization = true;
-        const response = await twitterClient.generateAuthorization();
-        const {
-          data: { url },
-        } = response;
-        window.location.href = url;
-      } catch (error) {
-        useAlert(this.$t('INBOX_MGMT.ADD.TWITTER.ERROR_MESSAGE'));
-      } finally {
-        this.isRequestingAuthorization = false;
-      }
-    },
-  },
-};
-</script>
-
 <template>
   <div
     class="border border-slate-25 dark:border-slate-800/60 bg-white dark:bg-slate-900 h-full p-6 w-full max-w-full md:w-3/4 md:max-w-[75%] flex-shrink-0 flex-grow-0"
@@ -42,15 +15,12 @@ export default {
     </div>
   </div>
 </template>
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-=======
 <script>
-import { useAlert } from 'dashboard/composables';
+import alertMixin from 'shared/mixins/alertMixin';
 import twitterClient from '../../../../../api/channel/twitterClient';
 
 export default {
+  mixins: [alertMixin],
   data() {
     return { isRequestingAuthorization: false };
   },
@@ -64,7 +34,7 @@ export default {
         } = response;
         window.location.href = url;
       } catch (error) {
-        useAlert(this.$t('INBOX_MGMT.ADD.TWITTER.ERROR_MESSAGE'));
+        this.showAlert(this.$t('INBOX_MGMT.ADD.TWITTER.ERROR_MESSAGE'));
       } finally {
         this.isRequestingAuthorization = false;
       }
@@ -72,10 +42,6 @@ export default {
   },
 };
 </script>
->>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
-=======
-
->>>>>>> b4b308336 (feat: Eslint rules (#9839))
 <style scoped lang="scss">
 .login-init {
   @apply pt-[30%] text-center;

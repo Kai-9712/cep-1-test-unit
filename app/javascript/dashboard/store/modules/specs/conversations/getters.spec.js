@@ -245,18 +245,30 @@ describe('#getters', () => {
 
   describe('#getSelectedChatAttachments', () => {
     it('Returns attachments in selected chat', () => {
-      const attachments = {
-        1: [
-          { id: 1, file_name: 'test1' },
-          { id: 2, file_name: 'test2' },
+      const state = {};
+      const getSelectedChat = {
+        attachments: [
+          {
+            id: 1,
+            file_name: 'test1',
+          },
+          {
+            id: 2,
+            file_name: 'test2',
+          },
         ],
       };
-      const selectedChatId = 1;
       expect(
-        getters.getSelectedChatAttachments({ selectedChatId, attachments })
+        getters.getSelectedChatAttachments(state, { getSelectedChat })
       ).toEqual([
-        { id: 1, file_name: 'test1' },
-        { id: 2, file_name: 'test2' },
+        {
+          id: 1,
+          file_name: 'test1',
+        },
+        {
+          id: 2,
+          file_name: 'test2',
+        },
       ]);
     });
   });

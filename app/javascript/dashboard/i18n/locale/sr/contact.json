@@ -381,9 +381,6 @@
       },
       "SUCCESS_MESSAGE": "Kontakt je uspešno spojen",
       "ERROR_MESSAGE": "Nije bilo moguće spojiti kontakte, pokušajte ponovo!"
-    },
-    "DROPDOWN_ITEM": {
-      "ID": "(ID: {identifier})"
     }
   }
 }

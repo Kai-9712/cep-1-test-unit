@@ -1,7 +1,5 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
 <template>
-  <section class="bg-white conversation-page dark:bg-slate-900">
+  <section class="conversation-page bg-white dark:bg-slate-900">
     <chat-list
       :show-conversation-list="showConversationList"
       :conversation-inbox="inboxId"
@@ -27,90 +25,22 @@
   </section>
 </template>
 
-=======
->>>>>>> b4b308336 (feat: Eslint rules (#9839))
-=======
->>>>>>> b4b308336 (feat: Eslint rules (#9839))
 <script>
 import { mapGetters } from 'vuex';
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-import { useAlert } from 'dashboard/composables';
-import { useUISettings } from 'dashboard/composables/useUISettings';
-<<<<<<< HEAD
-=======
-import { useAlert } from 'dashboard/composables';
->>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
-=======
->>>>>>> fb99ba7b4 (feat: Rewrite `uiSettings` mixin to a composable (#9819))
-import { getUnixTime } from 'date-fns';
->>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
 import ChatList from '../../../components/ChatList.vue';
 import ConversationBox from '../../../components/widgets/conversation/ConversationBox.vue';
 import PopOverSearch from './search/PopOverSearch.vue';
-<<<<<<< HEAD
-<<<<<<< HEAD
 import uiSettingsMixin from 'dashboard/mixins/uiSettings';
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
-import CustomSnoozeModal from 'dashboard/components/CustomSnoozeModal.vue';
->>>>>>> fb99ba7b4 (feat: Rewrite `uiSettings` mixin to a composable (#9819))
-=======
-import { useUISettings } from 'dashboard/composables/useUISettings';
-import ChatList from '../../../components/ChatList.vue';
-import ConversationBox from '../../../components/widgets/conversation/ConversationBox.vue';
-import PopOverSearch from './search/PopOverSearch.vue';
->>>>>>> 646cfb97e (fix: Snooze conversation not working in Inbox view (#9875))
-=======
->>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
-=======
-import CustomSnoozeModal from 'dashboard/components/CustomSnoozeModal.vue';
->>>>>>> fb99ba7b4 (feat: Rewrite `uiSettings` mixin to a composable (#9819))
-=======
-import { useUISettings } from 'dashboard/composables/useUISettings';
-import ChatList from '../../../components/ChatList.vue';
-import ConversationBox from '../../../components/widgets/conversation/ConversationBox.vue';
-import PopOverSearch from './search/PopOverSearch.vue';
->>>>>>> 646cfb97e (fix: Snooze conversation not working in Inbox view (#9875))
-import wootConstants from 'dashboard/constants/globals';
->>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
 import { BUS_EVENTS } from 'shared/constants/busEvents';
-<<<<<<< HEAD
-<<<<<<< HEAD
 import wootConstants from 'dashboard/constants/globals';
-=======
-import CmdBarConversationSnooze from 'dashboard/routes/dashboard/commands/CmdBarConversationSnooze.vue';
->>>>>>> 646cfb97e (fix: Snooze conversation not working in Inbox view (#9875))
-=======
-import CmdBarConversationSnooze from 'dashboard/routes/dashboard/commands/CmdBarConversationSnooze.vue';
->>>>>>> 646cfb97e (fix: Snooze conversation not working in Inbox view (#9875))
 
 export default {
   components: {
     ChatList,
     ConversationBox,
     PopOverSearch,
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-    CmdBarConversationSnooze,
->>>>>>> 646cfb97e (fix: Snooze conversation not working in Inbox view (#9875))
-=======
-    CmdBarConversationSnooze,
->>>>>>> 646cfb97e (fix: Snooze conversation not working in Inbox view (#9875))
   },
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
   mixins: [uiSettingsMixin],
->>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
-=======
->>>>>>> fb99ba7b4 (feat: Rewrite `uiSettings` mixin to a composable (#9819))
   props: {
     inboxId: {
       type: [String, Number],
@@ -136,14 +66,6 @@ export default {
       type: [String, Number],
       default: 0,
     },
-  },
-  setup() {
-    const { uiSettings, updateUISettings } = useUISettings();
-
-    return {
-      uiSettings,
-      updateUISettings,
-    };
   },
   data() {
     return {
@@ -183,17 +105,6 @@ export default {
       this.fetchConversationIfUnavailable();
     },
   },
-
-  created() {
-    // Clear selected state early if no conversation is selected
-    // This prevents child components from accessing stale data
-    // and resolves timing issues during navigation
-    // with conversation view and other screens
-    if (!this.conversationId) {
-      this.$store.dispatch('clearSelectedState');
-    }
-  },
-
   mounted() {
     this.$store.dispatch('agents/get');
     this.initialize();
@@ -275,100 +186,9 @@ export default {
     closeSearch() {
       this.showSearchModal = false;
     },
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-    onCmdSnoozeConversation(snoozeType) {
-      if (snoozeType === wootConstants.SNOOZE_OPTIONS.UNTIL_CUSTOM_TIME) {
-        this.showCustomSnoozeModal = true;
-      } else {
-        this.toggleStatus(
-          wootConstants.STATUS_TYPE.SNOOZED,
-          findSnoozeTime(snoozeType) || null
-        );
-      }
-    },
-    chooseSnoozeTime(customSnoozeTime) {
-      this.showCustomSnoozeModal = false;
-      if (customSnoozeTime) {
-        this.toggleStatus(
-          wootConstants.STATUS_TYPE.SNOOZED,
-          getUnixTime(customSnoozeTime)
-        );
-      }
-    },
-    toggleStatus(status, snoozedUntil) {
-      this.$store
-        .dispatch('toggleStatus', {
-          conversationId: this.currentChat?.id || this.contextMenuChatId,
-          status,
-          snoozedUntil,
-        })
-        .then(() => {
-          this.$store.dispatch('setContextMenuChatId', null);
-          useAlert(this.$t('CONVERSATION.CHANGE_STATUS'));
-        });
-    },
-    hideCustomSnoozeModal() {
-      // if we select custom snooze and the custom snooze modal is open
-      // Then if the custom snooze modal is closed then set the context menu chat id to null
-      this.$store.dispatch('setContextMenuChatId', null);
-      this.showCustomSnoozeModal = false;
-    },
->>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
-=======
->>>>>>> 646cfb97e (fix: Snooze conversation not working in Inbox view (#9875))
-=======
->>>>>>> 646cfb97e (fix: Snooze conversation not working in Inbox view (#9875))
   },
 };
 </script>
-
-<template>
-  <section class="bg-white conversation-page dark:bg-slate-900">
-    <ChatList
-      :show-conversation-list="showConversationList"
-      :conversation-inbox="inboxId"
-      :label="label"
-      :team-id="teamId"
-      :conversation-type="conversationType"
-      :folders-id="foldersId"
-      :is-on-expanded-layout="isOnExpandedLayout"
-      @conversationLoad="onConversationLoad"
-    >
-      <PopOverSearch
-        :is-on-expanded-layout="isOnExpandedLayout"
-        @toggleConversationLayout="toggleConversationLayout"
-      />
-    </ChatList>
-    <ConversationBox
-      v-if="showMessageView"
-      :inbox-id="inboxId"
-      :is-contact-panel-open="isContactPanelOpen"
-      :is-on-expanded-layout="isOnExpandedLayout"
-      @contactPanelToggle="onToggleContactPanel"
-    />
-<<<<<<< HEAD
-<<<<<<< HEAD
-    <CmdBarConversationSnooze />
-=======
-    <woot-modal
-      :show.sync="showCustomSnoozeModal"
-      :on-close="hideCustomSnoozeModal"
-    >
-      <CustomSnoozeModal
-        @close="hideCustomSnoozeModal"
-        @chooseTime="chooseSnoozeTime"
-      />
-    </woot-modal>
->>>>>>> b4b308336 (feat: Eslint rules (#9839))
-=======
-    <CmdBarConversationSnooze />
->>>>>>> 646cfb97e (fix: Snooze conversation not working in Inbox view (#9875))
-  </section>
-</template>
-
 <style lang="scss" scoped>
 .conversation-page {
   display: flex;

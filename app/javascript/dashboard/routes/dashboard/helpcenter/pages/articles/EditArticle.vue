@@ -1,10 +1,7 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 <template>
-  <div class="flex w-full overflow-auto article-container">
+  <div class="article-container flex w-full overflow-auto">
     <div
-      class="flex-1 flex-shrink-0 px-6 overflow-auto"
+      class="flex-1 flex-shrink-0 overflow-auto px-6"
       :class="{ 'flex-grow-1 flex-shrink-0': showArticleSettings }"
     >
       <edit-article-header
@@ -18,7 +15,7 @@
         @show="showArticleInPortal"
         @update-meta="updateMeta"
       />
-      <div v-if="isFetching" class="h-full p-4 text-base text-center">
+      <div v-if="isFetching" class="text-center p-4 text-base h-full">
         <spinner size="" />
         <span>{{ $t('HELP_CENTER.EDIT_ARTICLE.LOADING') }}</span>
       </div>
@@ -49,17 +46,14 @@
   </div>
 </template>
 
->>>>>>> 79aa5a5d7 (feat: Replace `alertMixin` usage with `useAlert` (#9793))
-=======
->>>>>>> b4b308336 (feat: Eslint rules (#9839))
 <script>
 import { mapGetters } from 'vuex';
-import { useAlert } from 'dashboard/composables';
 import EditArticleHeader from '../../components/Header/EditArticleHeader.vue';
 import ArticleEditor from '../../components/ArticleEditor.vue';
 import ArticleSettings from './ArticleSettings.vue';
 import Spinner from 'shared/components/Spinner.vue';
 import portalMixin from '../../mixins/portalMixin';
+import alertMixin from 'shared/mixins/alertMixin';
 import wootConstants from 'dashboard/constants/globals';
 import { buildPortalArticleURL } from 'dashboard/helper/portalHelper';
 import { PORTALS_EVENTS } from '../../../../../helper/AnalyticsHelper/events';
@@ -72,7 +66,7 @@ export default {
     Spinner,
     ArticleSettings,
   },
-  mixins: [portalMixin],
+  mixins: [portalMixin, alertMixin],
   data() {
     return {
       isUpdating: false,
@@ -85,6 +79,7 @@ export default {
   computed: {
     ...mapGetters({
       isFetching: 'articles/isFetching',
+      articles: 'articles/articles',
     }),
     article() {
       return this.$store.getters['articles/articleById'](this.articleId);
@@ -149,7 +144,7 @@ export default {
       } catch (error) {
         this.alertMessage =
           error?.message || this.$t('HELP_CENTER.EDIT_ARTICLE.API.ERROR');
-        useAlert(this.alertMessage);
+        this.showAlert(this.alertMessage);
       } finally {
         setTimeout(() => {
           this.isUpdating = false;
@@ -179,7 +174,7 @@ export default {
           error?.message ||
           this.$t('HELP_CENTER.DELETE_ARTICLE.API.ERROR_MESSAGE');
       } finally {
-        useAlert(this.alertMessage);
+        this.showAlert(this.alertMessage);
       }
     },
     async archiveArticle() {
@@ -195,7 +190,7 @@ export default {
         this.alertMessage =
           error?.message || this.$t('HELP_CENTER.ARCHIVE_ARTICLE.API.ERROR');
       } finally {
-        useAlert(this.alertMessage);
+        this.showAlert(this.alertMessage);
       }
     },
     updateMeta() {
@@ -220,51 +215,3 @@ export default {
   },
 };
 </script>
-
-<template>
-  <div class="flex w-full overflow-auto article-container">
-    <div
-      class="flex-1 flex-shrink-0 px-6 overflow-auto"
-      :class="{ 'flex-grow-1 flex-shrink-0': showArticleSettings }"
-    >
-      <EditArticleHeader
-        :back-button-label="$t('HELP_CENTER.HEADER.TITLES.ALL_ARTICLES')"
-        :is-updating="isUpdating"
-        :is-saved="isSaved"
-        :is-sidebar-open="showArticleSettings"
-        @back="onClickGoBack"
-        @open="openArticleSettings"
-        @close="closeArticleSettings"
-        @show="showArticleInPortal"
-        @updateMeta="updateMeta"
-      />
-      <div v-if="isFetching" class="h-full p-4 text-base text-center">
-        <Spinner size="" />
-        <span>{{ $t('HELP_CENTER.EDIT_ARTICLE.LOADING') }}</span>
-      </div>
-      <ArticleEditor
-        v-else
-        :is-settings-sidebar-open="showArticleSettings"
-        :article="article"
-        @saveArticle="saveArticle"
-      />
-    </div>
-    <ArticleSettings
-      v-if="showArticleSettings"
-      :article="article"
-      @saveArticle="saveArticle"
-      @deleteArticle="openDeletePopup"
-      @archiveArticle="archiveArticle"
-      @updateMeta="updateMeta"
-    />
-    <woot-delete-modal
-      :show.sync="showDeleteConfirmationPopup"
-      :on-close="closeDeletePopup"
-      :on-confirm="confirmDeletion"
-      :title="$t('HELP_CENTER.DELETE_ARTICLE.MODAL.CONFIRM.TITLE')"
-      :message="$t('HELP_CENTER.DELETE_ARTICLE.MODAL.CONFIRM.MESSAGE')"
-      :confirm-text="$t('HELP_CENTER.DELETE_ARTICLE.MODAL.CONFIRM.YES')"
-      :reject-text="$t('HELP_CENTER.DELETE_ARTICLE.MODAL.CONFIRM.NO')"
-    />
-  </div>
-</template>

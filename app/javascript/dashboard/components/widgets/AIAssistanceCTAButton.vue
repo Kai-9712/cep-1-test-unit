@@ -1,13 +1,3 @@
-<script>
-export default {
-  methods: {
-    onClick() {
-      this.$emit('click');
-    },
-  },
-};
-</script>
-
 <template>
   <div class="relative">
     <woot-button
@@ -29,7 +19,15 @@ export default {
     />
   </div>
 </template>
-
+<script>
+export default {
+  methods: {
+    onClick() {
+      this.$emit('click');
+    },
+  },
+};
+</script>
 <style scoped>
 @tailwind components;
 @layer components {
