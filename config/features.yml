@@ -44,7 +44,6 @@
   help_url: https://chwt.app/hc/canned
 - name: integrations
   enabled: true
-  help_url: https://chwt.app/hc/integrations
 - name: voice_recorder
   enabled: true
 - name: mobile_v2
@@ -81,11 +80,8 @@
 - name: sla
   enabled: false
   premium: true
-  help_url: https://chwt.app/hc/sla
 - name: help_center_embedding_search
   enabled: false
   premium: true
 - name: linear_integration
-  enabled: false
-- name: captain_integration
   enabled: false

@@ -6,13 +6,13 @@ class Whatsapp::SendOnWhatsappService < Base::SendOnChannelService
   end
 
   def perform_reply
-    should_send_template_message = template_params.present? || !message.conversation.can_reply?
-    if should_send_template_message
-      send_template_message
-    else
-      Rails.logger.info 'reply-else------'
+    # should_send_template_message = template_params.present? || !message.conversation.can_reply?
+    # if should_send_template_message
+    #   send_template_message
+    # else
+    #   Rails.logger.info 'reply-else------'
       send_session_message
-    end
+    #end
   end
 
   def send_template_message

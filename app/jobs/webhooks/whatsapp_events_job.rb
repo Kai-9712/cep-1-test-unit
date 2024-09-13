@@ -26,7 +26,6 @@ class Webhooks::WhatsappEventsJob < ApplicationJob
   def find_channel_by_url_param(params)
     return unless params[:phone_number]
 
-    #Channel::Whatsapp.find_by(phone_number: params[:phone_number])
     phone_number = params[:brand_msisdn].start_with?('+') ? params[:brand_msisdn] : "+#{params[:brand_msisdn]}"
     Channel::Whatsapp.find_by(phone_number: phone_number)
   end

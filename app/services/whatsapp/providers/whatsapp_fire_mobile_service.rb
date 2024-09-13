@@ -56,7 +56,7 @@ class Whatsapp::Providers::WhatsappFireMobileService < Whatsapp::Providers::Base
 
   def api_base_path
     # provide the environment variable when testing against sandbox : 'https://waba-sandbox.360dialog.io/v1'
-    ENV.fetch('FIREMOBILE_BASE_URL', 'https://apis.rmlconnect.net/wba')
+    ENV.fetch('FIREMOBILE_BASE_URL', 'https://apis.rmlconnect.net/wba') 
   end
 
   def whatsapp_reply_context(message)
