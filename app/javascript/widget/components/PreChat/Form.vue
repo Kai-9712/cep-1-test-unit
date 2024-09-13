@@ -7,7 +7,7 @@ import { isEmptyObject } from 'widget/helpers/utils';
 import { getRegexp } from 'shared/helpers/Validators';
 import { useMessageFormatter } from 'shared/composables/useMessageFormatter';
 import routerMixin from 'widget/mixins/routerMixin';
-import { useDarkMode } from 'widget/composables/useDarkMode';
+import darkModeMixin from 'widget/mixins/darkModeMixin';
 import configMixin from 'widget/mixins/configMixin';
 
 export default {
@@ -15,7 +15,7 @@ export default {
     CustomButton,
     Spinner,
   },
-  mixins: [routerMixin, configMixin],
+  mixins: [routerMixin, darkModeMixin, configMixin],
   props: {
     options: {
       type: Object,
@@ -24,8 +24,9 @@ export default {
   },
   setup() {
     const { formatMessage } = useMessageFormatter();
-    const { getThemeClass } = useDarkMode();
-    return { formatMessage, getThemeClass };
+    return {
+      formatMessage,
+    };
   },
   data() {
     return {
@@ -130,28 +131,25 @@ export default {
       return `mt-1 border rounded w-full py-2 px-3 text-slate-700 outline-none`;
     },
     isInputDarkOrLightMode() {
-      return `${this.getThemeClass(
-        'bg-white',
-        'dark:bg-slate-600'
-      )} ${this.getThemeClass('text-slate-700', 'dark:text-slate-50')}`;
+      return `${this.$dm('bg-white', 'dark:bg-slate-600')} ${this.$dm(
+        'text-slate-700',
+        'dark:text-slate-50'
+      )}`;
     },
     inputBorderColor() {
-      return `${this.getThemeClass(
-        'border-black-200',
-        'dark:border-black-500'
-      )}`;
+      return `${this.$dm('border-black-200', 'dark:border-black-500')}`;
     },
   },
   methods: {
     labelClass(context) {
       const { hasErrors } = context;
       if (!hasErrors) {
-        return `text-xs font-medium ${this.getThemeClass(
+        return `text-xs font-medium ${this.$dm(
           'text-black-800',
           'dark:text-slate-50'
         )}`;
       }
-      return `text-xs font-medium ${this.getThemeClass(
+      return `text-xs font-medium ${this.$dm(
         'text-red-400',
         'dark:text-red-400'
       )}`;
@@ -266,7 +264,7 @@ export default {
       v-if="shouldShowHeaderMessage"
       v-dompurify-html="formatMessage(headerMessage, false)"
       class="mb-4 text-sm leading-5 pre-chat-header-message"
-      :class="getThemeClass('text-black-800', 'dark:text-slate-50')"
+      :class="$dm('text-black-800', 'dark:text-slate-50')"
     />
     <FormulateInput
       v-for="item in enabledPreChatFields"

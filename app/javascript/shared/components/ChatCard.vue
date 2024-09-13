@@ -1,11 +1,12 @@
 <script>
 import CardButton from 'shared/components/CardButton.vue';
-import { useDarkMode } from 'widget/composables/useDarkMode';
+import darkModeMixin from 'widget/mixins/darkModeMixin.js';
 
 export default {
   components: {
     CardButton,
   },
+  mixins: [darkModeMixin],
   props: {
     title: {
       type: String,
@@ -24,30 +25,21 @@ export default {
       default: () => [],
     },
   },
-  setup() {
-    const { getThemeClass } = useDarkMode();
-    return { getThemeClass };
-  },
+  computed: {},
 };
 </script>
 
 <template>
   <div
     class="card-message chat-bubble agent"
-    :class="getThemeClass('bg-white', 'dark:bg-slate-700')"
+    :class="$dm('bg-white', 'dark:bg-slate-700')"
   >
     <img class="media" :src="mediaUrl" />
     <div class="card-body">
-      <h4
-        class="title"
-        :class="getThemeClass('text-black-900', 'dark:text-slate-50')"
-      >
+      <h4 class="title" :class="$dm('text-black-900', 'dark:text-slate-50')">
         {{ title }}
       </h4>
-      <p
-        class="body"
-        :class="getThemeClass('text-black-700', 'dark:text-slate-100')"
-      >
+      <p class="body" :class="$dm('text-black-700', 'dark:text-slate-100')">
         {{ description }}
       </p>
       <CardButton v-for="action in actions" :key="action.id" :action="action" />

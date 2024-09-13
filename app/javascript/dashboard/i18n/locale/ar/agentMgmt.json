@@ -7,7 +7,7 @@
     "LEARN_MORE": "Learn about user roles",
     "AGENT_TYPES": {
       "ADMINISTRATOR": "المدير",
-      "AGENT": "موظف الدعم"
+      "AGENT": "وكيل الدعم"
     },
     "LIST": {
       "404": "لا يوجد وكلاء دعم مرتبطين بهذا الحساب",
@@ -102,7 +102,7 @@
       "PLACEHOLDER": "لا شيء",
       "TITLE": {
         "AGENT": "اختر وكيل",
-        "TEAM": "اختيار فريق"
+        "TEAM": "اختر فريق"
       },
       "SEARCH": {
         "NO_RESULTS": {
@@ -112,7 +112,7 @@
         "PLACEHOLDER": {
           "AGENT": "البحث عن وكلاء",
           "TEAM": "البحث عن فريق",
-          "INPUT": "البحث عن ممثلى الخدمة"
+          "INPUT": "البحث عن وكلاء"
         }
       }
     }

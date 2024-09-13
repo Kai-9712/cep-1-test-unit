@@ -73,7 +73,6 @@ export default {
   },
   data() {
     return {
-      dashboardLogo: process.env.DASHBOARD_LOGO, // add this
       showOptionsMenu: false,
     };
   },

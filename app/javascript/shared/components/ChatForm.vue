@@ -1,9 +1,10 @@
 <script>
 import { mapGetters } from 'vuex';
 import { getContrastingTextColor } from '@chatwoot/utils';
-import { useDarkMode } from 'widget/composables/useDarkMode';
+import darkModeMixin from 'widget/mixins/darkModeMixin';
 
 export default {
+  mixins: [darkModeMixin],
   props: {
     buttonLabel: {
       type: String,
@@ -17,10 +18,6 @@ export default {
       type: Array,
       default: () => [],
     },
-  },
-  setup() {
-    const { getThemeClass } = useDarkMode();
-    return { getThemeClass };
   },
   data() {
     return {
@@ -36,8 +33,8 @@ export default {
       return getContrastingTextColor(this.widgetColor);
     },
     inputColor() {
-      return `${this.getThemeClass('bg-white', 'dark:bg-slate-600')}
-        ${this.getThemeClass('text-black-900', 'dark:text-slate-50')}`;
+      return `${this.$dm('bg-white', 'dark:bg-slate-600')}
+        ${this.$dm('text-black-900', 'dark:text-slate-50')}`;
     },
     isFormValid() {
       return this.items.reduce((acc, { name }) => {
@@ -83,7 +80,7 @@ export default {
 <template>
   <div
     class="form chat-bubble agent"
-    :class="getThemeClass('bg-white', 'dark:bg-slate-700')"
+    :class="$dm('bg-white', 'dark:bg-slate-700')"
   >
     <form @submit.prevent="onSubmit">
       <div
@@ -94,7 +91,7 @@ export default {
           'has-submitted': hasSubmitted,
         }"
       >
-        <label :class="getThemeClass('text-black-900', 'dark:text-slate-50')">{{
+        <label :class="$dm('text-black-900', 'dark:text-slate-50')">{{
           item.label
         }}</label>
         <input

@@ -1,6 +1,5 @@
-import Vue from 'vue';
-import { useAlert } from 'dashboard/composables';
 import fileUploadMixin from 'dashboard/mixins/fileUploadMixin';
+import Vue from 'vue';
 
 jest.mock('shared/helpers/FileHelper', () => ({
   checkFileSizeLimit: jest.fn(),
@@ -10,10 +9,6 @@ jest.mock('activestorage', () => ({
   DirectUpload: jest.fn().mockImplementation(() => ({
     create: jest.fn(),
   })),
-}));
-
-vi.mock('dashboard/composables', () => ({
-  useAlert: vi.fn(),
 }));
 
 describe('FileUploadMixin', () => {
@@ -58,8 +53,9 @@ describe('FileUploadMixin', () => {
 
     it('shows an alert if the file size exceeds the maximum limit', () => {
       const fakeFile = { size: 999999999 };
+      vm.showAlert = jest.fn();
       vm.onDirectFileUpload(fakeFile);
-      expect(useAlert).toHaveBeenCalledWith(expect.any(String));
+      expect(vm.showAlert).toHaveBeenCalledWith(expect.any(String));
     });
   });
 
@@ -71,8 +67,9 @@ describe('FileUploadMixin', () => {
 
     it('shows an alert if the file size exceeds the maximum limit', () => {
       const fakeFile = { size: 999999999 };
+      vm.showAlert = jest.fn();
       vm.onIndirectFileUpload(fakeFile);
-      expect(useAlert).toHaveBeenCalledWith(expect.any(String));
+      expect(vm.showAlert).toHaveBeenCalledWith(expect.any(String));
     });
   });
 });

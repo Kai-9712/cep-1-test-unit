@@ -1,12 +1,13 @@
 <script>
 import FluentIcon from 'shared/components/FluentIcon/Index.vue';
-import { useDarkMode } from 'widget/composables/useDarkMode';
+import darkModeMixin from 'widget/mixins/darkModeMixin.js';
 import { getContrastingTextColor } from '@chatwoot/utils';
 
 export default {
   components: {
     FluentIcon,
   },
+  mixins: [darkModeMixin],
   props: {
     url: {
       type: String,
@@ -24,10 +25,6 @@ export default {
       type: Boolean,
       default: false,
     },
-  },
-  setup() {
-    const { getThemeClass } = useDarkMode();
-    return { getThemeClass };
   },
   computed: {
     title() {
@@ -48,7 +45,7 @@ export default {
     },
     titleColor() {
       return !this.isUserBubble
-        ? this.getThemeClass('text-black-900', 'dark:text-slate-50')
+        ? this.$dm('text-black-900', 'dark:text-slate-50')
         : '';
     },
   },

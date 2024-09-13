@@ -263,17 +263,17 @@
           "PRIORITY": {
             "LABEL": "الأولوية",
             "PLACEHOLDER": "تحديد الأولوية",
-            "SEARCH": "Search priority"
+            "SEARCH": "أولوية البحث"
           },
           "LABEL": {
             "LABEL": "الوسم",
-            "PLACEHOLDER": "Select label",
-            "SEARCH": "Search label"
+            "PLACEHOLDER": "حدد التسمية",
+            "SEARCH": "ابحث عن تصنيفات"
           },
           "STATUS": {
             "LABEL": "الحالة",
-            "PLACEHOLDER": "Select status",
-            "SEARCH": "Search status"
+            "PLACEHOLDER": "اختر الحالة",
+            "SEARCH": "حالة البحث"
           },
           "PROJECT": {
             "LABEL": "المشروع",
