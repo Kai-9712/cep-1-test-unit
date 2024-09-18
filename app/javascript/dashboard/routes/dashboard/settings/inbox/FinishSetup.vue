@@ -136,7 +136,7 @@ export default {
         this.currentInbox.provider === 'whatsapp_cloud'
       );
     },
-    isWhatsAppFireMobileInbox (){
+    isWhatsAppFireMobileInbox() {
       return (
         this.currentInbox.channel_type === 'Channel::Whatsapp' &&
         this.currentInbox.provider === 'whatsapp_fire_mobile'
@@ -172,7 +172,7 @@ export default {
           'INBOX_MGMT.ADD.WHATSAPP.API_CALLBACK.SUBTITLE'
         )}`;
       }
-      
+
       if (this.isAEmailInbox && !this.currentInbox.provider) {
         return this.$t('INBOX_MGMT.ADD.EMAIL_CHANNEL.FINISH_MESSAGE');
       }

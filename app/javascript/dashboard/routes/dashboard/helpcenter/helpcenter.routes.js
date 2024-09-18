@@ -11,13 +11,11 @@ const EditPortalCustomization = () =>
 const EditPortalLocales = () => import('./pages/portals/EditPortalLocales.vue');
 const ShowPortal = () => import('./pages/portals/ShowPortal');
 const PortalDetails = () => import('./pages/portals/PortalDetails');
-const PortalCustomization = () =>
-  import('./pages/portals/PortalCustomization');
+const PortalCustomization = () => import('./pages/portals/PortalCustomization');
 const PortalSettingsFinish = () =>
   import('./pages/portals/PortalSettingsFinish');
 
-const ListAllCategories = () =>
-  import('./pages/categories/ListAllCategories');
+const ListAllCategories = () => import('./pages/categories/ListAllCategories');
 const NewCategory = () => import('./pages/categories/NewCategory');
 const EditCategory = () => import('./pages/categories/EditCategory');
 const ListCategoryArticles = () =>

@@ -1,6 +1,7 @@
 import { getters } from '../../campaign';
 import { campaigns } from './data';
 jest.mock('widget/store/index.js');
+
 describe('#getters', () => {
   it('getCampaigns', () => {
     const state = {

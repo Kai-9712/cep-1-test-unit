@@ -22,7 +22,7 @@ describe('Vue Analytics Plugin', () => {
     expect(Vue.prototype.$analytics).toBe(analyticsHelper);
   });
 
-  it('should add a track method to the Vue prototype', () => {
+  it('should add the track method to the Vue prototype', () => {
     expect(typeof Vue.prototype.$track).toBe('function');
     Vue.prototype.$track('eventName');
     expect(analyticsHelper.track).toHaveBeenCalledWith('eventName');

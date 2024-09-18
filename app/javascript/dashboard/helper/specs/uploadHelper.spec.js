@@ -1,6 +1,7 @@
 import { uploadFile } from '../uploadHelper';
 import axios from 'axios';
 
+// Mocking axios using jest-mock-axios
 global.axios = axios;
 jest.mock('axios');
 
