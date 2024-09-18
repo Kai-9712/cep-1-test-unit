@@ -73,6 +73,7 @@ export default {
   },
   data() {
     return {
+      dashboardLogo: process.env.DASHBOARD_LOGO,
       showOptionsMenu: false,
     };
   },
@@ -200,7 +201,7 @@ export default {
 <template>
   <aside class="flex h-full">
     <PrimarySidebar
-      :logo-source="globalConfig.logoThumbnail"
+      :logo-source="dashboardLogo"
       :installation-name="globalConfig.installationName"
       :is-a-custom-branded-instance="isACustomBrandedInstance"
       :account-id="accountId"

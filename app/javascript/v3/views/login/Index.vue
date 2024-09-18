@@ -151,22 +151,20 @@ export default {
   >
     <section class="max-w-5xl mx-auto">
       <img
-        :src="globalConfig.logo"
-        :alt="globalConfig.installationName"
+        src="/assets/EduvoBrandLogo.png"
+        alt="EduvoChat"
         class="block w-auto h-8 mx-auto dark:hidden"
       />
       <img
         v-if="globalConfig.logoDark"
-        :src="globalConfig.logoDark"
-        :alt="globalConfig.installationName"
+        src="/assets/EduvoBrandLogo.png"
+        alt="EduvoChat"
         class="hidden w-auto h-8 mx-auto dark:block"
       />
       <h2
         class="mt-6 text-3xl font-medium text-center text-slate-900 dark:text-woot-50"
       >
-        {{
-          useInstallationName($t('LOGIN.TITLE'), globalConfig.installationName)
-        }}
+        Welcome To EduvoChat
       </h2>
       <p
         v-if="showSignupLink"
