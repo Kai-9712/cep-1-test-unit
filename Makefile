@@ -1,6 +1,8 @@
+include .env
+
 # Variables
 APP_NAME := chatwoot
-RAILS_ENV ?= development
+RAILS_ENV ?= $(RAILS_ENV)
 
 # Targets
 setup:
