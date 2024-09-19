@@ -78,7 +78,7 @@ development:
       ignored: '**/node_modules/**'
 
 
-test:
+uat:
   <<: *default
   compile: true
 
