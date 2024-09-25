@@ -30,6 +30,14 @@ export default {
     businessAccountId: { required, isNumber },
   },
   methods: {
+    handlePhoneNumberBlur() {
+      // Ensure the phone number starts with a "+"
+      if (!this.phoneNumber.startsWith('+') && this.phoneNumber) {
+        this.phoneNumber = `+${this.phoneNumber}`;
+      }
+      this.v$.phoneNumber.$touch(); // Touch the validation
+    },
+
     async createChannel() {
       this.v$.$touch();
       if (this.v$.$invalid) {
@@ -37,13 +45,17 @@ export default {
       }
 
       try {
+        const formattedPhoneNumber = this.phoneNumber.startsWith('+')
+          ? this.phoneNumber
+          : `+${this.phoneNumber}`;
+
         const whatsappChannel = await this.$store.dispatch(
           'inboxes/createChannel',
           {
             name: this.inboxName,
             channel: {
               type: 'whatsapp',
-              phone_number: this.phoneNumber,
+              phone_number: formattedPhoneNumber,
               provider: 'whatsapp_cloud',
               provider_config: {
                 api_key: this.apiKey,
@@ -95,7 +107,7 @@ export default {
           v-model.trim="phoneNumber"
           type="text"
           :placeholder="$t('INBOX_MGMT.ADD.WHATSAPP.PHONE_NUMBER.PLACEHOLDER')"
-          @blur="v$.phoneNumber.$touch"
+          @blur="handlePhoneNumberBlur"
         />
         <span v-if="v$.phoneNumber.$error" class="message">
           {{ $t('INBOX_MGMT.ADD.WHATSAPP.PHONE_NUMBER.ERROR') }}
