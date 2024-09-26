@@ -148,7 +148,7 @@
         "PHONE_NUMBER": {
           "LABEL": "Phone Number",
           "PLACEHOLDER": "Please enter the phone number from which message will be sent.",
-          "ERROR": "Please provide a valid phone number that starts with a `+` sign and does not contain any spaces."
+          "ERROR": "Please provide a valid phone number."
         },
         "API_CALLBACK": {
           "TITLE": "Callback URL",
@@ -229,7 +229,7 @@
         "PHONE_NUMBER": {
           "LABEL": "Phone number",
           "PLACEHOLDER": "Please enter the phone number from which message will be sent.",
-          "ERROR": "Please provide a valid phone number that starts with a `+` sign and does not contain any spaces."
+          "ERROR": "Please provide a valid phone number."
         },
         "PHONE_NUMBER_ID": {
           "LABEL": "Phone number ID",

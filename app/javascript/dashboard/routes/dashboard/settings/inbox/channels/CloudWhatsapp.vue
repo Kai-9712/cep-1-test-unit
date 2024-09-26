@@ -24,17 +24,14 @@ export default {
   },
   validations: {
     inboxName: { required },
-    phoneNumber: { required, isPhoneE164OrEmpty },
+    phoneNumber: { required, isPhoneE164OrEmpty }, // Adjusted validator already handles no '+'
     apiKey: { required },
     phoneNumberId: { required, isNumber },
     businessAccountId: { required, isNumber },
   },
   methods: {
     handlePhoneNumberBlur() {
-      // Ensure the phone number starts with a "+"
-      if (!this.phoneNumber.startsWith('+') && this.phoneNumber) {
-        this.phoneNumber = `+${this.phoneNumber}`;
-      }
+      // Removed logic that automatically adds '+'
       this.v$.phoneNumber.$touch(); // Touch the validation
     },
 
@@ -45,17 +42,13 @@ export default {
       }
 
       try {
-        const formattedPhoneNumber = this.phoneNumber.startsWith('+')
-          ? this.phoneNumber
-          : `+${this.phoneNumber}`;
-
         const whatsappChannel = await this.$store.dispatch(
           'inboxes/createChannel',
           {
             name: this.inboxName,
             channel: {
               type: 'whatsapp',
-              phone_number: formattedPhoneNumber,
+              phone_number: this.phoneNumber, // No need to format phone number with '+'
               provider: 'whatsapp_cloud',
               provider_config: {
                 api_key: this.apiKey,

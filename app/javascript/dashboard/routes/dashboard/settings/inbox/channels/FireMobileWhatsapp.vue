@@ -4,7 +4,7 @@ import { useVuelidate } from '@vuelidate/core';
 import { useAlert } from 'dashboard/composables';
 import { required } from '@vuelidate/validators';
 import router from '../../../../index';
-import { isPhoneE164OrEmpty, isNumber } from 'shared/helpers/Validators';
+import { isPhoneE164OrEmpty } from 'shared/helpers/Validators';
 
 export default {
   setup() {

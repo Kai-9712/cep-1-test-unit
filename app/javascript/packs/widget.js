@@ -7,7 +7,7 @@ import App from '../widget/App.vue';
 import ActionCableConnector from '../widget/helpers/actionCable';
 import i18n from '../widget/i18n';
 import {
-  startsWithPlus,
+  startsWithChar,
   isPhoneNumberValidWithDialCode,
 } from 'shared/helpers/Validators';
 import router from '../widget/router';
@@ -36,7 +36,7 @@ Vue.use(VueFormulate, {
     },
   },
   rules: {
-    startsWithPlus: ({ value }) => startsWithPlus(value),
+    startsWithChar: ({ value }) => startsWithChar(value),
     isValidPhoneNumber: ({ value }) => isPhoneNumberValidWithDialCode(value),
   },
   classes: {
