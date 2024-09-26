@@ -3,7 +3,7 @@
  * @param {string} value - The phone number to validate.
  * @returns {boolean} True if the number is valid, false otherwise.
  */
-export const isPhoneE164 = value => !!value.match(/^[1-9]\d{1,14}$/);
+export const isPhoneE164 = value => !!value.match(/^[0-9]\d{1,14}$/);
 
 /**
  * Validates a phone number after removing the dial code.
@@ -29,7 +29,7 @@ export const isPhoneE164OrEmpty = value => isPhoneE164(value) || value === '';
  * @returns {boolean} True if the number is valid, false otherwise.
  */
 export const isPhoneNumberValidWithDialCode = value => {
-  return !!value.match(/^[1-9]\d{4,}$/); // Validate the phone number with minimum 5 digits
+  return !!value.match(/^[0-9]\d{4,}$/); // Validate the phone number with minimum 5 digits
 };
 
 /**
