@@ -37,6 +37,7 @@ dl {
 // Form elements
 label {
   @apply text-slate-800 dark:text-slate-200 block m-0 leading-7 text-sm font-medium;
+  margin-top: 0.5rem;
 
   &.error {
     input {
@@ -68,8 +69,9 @@ input[type='password']:not(.reset-base),
 input[type='date']:not(.reset-base),
 input[type='email']:not(.reset-base),
 input[type='url']:not(.reset-base) {
-  @apply block box-border w-full transition-colors focus:border-woot-500 dark:focus:border-woot-600 duration-[0.25s] ease-[ease-in-out] h-10 appearance-none mx-0 mt-0 mb-4 p-2 rounded-md text-base font-normal bg-white dark:bg-slate-900 focus:bg-white focus:dark:bg-slate-900 text-slate-900 dark:text-slate-100 border border-solid border-slate-200 dark:border-slate-600;
-
+  @apply block box-border w-full transition-colors focus:border-woot-500 dark:focus:border-woot-600 duration-[0.25s] ease-[ease-in-out] h-10 appearance-none mx-0 mt-0 p-2 rounded-md text-base font-normal bg-white dark:bg-slate-900 focus:bg-white focus:dark:bg-slate-900 text-slate-900 dark:text-slate-100 border border-solid border-slate-200 dark:border-slate-600;
+  margin-bottom: 0; // This adds margin-bottom
+  
   &[disabled] {
     @apply bg-slate-200 dark:bg-slate-700 text-slate-400 dark:text-slate-400 border-slate-200 dark:border-slate-600 cursor-not-allowed;
   }
@@ -116,6 +118,10 @@ textarea {
   .message {
     @apply text-red-400 dark:text-red-400 block text-sm mb-2.5 w-full;
   }
+}
+
+.phonemessage{
+
 }
 
 .input-group.small {

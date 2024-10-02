@@ -91,6 +91,9 @@ export default {
           :placeholder="$t('INBOX_MGMT.ADD.WHATSAPP.PHONE_NUMBER.PLACEHOLDER')"
           @blur="v$.phoneNumber.$touch"
         />
+        <span class="phonemessage">
+          {{ $t('Please include "+" before your phone number.') }}
+        </span>
         <span v-if="v$.phoneNumber.$error" class="message">
           {{ $t('INBOX_MGMT.ADD.WHATSAPP.PHONE_NUMBER.ERROR') }}
         </span>

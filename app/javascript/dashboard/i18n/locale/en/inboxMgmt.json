@@ -147,7 +147,7 @@
         },
         "PHONE_NUMBER": {
           "LABEL": "Phone Number",
-          "PLACEHOLDER": "Please enter the phone number from which message will be sent.",
+          "PLACEHOLDER": "Please enter a Prefix number.",
           "ERROR": "Please provide a valid phone number."
         },
         "API_CALLBACK": {
@@ -228,7 +228,7 @@
         },
         "PHONE_NUMBER": {
           "LABEL": "Phone number",
-          "PLACEHOLDER": "Please enter the phone number from which message will be sent.",
+          "PLACEHOLDER": "Please enter a Prefix number.",
           "ERROR": "Please provide a valid phone number."
         },
         "PHONE_NUMBER_ID": {
