@@ -175,12 +175,12 @@ export default {
           :username="contact.name"
           :status="contact.availability_status"
         />
-        <woot-button
+        <!-- <woot-button
           v-if="showCloseButton"
           :icon="closeIconName"
           class="clear secondary rtl:rotate-180"
           @click="onPanelToggle"
-        />
+        /> -->
       </div>
 
       <div class="flex flex-col items-start gap-1.5 min-w-0 w-full">
