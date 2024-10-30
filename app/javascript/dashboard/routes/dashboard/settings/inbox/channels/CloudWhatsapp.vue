@@ -24,12 +24,17 @@ export default {
   },
   validations: {
     inboxName: { required },
-    phoneNumber: { required, isPhoneE164OrEmpty },
+    phoneNumber: { required, isPhoneE164OrEmpty }, // Adjusted validator already handles no '+'
     apiKey: { required },
     phoneNumberId: { required, isNumber },
     businessAccountId: { required, isNumber },
   },
   methods: {
+    handlePhoneNumberBlur() {
+      // Removed logic that automatically adds '+'
+      this.v$.phoneNumber.$touch(); // Touch the validation
+    },
+
     async createChannel() {
       this.v$.$touch();
       if (this.v$.$invalid) {
@@ -43,7 +48,7 @@ export default {
             name: this.inboxName,
             channel: {
               type: 'whatsapp',
-              phone_number: this.phoneNumber,
+              phone_number: this.phoneNumber, // No need to format phone number with '+'
               provider: 'whatsapp_cloud',
               provider_config: {
                 api_key: this.apiKey,
@@ -95,8 +100,11 @@ export default {
           v-model.trim="phoneNumber"
           type="text"
           :placeholder="$t('INBOX_MGMT.ADD.WHATSAPP.PHONE_NUMBER.PLACEHOLDER')"
-          @blur="v$.phoneNumber.$touch"
+          @blur="handlePhoneNumberBlur"
         />
+        <span class="phonemessage">
+          {{ $t('Please include "+" before your phone number.') }}
+        </span>
         <span v-if="v$.phoneNumber.$error" class="message">
           {{ $t('INBOX_MGMT.ADD.WHATSAPP.PHONE_NUMBER.ERROR') }}
         </span>

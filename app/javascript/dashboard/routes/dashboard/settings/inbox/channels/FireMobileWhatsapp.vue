@@ -4,7 +4,7 @@ import { useVuelidate } from '@vuelidate/core';
 import { useAlert } from 'dashboard/composables';
 import { required } from '@vuelidate/validators';
 import router from '../../../../index';
-import { isPhoneE164OrEmpty, isNumber } from 'shared/helpers/Validators';
+import { isPhoneE164OrEmpty } from 'shared/helpers/Validators';
 
 export default {
   setup() {
@@ -91,6 +91,9 @@ export default {
           :placeholder="$t('INBOX_MGMT.ADD.WHATSAPP.PHONE_NUMBER.PLACEHOLDER')"
           @blur="v$.phoneNumber.$touch"
         />
+        <span class="phonemessage">
+          {{ $t('Please include "+" before your phone number.') }}
+        </span>
         <span v-if="v$.phoneNumber.$error" class="message">
           {{ $t('INBOX_MGMT.ADD.WHATSAPP.PHONE_NUMBER.ERROR') }}
         </span>

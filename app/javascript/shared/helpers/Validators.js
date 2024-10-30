@@ -1,9 +1,9 @@
 /**
- * Checks if a string is a valid E.164 phone number format.
+ * Checks if a string is a valid phone number without the plus sign.
  * @param {string} value - The phone number to validate.
- * @returns {boolean} True if the number is in E.164 format, false otherwise.
+ * @returns {boolean} True if the number is valid, false otherwise.
  */
-export const isPhoneE164 = value => !!value.match(/^\+[1-9]\d{1,14}$/);
+export const isPhoneE164 = value => !!value.match(/^[0-9]\d{1,14}$/);
 
 /**
  * Validates a phone number after removing the dial code.
@@ -17,9 +17,9 @@ export const isPhoneNumberValid = (value, dialCode) => {
 };
 
 /**
- * Checks if a string is either a valid E.164 phone number or empty.
+ * Checks if a string is either a valid phone number or empty.
  * @param {string} value - The phone number to validate.
- * @returns {boolean} True if the number is in E.164 format or empty, false otherwise.
+ * @returns {boolean} True if the number is valid or empty, false otherwise.
  */
 export const isPhoneE164OrEmpty = value => isPhoneE164(value) || value === '';
 
@@ -29,16 +29,16 @@ export const isPhoneE164OrEmpty = value => isPhoneE164(value) || value === '';
  * @returns {boolean} True if the number is valid, false otherwise.
  */
 export const isPhoneNumberValidWithDialCode = value => {
-  const number = value.replace(/^\+/, ''); // Remove the '+' sign
-  return !!number.match(/^[1-9]\d{4,}$/); // Validate the phone number with minimum 5 digits
+  return !!value.match(/^[0-9]\d{4,}$/); // Validate the phone number with minimum 5 digits
 };
 
 /**
- * Checks if a string starts with a plus sign.
+ * Checks if a string starts with a specific character.
  * @param {string} value - The string to check.
- * @returns {boolean} True if the string starts with '+', false otherwise.
+ * @param {string} char - The character to check for.
+ * @returns {boolean} True if the string starts with the character, false otherwise.
  */
-export const startsWithPlus = value => value.startsWith('+');
+export const startsWithChar = (value, char) => value.startsWith(char);
 
 /**
  * Checks if a string is a valid URL (starts with 'http') or is empty.
