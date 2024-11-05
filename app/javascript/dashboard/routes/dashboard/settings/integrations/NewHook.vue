@@ -33,7 +33,7 @@ export default {
     inboxes() {
       return this.dialogFlowEnabledInboxes
         .filter(inbox => {
-          if (!this.isIntegrationDialogflow) {
+          if (!this.isIntegrationDialogflow && !this.isIntegrationDialogflowCX) {
             return true;
           }
           return !this.connectedDialogflowInboxIds.includes(inbox.id);
@@ -42,7 +42,7 @@ export default {
     },
 
     connectedDialogflowInboxIds() {
-      if (!this.isIntegrationDialogflow) {
+      if (!this.isIntegrationDialogflow && !this.isIntegrationDialogflowCX) {
         return [];
       }
       return this.integration.hooks.map(hook => hook.inbox?.id);
@@ -52,6 +52,9 @@ export default {
     },
     isIntegrationDialogflow() {
       return this.integration.id === 'dialogflow';
+    },
+    isIntegrationDialogflowCX() {
+      return this.integration.id === 'dialogflow_cx';
     },
   },
   methods: {

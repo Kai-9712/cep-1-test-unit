@@ -214,6 +214,14 @@ Rails.application.routes.draw do
             resource :authorization, only: [:create]
           end
 
+          namespace :integrations do
+            resources :hooks, only: [:show, :create, :update, :destroy] do
+              # Add this new route here
+              collection do
+                post :dialogflow_cx # Adjust as needed for your Dialogflow CX endpoint
+              end
+            end
+
           resources :webhooks, only: [:index, :create, :update, :destroy]
           namespace :integrations do
             resources :apps, only: [:index, :show]

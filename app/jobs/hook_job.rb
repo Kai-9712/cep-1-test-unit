@@ -9,6 +9,8 @@ class HookJob < ApplicationJob
       process_slack_integration(hook, event_name, event_data)
     when 'dialogflow'
       process_dialogflow_integration(hook, event_name, event_data)
+    when 'dialogflow_cx'
+      process_dialogflow_cx_integration(hook, event_name, event_data)
     when 'captain'
       process_captain_integration(hook, event_name, event_data)
     when 'google_translate'
@@ -35,6 +37,12 @@ class HookJob < ApplicationJob
     return unless ['message.created', 'message.updated'].include?(event_name)
 
     Integrations::Dialogflow::ProcessorService.new(event_name: event_name, hook: hook, event_data: event_data).perform
+  end
+
+  def process_dialogflow_cx_integration(hook, event_name, event_data)
+    return unless ['message.created', 'message.updated'].include?(event_name)
+
+    Integrations::DialogflowCX::ProcessorService.new(event_name: event_name, hook: hook, event_data: event_data).perform
   end
 
   def process_captain_integration(hook, event_name, event_data)
