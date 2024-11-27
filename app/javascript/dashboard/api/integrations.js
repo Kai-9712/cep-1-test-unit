@@ -7,6 +7,7 @@ class IntegrationsAPI extends ApiClient {
     super('integrations/apps', { accountScoped: true });
   }
 
+  // Slack methods
   connectSlack(code) {
     return axios.post(`${this.baseUrl()}/integrations/slack`, { code });
   }
@@ -21,6 +22,20 @@ class IntegrationsAPI extends ApiClient {
     return axios.get(`${this.baseUrl()}/integrations/slack/list_all_channels`);
   }
 
+  // Dialogflow Test methods
+  connectDialogflowTest(configData) {
+    return axios.post(`${this.baseUrl()}/integrations/dialogflow_test`, configData);
+  }
+
+  fetchDialogflowTestConfig() {
+    return axios.get(`${this.baseUrl()}/integrations/dialogflow_test`);
+  }
+
+  deleteDialogflowTest(integrationId) {
+    return axios.delete(`${this.baseUrl()}/integrations/dialogflow_test/${integrationId}`);
+  }
+
+  // Common methods
   delete(integrationId) {
     return axios.delete(`${this.baseUrl()}/integrations/${integrationId}`);
   }
